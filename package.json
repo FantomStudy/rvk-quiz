@@ -1,7 +1,7 @@
 {
   "name": "quiz-ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.77.2",
+    "@tanstack/react-router": "^1.120.11",
+    "@types/node": "^22.15.23",
+    "axios": "^1.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@tanstack/react-query-devtools": "^5.77.2",
+    "@tanstack/react-router-devtools": "^1.120.11",
+    "@tanstack/router-plugin": "^1.120.11",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react-swc": "^3.9.0",
