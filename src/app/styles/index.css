@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "PfBeausansPro";
+  src: url("/fonts/PFBeauSansPro-Regular.woff2") format("woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "PfBeausansPro";
+  src: url("/public/fonts/PFBeauSansPro-SemiBold.woff2") format("woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "PfBeausansPro";
+  src: url("/public/fonts/PFBeauSansPro-Bold.woff2") format("woff2");
+  font-weight: 600;
+}
+
 :root {
   --primary: #1074b9;
   --primary-hover: #0668aa;
@@ -19,6 +35,8 @@
 
   --table-primary: #ffffff;
   --table-secondary: #f9fbfc;
+
+  font-family: PfBeausansPro;
 }
 
 * {

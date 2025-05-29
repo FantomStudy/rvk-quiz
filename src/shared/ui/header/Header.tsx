@@ -5,10 +5,10 @@ export const Header = () => {
     <header>
       <div className="container">
         <div className={styles.headerWrapper}>
-          <img src="/logo/master-logo.png" alt="master-logo" />
+          <img src="/logo/master-logo.svg" alt="master-logo" />
 
           <img
-            src="/logo/rvk-logo.png"
+            src="/logo/rvk-logo.svg"
             alt="rosvodokanal-logo"
             className={styles.centerElement}
           />
