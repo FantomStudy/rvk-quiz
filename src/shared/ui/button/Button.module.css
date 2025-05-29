@@ -1,0 +1,43 @@
+.button {
+  border: none;
+  cursor: pointer;
+  transition: 0.25s background-color ease;
+}
+
+.primary {
+  color: white;
+  background-color: var(--primary);
+}
+.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.secondary {
+  color: white;
+  background-color: var(--secondary);
+}
+.secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+.danger {
+  color: white;
+  background-color: var(--danger);
+}
+.danger:hover {
+  background-color: var(--danger-hover);
+}
+
+.s {
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.m {
+  padding: 10px 80px;
+  border-radius: 10px;
+}
+.l {
+  padding: 16px;
+  width: 100%;
+  border-radius: 15px;
+}
