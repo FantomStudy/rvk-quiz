@@ -1,9 +1,14 @@
 :root {
   --primary: #1074b9;
+  --primary-hover: #0668aa;
+
   --secondary: #243970;
+  --secondary-hover: #172852;
 
   --success: #45ff8c;
+
   --danger: #ea222d;
+  --danger-hover: #c9151e;
 
   --border-gray: #d2d2d2;
 
@@ -14,4 +19,8 @@
 
   --table-primary: #ffffff;
   --table-secondary: #f9fbfc;
+}
+
+* {
+  margin: 0;
 }
