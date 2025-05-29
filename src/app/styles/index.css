@@ -5,12 +5,12 @@
 }
 @font-face {
   font-family: "PfBeausansPro";
-  src: url("/public/fonts/PFBeauSansPro-SemiBold.woff2") format("woff2");
+  src: url("/fonts/PFBeauSansPro-SemiBold.woff2") format("woff2");
   font-weight: 500;
 }
 @font-face {
   font-family: "PfBeausansPro";
-  src: url("/public/fonts/PFBeauSansPro-Bold.woff2") format("woff2");
+  src: url("/fonts/PFBeauSansPro-Bold.woff2") format("woff2");
   font-weight: 600;
 }
 
