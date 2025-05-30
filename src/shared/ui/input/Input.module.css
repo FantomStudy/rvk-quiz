@@ -7,7 +7,8 @@ input:-webkit-autofill:active {
 }
 
 .input,
-.select {
+.select, 
+.textarea {
   width: 100%;
   height: 55px;
   padding: 15px 20px;
@@ -16,7 +17,9 @@ input:-webkit-autofill:active {
   border-radius: 15px;
   box-sizing: border-box;
 }
-
+.textarea{
+  height: 200px; 
+}
 .select {
   appearance: none;
   -webkit-appearance: none;
