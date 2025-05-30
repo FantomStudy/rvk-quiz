@@ -14,7 +14,7 @@ const AddNominations = () => {
             <Input id='count'/> 
 
             <Button color='primary' size='l'>Создать</Button>
-            <Button color='danger' size='l'>Создать</Button>
+            <Button color='danger' size='l'>Назад</Button>
         </form>
     </div>
   )
