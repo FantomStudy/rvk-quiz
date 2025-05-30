@@ -1,5 +1,4 @@
 import { Button, Input, Select } from "@shared/ui";
-
 import styles from "./Home.module.css";
 
 const Home = () => {
