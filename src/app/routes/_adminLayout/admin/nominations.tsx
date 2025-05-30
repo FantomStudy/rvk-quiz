@@ -1,9 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/_adminLayout/admin/nominations')({
-  component: RouteComponent,
-})
+import AdminNominations from "@pages/admin-nominations/AdminNominations";
 
-function RouteComponent() {
-  return <div>Hello "/_adminLayout/admin/nominations"!</div>
-}
+export const Route = createFileRoute("/_adminLayout/admin/nominations")({
+  component: AdminNominations,
+});
