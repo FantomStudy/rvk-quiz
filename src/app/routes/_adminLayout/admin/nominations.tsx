@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import AdminNominations from "@pages/admin-nominations/AdminNominations";
+import { Nominations } from "@pages/admin";
 
 export const Route = createFileRoute("/_adminLayout/admin/nominations")({
-  component: AdminNominations,
+  component: Nominations,
 });
