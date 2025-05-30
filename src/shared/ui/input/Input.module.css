@@ -6,7 +6,6 @@ input:-webkit-autofill:active {
   background-color: var(--auto-fill) !important;
 }
 
-
 .input,
 .select {
   width: 100%;
