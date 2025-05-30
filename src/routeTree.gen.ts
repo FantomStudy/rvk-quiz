@@ -15,7 +15,8 @@ import { Route as HeaderLayoutImport } from './app/routes/_headerLayout'
 import { Route as AdminLayoutImport } from './app/routes/_adminLayout'
 import { Route as HeaderLayoutIndexImport } from './app/routes/_headerLayout/index'
 import { Route as HeaderLayoutAdminImport } from './app/routes/_headerLayout/admin'
-import { Route as AdminLayoutAdminAnalyticImport } from './app/routes/_adminLayout/admin.analytic'
+import { Route as AdminLayoutAdminNominationsImport } from './app/routes/_adminLayout/admin/nominations'
+import { Route as AdminLayoutAdminAdminAnalyticImport } f./app/routes/_adminLayout/admin/admin.analyticin.analytic'
 
 // Create/Update Routes
 
@@ -41,11 +42,19 @@ const HeaderLayoutAdminRoute = HeaderLayoutAdminImport.update({
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
 
-const AdminLayoutAdminAnalyticRoute = AdminLayoutAdminAnalyticImport.update({
-  id: '/admin/analytic',
-  path: '/admin/analytic',
-  getParentRoute: () => AdminLayoutRoute,
-} as any)
+const AdminLayoutAdminNominationsRoute =
+  AdminLayoutAdminNominationsImport.update({
+    id: '/admin/nominations',
+    path: '/admin/nominations',
+    getParentRoute: () => AdminLayoutRoute,
+  } as any)
+
+const AdminLayoutAdminAdminAnalyticRoute =
+  AdminLayoutAdminAdminAnalyticImport.update({
+    id: '/admin/admin/analytic',
+    path: '/admin/admin/analytic',
+    getParentRoute: () => AdminLayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -79,11 +88,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutIndexImport
       parentRoute: typeof HeaderLayoutImport
     }
-    '/_adminLayout/admin/analytic': {
-      id: '/_adminLayout/admin/analytic'
-      path: '/admin/analytic'
-      fullPath: '/admin/analytic'
-      preLoaderRoute: typeof AdminLayoutAdminAnalyticImport
+    '/_adminLayout/admin/nominations': {
+      id: '/_adminLayout/admin/nominations'
+      path: '/admin/nominations'
+      fullPath: '/admin/nominations'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsImport
+      parentRoute: typeof AdminLayoutImport
+    }
+    '/_adminLayout/admin/admin/analytic': {
+      id: '/_adminLayout/admin/admin/analytic'
+      path: '/admin/admin/analytic'
+      fullPath: '/admin/admin/analytic'
+      preLoaderRoute: typeof AdminLayoutAdminAdminAnalyticImport
       parentRoute: typeof AdminLayoutImport
     }
   }
@@ -92,11 +108,13 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface AdminLayoutRouteChildren {
-  AdminLayoutAdminAnalyticRoute: typeof AdminLayoutAdminAnalyticRoute
+  AdminLayoutAdminNominationsRoute: typeof AdminLayoutAdminNominationsRoute
+  AdminLayoutAdminAdminAnalyticRoute: typeof AdminLayoutAdminAdminAnalyticRoute
 }
 
 const AdminLayoutRouteChildren: AdminLayoutRouteChildren = {
-  AdminLayoutAdminAnalyticRoute: AdminLayoutAdminAnalyticRoute,
+  AdminLayoutAdminNominationsRoute: AdminLayoutAdminNominationsRoute,
+  AdminLayoutAdminAdminAnalyticRoute: AdminLayoutAdminAdminAnalyticRoute,
 }
 
 const AdminLayoutRouteWithChildren = AdminLayoutRoute._addFileChildren(
@@ -121,14 +139,16 @@ export interface FileRoutesByFullPath {
   '': typeof HeaderLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
   '/': typeof HeaderLayoutIndexRoute
-  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/admin/nominations': typeof AdminLayoutAdminNominationsRoute
+  '/admin/admin/analytic': typeof AdminLayoutAdminAdminAnalyticRoute
 }
 
 export interface FileRoutesByTo {
   '': typeof AdminLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
   '/': typeof HeaderLayoutIndexRoute
-  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/admin/nominations': typeof AdminLayoutAdminNominationsRoute
+  '/admin/admin/analytic': typeof AdminLayoutAdminAdminAnalyticRoute
 }
 
 export interface FileRoutesById {
@@ -137,21 +157,28 @@ export interface FileRoutesById {
   '/_headerLayout': typeof HeaderLayoutRouteWithChildren
   '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
   '/_headerLayout/': typeof HeaderLayoutIndexRoute
-  '/_adminLayout/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/_adminLayout/admin/nominations': typeof AdminLayoutAdminNominationsRoute
+  '/_adminLayout/admin/admin/analytic': typeof AdminLayoutAdminAdminAnalyticRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/admin' | '/' | '/admin/analytic'
+  fullPaths:
+    | ''
+    | '/admin'
+    | '/'
+    | '/admin/nominations'
+    | '/admin/admin/analytic'
   fileRoutesByTo: FileRoutesByTo
-  to: '' | '/admin' | '/' | '/admin/analytic'
+  to: '' | '/admin' | '/' | '/admin/nominations' | '/admin/admin/analytic'
   id:
     | '__root__'
     | '/_adminLayout'
     | '/_headerLayout'
     | '/_headerLayout/admin'
     | '/_headerLayout/'
-    | '/_adminLayout/admin/analytic'
+    | '/_adminLayout/admin/nominations'
+    | '/_adminLayout/admin/admin/analytic'
   fileRoutesById: FileRoutesById
 }
 
@@ -182,7 +209,8 @@ export const routeTree = rootRoute
     "/_adminLayout": {
       "filePath": "_adminLayout.tsx",
       "children": [
-        "/_adminLayout/admin/analytic"
+        "/_adminLayout/admin/nominations",
+        "/_adminLayout/admin/admin/analytic"
       ]
     },
     "/_headerLayout": {
@@ -200,8 +228,12 @@ export const routeTree = rootRoute
       "filePath": "_headerLayout/index.tsx",
       "parent": "/_headerLayout"
     },
-    "/_adminLayout/admin/analytic": {
-      "filePath": "_adminLayout/admin.analytic.tsx",
+    "/_adminLayout/admin/nominations": {
+      "filePath": "_adminLayout/admin.nominations.tsx",
+      "parent": "/_adminLayout"
+    },
+    "/_adminLayout/admin/admin/analytic": {
+      "filePath": "_adminLayout/admin/admin.analytic.tsx",
       "parent": "/_adminLayout"
     }
   }
