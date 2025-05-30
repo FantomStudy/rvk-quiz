@@ -1,6 +1,7 @@
-import { Header } from "@shared/ui/header/Header";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+
+import { Header } from "@shared/ui";
 
 export const Route = createRootRoute({
   component: RootComponent,

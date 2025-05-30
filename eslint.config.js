@@ -17,12 +17,18 @@ export default tseslint.config(
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+    },
     settings: {
       "import/resolver": {
         alias: {
           map: [
             ["@", "./src"],
-
             ["@app", "./src/app"],
             ["@pages", "./src/pages"],
             ["@widgets", "./src/widgets"],
@@ -33,13 +39,6 @@ export default tseslint.config(
           extensions: [".js", ".ts", ".jsx", ".tsx"],
         },
       },
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
     },
   }
 );
