@@ -38,10 +38,10 @@
 
   --auto-fill: #e8f0fe;
 
-  font-family: PfBeausansPro;
 }
 
 * {
+  font-family: PfBeausansPro;
   margin: 0;
 }
 
