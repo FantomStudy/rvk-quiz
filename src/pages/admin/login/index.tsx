@@ -2,7 +2,7 @@ import { Button, Input } from "@shared/ui";
 
 import styles from "./AdminLogin.module.css";
 
-const AdminLogin = () => {
+const AdminLoginPage = () => {
   return (
     <>
       <div className="container">
@@ -28,4 +28,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default AdminLoginPage;

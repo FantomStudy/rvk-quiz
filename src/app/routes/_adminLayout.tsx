@@ -20,13 +20,13 @@ function LayoutComponent() {
               Номинации
             </Link>
             <Link
-              to="/admin/analytic"
+              to="/admin/members"
               activeProps={{ className: styles.active }}
             >
               Участники
             </Link>
             <Link
-              to="/admin/analytic"
+              to="/admin/results"
               activeProps={{ className: styles.active }}
             >
               Результаты
@@ -38,7 +38,7 @@ function LayoutComponent() {
               Аналитика
             </Link>
             <Link
-              to="/admin/analytic"
+              to="/admin/branches"
               activeProps={{ className: styles.active }}
             >
               Филиал

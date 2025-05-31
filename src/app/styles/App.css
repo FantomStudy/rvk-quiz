@@ -4,3 +4,8 @@
   max-width: 100%;
   box-sizing: border-box;
 }
+
+/* Стили для таблицы */
+.cell__slim {
+  width: 90px;
+}

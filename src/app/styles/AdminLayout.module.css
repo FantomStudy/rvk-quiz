@@ -21,7 +21,6 @@
   border-radius: 10px;
   background-color: var(--menu-background);
 }
-
 .nav {
   display: flex;
   flex-direction: column;
@@ -50,6 +49,7 @@
 }
 
 .header {
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 15px;

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { Analytic } from "@pages/admin";
+import { AnalyticsPage } from "@pages/admin";
 
 export const Route = createFileRoute("/_adminLayout/admin/analytic")({
-  component: Analytic,
+  component: AnalyticsPage,
 });
