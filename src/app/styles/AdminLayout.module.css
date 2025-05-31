@@ -38,8 +38,15 @@
 }
 
 .workArea {
-  min-height: 1000vh;
+  flex: 1;
   overflow-x: hidden;
+}
+.workArea h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.workArea h2 {
+  margin-bottom: 20px;
 }
 
 .header {

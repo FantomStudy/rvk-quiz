@@ -13,7 +13,10 @@ function LayoutComponent() {
         <div className={styles.sidebar}>
           <img src="/logo/master-logo.svg" alt="master-logo" />
           <nav className={styles.nav}>
-            <Link to="/admin" activeProps={{ className: styles.active }}>
+            <Link
+              to="/admin/nominations"
+              activeProps={{ className: styles.active }}
+            >
               Номинации
             </Link>
             <Link
