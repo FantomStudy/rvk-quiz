@@ -42,6 +42,7 @@ function LayoutComponent() {
             </Link>
           </nav>
         </div>
+
         <div className={styles.workArea}>
           <header className={styles.header}>
             <img src="/logo/rvk-logo.svg" alt="rvk-logo" />

@@ -11,9 +11,6 @@
   flex-direction: column;
   gap: 10px;
 }
-.title h1 {
-  font-weight: 500;
-}
 .title p {
   font-size: 24px;
 }

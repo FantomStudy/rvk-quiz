@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+  min-width: 330px;
+  min-height: 160px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.container:nth-of-type(even) {
+  background-color: var(--danger);
+}
+
+.descriptor {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.value {
+  font-size: 64px;
+  font-weight: 600;
+}

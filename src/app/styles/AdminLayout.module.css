@@ -1,17 +1,22 @@
 .wrapper {
   padding: 15px 0;
   display: flex;
-  min-height: 100vh;
-  box-sizing: border-box;
+  align-items: start;
   grid-gap: 20px;
+  box-sizing: border-box;
 }
 
 .sidebar {
+  position: sticky;
+  top: 15px;
+
   display: flex;
   flex-direction: column;
   align-items: start;
   grid-gap: 100px;
+
   min-width: 330px;
+  height: calc(100vh - 70px);
   padding: 20px;
   border-radius: 10px;
   background-color: var(--menu-background);
@@ -33,7 +38,8 @@
 }
 
 .workArea {
-  width: 100%;
+  min-height: 1000vh;
+  overflow-x: hidden;
 }
 
 .header {
