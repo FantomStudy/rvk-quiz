@@ -1,7 +1,6 @@
 import { type ChangeEvent, type FormEvent, useState } from "react";
 
-import type { AdminCredentials } from "@features/admin/admin-login/model/login";
-import { useLoginMutation } from "@features/admin/admin-login/model/useLoginMutation";
+import { type AdminCredentials, useLoginMutation } from "@features/admin/auth";
 
 import { Button, Input } from "@shared/ui";
 
@@ -38,7 +37,12 @@ const AdminLoginPage = () => {
           </div>
           <form className={styles.form} onSubmit={handleSubmit}>
             <label>Логин</label>
-            <Input name="login" value={form.login} onChange={handleChange} />
+            <Input
+              name="login"
+              value={form.login}
+              onChange={handleChange}
+              required
+            />
 
             <label>Пароль</label>
             <Input
@@ -46,11 +50,12 @@ const AdminLoginPage = () => {
               name="password"
               value={form.password}
               onChange={handleChange}
+              required
             />
 
             {isError && (
               <div className={styles.error}>
-                {error?.message || "Ошибка авторизации"}
+                {error.message || "Ошибка авторизации"}
               </div>
             )}
 

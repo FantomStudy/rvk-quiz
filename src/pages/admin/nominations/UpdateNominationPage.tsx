@@ -2,7 +2,7 @@ import { Button, Input } from "@shared/ui";
 
 import styles from "../FormPageLayout.module.css";
 
-const EditNominationsPage = () => {
+const UpdateNominationsPage = () => {
   return (
     <div className={styles.container}>
       <h1>Изменение номинации</h1>
@@ -24,4 +24,4 @@ const EditNominationsPage = () => {
   );
 };
 
-export default EditNominationsPage;
+export default UpdateNominationsPage;

@@ -22,11 +22,11 @@ import { Route as AdminLayoutAdminMembersIndexImport } from './app/routes/_admin
 import { Route as AdminLayoutAdminBranchesIndexImport } from './app/routes/_adminLayout/admin/branches/index'
 import { Route as AdminLayoutAdminTestChangeImport } from './app/routes/_adminLayout/admin/test/change'
 import { Route as AdminLayoutAdminTestAddImport } from './app/routes/_adminLayout/admin/test/add'
-import { Route as AdminLayoutAdminNominationsEditNominationImport } from './app/routes/_adminLayout/admin/nominations/edit-nomination'
+import { Route as AdminLayoutAdminNominationsUpdateNominationImport } from './app/routes/_adminLayout/admin/nominations/update-nomination'
 import { Route as AdminLayoutAdminNominationsCreateNominationImport } from './app/routes/_adminLayout/admin/nominations/create-nomination'
-import { Route as AdminLayoutAdminMembersEditMemberImport } from './app/routes/_adminLayout/admin/members/edit-member'
+import { Route as AdminLayoutAdminMembersUpdateMemberImport } from './app/routes/_adminLayout/admin/members/update-member'
 import { Route as AdminLayoutAdminMembersCreateMemberImport } from './app/routes/_adminLayout/admin/members/create-member'
-import { Route as AdminLayoutAdminBranchesEditBranchImport } from './app/routes/_adminLayout/admin/branches/edit-branch'
+import { Route as AdminLayoutAdminBranchesUpdateBranchImport } from './app/routes/_adminLayout/admin/branches/update-branch'
 import { Route as AdminLayoutAdminBranchesCreateBranchImport } from './app/routes/_adminLayout/admin/branches/create-branch'
 
 // Create/Update Routes
@@ -100,10 +100,10 @@ const AdminLayoutAdminTestAddRoute = AdminLayoutAdminTestAddImport.update({
   getParentRoute: () => AdminLayoutRoute,
 } as any)
 
-const AdminLayoutAdminNominationsEditNominationRoute =
-  AdminLayoutAdminNominationsEditNominationImport.update({
-    id: '/admin/nominations/edit-nomination',
-    path: '/admin/nominations/edit-nomination',
+const AdminLayoutAdminNominationsUpdateNominationRoute =
+  AdminLayoutAdminNominationsUpdateNominationImport.update({
+    id: '/admin/nominations/update-nomination',
+    path: '/admin/nominations/update-nomination',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
@@ -114,10 +114,10 @@ const AdminLayoutAdminNominationsCreateNominationRoute =
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
-const AdminLayoutAdminMembersEditMemberRoute =
-  AdminLayoutAdminMembersEditMemberImport.update({
-    id: '/admin/members/edit-member',
-    path: '/admin/members/edit-member',
+const AdminLayoutAdminMembersUpdateMemberRoute =
+  AdminLayoutAdminMembersUpdateMemberImport.update({
+    id: '/admin/members/update-member',
+    path: '/admin/members/update-member',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
@@ -128,10 +128,10 @@ const AdminLayoutAdminMembersCreateMemberRoute =
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
-const AdminLayoutAdminBranchesEditBranchRoute =
-  AdminLayoutAdminBranchesEditBranchImport.update({
-    id: '/admin/branches/edit-branch',
-    path: '/admin/branches/edit-branch',
+const AdminLayoutAdminBranchesUpdateBranchRoute =
+  AdminLayoutAdminBranchesUpdateBranchImport.update({
+    id: '/admin/branches/update-branch',
+    path: '/admin/branches/update-branch',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
@@ -195,11 +195,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminBranchesCreateBranchImport
       parentRoute: typeof AdminLayoutImport
     }
-    '/_adminLayout/admin/branches/edit-branch': {
-      id: '/_adminLayout/admin/branches/edit-branch'
-      path: '/admin/branches/edit-branch'
-      fullPath: '/admin/branches/edit-branch'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesEditBranchImport
+    '/_adminLayout/admin/branches/update-branch': {
+      id: '/_adminLayout/admin/branches/update-branch'
+      path: '/admin/branches/update-branch'
+      fullPath: '/admin/branches/update-branch'
+      preLoaderRoute: typeof AdminLayoutAdminBranchesUpdateBranchImport
       parentRoute: typeof AdminLayoutImport
     }
     '/_adminLayout/admin/members/create-member': {
@@ -209,11 +209,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminMembersCreateMemberImport
       parentRoute: typeof AdminLayoutImport
     }
-    '/_adminLayout/admin/members/edit-member': {
-      id: '/_adminLayout/admin/members/edit-member'
-      path: '/admin/members/edit-member'
-      fullPath: '/admin/members/edit-member'
-      preLoaderRoute: typeof AdminLayoutAdminMembersEditMemberImport
+    '/_adminLayout/admin/members/update-member': {
+      id: '/_adminLayout/admin/members/update-member'
+      path: '/admin/members/update-member'
+      fullPath: '/admin/members/update-member'
+      preLoaderRoute: typeof AdminLayoutAdminMembersUpdateMemberImport
       parentRoute: typeof AdminLayoutImport
     }
     '/_adminLayout/admin/nominations/create-nomination': {
@@ -223,11 +223,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminNominationsCreateNominationImport
       parentRoute: typeof AdminLayoutImport
     }
-    '/_adminLayout/admin/nominations/edit-nomination': {
-      id: '/_adminLayout/admin/nominations/edit-nomination'
-      path: '/admin/nominations/edit-nomination'
-      fullPath: '/admin/nominations/edit-nomination'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsEditNominationImport
+    '/_adminLayout/admin/nominations/update-nomination': {
+      id: '/_adminLayout/admin/nominations/update-nomination'
+      path: '/admin/nominations/update-nomination'
+      fullPath: '/admin/nominations/update-nomination'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsUpdateNominationImport
       parentRoute: typeof AdminLayoutImport
     }
     '/_adminLayout/admin/test/add': {
@@ -274,11 +274,11 @@ interface AdminLayoutRouteChildren {
   AdminLayoutAdminAnalyticRoute: typeof AdminLayoutAdminAnalyticRoute
   AdminLayoutAdminResultsRoute: typeof AdminLayoutAdminResultsRoute
   AdminLayoutAdminBranchesCreateBranchRoute: typeof AdminLayoutAdminBranchesCreateBranchRoute
-  AdminLayoutAdminBranchesEditBranchRoute: typeof AdminLayoutAdminBranchesEditBranchRoute
+  AdminLayoutAdminBranchesUpdateBranchRoute: typeof AdminLayoutAdminBranchesUpdateBranchRoute
   AdminLayoutAdminMembersCreateMemberRoute: typeof AdminLayoutAdminMembersCreateMemberRoute
-  AdminLayoutAdminMembersEditMemberRoute: typeof AdminLayoutAdminMembersEditMemberRoute
+  AdminLayoutAdminMembersUpdateMemberRoute: typeof AdminLayoutAdminMembersUpdateMemberRoute
   AdminLayoutAdminNominationsCreateNominationRoute: typeof AdminLayoutAdminNominationsCreateNominationRoute
-  AdminLayoutAdminNominationsEditNominationRoute: typeof AdminLayoutAdminNominationsEditNominationRoute
+  AdminLayoutAdminNominationsUpdateNominationRoute: typeof AdminLayoutAdminNominationsUpdateNominationRoute
   AdminLayoutAdminTestAddRoute: typeof AdminLayoutAdminTestAddRoute
   AdminLayoutAdminTestChangeRoute: typeof AdminLayoutAdminTestChangeRoute
   AdminLayoutAdminBranchesIndexRoute: typeof AdminLayoutAdminBranchesIndexRoute
@@ -291,16 +291,16 @@ const AdminLayoutRouteChildren: AdminLayoutRouteChildren = {
   AdminLayoutAdminResultsRoute: AdminLayoutAdminResultsRoute,
   AdminLayoutAdminBranchesCreateBranchRoute:
     AdminLayoutAdminBranchesCreateBranchRoute,
-  AdminLayoutAdminBranchesEditBranchRoute:
-    AdminLayoutAdminBranchesEditBranchRoute,
+  AdminLayoutAdminBranchesUpdateBranchRoute:
+    AdminLayoutAdminBranchesUpdateBranchRoute,
   AdminLayoutAdminMembersCreateMemberRoute:
     AdminLayoutAdminMembersCreateMemberRoute,
-  AdminLayoutAdminMembersEditMemberRoute:
-    AdminLayoutAdminMembersEditMemberRoute,
+  AdminLayoutAdminMembersUpdateMemberRoute:
+    AdminLayoutAdminMembersUpdateMemberRoute,
   AdminLayoutAdminNominationsCreateNominationRoute:
     AdminLayoutAdminNominationsCreateNominationRoute,
-  AdminLayoutAdminNominationsEditNominationRoute:
-    AdminLayoutAdminNominationsEditNominationRoute,
+  AdminLayoutAdminNominationsUpdateNominationRoute:
+    AdminLayoutAdminNominationsUpdateNominationRoute,
   AdminLayoutAdminTestAddRoute: AdminLayoutAdminTestAddRoute,
   AdminLayoutAdminTestChangeRoute: AdminLayoutAdminTestChangeRoute,
   AdminLayoutAdminBranchesIndexRoute: AdminLayoutAdminBranchesIndexRoute,
@@ -333,11 +333,11 @@ export interface FileRoutesByFullPath {
   '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/admin/results': typeof AdminLayoutAdminResultsRoute
   '/admin/branches/create-branch': typeof AdminLayoutAdminBranchesCreateBranchRoute
-  '/admin/branches/edit-branch': typeof AdminLayoutAdminBranchesEditBranchRoute
+  '/admin/branches/update-branch': typeof AdminLayoutAdminBranchesUpdateBranchRoute
   '/admin/members/create-member': typeof AdminLayoutAdminMembersCreateMemberRoute
-  '/admin/members/edit-member': typeof AdminLayoutAdminMembersEditMemberRoute
+  '/admin/members/update-member': typeof AdminLayoutAdminMembersUpdateMemberRoute
   '/admin/nominations/create-nomination': typeof AdminLayoutAdminNominationsCreateNominationRoute
-  '/admin/nominations/edit-nomination': typeof AdminLayoutAdminNominationsEditNominationRoute
+  '/admin/nominations/update-nomination': typeof AdminLayoutAdminNominationsUpdateNominationRoute
   '/admin/test/add': typeof AdminLayoutAdminTestAddRoute
   '/admin/test/change': typeof AdminLayoutAdminTestChangeRoute
   '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
@@ -352,11 +352,11 @@ export interface FileRoutesByTo {
   '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/admin/results': typeof AdminLayoutAdminResultsRoute
   '/admin/branches/create-branch': typeof AdminLayoutAdminBranchesCreateBranchRoute
-  '/admin/branches/edit-branch': typeof AdminLayoutAdminBranchesEditBranchRoute
+  '/admin/branches/update-branch': typeof AdminLayoutAdminBranchesUpdateBranchRoute
   '/admin/members/create-member': typeof AdminLayoutAdminMembersCreateMemberRoute
-  '/admin/members/edit-member': typeof AdminLayoutAdminMembersEditMemberRoute
+  '/admin/members/update-member': typeof AdminLayoutAdminMembersUpdateMemberRoute
   '/admin/nominations/create-nomination': typeof AdminLayoutAdminNominationsCreateNominationRoute
-  '/admin/nominations/edit-nomination': typeof AdminLayoutAdminNominationsEditNominationRoute
+  '/admin/nominations/update-nomination': typeof AdminLayoutAdminNominationsUpdateNominationRoute
   '/admin/test/add': typeof AdminLayoutAdminTestAddRoute
   '/admin/test/change': typeof AdminLayoutAdminTestChangeRoute
   '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
@@ -373,11 +373,11 @@ export interface FileRoutesById {
   '/_adminLayout/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/_adminLayout/admin/results': typeof AdminLayoutAdminResultsRoute
   '/_adminLayout/admin/branches/create-branch': typeof AdminLayoutAdminBranchesCreateBranchRoute
-  '/_adminLayout/admin/branches/edit-branch': typeof AdminLayoutAdminBranchesEditBranchRoute
+  '/_adminLayout/admin/branches/update-branch': typeof AdminLayoutAdminBranchesUpdateBranchRoute
   '/_adminLayout/admin/members/create-member': typeof AdminLayoutAdminMembersCreateMemberRoute
-  '/_adminLayout/admin/members/edit-member': typeof AdminLayoutAdminMembersEditMemberRoute
+  '/_adminLayout/admin/members/update-member': typeof AdminLayoutAdminMembersUpdateMemberRoute
   '/_adminLayout/admin/nominations/create-nomination': typeof AdminLayoutAdminNominationsCreateNominationRoute
-  '/_adminLayout/admin/nominations/edit-nomination': typeof AdminLayoutAdminNominationsEditNominationRoute
+  '/_adminLayout/admin/nominations/update-nomination': typeof AdminLayoutAdminNominationsUpdateNominationRoute
   '/_adminLayout/admin/test/add': typeof AdminLayoutAdminTestAddRoute
   '/_adminLayout/admin/test/change': typeof AdminLayoutAdminTestChangeRoute
   '/_adminLayout/admin/branches/': typeof AdminLayoutAdminBranchesIndexRoute
@@ -394,11 +394,11 @@ export interface FileRouteTypes {
     | '/admin/analytic'
     | '/admin/results'
     | '/admin/branches/create-branch'
-    | '/admin/branches/edit-branch'
+    | '/admin/branches/update-branch'
     | '/admin/members/create-member'
-    | '/admin/members/edit-member'
+    | '/admin/members/update-member'
     | '/admin/nominations/create-nomination'
-    | '/admin/nominations/edit-nomination'
+    | '/admin/nominations/update-nomination'
     | '/admin/test/add'
     | '/admin/test/change'
     | '/admin/branches'
@@ -412,11 +412,11 @@ export interface FileRouteTypes {
     | '/admin/analytic'
     | '/admin/results'
     | '/admin/branches/create-branch'
-    | '/admin/branches/edit-branch'
+    | '/admin/branches/update-branch'
     | '/admin/members/create-member'
-    | '/admin/members/edit-member'
+    | '/admin/members/update-member'
     | '/admin/nominations/create-nomination'
-    | '/admin/nominations/edit-nomination'
+    | '/admin/nominations/update-nomination'
     | '/admin/test/add'
     | '/admin/test/change'
     | '/admin/branches'
@@ -431,11 +431,11 @@ export interface FileRouteTypes {
     | '/_adminLayout/admin/analytic'
     | '/_adminLayout/admin/results'
     | '/_adminLayout/admin/branches/create-branch'
-    | '/_adminLayout/admin/branches/edit-branch'
+    | '/_adminLayout/admin/branches/update-branch'
     | '/_adminLayout/admin/members/create-member'
-    | '/_adminLayout/admin/members/edit-member'
+    | '/_adminLayout/admin/members/update-member'
     | '/_adminLayout/admin/nominations/create-nomination'
-    | '/_adminLayout/admin/nominations/edit-nomination'
+    | '/_adminLayout/admin/nominations/update-nomination'
     | '/_adminLayout/admin/test/add'
     | '/_adminLayout/admin/test/change'
     | '/_adminLayout/admin/branches/'
@@ -474,11 +474,11 @@ export const routeTree = rootRoute
         "/_adminLayout/admin/analytic",
         "/_adminLayout/admin/results",
         "/_adminLayout/admin/branches/create-branch",
-        "/_adminLayout/admin/branches/edit-branch",
+        "/_adminLayout/admin/branches/update-branch",
         "/_adminLayout/admin/members/create-member",
-        "/_adminLayout/admin/members/edit-member",
+        "/_adminLayout/admin/members/update-member",
         "/_adminLayout/admin/nominations/create-nomination",
-        "/_adminLayout/admin/nominations/edit-nomination",
+        "/_adminLayout/admin/nominations/update-nomination",
         "/_adminLayout/admin/test/add",
         "/_adminLayout/admin/test/change",
         "/_adminLayout/admin/branches/",
@@ -513,24 +513,24 @@ export const routeTree = rootRoute
       "filePath": "_adminLayout/admin/branches/create-branch.tsx",
       "parent": "/_adminLayout"
     },
-    "/_adminLayout/admin/branches/edit-branch": {
-      "filePath": "_adminLayout/admin/branches/edit-branch.tsx",
+    "/_adminLayout/admin/branches/update-branch": {
+      "filePath": "_adminLayout/admin/branches/update-branch.tsx",
       "parent": "/_adminLayout"
     },
     "/_adminLayout/admin/members/create-member": {
       "filePath": "_adminLayout/admin/members/create-member.tsx",
       "parent": "/_adminLayout"
     },
-    "/_adminLayout/admin/members/edit-member": {
-      "filePath": "_adminLayout/admin/members/edit-member.tsx",
+    "/_adminLayout/admin/members/update-member": {
+      "filePath": "_adminLayout/admin/members/update-member.tsx",
       "parent": "/_adminLayout"
     },
     "/_adminLayout/admin/nominations/create-nomination": {
       "filePath": "_adminLayout/admin/nominations/create-nomination.tsx",
       "parent": "/_adminLayout"
     },
-    "/_adminLayout/admin/nominations/edit-nomination": {
-      "filePath": "_adminLayout/admin/nominations/edit-nomination.tsx",
+    "/_adminLayout/admin/nominations/update-nomination": {
+      "filePath": "_adminLayout/admin/nominations/update-nomination.tsx",
       "parent": "/_adminLayout"
     },
     "/_adminLayout/admin/test/add": {

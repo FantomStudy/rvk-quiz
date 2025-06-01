@@ -23,7 +23,7 @@ const BranchesPage = () => {
             <td>
               <Button
                 size="s"
-                onClick={() => navigate({ to: "/admin/branches/edit-branch" })}
+                onClick={() => navigate({ to: "/admin/branches/update-branch" })}
               >
                 Изменить
               </Button>
@@ -34,7 +34,7 @@ const BranchesPage = () => {
             <td>
               <Button
                 size="s"
-                onClick={() => navigate({ to: "/admin/branches/edit-branch" })}
+                onClick={() => navigate({ to: "/admin/branches/update-branch" })}
               >
                 Изменить
               </Button>

@@ -2,7 +2,7 @@ import { Button, Input } from "@shared/ui";
 
 import styles from "../FormPageLayout.module.css";
 
-const EditMemberPage = () => {
+const UpdateMemberPage = () => {
   return (
     <div className={styles.container}>
       <h1>Изменить участника</h1>
@@ -20,4 +20,4 @@ const EditMemberPage = () => {
   );
 };
 
-export default EditMemberPage;
+export default UpdateMemberPage;
