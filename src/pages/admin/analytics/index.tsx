@@ -1,3 +1,5 @@
+import ResultsTable from "@widgets/results-table/ResultsTable";
+
 import { Select, Table } from "@shared/ui";
 import MetricCard from "@shared/ui/metric-card/MetricCard";
 
@@ -34,40 +36,7 @@ const AnalyticsPage = () => {
 
         <div>
           <h2>Результаты участников</h2>
-          <Table>
-            <thead>
-              <tr>
-                <th>Номер</th>
-                <th>Тема</th>
-                <th>Регион</th>
-                <th>Дата</th>
-                <th>Результат</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>48948998</td>
-                <td>Права категории B</td>
-                <td>Оренбург</td>
-                <td>21.12.24 12:54</td>
-                <td>17/25</td>
-              </tr>
-              <tr>
-                <td>48948998</td>
-                <td>Права категории B</td>
-                <td>Оренбург</td>
-                <td>21.12.24 12:54</td>
-                <td>17/25</td>
-              </tr>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </tbody>
-          </Table>
+          <ResultsTable />
         </div>
 
         <div>

@@ -1,21 +1,11 @@
-import { Table } from "@shared/ui";
+import ResultsTable from "@widgets/results-table/ResultsTable";
 
 const ResultsPage = () => {
   return (
     <>
       <h1>Результаты участников</h1>
 
-      <Table>
-        <thead>
-          <tr>
-            <th>Номер</th>
-            <th>Тема</th>
-            <th>Регион</th>
-            <th>Дата</th>
-            <th>Результат</th>
-          </tr>
-        </thead>
-      </Table>
+      <ResultsTable />
     </>
   );
 };
