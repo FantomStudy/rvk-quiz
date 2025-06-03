@@ -36,16 +36,18 @@ const AdminLoginPage = () => {
             <p>Вход для администратора</p>
           </div>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label>Логин</label>
+            <label htmlFor="login">Логин</label>
             <Input
+              id="login"
               name="login"
               value={form.login}
               onChange={handleChange}
               required
             />
 
-            <label>Пароль</label>
+            <label htmlFor="password">Пароль</label>
             <Input
+              id="password"
               type="password"
               name="password"
               value={form.password}

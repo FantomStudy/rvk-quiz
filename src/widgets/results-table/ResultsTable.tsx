@@ -1,6 +1,8 @@
 import { Table } from "@shared/ui";
 
 const ResultsTable = () => {
+
+  
   return (
     <Table>
       <thead>

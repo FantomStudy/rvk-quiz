@@ -1,6 +1,6 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 
-import { Header } from "@shared/ui";
+import Header from "@widgets/header/Header";
 
 export const Route = createFileRoute("/_headerLayout")({
   component: LayoutComponent,

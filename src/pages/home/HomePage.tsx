@@ -1,7 +1,8 @@
 import { Button, Input, Select } from "@shared/ui";
-import styles from "./Home.module.css";
 
-const Home = () => {
+import styles from "./HomePage.module.css";
+
+const HomePage = () => {
   return (
     <>
       <div className="container">
@@ -40,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

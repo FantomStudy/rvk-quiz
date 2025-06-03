@@ -7,6 +7,12 @@
   margin-top: 50px;
 }
 
+.formContainer {
+  width: 486px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 25px;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -14,7 +20,6 @@
   align-items: center;
   gap: 25px;
   margin-top: 50px;
-  width: 486px;
 }
 .form label {
   font-size: 18px;

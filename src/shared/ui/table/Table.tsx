@@ -1,10 +1,13 @@
-import type { FC, PropsWithChildren } from "react";
+import type { FC, TableHTMLAttributes } from "react";
 
 import styles from "./Table.module.css";
 
-const Table: FC<PropsWithChildren> = ({ children }) => {
+const Table: FC<TableHTMLAttributes<HTMLTableElement>> = ({
+  children,
+  className,
+}) => {
   return (
-    <div className={styles.tableContainer}>
+    <div className={`${styles.tableContainer} ${className}`}>
       <table className={styles.table}>{children}</table>
     </div>
   );

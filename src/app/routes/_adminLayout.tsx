@@ -12,16 +12,20 @@ import styles from "../styles/AdminLayout.module.css";
 export const Route = createFileRoute("/_adminLayout")({
   component: LayoutComponent,
   beforeLoad: async ({ context }) => {
+    const redirectToLogin = () => {
+      throw redirect({ to: "/admin" });
+    };
+
     try {
       const isAdmin = await context.queryClient.ensureQueryData(
         checkAuthQueryOptions(),
       );
 
       if (!isAdmin) {
-        throw redirect({ to: "/admin" });
+        redirectToLogin();
       }
     } catch {
-      throw redirect({ to: "/admin" });
+      redirectToLogin();
     }
   },
 });

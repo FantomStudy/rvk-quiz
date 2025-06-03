@@ -2,7 +2,7 @@ import { type ChangeEvent, type FormEvent, useState } from "react";
 
 import { useNavigate } from "@tanstack/react-router";
 
-import { useCreateBranch } from "@features/admin/branch-create/useCreateBranch";
+import { useCreateBranch } from "@features/admin/branch-control/useCreateBranch";
 
 import { Button, Input } from "@shared/ui";
 
@@ -22,18 +22,22 @@ const CreateBranchPage = () => {
   return (
     <div className={styles.container}>
       <h1>Добавление филиала</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label htmlFor="branch">Филиал</label>
-        <Input
-          id="branch"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setAddress(e.target.value)
-          }
-        />
-        {isError && <div className={styles.error}>{error.message}</div>}
-        <Button size="l" color="primary" type="submit" disabled={isPending}>
-          Создать
-        </Button>
+      <div className={styles.formContainer}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <label htmlFor="branch">Филиал</label>
+          <Input
+            id="branch"
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setAddress(e.target.value)
+            }
+          />
+
+          {isError && <div className={styles.error}>{error.message}</div>}
+
+          <Button size="l" color="primary" type="submit" disabled={isPending}>
+            Создать
+          </Button>
+        </form>
 
         <Button
           size="l"
@@ -42,7 +46,7 @@ const CreateBranchPage = () => {
         >
           Назад
         </Button>
-      </form>
+      </div>
     </div>
   );
 };
