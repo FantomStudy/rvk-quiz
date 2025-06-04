@@ -1,6 +1,7 @@
-import { getRouteApi, useNavigate } from "@tanstack/react-router";
+import { getRouteApi } from "@tanstack/react-router";
 
-import { Button, Table } from "@shared/ui";
+import { Table } from "@shared/ui";
+import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "../TablePageLayout.module.css";
 
@@ -8,7 +9,6 @@ const route = getRouteApi("/_adminLayout/admin/nominations/");
 
 const NominationsPage = () => {
   const { nominations } = route.useLoaderData();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -19,7 +19,7 @@ const NominationsPage = () => {
           <tr>
             <th>Номинация</th>
             <th>Вопросов в базе</th>
-            {/* <th>Вопросов в тесте</th> */}
+            <th>Вопросов в тесте</th>
             <th>Длительность</th>
             <th className="cell__slim">Вопросы</th>
           </tr>
@@ -28,19 +28,17 @@ const NominationsPage = () => {
           {nominations.map((nomination) => (
             <tr key={nomination.id}>
               <td>{nomination.name}</td>
+              <td>{nomination.allCount}</td>
               <td>{nomination.questionsCount}</td>
               <td>{nomination.duration}</td>
               <td>
-                <Button
-                  onClick={() =>
-                    navigate({
-                      to: "/admin/nominations/$nominationId",
-                      params: { nominationId: nomination.id!.toString() },
-                    })
-                  }
+                <ButtonLink
+                  to="/admin/nominations/$nominationId"
+                  params={{ nominationId: nomination.id.toString() }}
+                  // preload={false}
                 >
                   Изменить
-                </Button>
+                </ButtonLink>
               </td>
             </tr>
           ))}
@@ -48,13 +46,9 @@ const NominationsPage = () => {
       </Table>
 
       <div className={styles.centerContainer}>
-        <Button
-          size="m"
-          color="secondary"
-          onClick={() => navigate({ to: "/admin/nominations/create" })}
-        >
+        <ButtonLink size="m" color="secondary" to="/admin/nominations/create">
           Добавить номинацию
-        </Button>
+        </ButtonLink>
       </div>
     </>
   );

@@ -1,34 +1,34 @@
 import { getRouteApi } from "@tanstack/react-router";
 
 import { Table } from "@shared/ui";
-import LinkButton from "@shared/ui/button/ButtonLink";
 import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "../TablePageLayout.module.css";
 
-const route = getRouteApi("/_adminLayout/admin/branches/");
+const route = getRouteApi("/_adminLayout/admin/users/");
 
-const BranchesPage = () => {
-  const { branches } = route.useLoaderData();
+const UsersPage = () => {
+  const { users } = route.useLoaderData();
 
   return (
     <>
-      <h1>Филиалы</h1>
+      <h1>Участники</h1>
+
       <Table>
         <thead>
           <tr>
-            <th>Адрес</th>
+            <th>Номер</th>
             <th className="cell__slim">Действие</th>
           </tr>
         </thead>
         <tbody>
-          {branches.map((branch) => (
-            <tr key={branch.id}>
-              <td>{branch.address}</td>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.number}</td>
               <td>
                 <ButtonLink
-                  to="/admin/branches/$branchId"
-                  params={{ branchId: branch.id.toString() }}
+                  to="/admin/users/$userId"
+                  params={{ userId: user.id.toString() }}
                   // preload={false}
                 >
                   Изменить
@@ -40,12 +40,12 @@ const BranchesPage = () => {
       </Table>
 
       <div className={styles.centerContainer}>
-        <LinkButton size="m" color="secondary" to="/admin/branches/create">
-          Добавить филиал
-        </LinkButton>
+        <ButtonLink size="m" color="secondary" to="/admin/users/create">
+          Добавить участника
+        </ButtonLink>
       </div>
     </>
   );
 };
 
-export default BranchesPage;
+export default UsersPage;

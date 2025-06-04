@@ -48,7 +48,7 @@ const UpdateBranchPage = () => {
             color="primary"
             disabled={updateBranch.isPending}
           >
-            Сохранить
+            Изменить
           </Button>
         </form>
 

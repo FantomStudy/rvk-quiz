@@ -2,6 +2,7 @@
   border: none;
   cursor: pointer;
   transition: 0.25s background-color ease;
+  text-decoration: none;
 }
 
 .primary {

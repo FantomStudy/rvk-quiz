@@ -1,12 +1,11 @@
 import { type ChangeEvent, type FormEvent, useState } from "react";
 
-import { useNavigate } from "@tanstack/react-router";
-
 import { useCreateNomination } from "@features/admin/nomination-control/useCreateNomination";
 
-import type { CreateNomination } from "@entities/nomination/model/nominaition";
+import type { CreateNomination } from "@entities/nomination";
 
 import { Button, Input } from "@shared/ui";
+import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "../FormPageLayout.module.css";
 
@@ -16,8 +15,6 @@ const CreateNominationPage = () => {
     duration: "",
     questionsCount: 0,
   });
-
-  const navigate = useNavigate();
 
   const { mutate, isPending, isError, error } = useCreateNomination();
 
@@ -72,13 +69,9 @@ const CreateNominationPage = () => {
           </Button>
         </form>
 
-        <Button
-          color="danger"
-          size="l"
-          onClick={() => navigate({ to: "/admin/nominations" })}
-        >
+        <ButtonLink color="danger" size="l" to="/admin/nominations">
           Назад
-        </Button>
+        </ButtonLink>
       </div>
     </div>
   );

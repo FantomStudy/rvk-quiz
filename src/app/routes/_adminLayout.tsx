@@ -33,7 +33,7 @@ export const Route = createFileRoute("/_adminLayout")({
 function LayoutComponent() {
   const links = [
     { to: "/admin/nominations", label: "Номинации" },
-    { to: "/admin/members", label: "Участники" },
+    { to: "/admin/users", label: "Участники" },
     { to: "/admin/results", label: "Результаты" },
     { to: "/admin/analytic", label: "Аналитика" },
     { to: "/admin/branches", label: "Филиал" },
@@ -49,7 +49,6 @@ function LayoutComponent() {
               <Link
                 to={link.to}
                 key={link.to}
-                preload="intent"
                 activeProps={{ className: styles.active }}
               >
                 {link.label}

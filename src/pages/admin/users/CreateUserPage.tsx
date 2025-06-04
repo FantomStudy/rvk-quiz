@@ -1,32 +1,33 @@
-import { type ChangeEvent, type FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 
-import { useCreateBranch } from "@features/admin/branch-control/useCreateBranch";
+import { useCreateUser } from "@features/admin/user-control/useCreateUser";
 
 import { Button, Input } from "@shared/ui";
 import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "../FormPageLayout.module.css";
 
-const CreateBranchPage = () => {
-  const [address, setAddress] = useState<string>("");
-  const { mutate, isPending, isError, error } = useCreateBranch();
+const CreateUserPage = () => {
+  const [number, setNumber] = useState<string>("");
+
+  const { mutate, isPending, isError, error } = useCreateUser();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    mutate({ address });
+    mutate({ number });
   };
 
   return (
     <div className={styles.container}>
-      <h1>Добавление филиала</h1>
+      <h1>Добавление участника</h1>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <label htmlFor="branch">Филиал</label>
+          <label htmlFor="number">Номер</label>
           <Input
-            id="branch"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setAddress(e.target.value)
-            }
+            id="number"
+            name="number"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
           />
 
           {isError && <div className={styles.error}>{error.message}</div>}
@@ -35,8 +36,7 @@ const CreateBranchPage = () => {
             Создать
           </Button>
         </form>
-
-        <ButtonLink size="l" color="danger" to="/admin/branches">
+        <ButtonLink size="l" color="danger" to="/admin/users">
           Назад
         </ButtonLink>
       </div>
@@ -44,4 +44,4 @@ const CreateBranchPage = () => {
   );
 };
 
-export default CreateBranchPage;
+export default CreateUserPage;

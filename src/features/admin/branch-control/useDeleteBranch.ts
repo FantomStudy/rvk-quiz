@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { deleteBranch } from "@entities/branch/api/branchApi";
-import { branchKeys } from "@entities/branch/model/queryKeys";
+import { branchKeys, deleteBranch } from "@entities/branch";
 
 export const useDeleteBranch = () => {
   const navigate = useNavigate();

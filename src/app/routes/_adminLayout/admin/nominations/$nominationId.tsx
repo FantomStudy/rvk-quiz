@@ -4,7 +4,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { UpdateNominationPage } from "@pages/admin";
 
-import { nominationByIdQueryOptions } from "@entities/nomination/model/queryOptions/nominationByIdQueryOptions";
+import { nominationByIdQueryOptions } from "@entities/nomination";
 
 export const Route = createFileRoute(
   "/_adminLayout/admin/nominations/$nominationId",

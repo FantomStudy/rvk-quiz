@@ -1,9 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { createBranch } from "@entities/branch/api/branchApi";
-import type { CreateBranch } from "@entities/branch/model/branch";
-import { branchKeys } from "@entities/branch/model/queryKeys";
+import { type CreateBranch, branchKeys, createBranch } from "@entities/branch";
 
 export const useCreateBranch = () => {
   const navigate = useNavigate();

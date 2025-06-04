@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { deleteNomination } from "@entities/nomination/api/nominationApi";
-import { nominationKeys } from "@entities/nomination/model/queryKeys";
+import { deleteNomination, nominationKeys } from "@entities/nomination";
 
 export const useDeleteNomination = () => {
   const queryClient = useQueryClient();

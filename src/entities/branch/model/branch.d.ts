@@ -1,4 +1,4 @@
-export interface BranchBase {
+interface BranchBase {
   address: string;
 }
 

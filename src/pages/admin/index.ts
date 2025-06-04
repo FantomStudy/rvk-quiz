@@ -8,9 +8,9 @@ export { default as BranchesPage } from "@pages/admin/branches";
 export { default as CreateBranchPage } from "@pages/admin/branches/CreateBranchPage";
 export { default as UpdateBranchPage } from "@pages/admin/branches/UpdateBranchPage";
 
-export { default as MembersPage } from "@pages/admin/members";
-export { default as CreateMemberPage } from "@pages/admin/members/CreateMembersPage";
-export { default as UpdateMemberPage } from "@pages/admin/members/UpdateMembersPage";
+export { default as UsersPage } from "@pages/admin/users";
+export { default as CreateUserPage } from "@pages/admin/users/CreateUserPage";
+export { default as UpdateUserPage } from "@pages/admin/users/UpdateUserPage";
 
 export { default as NominationsPage } from "@pages/admin/nominations";
 export { default as CreateNominationPage } from "@pages/admin/nominations/CreateNominationPage";

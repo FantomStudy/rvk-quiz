@@ -1,4 +1,4 @@
-export interface NominationBase {
+interface NominationBase {
   name: string;
   duration: string;
   questionsCount: number;
@@ -6,6 +6,7 @@ export interface NominationBase {
 
 export interface Nomination extends NominationBase {
   id: number;
+  allCount: number;
 }
 
 export type CreateNomination = NominationBase;
