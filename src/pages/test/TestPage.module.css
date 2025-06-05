@@ -83,8 +83,24 @@ progress::-webkit-progress-bar {
   border-radius: 10px;
 }
 
-progress::-webkit-progress-value,
+progress::-webkit-progress-value {
+  background-color: var(--danger);
+  border-radius: 10px;
+}
 progress::-moz-progress-bar {
   background-color: var(--danger);
   border-radius: 10px;
+}
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.wave {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  z-index: -1;
 }
