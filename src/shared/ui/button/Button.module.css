@@ -29,6 +29,15 @@
   background-color: var(--danger-hover);
 }
 
+.transparent {
+  color: #000;
+  border: 1px solid var(--border-gray);
+  background-color: transparent;
+}
+.transparent:hover {
+  background-color: #ebebeb;
+}
+
 .s {
   padding: 10px 15px;
   border-radius: 5px;

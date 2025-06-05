@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "s" | "m" | "l";
-  color?: "primary" | "secondary" | "danger";
+  color?: "primary" | "secondary" | "danger" | "transparent";
 }
 
 const Button: FC<ButtonProps> = ({
