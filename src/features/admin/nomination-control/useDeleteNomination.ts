@@ -11,8 +11,8 @@ export const useDeleteNomination = () => {
     mutationFn: deleteNominationAdapter,
     onSuccess: async (_, id) => {
       console.log("Номинация удалена");
-      queryClient.removeQueries({ queryKey: nominationKeys.detail(id) });
-      await queryClient.refetchQueries({ queryKey: nominationKeys.all });
+      queryClient.removeQueries({ queryKey: nominationKeys.byId(id) });
+      await queryClient.refetchQueries({ queryKey: nominationKeys.list });
       navigate({ to: "/admin/nominations" });
     },
   });

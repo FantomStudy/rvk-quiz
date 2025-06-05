@@ -11,8 +11,8 @@ export const useDeleteUser = () => {
     mutationFn: deleteUserAdapter,
     onSuccess: async (_, id) => {
       console.log("Пользователь удален!");
-      queryClient.removeQueries({ queryKey: userKeys.detail(id) });
-      await queryClient.refetchQueries({ queryKey: userKeys.all });
+      queryClient.removeQueries({ queryKey: userKeys.byId(id) });
+      await queryClient.refetchQueries({ queryKey: userKeys.list });
       navigate({ to: "/admin/users" });
     },
   });

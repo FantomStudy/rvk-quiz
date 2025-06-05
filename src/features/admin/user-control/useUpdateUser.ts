@@ -11,7 +11,7 @@ export const useUpdateUser = () => {
     mutationFn: updateUserAdapter,
     onSuccess: async () => {
       console.log("Пользователь сохранен!");
-      await queryClient.refetchQueries({ queryKey: userKeys.all });
+      await queryClient.refetchQueries({ queryKey: userKeys.list });
       navigate({ to: "/admin/users" });
     },
   });

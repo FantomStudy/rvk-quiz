@@ -1,0 +1,19 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+import QuestionsPage from "@pages/admin/questions";
+
+import { questionListQuery } from "@entities/question/model/queryOptions";
+
+export const Route = createFileRoute(
+  "/_adminLayout/admin/nominations/$nominationId/questions/",
+)({
+  component: QuestionsPage,
+  loader: async ({ context, params }) => {
+    const nominationId = Number(params.nominationId);
+    const questions = await context.queryClient.ensureQueryData(
+      questionListQuery(nominationId),
+    );
+
+    return { questions };
+  },
+});

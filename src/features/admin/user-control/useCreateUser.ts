@@ -11,7 +11,7 @@ export const useCreateUser = () => {
     mutationFn: createUserAdapter,
     onSuccess: async () => {
       console.log("Пользователь создан!");
-      await queryClient.refetchQueries({ queryKey: userKeys.all });
+      await queryClient.refetchQueries({ queryKey: userKeys.list });
       navigate({ to: "/admin/users" });
     },
   });

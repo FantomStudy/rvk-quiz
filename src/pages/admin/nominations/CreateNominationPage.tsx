@@ -29,8 +29,7 @@ const CreateNominationPage = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    form.questionsCount = Number(form.questionsCount);
-    mutate(form);
+    mutate({ ...form, questionsCount: Number(form.questionsCount) });
   };
 
   return (

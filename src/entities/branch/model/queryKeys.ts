@@ -1,4 +1,6 @@
+const baseKey = "branches";
+
 export const branchKeys = {
-  all: ["branches"] as const,
-  detail: (id: number) => ["branches", id] as const,
+  list: [baseKey, "list"] as const,
+  byId: (id: number) => [baseKey, "byId", id] as const,
 };

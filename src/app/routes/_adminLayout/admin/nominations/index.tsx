@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { NominationsPage } from "@pages/admin";
 
-import { allNominationsQueryOptions } from "@entities/nomination";
+import { nominationListQuery } from "@entities/nomination";
 
 export const Route = createFileRoute("/_adminLayout/admin/nominations/")({
   component: NominationsPage,
   loader: async ({ context }) => {
     const nominations = await context.queryClient.ensureQueryData(
-      allNominationsQueryOptions(),
+      nominationListQuery(),
     );
 
     return { nominations };

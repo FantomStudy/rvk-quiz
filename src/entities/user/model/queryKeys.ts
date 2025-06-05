@@ -1,4 +1,6 @@
+const baseKey = "users";
+
 export const userKeys = {
-  all: ["users"] as const,
-  detail: (id: number) => ["users", id] as const,
+  list: [baseKey, "list"] as const,
+  byId: (id: number) => [baseKey, "byId", id] as const,
 };

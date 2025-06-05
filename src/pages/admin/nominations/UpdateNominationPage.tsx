@@ -31,8 +31,10 @@ const UpdateNominationsPage = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    form.questionsCount = Number(form.questionsCount);
-    updateNomination.mutate({ id: nomination.id, nomination: form });
+    updateNomination.mutate({
+      id: nomination.id,
+      nomination: { ...form, questionsCount: Number(form.questionsCount) },
+    });
   };
 
   return (

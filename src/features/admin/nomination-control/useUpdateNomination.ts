@@ -15,7 +15,7 @@ export const useUpdateNomination = () => {
     mutationFn: updateNominationAdapter,
     onSuccess: async () => {
       console.log("Номинация сохранена!");
-      await queryClient.refetchQueries({ queryKey: nominationKeys.all });
+      await queryClient.refetchQueries({ queryKey: nominationKeys.list });
       navigate({ to: "/admin/nominations" });
     },
   });

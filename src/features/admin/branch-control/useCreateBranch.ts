@@ -11,7 +11,7 @@ export const useCreateBranch = () => {
     mutationFn: createBranchAdapter,
     onSuccess: async () => {
       console.log("Филиал создан успешно");
-      await queryClient.refetchQueries({ queryKey: branchKeys.all });
+      await queryClient.refetchQueries({ queryKey: branchKeys.list });
       navigate({ to: "/admin/branches" });
     },
   });

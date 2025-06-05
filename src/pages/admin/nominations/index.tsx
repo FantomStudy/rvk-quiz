@@ -1,4 +1,4 @@
-import { getRouteApi } from "@tanstack/react-router";
+import { Link, getRouteApi } from "@tanstack/react-router";
 
 import { Table } from "@shared/ui";
 import ButtonLink from "@shared/ui/button/ButtonLink";
@@ -21,13 +21,20 @@ const NominationsPage = () => {
             <th>Вопросов в базе</th>
             <th>Вопросов в тесте</th>
             <th>Длительность</th>
-            <th className="cell__slim">Вопросы</th>
+            <th className="cell__slim">Действие</th>
           </tr>
         </thead>
         <tbody>
           {nominations.map((nomination) => (
             <tr key={nomination.id}>
-              <td>{nomination.name}</td>
+              <td className={styles.linkCell}>
+                <Link
+                  to="/admin/nominations/$nominationId/questions"
+                  params={{ nominationId: nomination.id.toString() }}
+                >
+                  {nomination.name}
+                </Link>
+              </td>
               <td>{nomination.allCount}</td>
               <td>{nomination.questionsCount}</td>
               <td>{nomination.duration}</td>

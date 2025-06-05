@@ -15,7 +15,7 @@ export const useCreateNomination = () => {
     mutationFn: createNominationAdapter,
     onSuccess: async () => {
       console.log("Номинация создана!");
-      await queryClient.refetchQueries({ queryKey: nominationKeys.all });
+      await queryClient.refetchQueries({ queryKey: nominationKeys.list });
       navigate({ to: "/admin/nominations" });
     },
   });

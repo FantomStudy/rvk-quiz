@@ -1,20 +1,18 @@
 import { AxiosError } from "axios";
 
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
-import { UpdateNominationPage } from "@pages/admin";
-
-import { nominationByIdQueryOptions } from "@entities/nomination";
+import { nominationQuery } from "@entities/nomination";
 
 export const Route = createFileRoute(
   "/_adminLayout/admin/nominations/$nominationId",
 )({
-  component: UpdateNominationPage,
+  component: RouteLayout,
   loader: async ({ context, params }) => {
     try {
       const nominationId = Number(params.nominationId);
       const nomination = await context.queryClient.ensureQueryData(
-        nominationByIdQueryOptions(nominationId),
+        nominationQuery(nominationId),
       );
 
       return { nomination };
@@ -28,3 +26,7 @@ export const Route = createFileRoute(
     }
   },
 });
+
+function RouteLayout() {
+  return <Outlet />;
+}

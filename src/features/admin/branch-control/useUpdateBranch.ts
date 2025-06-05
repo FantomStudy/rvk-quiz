@@ -11,7 +11,7 @@ export const useUpdateBranch = () => {
     mutationFn: updateBranchAdapter,
     onSuccess: async () => {
       console.log("Филиал сохранен!");
-      await queryClient.refetchQueries({ queryKey: branchKeys.all });
+      await queryClient.refetchQueries({ queryKey: branchKeys.list });
       navigate({ to: "/admin/branches" });
     },
   });

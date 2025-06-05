@@ -12,7 +12,7 @@ export const useDeleteBranch = () => {
     onSuccess: async (_, id) => {
       console.log("Филиал удален!");
       queryClient.removeQueries({ queryKey: branchKeys.detail(id) });
-      await queryClient.refetchQueries({ queryKey: branchKeys.all });
+      await queryClient.refetchQueries({ queryKey: branchKeys.list });
       navigate({ to: "/admin/branches" });
     },
   });

@@ -1,4 +1,6 @@
+const baseKey = "nominations";
+
 export const nominationKeys = {
-  all: ["nominations"] as const,
-  detail: (id: number) => ["nominations", id] as const,
+  list: [baseKey, "list"] as const,
+  byId: (id: number) => [baseKey, "byId", id] as const,
 };

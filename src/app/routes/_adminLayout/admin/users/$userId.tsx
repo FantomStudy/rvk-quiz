@@ -4,16 +4,14 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { UpdateUserPage } from "@pages/admin";
 
-import { userByIdQueryOption } from "@entities/user";
+import { userQuery } from "@entities/user";
 
 export const Route = createFileRoute("/_adminLayout/admin/users/$userId")({
   component: UpdateUserPage,
   loader: async ({ context, params }) => {
     try {
       const userId = Number(params.userId);
-      const user = await context.queryClient.ensureQueryData(
-        userByIdQueryOption(userId),
-      );
+      const user = await context.queryClient.ensureQueryData(userQuery(userId));
 
       return { user };
     } catch (err) {

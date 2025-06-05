@@ -1,0 +1,10 @@
+.test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+.btns {
+  display: flex;
+  gap: 50px;
+}

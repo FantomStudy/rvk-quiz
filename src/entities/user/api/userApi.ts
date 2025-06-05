@@ -2,12 +2,12 @@ import api from "@shared/api";
 
 import type { CreateUser, User } from "../model/user";
 
-export const fetchAllUsers = async () => {
+export const fetchUserList = async () => {
   const response = await api.get<User[]>("/user/all");
   return response.data;
 };
 
-export const fetchUserById = async (id: number) => {
+export const fetchUser = async (id: number) => {
   const response = await api.get<User>(`/user/by-id/${id}`);
   return response.data;
 };

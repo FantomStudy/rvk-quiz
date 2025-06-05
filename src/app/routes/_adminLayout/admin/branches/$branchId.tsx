@@ -4,7 +4,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { UpdateBranchPage } from "@pages/admin";
 
-import { branchByIdQueryOptions } from "@entities/branch";
+import { branchQuery } from "@entities/branch";
 
 export const Route = createFileRoute("/_adminLayout/admin/branches/$branchId")({
   component: UpdateBranchPage,
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/_adminLayout/admin/branches/$branchId")({
     try {
       const branchId = Number(params.branchId);
       const branch = await context.queryClient.ensureQueryData(
-        branchByIdQueryOptions(branchId),
+        branchQuery(branchId),
       );
 
       return { branch };
