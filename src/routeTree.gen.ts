@@ -14,6 +14,7 @@ import { Route as rootRoute } from './app/routes/__root'
 import { Route as HeaderLayoutImport } from './app/routes/_headerLayout'
 import { Route as AdminLayoutImport } from './app/routes/_adminLayout'
 import { Route as HeaderLayoutIndexImport } from './app/routes/_headerLayout/index'
+import { Route as HeaderLayoutTestImport } from './app/routes/_headerLayout/test'
 import { Route as HeaderLayoutAdminImport } from './app/routes/_headerLayout/admin'
 import { Route as AdminLayoutAdminResultsImport } from './app/routes/_adminLayout/admin/results'
 import { Route as AdminLayoutAdminAnalyticImport } from './app/routes/_adminLayout/admin/analytic'
@@ -44,6 +45,12 @@ const AdminLayoutRoute = AdminLayoutImport.update({
 const HeaderLayoutIndexRoute = HeaderLayoutIndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => HeaderLayoutRoute,
+} as any)
+
+const HeaderLayoutTestRoute = HeaderLayoutTestImport.update({
+  id: '/test',
+  path: '/test',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
 
@@ -166,6 +173,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof HeaderLayoutAdminImport
+      parentRoute: typeof HeaderLayoutImport
+    }
+    '/_headerLayout/test': {
+      id: '/_headerLayout/test'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof HeaderLayoutTestImport
       parentRoute: typeof HeaderLayoutImport
     }
     '/_headerLayout/': {
@@ -311,11 +325,13 @@ const AdminLayoutRouteWithChildren = AdminLayoutRoute._addFileChildren(
 
 interface HeaderLayoutRouteChildren {
   HeaderLayoutAdminRoute: typeof HeaderLayoutAdminRoute
+  HeaderLayoutTestRoute: typeof HeaderLayoutTestRoute
   HeaderLayoutIndexRoute: typeof HeaderLayoutIndexRoute
 }
 
 const HeaderLayoutRouteChildren: HeaderLayoutRouteChildren = {
   HeaderLayoutAdminRoute: HeaderLayoutAdminRoute,
+  HeaderLayoutTestRoute: HeaderLayoutTestRoute,
   HeaderLayoutIndexRoute: HeaderLayoutIndexRoute,
 }
 
@@ -326,6 +342,7 @@ const HeaderLayoutRouteWithChildren = HeaderLayoutRoute._addFileChildren(
 export interface FileRoutesByFullPath {
   '': typeof HeaderLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
+  '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
   '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/admin/results': typeof AdminLayoutAdminResultsRoute
@@ -345,6 +362,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '': typeof AdminLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
+  '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
   '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/admin/results': typeof AdminLayoutAdminResultsRoute
@@ -366,6 +384,7 @@ export interface FileRoutesById {
   '/_adminLayout': typeof AdminLayoutRouteWithChildren
   '/_headerLayout': typeof HeaderLayoutRouteWithChildren
   '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
+  '/_headerLayout/test': typeof HeaderLayoutTestRoute
   '/_headerLayout/': typeof HeaderLayoutIndexRoute
   '/_adminLayout/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
   '/_adminLayout/admin/results': typeof AdminLayoutAdminResultsRoute
@@ -387,6 +406,7 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/admin'
+    | '/test'
     | '/'
     | '/admin/analytic'
     | '/admin/results'
@@ -405,6 +425,7 @@ export interface FileRouteTypes {
   to:
     | ''
     | '/admin'
+    | '/test'
     | '/'
     | '/admin/analytic'
     | '/admin/results'
@@ -424,6 +445,7 @@ export interface FileRouteTypes {
     | '/_adminLayout'
     | '/_headerLayout'
     | '/_headerLayout/admin'
+    | '/_headerLayout/test'
     | '/_headerLayout/'
     | '/_adminLayout/admin/analytic'
     | '/_adminLayout/admin/results'
@@ -487,11 +509,16 @@ export const routeTree = rootRoute
       "filePath": "_headerLayout.tsx",
       "children": [
         "/_headerLayout/admin",
+        "/_headerLayout/test",
         "/_headerLayout/"
       ]
     },
     "/_headerLayout/admin": {
       "filePath": "_headerLayout/admin.tsx",
+      "parent": "/_headerLayout"
+    },
+    "/_headerLayout/test": {
+      "filePath": "_headerLayout/test.tsx",
       "parent": "/_headerLayout"
     },
     "/_headerLayout/": {
