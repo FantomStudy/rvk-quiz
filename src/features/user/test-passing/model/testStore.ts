@@ -4,7 +4,12 @@ import { persist } from "zustand/middleware";
 import type { Nomination } from "@entities/nomination";
 import type { User } from "@entities/user";
 
-import type { StartTestResponse, TestAnswer, TestQuestion } from "./test";
+import type {
+  ResultResponse,
+  StartTestResponse,
+  TestAnswer,
+  TestQuestion,
+} from "./test";
 
 interface TestState {
   user: User | null;
@@ -12,9 +17,11 @@ interface TestState {
   questions: TestQuestion[];
   answers: TestAnswer[];
   currentStep: number;
+  result: ResultResponse["result"] | null;
   initializeTest: (payload: StartTestResponse) => void;
   answerQuestion: (answer: TestAnswer) => void;
   getAnswerForQuestion: (questionId: number) => TestAnswer | undefined;
+  setResult: (result: ResultResponse["result"]) => void;
   resetTest: () => void;
   nextStep: () => void;
   prevStep: () => void;
@@ -29,6 +36,8 @@ export const useTestStore = create<TestState>()(
       questions: [],
       answers: [],
       currentStep: 0,
+
+      result: null,
 
       initializeTest: ({ user, nomination, questions }) =>
         set({ user, nomination, questions, currentStep: 0, answers: [] }),
@@ -46,6 +55,8 @@ export const useTestStore = create<TestState>()(
 
       getAnswerForQuestion: (questionId: number) =>
         get().answers.find((a) => a.questionId === questionId),
+
+      setResult: (result) => set({ result }),
 
       nextStep: () => {
         set((state) => ({
@@ -74,3 +85,5 @@ export const useTestStore = create<TestState>()(
 
 export const useInitializeTest = () =>
   useTestStore((state) => state.initializeTest);
+
+export const useResult = () => useTestStore((state) => state.result);

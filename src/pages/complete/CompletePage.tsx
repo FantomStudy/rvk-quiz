@@ -1,28 +1,44 @@
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 
-import { Button } from "@shared/ui";
+import { useResult } from "@features/user/test-passing/model/testStore";
+
+import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "./CompletePage.module.css";
 
 const CompletePage = () => {
+  const result = useResult();
+  if (!result) {
+    return "Не удалось получить результат";
+  }
+
+  const { nomination, score, total, user, duration } = result;
+  const percentage = (score / total) * 100;
+
   const data = [
-    { name: "Верно", value: 75 },
-    { name: "Неверно", value: 25 },
+    { name: "Верно", value: percentage },
+    { name: "Неверно", value: 100 - percentage },
   ];
+
   const COLORS = ["#45FF8C", "#FF4548"];
+
   return (
     <div className={styles.completePage}>
       <h1>Тест завершен</h1>
       <div className={styles.testInfo}>
         <p>Тест в номинации</p>
-        <h2>«Водитель ЗИЛ 312670»</h2>
+        <h2>«{nomination.name}»</h2>
       </div>
-      <h3>Ваш результат 15 из 25</h3>
-      <p>Время прохождение 35 мин 45 сек</p>
-      <p>Ваш номер: 7887878</p>
+      <h3>
+        Ваш результат {score} из {total}
+      </h3>
+      <p>Время прохождение {duration}</p>
+      <p>Ваш номер: {user.number}</p>
       <div className={styles.saveButtonContainer}>
         <h2>Вы можете сохранить свои результаты для этого нажмите на кнопку</h2>
-        <Button size="m">Перейти далее</Button>
+        <ButtonLink size="m" to="/">
+          Перейти далее
+        </ButtonLink>
       </div>
       <PieChart width={400} height={400}>
         <Pie

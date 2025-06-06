@@ -23,7 +23,7 @@ const TestPage = () => {
     answerQuestion,
     getAnswerForQuestion,
   } = useTestStore();
-  const { mutateAsync } = useFinishTest();
+  const { mutate } = useFinishTest();
 
   const currentQuestion = questions[currentStep];
   const selectedAnswer = getAnswerForQuestion(currentQuestion?.id);
@@ -36,28 +36,10 @@ const TestPage = () => {
       return;
     }
 
-    try {
-      console.log("📤 Завершаем тест, отправляем данные:");
-      console.log("answers:", answers);
-      console.log("userId:", user?.id);
-
-      await mutateAsync({
-        answers,
-        userId: user!.id,
-      });
-
-      console.log("✅ Тест успешно завершён");
-      // TODO: переход на страницу результата
-    } catch (error) {
-      console.error("❌ Ошибка при завершении теста:", error);
-
-      // Вариант логов, если ошибка от сервера содержит response
-      if (error instanceof Error && "response" in error) {
-        console.error("Ответ сервера:", (error as any).response);
-      }
-
-      alert("Произошла ошибка при завершении теста. Проверьте консоль.");
-    }
+    mutate({
+      answers,
+      userId: user!.id,
+    });
   };
 
   return (

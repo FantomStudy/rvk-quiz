@@ -1,3 +1,4 @@
+import type { Answer } from "@entities/answer/answer";
 import type { Nomination } from "@entities/nomination";
 import type { User } from "@entities/user";
 
@@ -27,4 +28,16 @@ export interface TestOption {
 export interface TestAnswer {
   questionId: number;
   optionId: number;
+}
+
+export interface ResultResponse {
+  result: {
+    id: number;
+    answers: Answer[];
+    duration: string;
+    nomination: Nomination;
+    score: number;
+    total: number;
+    user: User;
+  };
 }

@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { finishTest, startTest } from "../api/testApi";
 import type { StartTestForm, TestAnswer } from "./test";
-import { useInitializeTest } from "./testStore";
+import { useInitializeTest, useTestStore } from "./testStore";
 
 export const useStartTest = () => {
   const initializeTest = useInitializeTest();
@@ -27,13 +27,16 @@ interface FinishTestPayload {
 
 export const useFinishTest = () => {
   const navigate = useNavigate();
+  const setResult = useTestStore((state) => state.setResult);
 
   return useMutation({
     mutationFn: async ({ userId, answers }: FinishTestPayload) =>
-      finishTest(userId, answers),
-    onSuccess: () => {
-      console.log("Данные сохранены!");
-      navigate({ to: "/" });
+      await finishTest(userId, answers),
+
+    onSuccess: (data) => {
+      console.log("Данные сохранены и результат получен!");
+      setResult(data.result);
+      navigate({ to: "/complete", replace: true });
     },
   });
 };
