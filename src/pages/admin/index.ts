@@ -15,3 +15,7 @@ export { default as UpdateUserPage } from "@pages/admin/users/UpdateUserPage";
 export { default as NominationsPage } from "@pages/admin/nominations";
 export { default as CreateNominationPage } from "@pages/admin/nominations/CreateNominationPage";
 export { default as UpdateNominationPage } from "@pages/admin/nominations/UpdateNominationPage";
+
+export { default as QuestionsPage } from "@pages/admin/questions";
+export { default as CreateQuestionPage } from "@pages/admin/questions/CreateQuestionPage";
+export { default as UpdateQuestionPage } from "@pages/admin/questions/UpdateQuestionPage";

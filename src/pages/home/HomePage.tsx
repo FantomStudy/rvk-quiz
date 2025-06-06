@@ -1,8 +1,56 @@
+import { type ChangeEvent, type FormEvent, useState } from "react";
+
+import { getRouteApi } from "@tanstack/react-router";
+
+import CurrentTime from "@widgets/CurrentTime";
+
+import { useStartTest } from "@features/user/test-passing/model/mutations";
+
 import { Button, Input, Select } from "@shared/ui";
 
 import styles from "./HomePage.module.css";
 
+const route = getRouteApi("/_headerLayout/");
+
+interface FormState {
+  number: string;
+  nominationId: number;
+}
+
 const HomePage = () => {
+  const { nominations } = route.useLoaderData();
+
+  const [form, setForm] = useState<FormState>({
+    number: "",
+    nominationId: 0,
+  });
+
+  const { mutate } = useStartTest();
+
+  const selectedNomination = nominations.find(
+    (nomination) => nomination.id === form.nominationId,
+  );
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (form.nominationId === 0) {
+      alert("Пожалуйста, выберите номинацию.");
+      return;
+    }
+    mutate(form);
+  };
+
+  const handleChange = (
+    e: ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: name === "nominationId" ? Number(value) : value,
+    }));
+    console.log(form);
+  };
+
   return (
     <>
       <div className="container">
@@ -11,24 +59,42 @@ const HomePage = () => {
             <h1>Система тестирования</h1>
             <p>Вход</p>
           </div>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label htmlFor="nomination">Номинация</label>
-            <Select value={""} id="nomination">
-              <option value="" disabled>
+            <Select
+              id="nomination"
+              name="nominationId"
+              required
+              value={form.nominationId}
+              onChange={handleChange}
+            >
+              <option value={0} disabled>
                 Выберите номинацию
               </option>
-              <option value="1">Номинация 1</option>
-              <option value="2">Номинация 2</option>
-              <option value="3">Номинация 3</option>
+              {nominations.map((nomination) => (
+                <option key={nomination.id} value={nomination.id}>
+                  {nomination.name}
+                </option>
+              ))}
             </Select>
 
-            <label htmlFor="userID">Номер</label>
-            <Input id="userID" />
+            <label htmlFor="user">Номер</label>
+            <Input
+              id="user"
+              name="number"
+              required
+              value={form.number}
+              onChange={handleChange}
+            />
 
-            <div className={styles.time}>
-              <p>Время теста</p>
-              <p className={styles.blue}>45:00</p>
-            </div>
+            {selectedNomination && (
+              <div className={styles.time}>
+                <p>Время на прохождение теста:</p>
+                <p className={styles.blue}>{selectedNomination.duration}</p>
+              </div>
+            )}
+
+            <CurrentTime />
 
             <Button size="l" color="primary" className={styles.button}>
               Войти

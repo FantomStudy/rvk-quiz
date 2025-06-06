@@ -1,0 +1,76 @@
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+import type { Nomination } from "@entities/nomination";
+import type { User } from "@entities/user";
+
+import type { StartTestResponse, TestAnswer, TestQuestion } from "./test";
+
+interface TestState {
+  user: User | null;
+  nomination: Nomination | null;
+  questions: TestQuestion[];
+  answers: TestAnswer[];
+  currentStep: number;
+  initializeTest: (payload: StartTestResponse) => void;
+  answerQuestion: (answer: TestAnswer) => void;
+  getAnswerForQuestion: (questionId: number) => TestAnswer | undefined;
+  resetTest: () => void;
+  nextStep: () => void;
+  prevStep: () => void;
+}
+
+export const useTestStore = create<TestState>()(
+  persist(
+    (set, get) => ({
+      user: null,
+      nomination: null,
+
+      questions: [],
+      answers: [],
+      currentStep: 0,
+
+      initializeTest: ({ user, nomination, questions }) =>
+        set({ user, nomination, questions, currentStep: 0, answers: [] }),
+
+      answerQuestion: ({ questionId, optionId }) => {
+        const answers = get().answers;
+        const existing = answers.find((a) => a.questionId === questionId);
+        const updatedAnswers = existing
+          ? answers.map((a) =>
+              a.questionId === questionId ? { ...a, optionId } : a,
+            )
+          : [...answers, { questionId, optionId }];
+        set({ answers: updatedAnswers });
+      },
+
+      getAnswerForQuestion: (questionId: number) =>
+        get().answers.find((a) => a.questionId === questionId),
+
+      nextStep: () => {
+        set((state) => ({
+          currentStep: state.currentStep + 1,
+        }));
+      },
+
+      prevStep: () => {
+        set((state) => ({
+          currentStep: state.currentStep - 1,
+        }));
+      },
+
+      resetTest: () =>
+        set({
+          user: null,
+          nomination: null,
+          questions: [],
+          answers: [],
+          currentStep: 0,
+        }),
+    }),
+    { name: "test-store" },
+  ),
+);
+
+export const useInitializeTest = () =>
+  useTestStore((state) => state.initializeTest);

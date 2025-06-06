@@ -4,5 +4,5 @@ export interface AdminCredentials {
 }
 
 export interface CheckAuthResponse {
-  isAdmin: Boolean;
+  isAdmin: boolean;
 }

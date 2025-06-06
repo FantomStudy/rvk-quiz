@@ -4,7 +4,7 @@ import { checkAuth } from "../api/auth";
 
 const adminAuthQueryKey = ["admin-auth"];
 
-export const checkAuthQueryOptions = () =>
+export const checkAuthQuery = () =>
   queryOptions({
     queryKey: adminAuthQueryKey,
     queryFn: checkAuth,

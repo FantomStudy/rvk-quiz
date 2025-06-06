@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import QuestionsPage from "@pages/admin/questions";
+import { QuestionsPage } from "@pages/admin";
 
-import { questionListQuery } from "@entities/question/model/queryOptions";
+import { questionListQuery } from "@entities/question";
 
 export const Route = createFileRoute(
   "/_adminLayout/admin/nominations/$nominationId/questions/",
