@@ -1,0 +1,50 @@
+.completePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.completePage h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary);
+}
+.completePage h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+.completePage p {
+  font-size: 32px;
+  font-weight: 500;
+}
+.testInfo p {
+  font-size: 36px;
+  font-weight: 500;
+}
+.testInfo h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
+.saveButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 200px;
+  padding: 30px;
+}
+.saveButtonContainer h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.wave {
+  position: absolute;
+  top: 330px;
+  width: 100%;
+  z-index: -1;
+}
