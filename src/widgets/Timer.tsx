@@ -1,16 +1,23 @@
-
 import { useEffect, useState } from "react";
 
 import styles from "../pages/test/TestPage.module.css";
 
-const Timer = ({ initialMinutes = 45, initialSeconds = 30 }) => {
-  const [timeLeft, setTimeLeft] = useState(
-    initialMinutes * 60 + initialSeconds,
-  );
+interface TimerProps {
+  duration: string; // формат: "чч:мм:сс"
+  onEnd: () => void;
+}
+
+const parseDuration = (duration: string) => {
+  const [hours, minutes, seconds] = duration.split(":").map(Number);
+  return hours * 3600 + minutes * 60 + seconds;
+};
+
+const Timer = ({ duration, onEnd }: TimerProps) => {
+  const [timeLeft, setTimeLeft] = useState(() => parseDuration(duration));
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      alert("Время истекло!");
+      onEnd();
       return;
     }
 
@@ -18,13 +25,16 @@ const Timer = ({ initialMinutes = 45, initialSeconds = 30 }) => {
       setTimeLeft((prevTime) => prevTime - 1);
     }, 1000);
 
-    return () => clearInterval(timerId); 
-  }, [timeLeft]);
+    return () => clearInterval(timerId);
+  }, [timeLeft, onEnd]);
 
   const formatTime = () => {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    return `${minutes} мин ${seconds} сек`;
+    const h = Math.floor(timeLeft / 3600);
+    const m = Math.floor((timeLeft % 3600) / 60);
+    const s = timeLeft % 60;
+    const pad = (n: number) => String(n).padStart(2, "0");
+    
+    return h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
   };
 
   return (

@@ -38,6 +38,7 @@ export interface ResultResponse {
     nomination: Nomination;
     score: number;
     total: number;
+    percentage: number;
     user: User;
   };
 }

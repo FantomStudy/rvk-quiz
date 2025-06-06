@@ -21,3 +21,7 @@ export const finishTest = async (userId: number, answers: TestAnswer[]) => {
 
   return response.data;
 };
+
+export const fetchQuestionPhoto = async () =>{
+  
+}

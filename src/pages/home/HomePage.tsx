@@ -48,7 +48,6 @@ const HomePage = () => {
       ...prev,
       [name]: name === "nominationId" ? Number(value) : value,
     }));
-    console.log(form);
   };
 
   return (

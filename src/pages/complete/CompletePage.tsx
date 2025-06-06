@@ -12,8 +12,7 @@ const CompletePage = () => {
     return "Не удалось получить результат";
   }
 
-  const { nomination, score, total, user, duration } = result;
-  const percentage = (score / total) * 100;
+  const { nomination, score, user, duration, percentage } = result;
 
   const data = [
     { name: "Верно", value: percentage },
@@ -30,7 +29,7 @@ const CompletePage = () => {
         <h2>«{nomination.name}»</h2>
       </div>
       <h3>
-        Ваш результат {score} из {total}
+        Ваш результат {score} из {nomination.questionsCount}
       </h3>
       <p>Время прохождение {duration}</p>
       <p>Ваш номер: {user.number}</p>

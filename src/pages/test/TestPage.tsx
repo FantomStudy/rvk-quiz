@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import CurrentTime from "@widgets/CurrentTime";
 import Timer from "@widgets/Timer";
 
@@ -7,7 +5,6 @@ import { useFinishTest } from "@features/user/test-passing/model/mutations";
 import { useTestStore } from "@features/user/test-passing/model/testStore";
 
 import { Button } from "@shared/ui";
-import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "./TestPage.module.css";
 
@@ -46,7 +43,15 @@ const TestPage = () => {
     <>
       <div className="container">
         <div className={styles.testPage}>
-          <Timer initialMinutes={45} initialSeconds={30} />
+          <Timer
+            duration={nomination!.duration}
+            onEnd={() =>
+              mutate({
+                answers,
+                userId: user!.id,
+              })
+            }
+          />
 
           <form className={styles.form}>
             <h1>{questions[currentStep].text}</h1>

@@ -44,12 +44,18 @@ export const useTestStore = create<TestState>()(
 
       answerQuestion: ({ questionId, optionId }) => {
         const answers = get().answers;
-        const existing = answers.find((a) => a.questionId === questionId);
-        const updatedAnswers = existing
-          ? answers.map((a) =>
-              a.questionId === questionId ? { ...a, optionId } : a,
-            )
-          : [...answers, { questionId, optionId }];
+        let updatedAnswers;
+        const existing = answers.findIndex((a) => a.questionId === questionId);
+        if (existing !== -1) {
+          updatedAnswers = [
+            ...answers.slice(0, existing),
+            { questionId, optionId },
+            ...answers.slice(existing + 1),
+          ];
+        } else {
+          updatedAnswers = [...answers, { questionId, optionId }];
+        }
+
         set({ answers: updatedAnswers });
       },
 
