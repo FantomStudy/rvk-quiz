@@ -36,7 +36,7 @@ const CompletePage = () => {
         <p>Ваш номер: {user.number}</p>
         <div className={styles.saveButtonContainer}>
           <h2>
-            Вы можете сохранить свои результаты для этого нажмите на кнопку
+            Чтобы сохранить результат, обратитесь к администратору площадки
           </h2>
           <ButtonLink size="m" to="/">
             Перейти далее
