@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../pages/test/TestPage.module.css";
 
 interface TimerProps {
-  duration: string; // формат: "чч:мм:сс"
+  duration: string; 
   onEnd: () => void;
 }
 

@@ -1,4 +1,3 @@
-import CurrentTime from "@widgets/CurrentTime";
 import Timer from "@widgets/Timer";
 
 import { useFinishTest } from "@features/user/test-passing/model/mutations";
@@ -74,7 +73,6 @@ const TestPage = () => {
               </div>
             ))}
           </form>
-          <CurrentTime />
           <Button size="s" color="secondary">
             Вопрос {currentStep + 1} из {questions.length}
           </Button>

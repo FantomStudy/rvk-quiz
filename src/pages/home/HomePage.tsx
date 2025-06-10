@@ -2,8 +2,6 @@ import { type ChangeEvent, type FormEvent, useState } from "react";
 
 import { getRouteApi } from "@tanstack/react-router";
 
-import CurrentTime from "@widgets/CurrentTime";
-
 import { useStartTest } from "@features/user/test-passing/model/mutations";
 
 import { Button, Input, Select } from "@shared/ui";
@@ -92,8 +90,6 @@ const HomePage = () => {
                 <p className={styles.blue}>{selectedNomination.duration}</p>
               </div>
             )}
-
-            <CurrentTime />
 
             <Button size="l" color="primary" className={styles.button}>
               Войти
