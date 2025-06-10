@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { getRouteApi } from "@tanstack/react-router";
 
 import { Button, Input } from "@shared/ui";
@@ -9,15 +11,20 @@ import styles from "./questionsForm.module.css";
 const route = getRouteApi("/_adminLayout/admin/nominations/$nominationId");
 
 const CreateQuestionPage = () => {
+  const [question, setQuestion] = useState<string>("");
   const { nominationId } = route.useParams();
-  const {} = route.useLoaderData();
 
   return (
     <div className={styles.test}>
       <h1>Вопросы</h1>
 
-      <label htmlFor="name">Вопрос</label>
-      <Textarea id="name" />
+      <label htmlFor="question">Вопрос</label>
+      <Textarea
+        id="question"
+        name="question"
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+      />
 
       <label htmlFor="1var">1 вариант</label>
       <Input id="1var" />

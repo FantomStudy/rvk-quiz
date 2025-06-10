@@ -24,6 +24,5 @@ interface UpdateUserAdapterArgs {
 
 const updateUserAdapter = async ({ id, user }: UpdateUserAdapterArgs) => {
   const data = await updateUser(id, user);
-
   return data;
 };

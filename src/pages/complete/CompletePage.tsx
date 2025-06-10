@@ -49,14 +49,13 @@ const CompletePage = () => {
           dataKey="value"
           label
         >
-          {data.map((entry, index) => (
+          {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />
         <Legend />
       </PieChart>
-      <img src="/wave-mask.png" alt="wave" className={styles.wave} />
     </div>
   );
 };

@@ -34,6 +34,5 @@ const updateQuestionAdapter = async ({
   question,
 }: UpdateQuestionAdapterArgs) => {
   const data = await updateQuestion(id, question);
-
   return data;
 };

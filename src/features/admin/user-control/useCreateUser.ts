@@ -19,6 +19,5 @@ export const useCreateUser = () => {
 
 const createUserAdapter = async (newUser: CreateUser) => {
   const data = await createUser(newUser);
-
   return data;
 };

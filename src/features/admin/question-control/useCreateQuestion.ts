@@ -26,6 +26,5 @@ export const useCreateQuestion = () => {
 
 const createQuestionAdapter = async (newQuestion: CreateQuestion) => {
   const data = await createQuestion(newQuestion);
-
   return data;
 };

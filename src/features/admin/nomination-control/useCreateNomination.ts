@@ -23,6 +23,5 @@ export const useCreateNomination = () => {
 
 const createNominationAdapter = async (newNomination: CreateNomination) => {
   const data = await createNomination(newNomination);
-
   return data;
 };

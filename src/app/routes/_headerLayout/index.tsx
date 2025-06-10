@@ -10,7 +10,7 @@ export const Route = createFileRoute("/_headerLayout/")({
     const nominations = await context.queryClient.ensureQueryData(
       nominationListQuery(),
     );
-    
+
     return { nominations };
   },
 });

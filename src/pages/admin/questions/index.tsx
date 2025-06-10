@@ -28,15 +28,25 @@ const QuestionsPage = () => {
           <tr>
             <th>Вопрос</th>
             <th>Правильный ответ</th>
-            <th className="cell__slim"></th>
+            <th className="cell__slim">Действие</th>
           </tr>
         </thead>
         <tbody>
           {questions.map((question) => (
             <tr key={question.id}>
               <td>{question.question}</td>
-              <td>{}</td>
-              <td className="cell__slim"></td>
+              <td style={{ textAlign: "start" }}>{question.answers.answer} </td>
+              <td className="cell__slim">
+                <ButtonLink
+                  to="/admin/nominations/$nominationId/questions/$questionId"
+                  params={{
+                    nominationId: nomination.id.toString(),
+                    questionId: question.id.toString(),
+                  }}
+                >
+                  Изменить
+                </ButtonLink>
+              </td>
             </tr>
           ))}
         </tbody>

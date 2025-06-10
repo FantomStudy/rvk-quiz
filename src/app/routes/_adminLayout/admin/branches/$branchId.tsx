@@ -19,7 +19,6 @@ export const Route = createFileRoute("/_adminLayout/admin/branches/$branchId")({
     } catch (err) {
       if (err instanceof AxiosError && err.status === 404) {
         console.log("Не удалось найти филиал");
-
         throw redirect({ to: "/admin/branches" });
       }
       throw err;

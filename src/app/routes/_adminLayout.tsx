@@ -33,7 +33,6 @@ export const Route = createFileRoute("/_adminLayout")({
 function LayoutComponent() {
   const links = [
     { to: "/admin/nominations", label: "Номинации" },
-    { to: "/admin/users", label: "Участники" },
     { to: "/admin/results", label: "Результаты" },
     { to: "/admin/analytic", label: "Аналитика" },
     { to: "/admin/branches", label: "Филиал" },

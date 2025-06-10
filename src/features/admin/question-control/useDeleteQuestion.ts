@@ -31,6 +31,5 @@ export const useDeleteQuestion = () => {
 
 const deleteQuestionAdapter = async (id: number) => {
   const data = await deleteQuestion(id);
-
   return data;
 };

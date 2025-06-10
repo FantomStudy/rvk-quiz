@@ -19,9 +19,9 @@ export const Route = createFileRoute(
     } catch (err) {
       if (err instanceof AxiosError && err.status === 404) {
         console.log("Не удалось найти номинацию");
-
         throw redirect({ to: "/admin/nominations" });
       }
+
       throw err;
     }
   },
