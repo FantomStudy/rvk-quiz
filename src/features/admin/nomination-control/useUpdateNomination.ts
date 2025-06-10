@@ -31,6 +31,5 @@ const updateNominationAdapter = async ({
   nomination,
 }: updateNominationAdapterArgs) => {
   const data = await updateNomination(id, nomination);
-
   return data;
 };

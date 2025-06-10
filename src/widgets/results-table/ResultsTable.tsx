@@ -1,15 +1,14 @@
 import { Table } from "@shared/ui";
 
 const ResultsTable = () => {
-
-  
   return (
     <Table>
       <thead>
         <tr>
           <th>Номер</th>
-          <th>Тема</th>
-          <th>Регион</th>
+          <th>ФИО</th>
+          <th>Номинация</th>
+          <th>Филиал</th>
           <th>Дата</th>
           <th>Результат</th>
         </tr>
@@ -17,12 +16,6 @@ const ResultsTable = () => {
       <tbody>
         <tr>
           <td>48948998</td>
-          <td>Права категории B</td>
-          <td>Оренбург</td>
-          <td>21.12.24 12:54</td>
-          <td>17/25</td>
-        </tr>
-        <tr>
           <td>48948998</td>
           <td>Права категории B</td>
           <td>Оренбург</td>
@@ -30,6 +23,15 @@ const ResultsTable = () => {
           <td>17/25</td>
         </tr>
         <tr>
+          <td>48948998</td>
+          <td>48948998</td>
+          <td>Права категории B</td>
+          <td>Оренбург</td>
+          <td>21.12.24 12:54</td>
+          <td>17/25</td>
+        </tr>
+        <tr>
+          <th></th>
           <th></th>
           <th></th>
           <th></th>

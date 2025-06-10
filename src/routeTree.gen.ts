@@ -19,11 +19,8 @@ import { Route as HeaderLayoutCompleteImport } from './app/routes/_headerLayout/
 import { Route as HeaderLayoutAdminImport } from './app/routes/_headerLayout/admin'
 import { Route as AdminLayoutAdminResultsImport } from './app/routes/_adminLayout/admin/results'
 import { Route as AdminLayoutAdminAnalyticImport } from './app/routes/_adminLayout/admin/analytic'
-import { Route as AdminLayoutAdminUsersIndexImport } from './app/routes/_adminLayout/admin/users/index'
 import { Route as AdminLayoutAdminNominationsIndexImport } from './app/routes/_adminLayout/admin/nominations/index'
 import { Route as AdminLayoutAdminBranchesIndexImport } from './app/routes/_adminLayout/admin/branches/index'
-import { Route as AdminLayoutAdminUsersCreateImport } from './app/routes/_adminLayout/admin/users/create'
-import { Route as AdminLayoutAdminUsersUserIdImport } from './app/routes/_adminLayout/admin/users/$userId'
 import { Route as AdminLayoutAdminNominationsCreateImport } from './app/routes/_adminLayout/admin/nominations/create'
 import { Route as AdminLayoutAdminNominationsNominationIdImport } from './app/routes/_adminLayout/admin/nominations/$nominationId'
 import { Route as AdminLayoutAdminBranchesCreateImport } from './app/routes/_adminLayout/admin/branches/create'
@@ -81,14 +78,6 @@ const AdminLayoutAdminAnalyticRoute = AdminLayoutAdminAnalyticImport.update({
   getParentRoute: () => AdminLayoutRoute,
 } as any)
 
-const AdminLayoutAdminUsersIndexRoute = AdminLayoutAdminUsersIndexImport.update(
-  {
-    id: '/admin/users/',
-    path: '/admin/users/',
-    getParentRoute: () => AdminLayoutRoute,
-  } as any,
-)
-
 const AdminLayoutAdminNominationsIndexRoute =
   AdminLayoutAdminNominationsIndexImport.update({
     id: '/admin/nominations/',
@@ -100,20 +89,6 @@ const AdminLayoutAdminBranchesIndexRoute =
   AdminLayoutAdminBranchesIndexImport.update({
     id: '/admin/branches/',
     path: '/admin/branches/',
-    getParentRoute: () => AdminLayoutRoute,
-  } as any)
-
-const AdminLayoutAdminUsersCreateRoute =
-  AdminLayoutAdminUsersCreateImport.update({
-    id: '/admin/users/create',
-    path: '/admin/users/create',
-    getParentRoute: () => AdminLayoutRoute,
-  } as any)
-
-const AdminLayoutAdminUsersUserIdRoute =
-  AdminLayoutAdminUsersUserIdImport.update({
-    id: '/admin/users/$userId',
-    path: '/admin/users/$userId',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
 
@@ -261,20 +236,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminNominationsCreateImport
       parentRoute: typeof AdminLayoutImport
     }
-    '/_adminLayout/admin/users/$userId': {
-      id: '/_adminLayout/admin/users/$userId'
-      path: '/admin/users/$userId'
-      fullPath: '/admin/users/$userId'
-      preLoaderRoute: typeof AdminLayoutAdminUsersUserIdImport
-      parentRoute: typeof AdminLayoutImport
-    }
-    '/_adminLayout/admin/users/create': {
-      id: '/_adminLayout/admin/users/create'
-      path: '/admin/users/create'
-      fullPath: '/admin/users/create'
-      preLoaderRoute: typeof AdminLayoutAdminUsersCreateImport
-      parentRoute: typeof AdminLayoutImport
-    }
     '/_adminLayout/admin/branches/': {
       id: '/_adminLayout/admin/branches/'
       path: '/admin/branches'
@@ -287,13 +248,6 @@ declare module '@tanstack/react-router' {
       path: '/admin/nominations'
       fullPath: '/admin/nominations'
       preLoaderRoute: typeof AdminLayoutAdminNominationsIndexImport
-      parentRoute: typeof AdminLayoutImport
-    }
-    '/_adminLayout/admin/users/': {
-      id: '/_adminLayout/admin/users/'
-      path: '/admin/users'
-      fullPath: '/admin/users'
-      preLoaderRoute: typeof AdminLayoutAdminUsersIndexImport
       parentRoute: typeof AdminLayoutImport
     }
     '/_adminLayout/admin/nominations/$nominationId/': {
@@ -360,11 +314,8 @@ interface AdminLayoutRouteChildren {
   AdminLayoutAdminBranchesCreateRoute: typeof AdminLayoutAdminBranchesCreateRoute
   AdminLayoutAdminNominationsNominationIdRoute: typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
   AdminLayoutAdminNominationsCreateRoute: typeof AdminLayoutAdminNominationsCreateRoute
-  AdminLayoutAdminUsersUserIdRoute: typeof AdminLayoutAdminUsersUserIdRoute
-  AdminLayoutAdminUsersCreateRoute: typeof AdminLayoutAdminUsersCreateRoute
   AdminLayoutAdminBranchesIndexRoute: typeof AdminLayoutAdminBranchesIndexRoute
   AdminLayoutAdminNominationsIndexRoute: typeof AdminLayoutAdminNominationsIndexRoute
-  AdminLayoutAdminUsersIndexRoute: typeof AdminLayoutAdminUsersIndexRoute
 }
 
 const AdminLayoutRouteChildren: AdminLayoutRouteChildren = {
@@ -376,11 +327,8 @@ const AdminLayoutRouteChildren: AdminLayoutRouteChildren = {
     AdminLayoutAdminNominationsNominationIdRouteWithChildren,
   AdminLayoutAdminNominationsCreateRoute:
     AdminLayoutAdminNominationsCreateRoute,
-  AdminLayoutAdminUsersUserIdRoute: AdminLayoutAdminUsersUserIdRoute,
-  AdminLayoutAdminUsersCreateRoute: AdminLayoutAdminUsersCreateRoute,
   AdminLayoutAdminBranchesIndexRoute: AdminLayoutAdminBranchesIndexRoute,
   AdminLayoutAdminNominationsIndexRoute: AdminLayoutAdminNominationsIndexRoute,
-  AdminLayoutAdminUsersIndexRoute: AdminLayoutAdminUsersIndexRoute,
 }
 
 const AdminLayoutRouteWithChildren = AdminLayoutRoute._addFileChildren(
@@ -417,11 +365,8 @@ export interface FileRoutesByFullPath {
   '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
   '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
   '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/admin/users/$userId': typeof AdminLayoutAdminUsersUserIdRoute
-  '/admin/users/create': typeof AdminLayoutAdminUsersCreateRoute
   '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
   '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
-  '/admin/users': typeof AdminLayoutAdminUsersIndexRoute
   '/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
   '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
   '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
@@ -439,11 +384,8 @@ export interface FileRoutesByTo {
   '/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
   '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
   '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/admin/users/$userId': typeof AdminLayoutAdminUsersUserIdRoute
-  '/admin/users/create': typeof AdminLayoutAdminUsersCreateRoute
   '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
   '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
-  '/admin/users': typeof AdminLayoutAdminUsersIndexRoute
   '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
   '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
   '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
@@ -464,11 +406,8 @@ export interface FileRoutesById {
   '/_adminLayout/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
   '/_adminLayout/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
   '/_adminLayout/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/_adminLayout/admin/users/$userId': typeof AdminLayoutAdminUsersUserIdRoute
-  '/_adminLayout/admin/users/create': typeof AdminLayoutAdminUsersCreateRoute
   '/_adminLayout/admin/branches/': typeof AdminLayoutAdminBranchesIndexRoute
   '/_adminLayout/admin/nominations/': typeof AdminLayoutAdminNominationsIndexRoute
-  '/_adminLayout/admin/users/': typeof AdminLayoutAdminUsersIndexRoute
   '/_adminLayout/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
   '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
   '/_adminLayout/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
@@ -489,11 +428,8 @@ export interface FileRouteTypes {
     | '/admin/branches/create'
     | '/admin/nominations/$nominationId'
     | '/admin/nominations/create'
-    | '/admin/users/$userId'
-    | '/admin/users/create'
     | '/admin/branches'
     | '/admin/nominations'
-    | '/admin/users'
     | '/admin/nominations/$nominationId/'
     | '/admin/nominations/$nominationId/questions/$questionId'
     | '/admin/nominations/$nominationId/questions/create'
@@ -510,11 +446,8 @@ export interface FileRouteTypes {
     | '/admin/branches/$branchId'
     | '/admin/branches/create'
     | '/admin/nominations/create'
-    | '/admin/users/$userId'
-    | '/admin/users/create'
     | '/admin/branches'
     | '/admin/nominations'
-    | '/admin/users'
     | '/admin/nominations/$nominationId'
     | '/admin/nominations/$nominationId/questions/$questionId'
     | '/admin/nominations/$nominationId/questions/create'
@@ -533,11 +466,8 @@ export interface FileRouteTypes {
     | '/_adminLayout/admin/branches/create'
     | '/_adminLayout/admin/nominations/$nominationId'
     | '/_adminLayout/admin/nominations/create'
-    | '/_adminLayout/admin/users/$userId'
-    | '/_adminLayout/admin/users/create'
     | '/_adminLayout/admin/branches/'
     | '/_adminLayout/admin/nominations/'
-    | '/_adminLayout/admin/users/'
     | '/_adminLayout/admin/nominations/$nominationId/'
     | '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
     | '/_adminLayout/admin/nominations/$nominationId/questions/create'
@@ -578,11 +508,8 @@ export const routeTree = rootRoute
         "/_adminLayout/admin/branches/create",
         "/_adminLayout/admin/nominations/$nominationId",
         "/_adminLayout/admin/nominations/create",
-        "/_adminLayout/admin/users/$userId",
-        "/_adminLayout/admin/users/create",
         "/_adminLayout/admin/branches/",
-        "/_adminLayout/admin/nominations/",
-        "/_adminLayout/admin/users/"
+        "/_adminLayout/admin/nominations/"
       ]
     },
     "/_headerLayout": {
@@ -640,24 +567,12 @@ export const routeTree = rootRoute
       "filePath": "_adminLayout/admin/nominations/create.tsx",
       "parent": "/_adminLayout"
     },
-    "/_adminLayout/admin/users/$userId": {
-      "filePath": "_adminLayout/admin/users/$userId.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/users/create": {
-      "filePath": "_adminLayout/admin/users/create.tsx",
-      "parent": "/_adminLayout"
-    },
     "/_adminLayout/admin/branches/": {
       "filePath": "_adminLayout/admin/branches/index.tsx",
       "parent": "/_adminLayout"
     },
     "/_adminLayout/admin/nominations/": {
       "filePath": "_adminLayout/admin/nominations/index.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/users/": {
-      "filePath": "_adminLayout/admin/users/index.tsx",
       "parent": "/_adminLayout"
     },
     "/_adminLayout/admin/nominations/$nominationId/": {

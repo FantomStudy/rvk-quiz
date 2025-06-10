@@ -19,6 +19,5 @@ export const useCreateBranch = () => {
 
 const createBranchAdapter = async (newBranch: CreateBranch) => {
   const data = await createBranch(newBranch);
-
   return data;
 };

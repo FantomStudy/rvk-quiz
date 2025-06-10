@@ -1,9 +1,13 @@
 import api from "@shared/api";
 
-import type { CreateQuestion, Question } from "../model/question";
+import type {
+  CreateQuestion,
+  Question,
+  QuestionWithAnswer,
+} from "../model/question";
 
 export const fetchQuestionList = async (nominationId: number) => {
-  const response = await api.get<Question[]>(
+  const response = await api.get<QuestionWithAnswer[]>(
     `/question/all-by-nomination/${nominationId}`,
   );
 

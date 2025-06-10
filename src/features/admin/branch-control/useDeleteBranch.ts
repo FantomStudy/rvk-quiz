@@ -11,7 +11,7 @@ export const useDeleteBranch = () => {
     mutationFn: deleteBranchAdapter,
     onSuccess: async (_, id) => {
       console.log("Филиал удален!");
-      queryClient.removeQueries({ queryKey: branchKeys.detail(id) });
+      queryClient.removeQueries({ queryKey: branchKeys.byId(id) });
       await queryClient.refetchQueries({ queryKey: branchKeys.list });
       navigate({ to: "/admin/branches" });
     },
@@ -20,6 +20,5 @@ export const useDeleteBranch = () => {
 
 const deleteBranchAdapter = async (id: number) => {
   const data = await deleteBranch(id);
-
   return data;
 };

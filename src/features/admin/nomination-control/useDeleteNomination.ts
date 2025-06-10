@@ -20,6 +20,5 @@ export const useDeleteNomination = () => {
 
 const deleteNominationAdapter = async (id: number) => {
   const data = await deleteNomination(id);
-
   return data;
 };

@@ -24,6 +24,5 @@ interface UpdateBranchAdapterArgs {
 
 const updateBranchAdapter = async ({ id, branch }: UpdateBranchAdapterArgs) => {
   const data = await updateBranch(id, branch);
-
   return data;
 };

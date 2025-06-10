@@ -20,6 +20,5 @@ export const useDeleteUser = () => {
 
 const deleteUserAdapter = async (id: number) => {
   const data = await deleteUser(id);
-
   return data;
 };
