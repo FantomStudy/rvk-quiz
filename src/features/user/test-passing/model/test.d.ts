@@ -16,7 +16,7 @@ export interface StartTestResponse {
 export interface TestQuestion {
   id: number;
   text: string;
-  photoName: string | null;
+  photoName: string;
   options: TestOption[];
 }
 

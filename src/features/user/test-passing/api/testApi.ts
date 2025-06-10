@@ -1,12 +1,11 @@
 import api from "@shared/api";
 
-
-
-import type { ResultResponse, StartTestForm, StartTestResponse, TestAnswer } from "../model/test";
-
-
-
-
+import type {
+  ResultResponse,
+  StartTestForm,
+  StartTestResponse,
+  TestAnswer,
+} from "../model/test";
 
 export const startTest = async (form: StartTestForm) => {
   const response = await api.post<StartTestResponse>("/tests/start", form);
@@ -22,9 +21,3 @@ export const finishTest = async (userId: number, answers: TestAnswer[]) => {
 
   return response.data;
 };
-
-export const fetchQuestionPhoto = async (filename: string) =>{
-   const response = await api.get(`/question/photo/${filename}`);
-
-   return response.data;
-}

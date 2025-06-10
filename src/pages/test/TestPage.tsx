@@ -3,6 +3,8 @@ import Timer from "@widgets/Timer";
 import { useFinishTest } from "@features/user/test-passing/model/mutations";
 import { useTestStore } from "@features/user/test-passing/model/testStore";
 
+import { useQuestionPhoto } from "@entities/question/model/queries";
+
 import { Button } from "@shared/ui";
 
 import styles from "./TestPage.module.css";
@@ -25,6 +27,10 @@ const TestPage = () => {
   const selectedAnswer = getAnswerForQuestion(currentQuestion?.id);
   const selected = selectedAnswer?.optionId;
   const isLast = currentStep === questions.length - 1;
+
+  const { data: image, isLoading } = useQuestionPhoto(
+    currentQuestion.photoName,
+  );
 
   const handleNextStep = async () => {
     if (!isLast) {
@@ -54,6 +60,7 @@ const TestPage = () => {
 
           <form className={styles.form}>
             <h1>{questions[currentStep].text}</h1>
+            <img src={image} alt="image" />
             <div className={styles.stripe}></div>
             {currentQuestion.options.map((option) => (
               <div className={styles.radio} key={option.id}>
