@@ -23,21 +23,25 @@ const CompletePage = () => {
 
   return (
     <div className={styles.completePage}>
-      <h1>Тест завершен</h1>
-      <div className={styles.testInfo}>
-        <p>Тест в номинации</p>
-        <h2>«{nomination.name}»</h2>
-      </div>
-      <h3>
-        Ваш результат {score} из {nomination.questionsCount}
-      </h3>
-      <p>Время прохождение {duration}</p>
-      <p>Ваш номер: {user.number}</p>
-      <div className={styles.saveButtonContainer}>
-        <h2>Вы можете сохранить свои результаты для этого нажмите на кнопку</h2>
-        <ButtonLink size="m" to="/">
-          Перейти далее
-        </ButtonLink>
+      <div>
+        <h1>Тест завершен</h1>
+        <div className={styles.testInfo}>
+          <p>Тест в номинации</p>
+          <h2>«{nomination.name}»</h2>
+        </div>
+        <h3>
+          Ваш результат {score} из {nomination.questionsCount}
+        </h3>
+        <p>Время прохождение {duration}</p>
+        <p>Ваш номер: {user.number}</p>
+        <div className={styles.saveButtonContainer}>
+          <h2>
+            Вы можете сохранить свои результаты для этого нажмите на кнопку
+          </h2>
+          <ButtonLink size="m" to="/">
+            Перейти далее
+          </ButtonLink>
+        </div>
       </div>
       <PieChart width={400} height={400}>
         <Pie
