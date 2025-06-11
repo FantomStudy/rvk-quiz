@@ -60,7 +60,10 @@ const TestPage = () => {
 
           <form className={styles.form}>
             <h1>{questions[currentStep].text}</h1>
-            <img src={image} alt="image" />
+            {isLoading || !currentQuestion.photoName ? null : (
+              <img src={image} alt="image" />
+            )}
+
             <div className={styles.stripe}></div>
             {currentQuestion.options.map((option) => (
               <div className={styles.radio} key={option.id}>

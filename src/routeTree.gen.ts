@@ -8,147 +8,248 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as HeaderLayoutRouteImport } from './app/routes/_headerLayout'
+import { Route as AdminLayoutRouteImport } from './app/routes/_adminLayout'
+import { Route as HeaderLayoutIndexRouteImport } from './app/routes/_headerLayout/index'
+import { Route as HeaderLayoutTestRouteImport } from './app/routes/_headerLayout/test'
+import { Route as HeaderLayoutCompleteRouteImport } from './app/routes/_headerLayout/complete'
+import { Route as HeaderLayoutAdminRouteImport } from './app/routes/_headerLayout/admin'
+import { Route as AdminLayoutAdminResultsRouteImport } from './app/routes/_adminLayout/admin/results'
+import { Route as AdminLayoutAdminAnalyticRouteImport } from './app/routes/_adminLayout/admin/analytic'
+import { Route as AdminLayoutAdminNominationsIndexRouteImport } from './app/routes/_adminLayout/admin/nominations/index'
+import { Route as AdminLayoutAdminBranchesIndexRouteImport } from './app/routes/_adminLayout/admin/branches/index'
+import { Route as AdminLayoutAdminNominationsCreateRouteImport } from './app/routes/_adminLayout/admin/nominations/create'
+import { Route as AdminLayoutAdminNominationsNominationIdRouteImport } from './app/routes/_adminLayout/admin/nominations/$nominationId'
+import { Route as AdminLayoutAdminBranchesCreateRouteImport } from './app/routes/_adminLayout/admin/branches/create'
+import { Route as AdminLayoutAdminBranchesBranchIdRouteImport } from './app/routes/_adminLayout/admin/branches/$branchId'
+import { Route as AdminLayoutAdminNominationsNominationIdIndexRouteImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/index'
+import { Route as AdminLayoutAdminNominationsNominationIdQuestionsIndexRouteImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/index'
+import { Route as AdminLayoutAdminNominationsNominationIdQuestionsCreateRouteImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/create'
+import { Route as AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRouteImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
 
-import { Route as rootRoute } from './app/routes/__root'
-import { Route as HeaderLayoutImport } from './app/routes/_headerLayout'
-import { Route as AdminLayoutImport } from './app/routes/_adminLayout'
-import { Route as HeaderLayoutIndexImport } from './app/routes/_headerLayout/index'
-import { Route as HeaderLayoutTestImport } from './app/routes/_headerLayout/test'
-import { Route as HeaderLayoutCompleteImport } from './app/routes/_headerLayout/complete'
-import { Route as HeaderLayoutAdminImport } from './app/routes/_headerLayout/admin'
-import { Route as AdminLayoutAdminResultsImport } from './app/routes/_adminLayout/admin/results'
-import { Route as AdminLayoutAdminAnalyticImport } from './app/routes/_adminLayout/admin/analytic'
-import { Route as AdminLayoutAdminNominationsIndexImport } from './app/routes/_adminLayout/admin/nominations/index'
-import { Route as AdminLayoutAdminBranchesIndexImport } from './app/routes/_adminLayout/admin/branches/index'
-import { Route as AdminLayoutAdminNominationsCreateImport } from './app/routes/_adminLayout/admin/nominations/create'
-import { Route as AdminLayoutAdminNominationsNominationIdImport } from './app/routes/_adminLayout/admin/nominations/$nominationId'
-import { Route as AdminLayoutAdminBranchesCreateImport } from './app/routes/_adminLayout/admin/branches/create'
-import { Route as AdminLayoutAdminBranchesBranchIdImport } from './app/routes/_adminLayout/admin/branches/$branchId'
-import { Route as AdminLayoutAdminNominationsNominationIdIndexImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/index'
-import { Route as AdminLayoutAdminNominationsNominationIdQuestionsIndexImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/index'
-import { Route as AdminLayoutAdminNominationsNominationIdQuestionsCreateImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/create'
-import { Route as AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdImport } from './app/routes/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
-
-// Create/Update Routes
-
-const HeaderLayoutRoute = HeaderLayoutImport.update({
+const HeaderLayoutRoute = HeaderLayoutRouteImport.update({
   id: '/_headerLayout',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AdminLayoutRoute = AdminLayoutImport.update({
+const AdminLayoutRoute = AdminLayoutRouteImport.update({
   id: '/_adminLayout',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const HeaderLayoutIndexRoute = HeaderLayoutIndexImport.update({
+const HeaderLayoutIndexRoute = HeaderLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
-
-const HeaderLayoutTestRoute = HeaderLayoutTestImport.update({
+const HeaderLayoutTestRoute = HeaderLayoutTestRouteImport.update({
   id: '/test',
   path: '/test',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
-
-const HeaderLayoutCompleteRoute = HeaderLayoutCompleteImport.update({
+const HeaderLayoutCompleteRoute = HeaderLayoutCompleteRouteImport.update({
   id: '/complete',
   path: '/complete',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
-
-const HeaderLayoutAdminRoute = HeaderLayoutAdminImport.update({
+const HeaderLayoutAdminRoute = HeaderLayoutAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
-
-const AdminLayoutAdminResultsRoute = AdminLayoutAdminResultsImport.update({
+const AdminLayoutAdminResultsRoute = AdminLayoutAdminResultsRouteImport.update({
   id: '/admin/results',
   path: '/admin/results',
   getParentRoute: () => AdminLayoutRoute,
 } as any)
-
-const AdminLayoutAdminAnalyticRoute = AdminLayoutAdminAnalyticImport.update({
-  id: '/admin/analytic',
-  path: '/admin/analytic',
-  getParentRoute: () => AdminLayoutRoute,
-} as any)
-
+const AdminLayoutAdminAnalyticRoute =
+  AdminLayoutAdminAnalyticRouteImport.update({
+    id: '/admin/analytic',
+    path: '/admin/analytic',
+    getParentRoute: () => AdminLayoutRoute,
+  } as any)
 const AdminLayoutAdminNominationsIndexRoute =
-  AdminLayoutAdminNominationsIndexImport.update({
+  AdminLayoutAdminNominationsIndexRouteImport.update({
     id: '/admin/nominations/',
     path: '/admin/nominations/',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminBranchesIndexRoute =
-  AdminLayoutAdminBranchesIndexImport.update({
+  AdminLayoutAdminBranchesIndexRouteImport.update({
     id: '/admin/branches/',
     path: '/admin/branches/',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminNominationsCreateRoute =
-  AdminLayoutAdminNominationsCreateImport.update({
+  AdminLayoutAdminNominationsCreateRouteImport.update({
     id: '/admin/nominations/create',
     path: '/admin/nominations/create',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminNominationsNominationIdRoute =
-  AdminLayoutAdminNominationsNominationIdImport.update({
+  AdminLayoutAdminNominationsNominationIdRouteImport.update({
     id: '/admin/nominations/$nominationId',
     path: '/admin/nominations/$nominationId',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminBranchesCreateRoute =
-  AdminLayoutAdminBranchesCreateImport.update({
+  AdminLayoutAdminBranchesCreateRouteImport.update({
     id: '/admin/branches/create',
     path: '/admin/branches/create',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminBranchesBranchIdRoute =
-  AdminLayoutAdminBranchesBranchIdImport.update({
+  AdminLayoutAdminBranchesBranchIdRouteImport.update({
     id: '/admin/branches/$branchId',
     path: '/admin/branches/$branchId',
     getParentRoute: () => AdminLayoutRoute,
   } as any)
-
 const AdminLayoutAdminNominationsNominationIdIndexRoute =
-  AdminLayoutAdminNominationsNominationIdIndexImport.update({
+  AdminLayoutAdminNominationsNominationIdIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => AdminLayoutAdminNominationsNominationIdRoute,
   } as any)
-
 const AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute =
-  AdminLayoutAdminNominationsNominationIdQuestionsIndexImport.update({
+  AdminLayoutAdminNominationsNominationIdQuestionsIndexRouteImport.update({
     id: '/questions/',
     path: '/questions/',
     getParentRoute: () => AdminLayoutAdminNominationsNominationIdRoute,
   } as any)
-
 const AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute =
-  AdminLayoutAdminNominationsNominationIdQuestionsCreateImport.update({
+  AdminLayoutAdminNominationsNominationIdQuestionsCreateRouteImport.update({
     id: '/questions/create',
     path: '/questions/create',
     getParentRoute: () => AdminLayoutAdminNominationsNominationIdRoute,
   } as any)
-
 const AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute =
-  AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdImport.update({
+  AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRouteImport.update({
     id: '/questions/$questionId',
     path: '/questions/$questionId',
     getParentRoute: () => AdminLayoutAdminNominationsNominationIdRoute,
   } as any)
 
-// Populate the FileRoutesByPath interface
+export interface FileRoutesByFullPath {
+  '': typeof HeaderLayoutRouteWithChildren
+  '/admin': typeof HeaderLayoutAdminRoute
+  '/complete': typeof HeaderLayoutCompleteRoute
+  '/test': typeof HeaderLayoutTestRoute
+  '/': typeof HeaderLayoutIndexRoute
+  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/admin/results': typeof AdminLayoutAdminResultsRoute
+  '/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
+  '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
+  '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
+  '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
+  '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
+  '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
+  '/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
+  '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
+  '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
+  '/admin/nominations/$nominationId/questions': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
+}
+export interface FileRoutesByTo {
+  '': typeof AdminLayoutRouteWithChildren
+  '/admin': typeof HeaderLayoutAdminRoute
+  '/complete': typeof HeaderLayoutCompleteRoute
+  '/test': typeof HeaderLayoutTestRoute
+  '/': typeof HeaderLayoutIndexRoute
+  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/admin/results': typeof AdminLayoutAdminResultsRoute
+  '/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
+  '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
+  '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
+  '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
+  '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
+  '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
+  '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
+  '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
+  '/admin/nominations/$nominationId/questions': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/_adminLayout': typeof AdminLayoutRouteWithChildren
+  '/_headerLayout': typeof HeaderLayoutRouteWithChildren
+  '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
+  '/_headerLayout/complete': typeof HeaderLayoutCompleteRoute
+  '/_headerLayout/test': typeof HeaderLayoutTestRoute
+  '/_headerLayout/': typeof HeaderLayoutIndexRoute
+  '/_adminLayout/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
+  '/_adminLayout/admin/results': typeof AdminLayoutAdminResultsRoute
+  '/_adminLayout/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
+  '/_adminLayout/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
+  '/_adminLayout/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
+  '/_adminLayout/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
+  '/_adminLayout/admin/branches/': typeof AdminLayoutAdminBranchesIndexRoute
+  '/_adminLayout/admin/nominations/': typeof AdminLayoutAdminNominationsIndexRoute
+  '/_adminLayout/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
+  '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
+  '/_adminLayout/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
+  '/_adminLayout/admin/nominations/$nominationId/questions/': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | ''
+    | '/admin'
+    | '/complete'
+    | '/test'
+    | '/'
+    | '/admin/analytic'
+    | '/admin/results'
+    | '/admin/branches/$branchId'
+    | '/admin/branches/create'
+    | '/admin/nominations/$nominationId'
+    | '/admin/nominations/create'
+    | '/admin/branches'
+    | '/admin/nominations'
+    | '/admin/nominations/$nominationId/'
+    | '/admin/nominations/$nominationId/questions/$questionId'
+    | '/admin/nominations/$nominationId/questions/create'
+    | '/admin/nominations/$nominationId/questions'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | ''
+    | '/admin'
+    | '/complete'
+    | '/test'
+    | '/'
+    | '/admin/analytic'
+    | '/admin/results'
+    | '/admin/branches/$branchId'
+    | '/admin/branches/create'
+    | '/admin/nominations/create'
+    | '/admin/branches'
+    | '/admin/nominations'
+    | '/admin/nominations/$nominationId'
+    | '/admin/nominations/$nominationId/questions/$questionId'
+    | '/admin/nominations/$nominationId/questions/create'
+    | '/admin/nominations/$nominationId/questions'
+  id:
+    | '__root__'
+    | '/_adminLayout'
+    | '/_headerLayout'
+    | '/_headerLayout/admin'
+    | '/_headerLayout/complete'
+    | '/_headerLayout/test'
+    | '/_headerLayout/'
+    | '/_adminLayout/admin/analytic'
+    | '/_adminLayout/admin/results'
+    | '/_adminLayout/admin/branches/$branchId'
+    | '/_adminLayout/admin/branches/create'
+    | '/_adminLayout/admin/nominations/$nominationId'
+    | '/_adminLayout/admin/nominations/create'
+    | '/_adminLayout/admin/branches/'
+    | '/_adminLayout/admin/nominations/'
+    | '/_adminLayout/admin/nominations/$nominationId/'
+    | '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
+    | '/_adminLayout/admin/nominations/$nominationId/questions/create'
+    | '/_adminLayout/admin/nominations/$nominationId/questions/'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  AdminLayoutRoute: typeof AdminLayoutRouteWithChildren
+  HeaderLayoutRoute: typeof HeaderLayoutRouteWithChildren
+}
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
@@ -156,132 +257,130 @@ declare module '@tanstack/react-router' {
       id: '/_adminLayout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AdminLayoutImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof AdminLayoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_headerLayout': {
       id: '/_headerLayout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof HeaderLayoutImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof HeaderLayoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_headerLayout/admin': {
       id: '/_headerLayout/admin'
       path: '/admin'
       fullPath: '/admin'
-      preLoaderRoute: typeof HeaderLayoutAdminImport
-      parentRoute: typeof HeaderLayoutImport
+      preLoaderRoute: typeof HeaderLayoutAdminRouteImport
+      parentRoute: typeof HeaderLayoutRoute
     }
     '/_headerLayout/complete': {
       id: '/_headerLayout/complete'
       path: '/complete'
       fullPath: '/complete'
-      preLoaderRoute: typeof HeaderLayoutCompleteImport
-      parentRoute: typeof HeaderLayoutImport
+      preLoaderRoute: typeof HeaderLayoutCompleteRouteImport
+      parentRoute: typeof HeaderLayoutRoute
     }
     '/_headerLayout/test': {
       id: '/_headerLayout/test'
       path: '/test'
       fullPath: '/test'
-      preLoaderRoute: typeof HeaderLayoutTestImport
-      parentRoute: typeof HeaderLayoutImport
+      preLoaderRoute: typeof HeaderLayoutTestRouteImport
+      parentRoute: typeof HeaderLayoutRoute
     }
     '/_headerLayout/': {
       id: '/_headerLayout/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof HeaderLayoutIndexImport
-      parentRoute: typeof HeaderLayoutImport
+      preLoaderRoute: typeof HeaderLayoutIndexRouteImport
+      parentRoute: typeof HeaderLayoutRoute
     }
     '/_adminLayout/admin/analytic': {
       id: '/_adminLayout/admin/analytic'
       path: '/admin/analytic'
       fullPath: '/admin/analytic'
-      preLoaderRoute: typeof AdminLayoutAdminAnalyticImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminAnalyticRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/results': {
       id: '/_adminLayout/admin/results'
       path: '/admin/results'
       fullPath: '/admin/results'
-      preLoaderRoute: typeof AdminLayoutAdminResultsImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminResultsRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/branches/$branchId': {
       id: '/_adminLayout/admin/branches/$branchId'
       path: '/admin/branches/$branchId'
       fullPath: '/admin/branches/$branchId'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesBranchIdImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminBranchesBranchIdRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/branches/create': {
       id: '/_adminLayout/admin/branches/create'
       path: '/admin/branches/create'
       fullPath: '/admin/branches/create'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesCreateImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminBranchesCreateRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/nominations/$nominationId': {
       id: '/_adminLayout/admin/nominations/$nominationId'
       path: '/admin/nominations/$nominationId'
       fullPath: '/admin/nominations/$nominationId'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/nominations/create': {
       id: '/_adminLayout/admin/nominations/create'
       path: '/admin/nominations/create'
       fullPath: '/admin/nominations/create'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsCreateImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsCreateRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/branches/': {
       id: '/_adminLayout/admin/branches/'
       path: '/admin/branches'
       fullPath: '/admin/branches'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesIndexImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminBranchesIndexRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/nominations/': {
       id: '/_adminLayout/admin/nominations/'
       path: '/admin/nominations'
       fullPath: '/admin/nominations'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsIndexImport
-      parentRoute: typeof AdminLayoutImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsIndexRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/nominations/$nominationId/': {
       id: '/_adminLayout/admin/nominations/$nominationId/'
       path: '/'
       fullPath: '/admin/nominations/$nominationId/'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdIndexImport
-      parentRoute: typeof AdminLayoutAdminNominationsNominationIdImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdIndexRouteImport
+      parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
     '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': {
       id: '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
       path: '/questions/$questionId'
       fullPath: '/admin/nominations/$nominationId/questions/$questionId'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdImport
-      parentRoute: typeof AdminLayoutAdminNominationsNominationIdImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRouteImport
+      parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
     '/_adminLayout/admin/nominations/$nominationId/questions/create': {
       id: '/_adminLayout/admin/nominations/$nominationId/questions/create'
       path: '/questions/create'
       fullPath: '/admin/nominations/$nominationId/questions/create'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateImport
-      parentRoute: typeof AdminLayoutAdminNominationsNominationIdImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRouteImport
+      parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
     '/_adminLayout/admin/nominations/$nominationId/questions/': {
       id: '/_adminLayout/admin/nominations/$nominationId/questions/'
       path: '/questions'
       fullPath: '/admin/nominations/$nominationId/questions'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexImport
-      parentRoute: typeof AdminLayoutAdminNominationsNominationIdImport
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRouteImport
+      parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
   }
 }
-
-// Create and export the route tree
 
 interface AdminLayoutAdminNominationsNominationIdRouteChildren {
   AdminLayoutAdminNominationsNominationIdIndexRoute: typeof AdminLayoutAdminNominationsNominationIdIndexRoute
@@ -353,244 +452,10 @@ const HeaderLayoutRouteWithChildren = HeaderLayoutRoute._addFileChildren(
   HeaderLayoutRouteChildren,
 )
 
-export interface FileRoutesByFullPath {
-  '': typeof HeaderLayoutRouteWithChildren
-  '/admin': typeof HeaderLayoutAdminRoute
-  '/complete': typeof HeaderLayoutCompleteRoute
-  '/test': typeof HeaderLayoutTestRoute
-  '/': typeof HeaderLayoutIndexRoute
-  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
-  '/admin/results': typeof AdminLayoutAdminResultsRoute
-  '/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
-  '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
-  '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
-  '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
-  '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
-  '/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
-  '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
-  '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
-  '/admin/nominations/$nominationId/questions': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
-}
-
-export interface FileRoutesByTo {
-  '': typeof AdminLayoutRouteWithChildren
-  '/admin': typeof HeaderLayoutAdminRoute
-  '/complete': typeof HeaderLayoutCompleteRoute
-  '/test': typeof HeaderLayoutTestRoute
-  '/': typeof HeaderLayoutIndexRoute
-  '/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
-  '/admin/results': typeof AdminLayoutAdminResultsRoute
-  '/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
-  '/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
-  '/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/admin/branches': typeof AdminLayoutAdminBranchesIndexRoute
-  '/admin/nominations': typeof AdminLayoutAdminNominationsIndexRoute
-  '/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
-  '/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
-  '/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
-  '/admin/nominations/$nominationId/questions': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
-}
-
-export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/_adminLayout': typeof AdminLayoutRouteWithChildren
-  '/_headerLayout': typeof HeaderLayoutRouteWithChildren
-  '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
-  '/_headerLayout/complete': typeof HeaderLayoutCompleteRoute
-  '/_headerLayout/test': typeof HeaderLayoutTestRoute
-  '/_headerLayout/': typeof HeaderLayoutIndexRoute
-  '/_adminLayout/admin/analytic': typeof AdminLayoutAdminAnalyticRoute
-  '/_adminLayout/admin/results': typeof AdminLayoutAdminResultsRoute
-  '/_adminLayout/admin/branches/$branchId': typeof AdminLayoutAdminBranchesBranchIdRoute
-  '/_adminLayout/admin/branches/create': typeof AdminLayoutAdminBranchesCreateRoute
-  '/_adminLayout/admin/nominations/$nominationId': typeof AdminLayoutAdminNominationsNominationIdRouteWithChildren
-  '/_adminLayout/admin/nominations/create': typeof AdminLayoutAdminNominationsCreateRoute
-  '/_adminLayout/admin/branches/': typeof AdminLayoutAdminBranchesIndexRoute
-  '/_adminLayout/admin/nominations/': typeof AdminLayoutAdminNominationsIndexRoute
-  '/_adminLayout/admin/nominations/$nominationId/': typeof AdminLayoutAdminNominationsNominationIdIndexRoute
-  '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute
-  '/_adminLayout/admin/nominations/$nominationId/questions/create': typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRoute
-  '/_adminLayout/admin/nominations/$nominationId/questions/': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
-}
-
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | ''
-    | '/admin'
-    | '/complete'
-    | '/test'
-    | '/'
-    | '/admin/analytic'
-    | '/admin/results'
-    | '/admin/branches/$branchId'
-    | '/admin/branches/create'
-    | '/admin/nominations/$nominationId'
-    | '/admin/nominations/create'
-    | '/admin/branches'
-    | '/admin/nominations'
-    | '/admin/nominations/$nominationId/'
-    | '/admin/nominations/$nominationId/questions/$questionId'
-    | '/admin/nominations/$nominationId/questions/create'
-    | '/admin/nominations/$nominationId/questions'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | ''
-    | '/admin'
-    | '/complete'
-    | '/test'
-    | '/'
-    | '/admin/analytic'
-    | '/admin/results'
-    | '/admin/branches/$branchId'
-    | '/admin/branches/create'
-    | '/admin/nominations/create'
-    | '/admin/branches'
-    | '/admin/nominations'
-    | '/admin/nominations/$nominationId'
-    | '/admin/nominations/$nominationId/questions/$questionId'
-    | '/admin/nominations/$nominationId/questions/create'
-    | '/admin/nominations/$nominationId/questions'
-  id:
-    | '__root__'
-    | '/_adminLayout'
-    | '/_headerLayout'
-    | '/_headerLayout/admin'
-    | '/_headerLayout/complete'
-    | '/_headerLayout/test'
-    | '/_headerLayout/'
-    | '/_adminLayout/admin/analytic'
-    | '/_adminLayout/admin/results'
-    | '/_adminLayout/admin/branches/$branchId'
-    | '/_adminLayout/admin/branches/create'
-    | '/_adminLayout/admin/nominations/$nominationId'
-    | '/_adminLayout/admin/nominations/create'
-    | '/_adminLayout/admin/branches/'
-    | '/_adminLayout/admin/nominations/'
-    | '/_adminLayout/admin/nominations/$nominationId/'
-    | '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
-    | '/_adminLayout/admin/nominations/$nominationId/questions/create'
-    | '/_adminLayout/admin/nominations/$nominationId/questions/'
-  fileRoutesById: FileRoutesById
-}
-
-export interface RootRouteChildren {
-  AdminLayoutRoute: typeof AdminLayoutRouteWithChildren
-  HeaderLayoutRoute: typeof HeaderLayoutRouteWithChildren
-}
-
 const rootRouteChildren: RootRouteChildren = {
   AdminLayoutRoute: AdminLayoutRouteWithChildren,
   HeaderLayoutRoute: HeaderLayoutRouteWithChildren,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/_adminLayout",
-        "/_headerLayout"
-      ]
-    },
-    "/_adminLayout": {
-      "filePath": "_adminLayout.tsx",
-      "children": [
-        "/_adminLayout/admin/analytic",
-        "/_adminLayout/admin/results",
-        "/_adminLayout/admin/branches/$branchId",
-        "/_adminLayout/admin/branches/create",
-        "/_adminLayout/admin/nominations/$nominationId",
-        "/_adminLayout/admin/nominations/create",
-        "/_adminLayout/admin/branches/",
-        "/_adminLayout/admin/nominations/"
-      ]
-    },
-    "/_headerLayout": {
-      "filePath": "_headerLayout.tsx",
-      "children": [
-        "/_headerLayout/admin",
-        "/_headerLayout/complete",
-        "/_headerLayout/test",
-        "/_headerLayout/"
-      ]
-    },
-    "/_headerLayout/admin": {
-      "filePath": "_headerLayout/admin.tsx",
-      "parent": "/_headerLayout"
-    },
-    "/_headerLayout/complete": {
-      "filePath": "_headerLayout/complete.tsx",
-      "parent": "/_headerLayout"
-    },
-    "/_headerLayout/test": {
-      "filePath": "_headerLayout/test.tsx",
-      "parent": "/_headerLayout"
-    },
-    "/_headerLayout/": {
-      "filePath": "_headerLayout/index.tsx",
-      "parent": "/_headerLayout"
-    },
-    "/_adminLayout/admin/analytic": {
-      "filePath": "_adminLayout/admin/analytic.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/results": {
-      "filePath": "_adminLayout/admin/results.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/branches/$branchId": {
-      "filePath": "_adminLayout/admin/branches/$branchId.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/branches/create": {
-      "filePath": "_adminLayout/admin/branches/create.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/nominations/$nominationId": {
-      "filePath": "_adminLayout/admin/nominations/$nominationId.tsx",
-      "parent": "/_adminLayout",
-      "children": [
-        "/_adminLayout/admin/nominations/$nominationId/",
-        "/_adminLayout/admin/nominations/$nominationId/questions/$questionId",
-        "/_adminLayout/admin/nominations/$nominationId/questions/create",
-        "/_adminLayout/admin/nominations/$nominationId/questions/"
-      ]
-    },
-    "/_adminLayout/admin/nominations/create": {
-      "filePath": "_adminLayout/admin/nominations/create.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/branches/": {
-      "filePath": "_adminLayout/admin/branches/index.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/nominations/": {
-      "filePath": "_adminLayout/admin/nominations/index.tsx",
-      "parent": "/_adminLayout"
-    },
-    "/_adminLayout/admin/nominations/$nominationId/": {
-      "filePath": "_adminLayout/admin/nominations/$nominationId/index.tsx",
-      "parent": "/_adminLayout/admin/nominations/$nominationId"
-    },
-    "/_adminLayout/admin/nominations/$nominationId/questions/$questionId": {
-      "filePath": "_adminLayout/admin/nominations/$nominationId/questions/$questionId.tsx",
-      "parent": "/_adminLayout/admin/nominations/$nominationId"
-    },
-    "/_adminLayout/admin/nominations/$nominationId/questions/create": {
-      "filePath": "_adminLayout/admin/nominations/$nominationId/questions/create.tsx",
-      "parent": "/_adminLayout/admin/nominations/$nominationId"
-    },
-    "/_adminLayout/admin/nominations/$nominationId/questions/": {
-      "filePath": "_adminLayout/admin/nominations/$nominationId/questions/index.tsx",
-      "parent": "/_adminLayout/admin/nominations/$nominationId"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
