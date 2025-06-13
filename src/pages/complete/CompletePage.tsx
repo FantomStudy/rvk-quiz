@@ -38,7 +38,7 @@ const CompletePage = () => {
           <h2>
             Чтобы сохранить результат, обратитесь к администратору площадки
           </h2>
-          <ButtonLink size="m" to="/">
+          <ButtonLink size="m" to="/test-results">
             Перейти далее
           </ButtonLink>
         </div>
