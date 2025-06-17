@@ -15,7 +15,7 @@ const TestResultsPage = () => {
     queryFn: async () =>
       await api
         .get<
-          Array<{ userAnswer: number; correctAnswer: number }>
+          Array<{ question: string; userAnswer: string; correctAnswer: string }>
         >(`/tests/result-table/${user?.id}/${nomination?.id}`)
         .then((r) => r.data),
   });
@@ -27,25 +27,25 @@ const TestResultsPage = () => {
       <Table className={styles.resultTable}>
         <thead>
           <tr>
-            <th>Номер</th>
+            <th>Вопрос</th>
             <th>Ваш ответ</th>
             <th>Верный ответ</th>
           </tr>
         </thead>
         <tbody>
-          {data?.map((couple, index) => (
+          {data?.map((result, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
+              <td>{result.question}</td>
               <td
                 className={
-                  couple.userAnswer === couple.correctAnswer
+                  result.userAnswer === result.correctAnswer
                     ? styles.correct
                     : styles.wrong
                 }
               >
-                {couple.userAnswer}
+                {result.userAnswer}
               </td>
-              <td>{couple.correctAnswer}</td>
+              <td>{result.correctAnswer}</td>
             </tr>
           ))}
         </tbody>
