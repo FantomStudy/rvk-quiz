@@ -19,3 +19,6 @@
 .wrong {
   color: var(--danger);
 }
+.buttonContainer {
+  margin-top: 30px;
+}

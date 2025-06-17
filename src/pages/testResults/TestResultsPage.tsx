@@ -50,10 +50,11 @@ const TestResultsPage = () => {
           ))}
         </tbody>
       </Table>
-
-      <ButtonLink to="/" size="m" color="primary">
-        На главную
-      </ButtonLink>
+      <div className={styles.buttonContainer}>
+        <ButtonLink to="/" size="m" color="primary">
+          На главную
+        </ButtonLink>
+      </div>
     </div>
   );
 };
