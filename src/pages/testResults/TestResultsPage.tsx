@@ -24,9 +24,13 @@ const TestResultsPage = () => {
 
   return (
     <div className="container">
+      <h2 style={{ textAlign: "center", marginBottom: 30 }}>
+        Вы можете ознакомиться и сфотографировать свои результаты
+      </h2>
       <Table className={styles.resultTable}>
         <thead>
           <tr>
+            <th>Номер</th>
             <th>Вопрос</th>
             <th>Ваш ответ</th>
             <th>Верный ответ</th>
@@ -35,6 +39,7 @@ const TestResultsPage = () => {
         <tbody>
           {data?.map((result, index) => (
             <tr key={index}>
+              <td>{index + 1}</td>
               <td>{result.question}</td>
               <td
                 className={
@@ -51,7 +56,7 @@ const TestResultsPage = () => {
         </tbody>
       </Table>
       <div className={styles.buttonContainer}>
-        <ButtonLink to="/" size="m" color="primary">
+        <ButtonLink to="/" size="l" className={styles.button}>
           На главную
         </ButtonLink>
       </div>

@@ -36,11 +36,10 @@ const CompletePage = () => {
         <p>Ваш номер: {user.number}</p>
         <div className={styles.saveButtonContainer}>
           <h2>
-            Чтобы сохранить результат, обратитесь к администратору площадки
+            Чтобы сохранить результат, обратитесь к администратору и сообщите
+            ваше ФИО и номер
           </h2>
-          <ButtonLink size="m" to="/test-results">
-            Перейти далее
-          </ButtonLink>
+          <ButtonLink  to="/test-results">Просмотр результатов</ButtonLink>
         </div>
       </div>
       <PieChart width={400} height={400}>

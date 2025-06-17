@@ -61,7 +61,7 @@ const TestPage = () => {
           <form className={styles.form}>
             <h1>{questions[currentStep].text}</h1>
             {isLoading || !currentQuestion.photoName ? null : (
-              <img src={image} alt="image" />
+              <img src={image} alt="image" className={styles.testImage} />
             )}
 
             <div className={styles.stripe}></div>
