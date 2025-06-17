@@ -23,7 +23,7 @@ const CompletePage = () => {
 
   return (
     <div className={styles.completePage}>
-      <div>
+      <div className={styles.completeInfo}>
         <h1>Тест завершен</h1>
         <div className={styles.testInfo}>
           <p>Тест в номинации</p>

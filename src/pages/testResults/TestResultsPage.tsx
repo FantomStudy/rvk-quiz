@@ -4,6 +4,7 @@ import { useTestStore } from "@features/user/test-passing/model/testStore";
 
 import api from "@shared/api";
 import { Table } from "@shared/ui";
+import ButtonLink from "@shared/ui/button/ButtonLink";
 
 import styles from "./TestResultsPage.module.css";
 
@@ -49,6 +50,10 @@ const TestResultsPage = () => {
           ))}
         </tbody>
       </Table>
+
+      <ButtonLink to="/" size="m" color="primary">
+        На главную
+      </ButtonLink>
     </div>
   );
 };
