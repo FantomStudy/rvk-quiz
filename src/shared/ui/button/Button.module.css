@@ -32,7 +32,7 @@
 .transparent {
   color: #000;
   border: 1px solid var(--border-gray);
-  background-color: transparent;
+  background-color: white;
 }
 .transparent:hover {
   background-color: #ebebeb;
@@ -41,7 +41,6 @@
 .s {
   padding: 10px 15px;
   border-radius: 5px;
-  font-size: 18px;
 }
 .m {
   padding: 10px 80px;

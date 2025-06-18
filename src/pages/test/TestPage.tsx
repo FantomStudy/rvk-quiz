@@ -48,15 +48,23 @@ const TestPage = () => {
     <>
       <div className="container">
         <div className={styles.testPage}>
-          <Timer
-            duration={nomination!.duration}
-            onEnd={() =>
-              mutate({
-                answers,
-                userId: user!.id,
-              })
-            }
-          />
+          <div className={styles.head}>
+            <Timer
+              duration={nomination!.duration}
+              onEnd={() =>
+                mutate({
+                  answers,
+                  userId: user!.id,
+                })
+              }
+            />
+            <Button size="s" color="primary">
+              {nomination?.name}
+            </Button>
+            <Button size="s" color="secondary">
+              Вопрос {currentStep + 1} из {questions.length}
+            </Button>
+          </div>
 
           <form className={styles.form}>
             <h1>{questions[currentStep].text}</h1>
@@ -83,12 +91,6 @@ const TestPage = () => {
               </div>
             ))}
           </form>
-          <Button size="s" color="secondary">
-            Вопрос {currentStep + 1} из {questions.length}
-          </Button>
-          <Button size="s" color="primary">
-            {nomination?.name}
-          </Button>
           <div className={styles.progressBar}>
             <Button
               size="s"

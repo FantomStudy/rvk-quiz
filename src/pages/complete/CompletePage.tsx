@@ -35,10 +35,6 @@ const CompletePage = () => {
         <p>Время прохождение {duration}</p>
         <p>Ваш номер: {user.number}</p>
         <div className={styles.saveButtonContainer}>
-          <h2>
-            Чтобы сохранить результат, обратитесь к администратору и сообщите
-            ваше ФИО и номер
-          </h2>
           <ButtonLink  to="/test-results">Просмотр результатов</ButtonLink>
         </div>
       </div>

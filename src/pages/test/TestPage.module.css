@@ -4,9 +4,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
 }
-
+.head {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 50px;
+}
 .timer {
   display: flex;
   justify-content: center;
@@ -17,7 +22,7 @@
   width: 45px;
 }
 .timer p {
-  font-size: 24px;
+  font-size: 20px;
   color: var(--primary);
   font-weight: 500;
 }
@@ -27,52 +32,57 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 35px;
+  gap: 15px;
   max-width: 80%;
-  padding: 45px;
-  background-color: var(--primary);
-  color: #fff;
+  padding: 30px;
+  background-color: #ffffffae;
+  border: 1px solid #00000010;
+  backdrop-filter: blur(15px);
+  color: #000;
+
   border-radius: 10px;
 }
 .form h1 {
-  font-size: 32px;
+  font-size: 24px;
 }
 .testImage {
-  width: 925px;
-  height: 345px;
+  width: 100%;
+  max-width: 725px;
+  max-height: 345px;
   object-fit: cover;
   object-position: center;
   align-self: center;
+  border-radius: 10px;
 }
 .stripe {
   width: 100%;
   height: 2px;
-  background-color: #fff;
+  background-color: #00000010;
 }
 
 label {
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 .radio {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 7px;
   border-radius: 10px;
 }
 input[type="radio"] {
-  transform: scale(2);
+  transform: scale(1.5);
   cursor: pointer;
 }
 .radio:has(input:checked) {
-  background-color: var(--secondary);
+  background-color: #00000010;
 }
 .time {
   display: flex;
   gap: 10px;
 }
 .time p {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 }
 .active {

@@ -25,6 +25,10 @@ const TestResultsPage = () => {
   return (
     <div className="container">
       <h2 style={{ textAlign: "center", marginBottom: 30 }}>
+        Чтобы сохранить результат, обратитесь к администратору и сообщите ваше
+        ФИО и номер
+      </h2>
+      <h2 style={{ textAlign: "center", marginBottom: 30 }}>
         Вы можете ознакомиться и сфотографировать свои результаты
       </h2>
       <Table className={styles.resultTable}>
@@ -57,7 +61,7 @@ const TestResultsPage = () => {
       </Table>
       <div className={styles.buttonContainer}>
         <ButtonLink to="/" size="l" className={styles.button}>
-          На главную
+          Завершить тестирование
         </ButtonLink>
       </div>
     </div>
