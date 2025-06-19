@@ -1,28 +1,21 @@
 .testPage {
   height: 80dvh;
   display: flex;
+  justify-content: center;
+}
+.pageContainer {
+  width: 80%;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  gap: 15px;
 }
 
-.timer {
+.timerContainer {
   position: absolute;
   top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
 }
-.timer img {
-  width: 45px;
-}
-.timer p {
-  font-size: 20px;
-  color: var(--primary);
-  font-weight: 500;
-}
+
 .dataContainer {
   width: 100%;
   display: flex;
@@ -30,13 +23,17 @@
   flex-direction: column;
   gap: 10px;
 }
+.data {
+  display: flex;
+  grid-gap: 10px;
+}
 .form {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-  max-width: 80%;
+  box-sizing: border-box;
   padding: 30px;
   background-color: #f3f7ffae;
   border: 1px solid #00000010;
@@ -80,17 +77,6 @@ input[type="radio"] {
 .radio:has(input:checked) {
   background-color: #00000010;
 }
-.time {
-  display: flex;
-  gap: 10px;
-}
-.time p {
-  font-size: 18px;
-  font-weight: 600;
-}
-.active {
-  color: var(--primary);
-}
 
 progress {
   width: 100%;
@@ -98,7 +84,6 @@ progress {
   border-radius: 10px;
   background-color: var(--border-gray);
 }
-
 progress::-webkit-progress-bar {
   background-color: var(--border-gray);
   border-radius: 10px;
@@ -113,12 +98,13 @@ progress::-moz-progress-bar {
   border-radius: 10px;
 }
 .progressBar {
-  width: 85%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
+
 .wave {
   position: absolute;
   top: 200px;

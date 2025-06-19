@@ -135,6 +135,7 @@ const AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
+  '': typeof HeaderLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
   '/complete': typeof HeaderLayoutCompleteRoute
   '/test': typeof HeaderLayoutTestRoute
@@ -154,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/admin/nominations/$nominationId/questions': typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRoute
 }
 export interface FileRoutesByTo {
+  '': typeof AdminLayoutRouteWithChildren
   '/admin': typeof HeaderLayoutAdminRoute
   '/complete': typeof HeaderLayoutCompleteRoute
   '/test': typeof HeaderLayoutTestRoute
@@ -196,6 +198,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | ''
     | '/admin'
     | '/complete'
     | '/test'
@@ -215,6 +218,7 @@ export interface FileRouteTypes {
     | '/admin/nominations/$nominationId/questions'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | ''
     | '/admin'
     | '/complete'
     | '/test'

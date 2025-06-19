@@ -1,4 +1,4 @@
-import Timer from "@widgets/Timer";
+import Timer from "@widgets/timer/Timer";
 
 import { useTestStore } from "@features/test-pass/store/testStore";
 import { useFinishTest } from "@features/test-session";
@@ -48,65 +48,72 @@ const TestPage = () => {
     <>
       <div className="container">
         <div className={styles.testPage}>
-          <Timer
-            duration={nomination!.duration}
-            onEnd={() =>
-              mutate({
-                answers,
-                userId: user!.id,
-              })
-            }
-          />
-
-          <form className={styles.form}>
-            <h1>{questions[currentStep].text}</h1>
-            {isLoading || !currentQuestion.photoName ? null : (
-              <img src={image} alt="image" className={styles.testImage} />
-            )}
-
-            <div className={styles.stripe}></div>
-            {currentQuestion.options.map((option) => (
-              <div className={styles.radio} key={option.id}>
-                <input
-                  type="radio"
-                  id={option.id.toString()}
-                  name="options"
-                  checked={selected === option.id}
-                  onChange={() =>
-                    answerQuestion({
-                      questionId: currentQuestion.id,
-                      optionId: option.id,
-                    })
-                  }
-                />
-                <label htmlFor={option.id.toString()}>{option.answer}</label>
-              </div>
-            ))}
-          </form>
-          <div className={styles.dataContainer}>
-            <Button size="s" color="secondary">
-              Вопрос {currentStep + 1} из {questions.length}
-            </Button>
-            <Button size="s" color="primary">
-              {nomination?.name}
-            </Button>
-            <div className={styles.progressBar}>
-              <Button
-                size="s"
-                color="transparent"
-                onClick={prevStep}
-                disabled={currentStep === 0}
-              >
-                Назад
-              </Button>
-              <progress
-                value={currentStep + 1}
-                max={questions.length}
-                className={styles.progress}
+          <div className={styles.pageContainer}>
+            <div className={styles.timerContainer}>
+              <Timer
+                duration={nomination!.duration}
+                onEnd={() =>
+                  mutate({
+                    answers,
+                    userId: user!.id,
+                  })
+                }
               />
-              <Button size="s" color="danger" onClick={handleNextStep}>
-                {isLast ? "Завершить" : "Далее"}
-              </Button>
+            </div>
+
+            <form className={styles.form}>
+              <h1>{questions[currentStep].text}</h1>
+              {isLoading || !currentQuestion.photoName ? null : (
+                <img src={image} alt="image" className={styles.testImage} />
+              )}
+
+              <div className={styles.stripe}></div>
+              {currentQuestion.options.map((option) => (
+                <div className={styles.radio} key={option.id}>
+                  <input
+                    type="radio"
+                    id={option.id.toString()}
+                    name="options"
+                    checked={selected === option.id}
+                    onChange={() =>
+                      answerQuestion({
+                        questionId: currentQuestion.id,
+                        optionId: option.id,
+                      })
+                    }
+                  />
+                  <label htmlFor={option.id.toString()}>{option.answer}</label>
+                </div>
+              ))}
+            </form>
+            <div className={styles.dataContainer}>
+              <div className={styles.data}>
+                <Button size="s" color="secondary">
+                  Вопрос {currentStep + 1} из {questions.length}
+                </Button>
+                <Button size="s" color="primary">
+                  {nomination?.name}
+                </Button>
+              </div>
+
+              <div className={styles.progressBar}>
+                <Button
+                  size="s"
+                  color="transparent"
+                  onClick={prevStep}
+                  disabled={currentStep === 0}
+                >
+                  Назад
+                </Button>
+                <progress
+                  value={currentStep + 1}
+                  max={questions.length}
+                  className={styles.progress}
+                />
+                <Button size="s" color="danger" onClick={handleNextStep}>
+                  {isLast ? "Завершить" : "Далее"}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
