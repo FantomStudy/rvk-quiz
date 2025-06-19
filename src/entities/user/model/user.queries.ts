@@ -2,7 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import { fetchUser, fetchUserList } from "@entities/user/api/userApi";
 
-import { userKeys } from "./queryKeys";
+import { userKeys } from "./user.keys";
 
 export const userListQuery = () =>
   queryOptions({

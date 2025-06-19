@@ -5,7 +5,7 @@ import type {
   StartTestForm,
   StartTestResponse,
   TestAnswer,
-} from "../model/test";
+} from "../types";
 
 export const startTest = async (form: StartTestForm) => {
   const response = await api.post<StartTestResponse>("/tests/start", form);
@@ -17,7 +17,6 @@ export const finishTest = async (userId: number, answers: TestAnswer[]) => {
     `/tests/${userId}/finish`,
     answers,
   );
-  console.log(response.data);
 
   return response.data;
 };

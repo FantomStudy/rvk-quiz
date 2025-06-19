@@ -20,7 +20,7 @@ export interface TestQuestion {
   options: TestOption[];
 }
 
-export interface TestOption {
+interface TestOption {
   id: number;
   answer: string;
 }
@@ -28,6 +28,11 @@ export interface TestOption {
 export interface TestAnswer {
   questionId: number;
   optionId: number;
+}
+
+export interface FinishTestPayload {
+  userId: number;
+  answers: TestAnswer[];
 }
 
 export interface ResultResponse {

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useTestStore } from "@features/user/test-passing/model/testStore";
+import { useTestStore } from "@features/test-pass/store/testStore";
 
 import api from "@shared/api";
 import { Table } from "@shared/ui";

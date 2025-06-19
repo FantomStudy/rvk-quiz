@@ -1,7 +1,3 @@
-export * from "./api/userApi";
+export { userListQuery, userQuery } from "./model/user.queries";
 
-export * from "./model/queryKeys";
-
-export * from "./model/queryOptions";
-
-export type * from "./model/user";
+export type { User } from "./model/user";

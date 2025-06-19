@@ -1,7 +1,7 @@
 import Timer from "@widgets/Timer";
 
-import { useFinishTest } from "@features/user/test-passing/model/mutations";
-import { useTestStore } from "@features/user/test-passing/model/testStore";
+import { useTestStore } from "@features/test-pass/store/testStore";
+import { useFinishTest } from "@features/test-session";
 
 import { useQuestionPhoto } from "@entities/question/model/queries";
 

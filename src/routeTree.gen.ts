@@ -265,13 +265,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_adminLayout': {
-      id: '/_adminLayout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AdminLayoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_headerLayout': {
       id: '/_headerLayout'
       path: ''
@@ -279,25 +272,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_headerLayout/admin': {
-      id: '/_headerLayout/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof HeaderLayoutAdminRouteImport
-      parentRoute: typeof HeaderLayoutRoute
+    '/_adminLayout': {
+      id: '/_adminLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AdminLayoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_headerLayout/complete': {
-      id: '/_headerLayout/complete'
-      path: '/complete'
-      fullPath: '/complete'
-      preLoaderRoute: typeof HeaderLayoutCompleteRouteImport
-      parentRoute: typeof HeaderLayoutRoute
-    }
-    '/_headerLayout/test': {
-      id: '/_headerLayout/test'
-      path: '/test'
-      fullPath: '/test'
-      preLoaderRoute: typeof HeaderLayoutTestRouteImport
+    '/_headerLayout/': {
+      id: '/_headerLayout/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof HeaderLayoutIndexRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
     '/_headerLayout/test-results': {
@@ -307,19 +293,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutTestResultsRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
-    '/_headerLayout/': {
-      id: '/_headerLayout/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof HeaderLayoutIndexRouteImport
+    '/_headerLayout/test': {
+      id: '/_headerLayout/test'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof HeaderLayoutTestRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
-    '/_adminLayout/admin/analytic': {
-      id: '/_adminLayout/admin/analytic'
-      path: '/admin/analytic'
-      fullPath: '/admin/analytic'
-      preLoaderRoute: typeof AdminLayoutAdminAnalyticRouteImport
-      parentRoute: typeof AdminLayoutRoute
+    '/_headerLayout/complete': {
+      id: '/_headerLayout/complete'
+      path: '/complete'
+      fullPath: '/complete'
+      preLoaderRoute: typeof HeaderLayoutCompleteRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
+    '/_headerLayout/admin': {
+      id: '/_headerLayout/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof HeaderLayoutAdminRouteImport
+      parentRoute: typeof HeaderLayoutRoute
     }
     '/_adminLayout/admin/results': {
       id: '/_adminLayout/admin/results'
@@ -328,39 +321,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminResultsRouteImport
       parentRoute: typeof AdminLayoutRoute
     }
-    '/_adminLayout/admin/branches/$branchId': {
-      id: '/_adminLayout/admin/branches/$branchId'
-      path: '/admin/branches/$branchId'
-      fullPath: '/admin/branches/$branchId'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesBranchIdRouteImport
-      parentRoute: typeof AdminLayoutRoute
-    }
-    '/_adminLayout/admin/branches/create': {
-      id: '/_adminLayout/admin/branches/create'
-      path: '/admin/branches/create'
-      fullPath: '/admin/branches/create'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesCreateRouteImport
-      parentRoute: typeof AdminLayoutRoute
-    }
-    '/_adminLayout/admin/nominations/$nominationId': {
-      id: '/_adminLayout/admin/nominations/$nominationId'
-      path: '/admin/nominations/$nominationId'
-      fullPath: '/admin/nominations/$nominationId'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdRouteImport
-      parentRoute: typeof AdminLayoutRoute
-    }
-    '/_adminLayout/admin/nominations/create': {
-      id: '/_adminLayout/admin/nominations/create'
-      path: '/admin/nominations/create'
-      fullPath: '/admin/nominations/create'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsCreateRouteImport
-      parentRoute: typeof AdminLayoutRoute
-    }
-    '/_adminLayout/admin/branches/': {
-      id: '/_adminLayout/admin/branches/'
-      path: '/admin/branches'
-      fullPath: '/admin/branches'
-      preLoaderRoute: typeof AdminLayoutAdminBranchesIndexRouteImport
+    '/_adminLayout/admin/analytic': {
+      id: '/_adminLayout/admin/analytic'
+      path: '/admin/analytic'
+      fullPath: '/admin/analytic'
+      preLoaderRoute: typeof AdminLayoutAdminAnalyticRouteImport
       parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/nominations/': {
@@ -370,6 +335,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminNominationsIndexRouteImport
       parentRoute: typeof AdminLayoutRoute
     }
+    '/_adminLayout/admin/branches/': {
+      id: '/_adminLayout/admin/branches/'
+      path: '/admin/branches'
+      fullPath: '/admin/branches'
+      preLoaderRoute: typeof AdminLayoutAdminBranchesIndexRouteImport
+      parentRoute: typeof AdminLayoutRoute
+    }
+    '/_adminLayout/admin/nominations/create': {
+      id: '/_adminLayout/admin/nominations/create'
+      path: '/admin/nominations/create'
+      fullPath: '/admin/nominations/create'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsCreateRouteImport
+      parentRoute: typeof AdminLayoutRoute
+    }
+    '/_adminLayout/admin/nominations/$nominationId': {
+      id: '/_adminLayout/admin/nominations/$nominationId'
+      path: '/admin/nominations/$nominationId'
+      fullPath: '/admin/nominations/$nominationId'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdRouteImport
+      parentRoute: typeof AdminLayoutRoute
+    }
+    '/_adminLayout/admin/branches/create': {
+      id: '/_adminLayout/admin/branches/create'
+      path: '/admin/branches/create'
+      fullPath: '/admin/branches/create'
+      preLoaderRoute: typeof AdminLayoutAdminBranchesCreateRouteImport
+      parentRoute: typeof AdminLayoutRoute
+    }
+    '/_adminLayout/admin/branches/$branchId': {
+      id: '/_adminLayout/admin/branches/$branchId'
+      path: '/admin/branches/$branchId'
+      fullPath: '/admin/branches/$branchId'
+      preLoaderRoute: typeof AdminLayoutAdminBranchesBranchIdRouteImport
+      parentRoute: typeof AdminLayoutRoute
+    }
     '/_adminLayout/admin/nominations/$nominationId/': {
       id: '/_adminLayout/admin/nominations/$nominationId/'
       path: '/'
@@ -377,11 +377,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdIndexRouteImport
       parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
-    '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': {
-      id: '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
-      path: '/questions/$questionId'
-      fullPath: '/admin/nominations/$nominationId/questions/$questionId'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRouteImport
+    '/_adminLayout/admin/nominations/$nominationId/questions/': {
+      id: '/_adminLayout/admin/nominations/$nominationId/questions/'
+      path: '/questions'
+      fullPath: '/admin/nominations/$nominationId/questions'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRouteImport
       parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
     '/_adminLayout/admin/nominations/$nominationId/questions/create': {
@@ -391,11 +391,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsCreateRouteImport
       parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
-    '/_adminLayout/admin/nominations/$nominationId/questions/': {
-      id: '/_adminLayout/admin/nominations/$nominationId/questions/'
-      path: '/questions'
-      fullPath: '/admin/nominations/$nominationId/questions'
-      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsIndexRouteImport
+    '/_adminLayout/admin/nominations/$nominationId/questions/$questionId': {
+      id: '/_adminLayout/admin/nominations/$nominationId/questions/$questionId'
+      path: '/questions/$questionId'
+      fullPath: '/admin/nominations/$nominationId/questions/$questionId'
+      preLoaderRoute: typeof AdminLayoutAdminNominationsNominationIdQuestionsQuestionIdRouteImport
       parentRoute: typeof AdminLayoutAdminNominationsNominationIdRoute
     }
   }

@@ -1,6 +1,6 @@
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 
-import { useResult } from "@features/user/test-passing/model/testStore";
+import { useResult } from "@features/test-pass/store/testStore";
 
 import ButtonLink from "@shared/ui/button/ButtonLink";
 
@@ -35,7 +35,7 @@ const CompletePage = () => {
         <p>Время прохождение {duration}</p>
         <p>Ваш номер: {user.number}</p>
         <div className={styles.saveButtonContainer}>
-          <ButtonLink  to="/test-results">Просмотр результатов</ButtonLink>
+          <ButtonLink to="/test-results">Просмотр результатов</ButtonLink>
         </div>
       </div>
       <PieChart width={400} height={400}>

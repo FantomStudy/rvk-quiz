@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import type { Nomination } from "@entities/nomination";
-import type { User } from "@entities/user";
-
 import type {
   ResultResponse,
   StartTestResponse,
   TestAnswer,
   TestQuestion,
-} from "./test";
+} from "@features/test-session";
+
+import type { Nomination } from "@entities/nomination";
+import type { User } from "@entities/user";
 
 interface TestState {
   user: User | null;
