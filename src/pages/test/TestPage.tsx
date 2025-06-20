@@ -50,6 +50,12 @@ const TestPage = () => {
         <div className={styles.testPage}>
           <div className={styles.pageContainer}>
             <div className={styles.timerContainer}>
+              <Button size="s" color="primary">
+                {nomination?.name}
+              </Button>
+              <Button size="s" color="secondary">
+                Вопрос {currentStep + 1} из {questions.length}
+              </Button>
               <Timer
                 duration={nomination!.duration}
                 onEnd={() =>
@@ -86,34 +92,24 @@ const TestPage = () => {
                 </div>
               ))}
             </form>
-            <div className={styles.dataContainer}>
-              <div className={styles.data}>
-                <Button size="s" color="secondary">
-                  Вопрос {currentStep + 1} из {questions.length}
-                </Button>
-                <Button size="s" color="primary">
-                  {nomination?.name}
-                </Button>
-              </div>
 
-              <div className={styles.progressBar}>
-                <Button
-                  size="s"
-                  color="transparent"
-                  onClick={prevStep}
-                  disabled={currentStep === 0}
-                >
-                  Назад
-                </Button>
-                <progress
-                  value={currentStep + 1}
-                  max={questions.length}
-                  className={styles.progress}
-                />
-                <Button size="s" color="danger" onClick={handleNextStep}>
-                  {isLast ? "Завершить" : "Далее"}
-                </Button>
-              </div>
+            <div className={styles.progressBar}>
+              <Button
+                size="s"
+                color="transparent"
+                onClick={prevStep}
+                disabled={currentStep === 0}
+              >
+                Назад
+              </Button>
+              <progress
+                value={currentStep + 1}
+                max={questions.length}
+                className={styles.progress}
+              />
+              <Button size="s" color="danger" onClick={handleNextStep}>
+                {isLast ? "Завершить" : "Далее"}
+              </Button>
             </div>
           </div>
         </div>

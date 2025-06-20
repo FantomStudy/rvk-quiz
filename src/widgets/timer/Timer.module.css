@@ -2,10 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .timer img {
-  width: 45px;
+  width: 40px;
 }
 .timer p {
   font-size: 20px;
