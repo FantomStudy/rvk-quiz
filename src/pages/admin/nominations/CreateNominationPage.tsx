@@ -2,7 +2,7 @@ import { type ChangeEvent, type FormEvent, useState } from "react";
 
 import { useCreateNomination } from "@features/admin/nomination-control/useCreateNomination";
 
-import type { CreateNomination } from "@entities/nomination";
+import type { CreateNomination } from "@entities/nomination/model/nominaition";
 
 import { Button, Input } from "@shared/ui";
 import ButtonLink from "@shared/ui/button/ButtonLink";

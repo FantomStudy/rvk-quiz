@@ -5,7 +5,7 @@ import { getRouteApi } from "@tanstack/react-router";
 import { useDeleteNomination } from "@features/admin/nomination-control/useDeleteNomination";
 import { useUpdateNomination } from "@features/admin/nomination-control/useUpdateNomination";
 
-import type { CreateNomination } from "@entities/nomination";
+import type { CreateNomination } from "@entities/nomination/model/nominaition";
 
 import { Button, Input } from "@shared/ui";
 
