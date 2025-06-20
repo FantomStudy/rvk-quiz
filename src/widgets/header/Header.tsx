@@ -7,11 +7,7 @@ const Header = () => {
         <div className={styles.headerWrapper}>
           <img src="/logo/master-logo.svg" alt="master-logo" />
 
-          <img
-            src="/logo/rvk-logo.svg"
-            alt="rosvodokanal-logo"
-            className={styles.centerElement}
-          />
+          <img src="/logo/rvk-logo.svg" alt="rosvodokanal-logo" />
         </div>
       </div>
     </header>

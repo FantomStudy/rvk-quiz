@@ -3,7 +3,7 @@ import Timer from "@widgets/timer/Timer";
 import { useTestStore } from "@features/test-pass/store/testStore";
 import { useFinishTest } from "@features/test-session";
 
-import { useQuestionPhoto } from "@entities/question/model/queries";
+import { useQuestionPhoto } from "@entities/question/model/question.queries";
 
 import { Button } from "@shared/ui";
 
@@ -25,7 +25,7 @@ const TestPage = () => {
 
   const currentQuestion = questions[currentStep];
   const selectedAnswer = getAnswerForQuestion(currentQuestion?.id);
-  const selected = selectedAnswer?.optionId;
+  const selected = selectedAnswer?.optionId ?? null;
   const isLast = currentStep === questions.length - 1;
 
   const { data: image, isLoading } = useQuestionPhoto(

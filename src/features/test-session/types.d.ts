@@ -27,7 +27,7 @@ interface TestOption {
 
 export interface TestAnswer {
   questionId: number;
-  optionId: number;
+  optionId: number | null;
 }
 
 export interface FinishTestPayload {

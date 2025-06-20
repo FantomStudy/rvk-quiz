@@ -17,6 +17,7 @@ export const finishTest = async (userId: number, answers: TestAnswer[]) => {
     `/tests/${userId}/finish`,
     answers,
   );
+  console.log(response.data);
 
   return response.data;
 };

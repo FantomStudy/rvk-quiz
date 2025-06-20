@@ -1,11 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import {
-  type CreateNomination,
-  nominationKeys,
-  updateNomination,
-} from "@entities/nomination";
+import { updateNomination } from "@entities/nomination/api/nomination.api";
+import type { CreateNomination } from "@entities/nomination/model/nominaition";
+import { nominationKeys } from "@entities/nomination/model/nomination.keys";
 
 export const useUpdateNomination = () => {
   const queryClient = useQueryClient();

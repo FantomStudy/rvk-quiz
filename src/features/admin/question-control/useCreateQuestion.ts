@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { createQuestion } from "@entities/question/api/questionApi";
-import { questionKeys } from "@entities/question/model/queryKeys";
+import { createQuestion } from "@entities/question/api/question.api";
 import type { CreateQuestion } from "@entities/question/model/question";
+import { questionKeys } from "@entities/question/model/question.keys";
 
 export const useCreateQuestion = () => {
   const queryClient = useQueryClient();

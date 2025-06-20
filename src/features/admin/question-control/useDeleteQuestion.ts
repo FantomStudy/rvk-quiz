@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "@tanstack/react-router";
 
-import { deleteQuestion } from "@entities/question/api/questionApi";
-import { questionKeys } from "@entities/question/model/queryKeys";
+import { deleteQuestion } from "@entities/question/api/question.api";
+import { questionKeys } from "@entities/question/model/question.keys";
 
 export const useDeleteQuestion = () => {
   const { nominationId } = useParams({

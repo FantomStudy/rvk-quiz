@@ -1,7 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { fetchNomination, fetchNominationList } from "../api/nominationApi";
-import { nominationKeys } from "./queryKeys";
+import { fetchNomination, fetchNominationList } from "../api/nomination.api";
+import { nominationKeys } from "./nomination.keys";
 
 export const nominationListQuery = () =>
   queryOptions({

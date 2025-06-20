@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
-import { nominationQuery } from "@entities/nomination";
+import { nominationQuery } from "@entities/nomination/model/nomination.queries";
 
 export const Route = createFileRoute(
   "/_adminLayout/admin/nominations/$nominationId",

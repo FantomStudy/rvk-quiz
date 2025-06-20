@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { NominationsPage } from "@pages/admin";
 
-import { nominationListQuery } from "@entities/nomination";
+import { nominationListQuery } from "@entities/nomination/model/nomination.queries";
 
 export const Route = createFileRoute("/_adminLayout/admin/nominations/")({
   component: NominationsPage,

@@ -8,7 +8,7 @@ import type {
   TestQuestion,
 } from "@features/test-session";
 
-import type { Nomination } from "@entities/nomination";
+import type { Nomination } from "@entities/nomination/model/nominaition";
 import type { User } from "@entities/user";
 
 interface TestState {
@@ -65,6 +65,27 @@ export const useTestStore = create<TestState>()(
       setResult: (result) => set({ result }),
 
       nextStep: () => {
+        const state = get();
+        const currentQuestion = state.questions[state.currentStep];
+
+        // Автоматически сохраняем ответ для текущего вопроса, если он еще не сохранен
+        if (currentQuestion) {
+          const existingAnswer = state.answers.find(
+            (a) => a.questionId === currentQuestion.id,
+          );
+          if (!existingAnswer) {
+            const answers = [
+              ...state.answers,
+              { questionId: currentQuestion.id, optionId: null },
+            ];
+            set({
+              currentStep: state.currentStep + 1,
+              answers,
+            });
+            return;
+          }
+        }
+
         set((state) => ({
           currentStep: state.currentStep + 1,
         }));

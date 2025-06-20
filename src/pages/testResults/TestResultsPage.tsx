@@ -19,7 +19,6 @@ const TestResultsPage = () => {
         >(`/tests/result-table/${user?.id}/${nomination?.id}`)
         .then((r) => r.data),
   });
-
   console.log(data);
 
   return (

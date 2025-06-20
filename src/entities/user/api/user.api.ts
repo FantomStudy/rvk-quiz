@@ -12,7 +12,6 @@ export const fetchUser = async (id: number) => {
   return response.data;
 };
 
-// CRUD API
 export const createUser = async (user: CreateUser) => {
   const response = await api.post("/user/create", user);
   return response.data;
