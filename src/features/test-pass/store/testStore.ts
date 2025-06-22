@@ -23,6 +23,7 @@ interface TestState {
   getAnswerForQuestion: (questionId: number) => TestAnswer | undefined;
   setResult: (result: ResultResponse["result"]) => void;
   resetTest: () => void;
+  ensureAnswerForCurrentQuestion: () => void;
   nextStep: () => void;
   prevStep: () => void;
 }
@@ -64,11 +65,10 @@ export const useTestStore = create<TestState>()(
 
       setResult: (result) => set({ result }),
 
-      nextStep: () => {
+      ensureAnswerForCurrentQuestion: () => {
         const state = get();
         const currentQuestion = state.questions[state.currentStep];
 
-        // Автоматически сохраняем ответ для текущего вопроса, если он еще не сохранен
         if (currentQuestion) {
           const existingAnswer = state.answers.find(
             (a) => a.questionId === currentQuestion.id,
@@ -79,13 +79,14 @@ export const useTestStore = create<TestState>()(
               { questionId: currentQuestion.id, optionId: null },
             ];
             set({
-              currentStep: state.currentStep + 1,
               answers,
             });
-            return;
           }
         }
+      },
 
+      nextStep: () => {
+        get().ensureAnswerForCurrentQuestion();
         set((state) => ({
           currentStep: state.currentStep + 1,
         }));
@@ -103,6 +104,7 @@ export const useTestStore = create<TestState>()(
           nomination: null,
           questions: [],
           answers: [],
+          result: null,
           currentStep: 0,
         }),
     }),

@@ -20,6 +20,7 @@ const TestPage = () => {
     prevStep,
     answerQuestion,
     getAnswerForQuestion,
+    ensureAnswerForCurrentQuestion,
   } = useTestStore();
   const { mutate } = useFinishTest();
 
@@ -38,8 +39,11 @@ const TestPage = () => {
       return;
     }
 
+    ensureAnswerForCurrentQuestion();
+    const finalAnswers = useTestStore.getState().answers;
+
     mutate({
-      answers,
+      answers: finalAnswers,
       userId: user!.id,
     });
   };
@@ -58,12 +62,14 @@ const TestPage = () => {
               </Button>
               <Timer
                 duration={nomination!.duration}
-                onEnd={() =>
+                onEnd={() => {
+                  ensureAnswerForCurrentQuestion();
+                  const finalAnswers = useTestStore.getState().answers;
                   mutate({
-                    answers,
+                    answers: finalAnswers,
                     userId: user!.id,
-                  })
-                }
+                  });
+                }}
               />
             </div>
 
