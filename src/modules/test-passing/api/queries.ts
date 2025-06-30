@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { useSetTestResult, useTestResult } from "@/store/selectors";
+import { useSetTestResult } from "@/store/selectors";
 import type { UserAnswer } from "@/types/test";
 
 import { fetchQuestionPhoto, finishTest } from "./api";
