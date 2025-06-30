@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 40px;
+}
+.metricWrapper {
+  display: flex;
+  grid-gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filterWrapper {
+  display: flex;
+  grid-gap: 15px;
+}
+
+.selectMini {
+  width: 230px;
+  height: auto;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  padding-right: 40px;
+  /* max-width: 200px; */
+}

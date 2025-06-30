@@ -1,46 +1,37 @@
-import js from "@eslint/js";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { globalIgnores } from 'eslint/config'
+import plugin from '@tanstack/eslint-plugin-router'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
-export default tseslint.config(
-  { ignores: ["dist"] },
+export default tseslint.config([
+  globalIgnores(['dist']),
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite,
+      plugin.configs['flat/recommended'],
+      pluginQuery.configs['flat/recommended'] ,
+    ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-      "@tanstack/query": pluginQuery,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
-      "@tanstack/query/exhaustive-deps": "error",
-    },
     settings: {
-      "import/resolver": {
+      'import/resolver': {
         alias: {
           map: [
-            ["@", "./src"],
-            ["@app", "./src/app"],
-            ["@pages", "./src/pages"],
-            ["@widgets", "./src/widgets"],
-            ["@features", "./src/features"],
-            ["@entities", "./src/entities"],
-            ["@shared", "./src/widgets"],
+            ['@', './src']
           ],
-          extensions: [".js", ".ts", ".jsx", ".tsx"],
-        },
-      },
-    },
+          extensions: ['.ts', '.tsx', '.js', '.jsx']
+        }
+      }
+    }
   },
-);
+])

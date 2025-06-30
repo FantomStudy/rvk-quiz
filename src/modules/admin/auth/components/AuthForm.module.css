@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 20px;
+  width: 486px;
+}
+.form label {
+  font-size: 18px;
+  align-self: flex-start;
+}
+
+.button {
+  margin-top: 10px;
+}

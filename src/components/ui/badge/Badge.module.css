@@ -1,0 +1,13 @@
+.badge {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: default;
+}
+.primary {
+  background-color: var(--primary);
+}
+.secondary {
+  background-color: var(--secondary);
+}

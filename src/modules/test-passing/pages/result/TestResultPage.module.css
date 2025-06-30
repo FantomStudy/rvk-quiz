@@ -1,0 +1,32 @@
+.resultTable {
+  font-size: 18px;
+}
+
+.resultTable th {
+  font-weight: 500;
+}
+
+.resultTable td {
+  font-weight: 400;
+}
+
+.resultTable th:first-child,
+.resultTable td:first-child {
+  text-align: center;
+}
+
+.correct {
+  color: var(--success);
+}
+
+.wrong {
+  color: var(--danger);
+}
+.buttonContainer {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  max-width: 270px;
+}
