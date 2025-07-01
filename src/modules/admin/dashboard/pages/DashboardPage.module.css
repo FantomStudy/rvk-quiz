@@ -1,7 +1,14 @@
+.title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.section h2 {
+  margin-bottom: 15px;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
-  grid-gap: 40px;
+  grid-gap: 25px;
 }
 .metricWrapper {
   display: flex;
@@ -22,5 +29,4 @@
   border-radius: 10px;
   padding: 10px 20px;
   padding-right: 40px;
-  /* max-width: 200px; */
 }

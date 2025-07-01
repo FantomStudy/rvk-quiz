@@ -8,13 +8,13 @@ export interface DashboardData {
   blockStats: {
     passedTest: number;
     gpa: number;
-    minScore: number;
     maxScore: number;
   };
 }
 
 interface DashboardTestResult {
   number: string;
+  fullName: string;
   nomination: string;
   branch: string;
   date: string;

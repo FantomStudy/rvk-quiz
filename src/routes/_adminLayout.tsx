@@ -1,14 +1,13 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
-import { AdminLayout, checkAuthQuery } from "@/modules/admin";
+import { checkAuthQuery } from "@/modules/admin";
 
 export const Route = createFileRoute("/_adminLayout")({
-  component: AdminLayout,
+  component: LayoutComponent,
   beforeLoad: async ({ context }) => {
     const redirectToLogin = () => {
       throw redirect({ to: "/admin" });
     };
-
     try {
       const isAdmin =
         await context.queryClient.ensureQueryData(checkAuthQuery());
@@ -20,3 +19,11 @@ export const Route = createFileRoute("/_adminLayout")({
     }
   },
 });
+
+function LayoutComponent() {
+  return (
+    <>
+      <Outlet />;
+    </>
+  );
+}

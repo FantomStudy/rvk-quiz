@@ -12,8 +12,7 @@ import styles from "./DashboardPage.module.css";
 
 const METRIC_LABELS = {
   passedTest: "Пройдено тестов",
-  gpa: "Средний балл",
-  minScore: "Худший результат",
+  gpa: "Средний результат",
   maxScore: "Лучший результат",
 };
 
@@ -33,11 +32,11 @@ export const DashboardPage = () => {
   };
 
   return (
-    <>
-      <h1>Аналитика</h1>
+    <div className="container">
+      <h1 className={styles.title}>Результаты участников</h1>
 
       <div className={styles.wrapper}>
-        <div>
+        <section className={styles.section}>
           <h2>Общая статистика</h2>
           <div className={styles.metricWrapper}>
             {dashboard.isLoading
@@ -62,9 +61,9 @@ export const DashboardPage = () => {
                   ),
                 )}
           </div>
-        </div>
+        </section>
 
-        <div>
+        <section className={styles.section}>
           <h2>Фильтры</h2>
           <div className={styles.filterWrapper}>
             <Select
@@ -109,9 +108,9 @@ export const DashboardPage = () => {
               ))}
             </Select>
           </div>
-        </div>
+        </section>
 
-        <div>
+        <section className={styles.section}>
           <h2>Результаты участников</h2>
 
           {dashboard.isLoading ? (
@@ -120,17 +119,21 @@ export const DashboardPage = () => {
             <Table>
               <thead>
                 <tr>
+                  <th>Место</th>
                   <th>Номер</th>
+                  <th>ФИО</th>
                   <th>Номинация</th>
                   <th>Филиал</th>
-                  <th>Дата</th>
+                  <th>Время</th>
                   <th>Результат</th>
                 </tr>
               </thead>
               <tbody>
-                {dashboard.data?.testResults.map((result) => (
-                  <tr>
+                {dashboard.data?.testResults.map((result, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{result.number}</td>
+                    <td>{result.fullName}</td>
                     <td>{result.nomination}</td>
                     <td>{result.branch}</td>
                     <td>{result.date}</td>
@@ -140,8 +143,8 @@ export const DashboardPage = () => {
               </tbody>
             </Table>
           )}
-        </div>
+        </section>
       </div>
-    </>
+    </div>
   );
 };
