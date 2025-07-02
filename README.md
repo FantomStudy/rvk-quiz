@@ -1,6 +1,9 @@
 # RVK Quiz — Система тестирования сотрудников
 
-![Логотип](public/logo/rvk-logo.svg)
+<div align='center'>
+   
+   ![Логотип](public/logo/rvk-logo.svg)
+</div>
 
 ---
 
@@ -16,11 +19,16 @@
 
 1. **Сотрудник**:
    - Заходит на страницу теста, вводит уникальный номер, выбирает номинацию
-     ![Image](https://github.com/user-attachments/assets/f9fbb390-078e-4320-9c1b-966eecefcf0b)
    - Проходит тест с ограничением по времени
    - Получает краткую информацию о результатах и инструкцию
-     ![Image](https://github.com/user-attachments/assets/0d6953ab-d284-401d-b342-bcc485f4300d)
    - Подходит к администратору для подтверждения и заполнения ФИО/филиала
+  
+**Демонстрация:**
+<div align='center'>
+   
+   ![Image](https://github.com/user-attachments/assets/22ed9d87-0fa6-470f-b3b5-e47b2bdb14f1)
+   ![Image](https://github.com/user-attachments/assets/0d6953ab-d284-401d-b342-bcc485f4300d)
+</div>
 
 2. **Администратор**:
    - Авторизуется в административной панели
@@ -28,7 +36,11 @@
    - Управляет сущностями через CRUD-интерфейс (в разработке)
    - Присваивает ФИО и филиал пользователю после завершения теста
 
-   ![Image](https://github.com/user-attachments/assets/22ed9d87-0fa6-470f-b3b5-e47b2bdb14f1)
+**Демонстрация:**
+<div align='center'>
+
+   ![Image](https://github.com/user-attachments/assets/f9fbb390-078e-4320-9c1b-966eecefcf0b)
+</div>
 
 ---
 
