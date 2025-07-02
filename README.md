@@ -121,12 +121,6 @@ cd rvk-quiz
   yarn install
   ```
 
-  - **Bun:**
-
-  ```bash
-  bun install
-  ```
-
 ### 3. Запустите проект в режиме разработки
 
 - **NPM:**
@@ -139,12 +133,6 @@ cd rvk-quiz
   yarn dev
   ```
 
-  - **Bun:**
-
-  ```bash
-  bun dev
-  ```
-
 ### 4. Сборка для продакшена
 
 - **NPM:**
@@ -154,10 +142,6 @@ cd rvk-quiz
 - **Yarn:**
   ```bash
   yarn build
-  ```
-- **Bun:**
-  ```bash
-  bun run build
   ```
 
 ---
