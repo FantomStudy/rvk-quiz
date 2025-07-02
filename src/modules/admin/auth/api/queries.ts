@@ -16,6 +16,9 @@ export const useLoginMutation = () => {
 
   return useMutation({
     mutationFn: (credentials: AdminCredentials) => login(credentials),
-    onSuccess: () => navigate({ to: "/admin/dashboard" }),
+    onSuccess: () => {
+      console.log("dfhhkjdfh");
+      navigate({ to: "/admin/dashboard" });
+    },
   });
 };

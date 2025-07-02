@@ -10,20 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HeaderLayoutRouteImport } from './routes/_headerLayout'
-import { Route as AdminLayoutRouteImport } from './routes/_adminLayout'
 import { Route as HeaderLayoutIndexRouteImport } from './routes/_headerLayout/index'
 import { Route as HeaderLayoutTestRouteImport } from './routes/_headerLayout/test'
 import { Route as HeaderLayoutResultRouteImport } from './routes/_headerLayout/result'
 import { Route as HeaderLayoutCompleteRouteImport } from './routes/_headerLayout/complete'
 import { Route as HeaderLayoutAdminRouteImport } from './routes/_headerLayout/admin'
+import { Route as HeaderLayoutAdminLayoutRouteImport } from './routes/_headerLayout/_adminLayout'
 import { Route as HeaderLayoutAdminLayoutAdminDashboardRouteImport } from './routes/_headerLayout/_adminLayout/admin/dashboard'
 
 const HeaderLayoutRoute = HeaderLayoutRouteImport.update({
   id: '/_headerLayout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminLayoutRoute = AdminLayoutRouteImport.update({
-  id: '/_adminLayout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HeaderLayoutIndexRoute = HeaderLayoutIndexRouteImport.update({
@@ -51,11 +47,15 @@ const HeaderLayoutAdminRoute = HeaderLayoutAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
+const HeaderLayoutAdminLayoutRoute = HeaderLayoutAdminLayoutRouteImport.update({
+  id: '/_adminLayout',
+  getParentRoute: () => HeaderLayoutRoute,
+} as any)
 const HeaderLayoutAdminLayoutAdminDashboardRoute =
   HeaderLayoutAdminLayoutAdminDashboardRouteImport.update({
-    id: '/_adminLayout/admin/dashboard',
+    id: '/admin/dashboard',
     path: '/admin/dashboard',
-    getParentRoute: () => HeaderLayoutRoute,
+    getParentRoute: () => HeaderLayoutAdminLayoutRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -76,8 +76,8 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_adminLayout': typeof AdminLayoutRoute
   '/_headerLayout': typeof HeaderLayoutRouteWithChildren
+  '/_headerLayout/_adminLayout': typeof HeaderLayoutAdminLayoutRouteWithChildren
   '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
   '/_headerLayout/complete': typeof HeaderLayoutCompleteRoute
   '/_headerLayout/result': typeof HeaderLayoutResultRoute
@@ -98,8 +98,8 @@ export interface FileRouteTypes {
   to: '/admin' | '/complete' | '/result' | '/test' | '/' | '/admin/dashboard'
   id:
     | '__root__'
-    | '/_adminLayout'
     | '/_headerLayout'
+    | '/_headerLayout/_adminLayout'
     | '/_headerLayout/admin'
     | '/_headerLayout/complete'
     | '/_headerLayout/result'
@@ -109,7 +109,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AdminLayoutRoute: typeof AdminLayoutRoute
   HeaderLayoutRoute: typeof HeaderLayoutRouteWithChildren
 }
 
@@ -120,13 +119,6 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof HeaderLayoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_adminLayout': {
-      id: '/_adminLayout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AdminLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_headerLayout/': {
@@ -164,33 +156,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutAdminRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
+    '/_headerLayout/_adminLayout': {
+      id: '/_headerLayout/_adminLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof HeaderLayoutAdminLayoutRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
     '/_headerLayout/_adminLayout/admin/dashboard': {
       id: '/_headerLayout/_adminLayout/admin/dashboard'
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof HeaderLayoutAdminLayoutAdminDashboardRouteImport
-      parentRoute: typeof HeaderLayoutRoute
+      parentRoute: typeof HeaderLayoutAdminLayoutRoute
     }
   }
 }
 
+interface HeaderLayoutAdminLayoutRouteChildren {
+  HeaderLayoutAdminLayoutAdminDashboardRoute: typeof HeaderLayoutAdminLayoutAdminDashboardRoute
+}
+
+const HeaderLayoutAdminLayoutRouteChildren: HeaderLayoutAdminLayoutRouteChildren =
+  {
+    HeaderLayoutAdminLayoutAdminDashboardRoute:
+      HeaderLayoutAdminLayoutAdminDashboardRoute,
+  }
+
+const HeaderLayoutAdminLayoutRouteWithChildren =
+  HeaderLayoutAdminLayoutRoute._addFileChildren(
+    HeaderLayoutAdminLayoutRouteChildren,
+  )
+
 interface HeaderLayoutRouteChildren {
+  HeaderLayoutAdminLayoutRoute: typeof HeaderLayoutAdminLayoutRouteWithChildren
   HeaderLayoutAdminRoute: typeof HeaderLayoutAdminRoute
   HeaderLayoutCompleteRoute: typeof HeaderLayoutCompleteRoute
   HeaderLayoutResultRoute: typeof HeaderLayoutResultRoute
   HeaderLayoutTestRoute: typeof HeaderLayoutTestRoute
   HeaderLayoutIndexRoute: typeof HeaderLayoutIndexRoute
-  HeaderLayoutAdminLayoutAdminDashboardRoute: typeof HeaderLayoutAdminLayoutAdminDashboardRoute
 }
 
 const HeaderLayoutRouteChildren: HeaderLayoutRouteChildren = {
+  HeaderLayoutAdminLayoutRoute: HeaderLayoutAdminLayoutRouteWithChildren,
   HeaderLayoutAdminRoute: HeaderLayoutAdminRoute,
   HeaderLayoutCompleteRoute: HeaderLayoutCompleteRoute,
   HeaderLayoutResultRoute: HeaderLayoutResultRoute,
   HeaderLayoutTestRoute: HeaderLayoutTestRoute,
   HeaderLayoutIndexRoute: HeaderLayoutIndexRoute,
-  HeaderLayoutAdminLayoutAdminDashboardRoute:
-    HeaderLayoutAdminLayoutAdminDashboardRoute,
 }
 
 const HeaderLayoutRouteWithChildren = HeaderLayoutRoute._addFileChildren(
@@ -198,7 +211,6 @@ const HeaderLayoutRouteWithChildren = HeaderLayoutRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  AdminLayoutRoute: AdminLayoutRoute,
   HeaderLayoutRoute: HeaderLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
