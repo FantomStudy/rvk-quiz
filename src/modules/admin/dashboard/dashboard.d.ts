@@ -20,3 +20,9 @@ interface DashboardTestResult {
   date: string;
   result: string;
 }
+
+export type BranchStatsResponse = Array<{
+  nomination: string;
+  branch: string;
+  totalScore: number;
+}>;

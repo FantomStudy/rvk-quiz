@@ -6,7 +6,7 @@ import { Select } from "@/components/ui";
 import Skeleton from "@/components/ui/skeleton/Skeleton";
 import Table from "@/components/ui/table/Table";
 
-import { useDashboardData } from "../api/queries";
+import { useBranchStats, useDashboardData } from "../api/queries";
 import MetricCard from "../components/metric-card/MetricCard";
 import styles from "./DashboardPage.module.css";
 
@@ -23,6 +23,7 @@ export const DashboardPage = () => {
   });
 
   const dashboard = useDashboardData(filters);
+  const stats = useBranchStats(filters.nominationId);
   const branchList = useBranchList();
   const nominationList = useNominationList();
 
@@ -138,6 +139,34 @@ export const DashboardPage = () => {
                     <td>{result.branch}</td>
                     <td>{result.date}</td>
                     <td>{result.result}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </section>
+
+        <section className={styles.section}>
+          <h2>Рейтинг филиалов</h2>
+          {stats.isLoading ? (
+            <Skeleton height={300} borderRadius={15} />
+          ) : (
+            <Table>
+              <thead>
+                <tr>
+                  <th className="cell_slim">Место</th>
+                  <th>Филиал</th>
+                  <th>Номинация</th>
+                  <th>Общий результат</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.data?.map((br, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{br.branch}</td>
+                    <td>{br.nomination}</td>
+                    <td>{br.totalScore}</td>
                   </tr>
                 ))}
               </tbody>
