@@ -1,8 +1,8 @@
 import { queryOptions, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import type { AdminCredentials } from "../types";
 import { checkAuth, login } from "./api";
+import type { AdminCredentials } from "./types";
 
 export const checkAuthQuery = () =>
   queryOptions({

@@ -10,10 +10,7 @@ export const Route = createFileRoute("/_headerLayout/_adminLayout")({
     };
 
     try {
-      const auth = await context.queryClient.ensureQueryData(checkAuthQuery());
-      if (!auth.isAdmin) {
-        redirectToLogin();
-      }
+      await context.queryClient.ensureQueryData(checkAuthQuery());
     } catch {
       redirectToLogin();
     }
@@ -23,7 +20,7 @@ export const Route = createFileRoute("/_headerLayout/_adminLayout")({
 function LayoutComponent() {
   return (
     <>
-      <Outlet />;
+      <Outlet />
     </>
   );
 }

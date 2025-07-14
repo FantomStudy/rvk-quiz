@@ -1,12 +1,9 @@
 import api from "@/config/api";
 
-import type {
-  BranchStatsResponse,
-  DashboardData,
-  DashboardFilters,
-} from "../dashboard";
+import type { DashboardFilters } from "../dashboard";
+import type { BranchStatsResponse, DashboardData } from "./types";
 
-export const fetchDashboardData = async (filters: DashboardFilters) => {
+export const fetchDashboardData = async (filters?: DashboardFilters) => {
   const response = await api.get<DashboardData>("/statistic/user-statistic", {
     params: {
       ...filters,
@@ -16,7 +13,7 @@ export const fetchDashboardData = async (filters: DashboardFilters) => {
   return response.data;
 };
 
-export const fetchBranchStats = async (nominationId: string) => {
+export const fetchBranchStats = async (nominationId?: string) => {
   const response = await api.get<BranchStatsResponse>(
     "/statistic/branch-statistic",
     {
@@ -25,5 +22,6 @@ export const fetchBranchStats = async (nominationId: string) => {
       },
     },
   );
+
   return response.data;
 };

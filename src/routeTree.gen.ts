@@ -17,6 +17,7 @@ import { Route as HeaderLayoutCompleteRouteImport } from './routes/_headerLayout
 import { Route as HeaderLayoutAdminRouteImport } from './routes/_headerLayout/admin'
 import { Route as HeaderLayoutAdminLayoutRouteImport } from './routes/_headerLayout/_adminLayout'
 import { Route as HeaderLayoutAdminLayoutAdminDashboardRouteImport } from './routes/_headerLayout/_adminLayout/admin/dashboard'
+import { Route as HeaderLayoutAdminLayoutAdminUserIdNominationIdRouteImport } from './routes/_headerLayout/_adminLayout/admin/$userId.$nominationId'
 
 const HeaderLayoutRoute = HeaderLayoutRouteImport.update({
   id: '/_headerLayout',
@@ -57,6 +58,12 @@ const HeaderLayoutAdminLayoutAdminDashboardRoute =
     path: '/admin/dashboard',
     getParentRoute: () => HeaderLayoutAdminLayoutRoute,
   } as any)
+const HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute =
+  HeaderLayoutAdminLayoutAdminUserIdNominationIdRouteImport.update({
+    id: '/admin/$userId/$nominationId',
+    path: '/admin/$userId/$nominationId',
+    getParentRoute: () => HeaderLayoutAdminLayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/admin': typeof HeaderLayoutAdminRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
   '/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
+  '/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRoutesByTo {
   '/admin': typeof HeaderLayoutAdminRoute
@@ -73,6 +81,7 @@ export interface FileRoutesByTo {
   '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
   '/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
+  '/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -84,6 +93,7 @@ export interface FileRoutesById {
   '/_headerLayout/test': typeof HeaderLayoutTestRoute
   '/_headerLayout/': typeof HeaderLayoutIndexRoute
   '/_headerLayout/_adminLayout/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
+  '/_headerLayout/_adminLayout/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -94,8 +104,16 @@ export interface FileRouteTypes {
     | '/test'
     | '/'
     | '/admin/dashboard'
+    | '/admin/$userId/$nominationId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/admin' | '/complete' | '/result' | '/test' | '/' | '/admin/dashboard'
+  to:
+    | '/admin'
+    | '/complete'
+    | '/result'
+    | '/test'
+    | '/'
+    | '/admin/dashboard'
+    | '/admin/$userId/$nominationId'
   id:
     | '__root__'
     | '/_headerLayout'
@@ -106,6 +124,7 @@ export interface FileRouteTypes {
     | '/_headerLayout/test'
     | '/_headerLayout/'
     | '/_headerLayout/_adminLayout/admin/dashboard'
+    | '/_headerLayout/_adminLayout/admin/$userId/$nominationId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -170,17 +189,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutAdminLayoutAdminDashboardRouteImport
       parentRoute: typeof HeaderLayoutAdminLayoutRoute
     }
+    '/_headerLayout/_adminLayout/admin/$userId/$nominationId': {
+      id: '/_headerLayout/_adminLayout/admin/$userId/$nominationId'
+      path: '/admin/$userId/$nominationId'
+      fullPath: '/admin/$userId/$nominationId'
+      preLoaderRoute: typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRouteImport
+      parentRoute: typeof HeaderLayoutAdminLayoutRoute
+    }
   }
 }
 
 interface HeaderLayoutAdminLayoutRouteChildren {
   HeaderLayoutAdminLayoutAdminDashboardRoute: typeof HeaderLayoutAdminLayoutAdminDashboardRoute
+  HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute: typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
 
 const HeaderLayoutAdminLayoutRouteChildren: HeaderLayoutAdminLayoutRouteChildren =
   {
     HeaderLayoutAdminLayoutAdminDashboardRoute:
       HeaderLayoutAdminLayoutAdminDashboardRoute,
+    HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute:
+      HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute,
   }
 
 const HeaderLayoutAdminLayoutRouteWithChildren =

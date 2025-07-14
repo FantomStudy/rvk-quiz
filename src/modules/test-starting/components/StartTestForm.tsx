@@ -1,8 +1,8 @@
 import { useNominationList } from "@/api/nominations/queries";
 import { Button, Input, Select } from "@/components/ui";
 
-import { useStartTestForm } from "./useStartTestForm";
 import styles from "./StartTestForm.module.css";
+import { useStartTestForm } from "./useStartTestForm";
 
 export const StartTestForm = () => {
   const { form, handleChange, handleSubmit } = useStartTestForm();

@@ -1,6 +1,6 @@
 import api from "@/config/api";
 
-import type { AdminCredentials, CheckAuthResponse } from "../types";
+import type { AdminCredentials, CheckAuthResponse } from "./types";
 
 export const login = async (credentials: AdminCredentials) => {
   const response = await api.post("/auth/admin/login", credentials);

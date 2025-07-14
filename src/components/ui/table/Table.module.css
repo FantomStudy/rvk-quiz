@@ -25,3 +25,8 @@
 .table tbody tr:nth-of-type(odd) {
   background-color: var(--table-secondary);
 }
+
+.table a {
+  text-decoration: none;
+  color: black;
+}
