@@ -1,7 +1,7 @@
 import type { StateCreator } from "zustand";
 
 import type { Nomination } from "@/types/nomination";
-import type { InitializeTestData, TestQuestion } from "@/types/test";
+import type { InitTest, TestQuestion } from "@/types/test";
 import type { User } from "@/types/user";
 
 import type { AnswersSlice } from "./answersSlice";
@@ -14,7 +14,7 @@ export interface SessionSlice {
   currentStep: number;
   finishedAt: string | null;
 
-  initializeTest: (payload: InitializeTestData) => void;
+  initializeTest: (payload: InitTest) => void;
   resetTest: () => void;
   nextStep: () => void;
   prevStep: () => void;

@@ -1,9 +1,28 @@
 .container {
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .cell_slim {
   width: 100px;
+}
+
+.primaryText {
+  color: var(--primary);
+}
+
+.stateNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 25px;
+}
+.stateNavigation a {
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--primary);
+  &.active {
+    font-weight: 500;
+    color: var(--primary-hover);
+  }
 }

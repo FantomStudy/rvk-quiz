@@ -11,11 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HeaderLayoutRouteImport } from './routes/_headerLayout'
 import { Route as HeaderLayoutIndexRouteImport } from './routes/_headerLayout/index'
-import { Route as HeaderLayoutTestRouteImport } from './routes/_headerLayout/test'
-import { Route as HeaderLayoutResultRouteImport } from './routes/_headerLayout/result'
-import { Route as HeaderLayoutCompleteRouteImport } from './routes/_headerLayout/complete'
 import { Route as HeaderLayoutAdminRouteImport } from './routes/_headerLayout/admin'
+import { Route as HeaderLayoutStatisticLayoutRouteImport } from './routes/_headerLayout/_statisticLayout'
 import { Route as HeaderLayoutAdminLayoutRouteImport } from './routes/_headerLayout/_adminLayout'
+import { Route as HeaderLayoutStatisticLayoutTestStateRouteImport } from './routes/_headerLayout/_statisticLayout/testState'
+import { Route as HeaderLayoutStatisticLayoutPracticeStateRouteImport } from './routes/_headerLayout/_statisticLayout/practiceState'
+import { Route as HeaderLayoutStatisticLayoutCommonStateRouteImport } from './routes/_headerLayout/_statisticLayout/commonState'
+import { Route as HeaderLayoutdevTestRouteImport } from './routes/_headerLayout/(dev)/test'
+import { Route as HeaderLayoutdevResultRouteImport } from './routes/_headerLayout/(dev)/result'
+import { Route as HeaderLayoutdevCompleteRouteImport } from './routes/_headerLayout/(dev)/complete'
 import { Route as HeaderLayoutAdminLayoutAdminDashboardRouteImport } from './routes/_headerLayout/_adminLayout/admin/dashboard'
 import { Route as HeaderLayoutAdminLayoutAdminUserIdNominationIdRouteImport } from './routes/_headerLayout/_adminLayout/admin/$userId.$nominationId'
 
@@ -28,28 +32,51 @@ const HeaderLayoutIndexRoute = HeaderLayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
-const HeaderLayoutTestRoute = HeaderLayoutTestRouteImport.update({
-  id: '/test',
-  path: '/test',
-  getParentRoute: () => HeaderLayoutRoute,
-} as any)
-const HeaderLayoutResultRoute = HeaderLayoutResultRouteImport.update({
-  id: '/result',
-  path: '/result',
-  getParentRoute: () => HeaderLayoutRoute,
-} as any)
-const HeaderLayoutCompleteRoute = HeaderLayoutCompleteRouteImport.update({
-  id: '/complete',
-  path: '/complete',
-  getParentRoute: () => HeaderLayoutRoute,
-} as any)
 const HeaderLayoutAdminRoute = HeaderLayoutAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
+const HeaderLayoutStatisticLayoutRoute =
+  HeaderLayoutStatisticLayoutRouteImport.update({
+    id: '/_statisticLayout',
+    getParentRoute: () => HeaderLayoutRoute,
+  } as any)
 const HeaderLayoutAdminLayoutRoute = HeaderLayoutAdminLayoutRouteImport.update({
   id: '/_adminLayout',
+  getParentRoute: () => HeaderLayoutRoute,
+} as any)
+const HeaderLayoutStatisticLayoutTestStateRoute =
+  HeaderLayoutStatisticLayoutTestStateRouteImport.update({
+    id: '/testState',
+    path: '/testState',
+    getParentRoute: () => HeaderLayoutStatisticLayoutRoute,
+  } as any)
+const HeaderLayoutStatisticLayoutPracticeStateRoute =
+  HeaderLayoutStatisticLayoutPracticeStateRouteImport.update({
+    id: '/practiceState',
+    path: '/practiceState',
+    getParentRoute: () => HeaderLayoutStatisticLayoutRoute,
+  } as any)
+const HeaderLayoutStatisticLayoutCommonStateRoute =
+  HeaderLayoutStatisticLayoutCommonStateRouteImport.update({
+    id: '/commonState',
+    path: '/commonState',
+    getParentRoute: () => HeaderLayoutStatisticLayoutRoute,
+  } as any)
+const HeaderLayoutdevTestRoute = HeaderLayoutdevTestRouteImport.update({
+  id: '/(dev)/test',
+  path: '/test',
+  getParentRoute: () => HeaderLayoutRoute,
+} as any)
+const HeaderLayoutdevResultRoute = HeaderLayoutdevResultRouteImport.update({
+  id: '/(dev)/result',
+  path: '/result',
+  getParentRoute: () => HeaderLayoutRoute,
+} as any)
+const HeaderLayoutdevCompleteRoute = HeaderLayoutdevCompleteRouteImport.update({
+  id: '/(dev)/complete',
+  path: '/complete',
   getParentRoute: () => HeaderLayoutRoute,
 } as any)
 const HeaderLayoutAdminLayoutAdminDashboardRoute =
@@ -67,19 +94,25 @@ const HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute =
 
 export interface FileRoutesByFullPath {
   '/admin': typeof HeaderLayoutAdminRoute
-  '/complete': typeof HeaderLayoutCompleteRoute
-  '/result': typeof HeaderLayoutResultRoute
-  '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
+  '/complete': typeof HeaderLayoutdevCompleteRoute
+  '/result': typeof HeaderLayoutdevResultRoute
+  '/test': typeof HeaderLayoutdevTestRoute
+  '/commonState': typeof HeaderLayoutStatisticLayoutCommonStateRoute
+  '/practiceState': typeof HeaderLayoutStatisticLayoutPracticeStateRoute
+  '/testState': typeof HeaderLayoutStatisticLayoutTestStateRoute
   '/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
   '/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRoutesByTo {
   '/admin': typeof HeaderLayoutAdminRoute
-  '/complete': typeof HeaderLayoutCompleteRoute
-  '/result': typeof HeaderLayoutResultRoute
-  '/test': typeof HeaderLayoutTestRoute
   '/': typeof HeaderLayoutIndexRoute
+  '/complete': typeof HeaderLayoutdevCompleteRoute
+  '/result': typeof HeaderLayoutdevResultRoute
+  '/test': typeof HeaderLayoutdevTestRoute
+  '/commonState': typeof HeaderLayoutStatisticLayoutCommonStateRoute
+  '/practiceState': typeof HeaderLayoutStatisticLayoutPracticeStateRoute
+  '/testState': typeof HeaderLayoutStatisticLayoutTestStateRoute
   '/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
   '/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
@@ -87,11 +120,15 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_headerLayout': typeof HeaderLayoutRouteWithChildren
   '/_headerLayout/_adminLayout': typeof HeaderLayoutAdminLayoutRouteWithChildren
+  '/_headerLayout/_statisticLayout': typeof HeaderLayoutStatisticLayoutRouteWithChildren
   '/_headerLayout/admin': typeof HeaderLayoutAdminRoute
-  '/_headerLayout/complete': typeof HeaderLayoutCompleteRoute
-  '/_headerLayout/result': typeof HeaderLayoutResultRoute
-  '/_headerLayout/test': typeof HeaderLayoutTestRoute
   '/_headerLayout/': typeof HeaderLayoutIndexRoute
+  '/_headerLayout/(dev)/complete': typeof HeaderLayoutdevCompleteRoute
+  '/_headerLayout/(dev)/result': typeof HeaderLayoutdevResultRoute
+  '/_headerLayout/(dev)/test': typeof HeaderLayoutdevTestRoute
+  '/_headerLayout/_statisticLayout/commonState': typeof HeaderLayoutStatisticLayoutCommonStateRoute
+  '/_headerLayout/_statisticLayout/practiceState': typeof HeaderLayoutStatisticLayoutPracticeStateRoute
+  '/_headerLayout/_statisticLayout/testState': typeof HeaderLayoutStatisticLayoutTestStateRoute
   '/_headerLayout/_adminLayout/admin/dashboard': typeof HeaderLayoutAdminLayoutAdminDashboardRoute
   '/_headerLayout/_adminLayout/admin/$userId/$nominationId': typeof HeaderLayoutAdminLayoutAdminUserIdNominationIdRoute
 }
@@ -99,30 +136,40 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/admin'
+    | '/'
     | '/complete'
     | '/result'
     | '/test'
-    | '/'
+    | '/commonState'
+    | '/practiceState'
+    | '/testState'
     | '/admin/dashboard'
     | '/admin/$userId/$nominationId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/admin'
+    | '/'
     | '/complete'
     | '/result'
     | '/test'
-    | '/'
+    | '/commonState'
+    | '/practiceState'
+    | '/testState'
     | '/admin/dashboard'
     | '/admin/$userId/$nominationId'
   id:
     | '__root__'
     | '/_headerLayout'
     | '/_headerLayout/_adminLayout'
+    | '/_headerLayout/_statisticLayout'
     | '/_headerLayout/admin'
-    | '/_headerLayout/complete'
-    | '/_headerLayout/result'
-    | '/_headerLayout/test'
     | '/_headerLayout/'
+    | '/_headerLayout/(dev)/complete'
+    | '/_headerLayout/(dev)/result'
+    | '/_headerLayout/(dev)/test'
+    | '/_headerLayout/_statisticLayout/commonState'
+    | '/_headerLayout/_statisticLayout/practiceState'
+    | '/_headerLayout/_statisticLayout/testState'
     | '/_headerLayout/_adminLayout/admin/dashboard'
     | '/_headerLayout/_adminLayout/admin/$userId/$nominationId'
   fileRoutesById: FileRoutesById
@@ -147,27 +194,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutIndexRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
-    '/_headerLayout/test': {
-      id: '/_headerLayout/test'
-      path: '/test'
-      fullPath: '/test'
-      preLoaderRoute: typeof HeaderLayoutTestRouteImport
-      parentRoute: typeof HeaderLayoutRoute
-    }
-    '/_headerLayout/result': {
-      id: '/_headerLayout/result'
-      path: '/result'
-      fullPath: '/result'
-      preLoaderRoute: typeof HeaderLayoutResultRouteImport
-      parentRoute: typeof HeaderLayoutRoute
-    }
-    '/_headerLayout/complete': {
-      id: '/_headerLayout/complete'
-      path: '/complete'
-      fullPath: '/complete'
-      preLoaderRoute: typeof HeaderLayoutCompleteRouteImport
-      parentRoute: typeof HeaderLayoutRoute
-    }
     '/_headerLayout/admin': {
       id: '/_headerLayout/admin'
       path: '/admin'
@@ -175,11 +201,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutAdminRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
+    '/_headerLayout/_statisticLayout': {
+      id: '/_headerLayout/_statisticLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof HeaderLayoutStatisticLayoutRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
     '/_headerLayout/_adminLayout': {
       id: '/_headerLayout/_adminLayout'
       path: ''
       fullPath: ''
       preLoaderRoute: typeof HeaderLayoutAdminLayoutRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
+    '/_headerLayout/_statisticLayout/testState': {
+      id: '/_headerLayout/_statisticLayout/testState'
+      path: '/testState'
+      fullPath: '/testState'
+      preLoaderRoute: typeof HeaderLayoutStatisticLayoutTestStateRouteImport
+      parentRoute: typeof HeaderLayoutStatisticLayoutRoute
+    }
+    '/_headerLayout/_statisticLayout/practiceState': {
+      id: '/_headerLayout/_statisticLayout/practiceState'
+      path: '/practiceState'
+      fullPath: '/practiceState'
+      preLoaderRoute: typeof HeaderLayoutStatisticLayoutPracticeStateRouteImport
+      parentRoute: typeof HeaderLayoutStatisticLayoutRoute
+    }
+    '/_headerLayout/_statisticLayout/commonState': {
+      id: '/_headerLayout/_statisticLayout/commonState'
+      path: '/commonState'
+      fullPath: '/commonState'
+      preLoaderRoute: typeof HeaderLayoutStatisticLayoutCommonStateRouteImport
+      parentRoute: typeof HeaderLayoutStatisticLayoutRoute
+    }
+    '/_headerLayout/(dev)/test': {
+      id: '/_headerLayout/(dev)/test'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof HeaderLayoutdevTestRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
+    '/_headerLayout/(dev)/result': {
+      id: '/_headerLayout/(dev)/result'
+      path: '/result'
+      fullPath: '/result'
+      preLoaderRoute: typeof HeaderLayoutdevResultRouteImport
+      parentRoute: typeof HeaderLayoutRoute
+    }
+    '/_headerLayout/(dev)/complete': {
+      id: '/_headerLayout/(dev)/complete'
+      path: '/complete'
+      fullPath: '/complete'
+      preLoaderRoute: typeof HeaderLayoutdevCompleteRouteImport
       parentRoute: typeof HeaderLayoutRoute
     }
     '/_headerLayout/_adminLayout/admin/dashboard': {
@@ -217,22 +292,46 @@ const HeaderLayoutAdminLayoutRouteWithChildren =
     HeaderLayoutAdminLayoutRouteChildren,
   )
 
+interface HeaderLayoutStatisticLayoutRouteChildren {
+  HeaderLayoutStatisticLayoutCommonStateRoute: typeof HeaderLayoutStatisticLayoutCommonStateRoute
+  HeaderLayoutStatisticLayoutPracticeStateRoute: typeof HeaderLayoutStatisticLayoutPracticeStateRoute
+  HeaderLayoutStatisticLayoutTestStateRoute: typeof HeaderLayoutStatisticLayoutTestStateRoute
+}
+
+const HeaderLayoutStatisticLayoutRouteChildren: HeaderLayoutStatisticLayoutRouteChildren =
+  {
+    HeaderLayoutStatisticLayoutCommonStateRoute:
+      HeaderLayoutStatisticLayoutCommonStateRoute,
+    HeaderLayoutStatisticLayoutPracticeStateRoute:
+      HeaderLayoutStatisticLayoutPracticeStateRoute,
+    HeaderLayoutStatisticLayoutTestStateRoute:
+      HeaderLayoutStatisticLayoutTestStateRoute,
+  }
+
+const HeaderLayoutStatisticLayoutRouteWithChildren =
+  HeaderLayoutStatisticLayoutRoute._addFileChildren(
+    HeaderLayoutStatisticLayoutRouteChildren,
+  )
+
 interface HeaderLayoutRouteChildren {
   HeaderLayoutAdminLayoutRoute: typeof HeaderLayoutAdminLayoutRouteWithChildren
+  HeaderLayoutStatisticLayoutRoute: typeof HeaderLayoutStatisticLayoutRouteWithChildren
   HeaderLayoutAdminRoute: typeof HeaderLayoutAdminRoute
-  HeaderLayoutCompleteRoute: typeof HeaderLayoutCompleteRoute
-  HeaderLayoutResultRoute: typeof HeaderLayoutResultRoute
-  HeaderLayoutTestRoute: typeof HeaderLayoutTestRoute
   HeaderLayoutIndexRoute: typeof HeaderLayoutIndexRoute
+  HeaderLayoutdevCompleteRoute: typeof HeaderLayoutdevCompleteRoute
+  HeaderLayoutdevResultRoute: typeof HeaderLayoutdevResultRoute
+  HeaderLayoutdevTestRoute: typeof HeaderLayoutdevTestRoute
 }
 
 const HeaderLayoutRouteChildren: HeaderLayoutRouteChildren = {
   HeaderLayoutAdminLayoutRoute: HeaderLayoutAdminLayoutRouteWithChildren,
+  HeaderLayoutStatisticLayoutRoute:
+    HeaderLayoutStatisticLayoutRouteWithChildren,
   HeaderLayoutAdminRoute: HeaderLayoutAdminRoute,
-  HeaderLayoutCompleteRoute: HeaderLayoutCompleteRoute,
-  HeaderLayoutResultRoute: HeaderLayoutResultRoute,
-  HeaderLayoutTestRoute: HeaderLayoutTestRoute,
   HeaderLayoutIndexRoute: HeaderLayoutIndexRoute,
+  HeaderLayoutdevCompleteRoute: HeaderLayoutdevCompleteRoute,
+  HeaderLayoutdevResultRoute: HeaderLayoutdevResultRoute,
+  HeaderLayoutdevTestRoute: HeaderLayoutdevTestRoute,
 }
 
 const HeaderLayoutRouteWithChildren = HeaderLayoutRoute._addFileChildren(

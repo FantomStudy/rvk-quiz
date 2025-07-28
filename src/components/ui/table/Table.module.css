@@ -2,10 +2,12 @@
   border: 1px solid var(--border-gray);
   border-radius: 15px;
   overflow: auto;
+  scrollbar-width: none;
 }
 
 .table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 

@@ -1,12 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { AdminUserResult } from "@/modules/admin";
-import { adminTestResultQuery } from "@/modules/admin/test-result/api/queries";
+import { testResultQuery, UserSessionPage } from "@/modules/admin";
 
+// TODO: ПЕРЕПИСАТЬ НА ЛОГИКУ С АЙДИ СЕССИИ
 export const Route = createFileRoute(
-  "/_headerLayout/_adminLayout/admin/$userId/$nominationId",
+  "/_headerLayout/_adminLayout/admin/$userId/$nominationId"
 )({
-  component: AdminUserResult,
+  component: RouteComponent,
   loader: async ({ context, params }) =>
-    await context.queryClient.ensureQueryData(adminTestResultQuery(params)),
+    context.queryClient.ensureQueryData(testResultQuery(params)),
 });
+
+function RouteComponent() {
+  const result = Route.useLoaderData();
+  return <UserSessionPage testResult={result} />;
+}

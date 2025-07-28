@@ -1,14 +1,14 @@
-import type { HTMLAttributes } from "react";
+import type { ComponentProps } from "react";
 
 import styles from "./Skeleton.module.css";
 
-interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
-  width?: string | number;
-  height?: string | number;
-  borderRadius?: string | number;
+interface SkeletonProps extends ComponentProps<"div"> {
+  borderRadius?: number | string;
+  height?: number | string;
+  width?: number | string;
 }
 
-const Skeleton = ({
+export const Skeleton = ({
   width = "100%",
   height = "1em",
   borderRadius = 5,
@@ -18,11 +18,9 @@ const Skeleton = ({
 }: SkeletonProps) => {
   return (
     <div
-      className={`${styles.skeleton} ${className || ""}`}
+      className={`${styles.skeleton} ${className ?? ""}`}
       style={{ width, height, borderRadius, ...style }}
       {...props}
     />
   );
 };
-
-export default Skeleton;

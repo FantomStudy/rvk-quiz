@@ -1,27 +1,23 @@
-import api from "@/config/api";
+import { api } from "@/config";
 
-import type { DashboardFilters } from "../dashboard";
-import type { BranchStatsResponse, DashboardData } from "./types";
+import type {
+  BranchStatsResponse,
+  DashboardData,
+  DashboardFilters,
+} from "../types";
 
-export const fetchDashboardData = async (filters?: DashboardFilters) => {
-  const response = await api.get<DashboardData>("/statistic/user-statistic", {
-    params: {
-      ...filters,
-    },
-  });
+export const fetchDashboardData = async (filters?: DashboardFilters) =>
+  api
+    .get<DashboardData>("/statistic/user-statistic", {
+      params: filters,
+    })
+    .then((r) => r.data);
 
-  return response.data;
-};
-
-export const fetchBranchStats = async (nominationId?: string) => {
-  const response = await api.get<BranchStatsResponse>(
-    "/statistic/branch-statistic",
-    {
+export const fetchBranchStats = async (nominationId?: string) =>
+  api
+    .get<BranchStatsResponse>("/statistic/branch-statistic", {
       params: {
         nominationId,
       },
-    },
-  );
-
-  return response.data;
-};
+    })
+    .then((r) => r.data);

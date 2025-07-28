@@ -1,14 +1,14 @@
 import type { StateCreator } from "zustand";
 
-import type { UserAnswer } from "@/types/test";
+import type { TestAnswer } from "@/types/test";
 
 import type { SessionSlice } from "./sessionSlice";
 
 export interface AnswersSlice {
-  answers: UserAnswer[];
+  answers: TestAnswer[];
 
-  answerQuestion: (answer: UserAnswer) => void;
-  getUserAnswer: (questionId: number) => UserAnswer | undefined;
+  answerQuestion: (answer: TestAnswer) => void;
+  getUserAnswer: (questionId: number) => TestAnswer | undefined;
   ensureAnswer: () => void;
 }
 
@@ -48,7 +48,7 @@ export const createAnswersSlice: StateCreator<
 
     if (currentQuestion) {
       const existingAnswer = state.answers.find(
-        (a) => a.questionId === currentQuestion.id,
+        (a) => a.questionId === currentQuestion.id
       );
       if (!existingAnswer) {
         const answers = [

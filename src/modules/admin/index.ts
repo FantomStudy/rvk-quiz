@@ -1,7 +1,7 @@
-export { AuthPage } from "./auth/pages/AuthPage";
-
 export { checkAuthQuery } from "./auth/api/queries";
+export { AdminAuthPage } from "./auth/pages/AdminAuthPage";
 
 export { DashboardPage } from "./dashboard/pages/DashboardPage";
 
-export { AdminUserResult } from "./test-result/pages/AdminUserResult";
+export { testResultQuery } from "./user-session/api/queries";
+export { UserSessionPage } from "./user-session/pages/UserSessionPage";

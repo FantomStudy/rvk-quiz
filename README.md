@@ -18,8 +18,9 @@
    - Проходит тест с ограничением по времени
    - Получает краткую информацию о результатах и инструкцию
    - Подходит к администратору для подтверждения и заполнения ФИО/филиала
-  
+
 **Демонстрация:**
+
 <div align='center'>
    
    ![Image](https://github.com/user-attachments/assets/22ed9d87-0fa6-470f-b3b5-e47b2bdb14f1)
@@ -33,9 +34,11 @@
    - Присваивает ФИО и филиал пользователю после завершения теста
 
 **Демонстрация:**
+
 <div align='center'>
 
-   ![Image](https://github.com/user-attachments/assets/f9fbb390-078e-4320-9c1b-966eecefcf0b)
+![Image](https://github.com/user-attachments/assets/f9fbb390-078e-4320-9c1b-966eecefcf0b)
+
 </div>
 
 ## Основной функционал

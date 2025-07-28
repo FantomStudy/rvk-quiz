@@ -1,9 +1,9 @@
-.badge {
+.base {
   font-size: 14px;
-  border-radius: 5px;
-  padding: 10px 20px;
-  color: #fff;
+  border-radius: 0.35em;
+  padding: 0.7em 1.45em;
   cursor: default;
+  color: #fff;
 }
 .primary {
   background-color: var(--primary);

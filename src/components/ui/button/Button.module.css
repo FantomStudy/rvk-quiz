@@ -1,36 +1,33 @@
-.button {
-  border: none;
-  cursor: pointer;
-  transition: 0.25s background-color ease;
-  text-decoration: none;
-  font-size: 18px;
+.base {
   width: 100%;
-  padding: 16px;
-  border-radius: 15px;
+  font-size: 18px;
+  padding: 0.85em;
+  border: none;
+
+  cursor: pointer;
+  border-radius: 0.85em;
+  transition: 0.25s background-color ease;
+}
+
+a.base {
+  text-align: center;
+  text-decoration: none;
 }
 
 .primary {
   color: white;
   background-color: var(--primary);
-}
-.primary:hover {
-  background-color: var(--primary-hover);
-}
-
-.secondary {
-  color: var(--primary);
-  background-color: var(--secondary);
-}
-.secondary:hover {
-  background-color: var(--secondary-hover);
+  &:hover {
+    background-color: var(--primary-hover);
+  }
 }
 
 .danger {
   color: white;
   background-color: var(--danger);
-}
-.danger:hover {
-  background-color: var(--danger-hover);
+  &:hover {
+    background-color: var(--danger-hover);
+  }
 }
 
 .outline {
@@ -46,5 +43,4 @@
   width: auto;
   font-size: 14px;
   padding: 10px 18px;
-  border-radius: 5px;
 }

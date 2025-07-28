@@ -1,10 +1,8 @@
-import type { HTMLAttributes } from "react";
-
-import clsx from "clsx";
+import type { ComponentProps } from "react";
 
 import styles from "./Badge.module.css";
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+interface BadgeProps extends ComponentProps<"span"> {
   color?: "primary" | "secondary";
 }
 
@@ -15,7 +13,10 @@ export const Badge = ({
   ...props
 }: BadgeProps) => {
   return (
-    <span className={clsx(styles.badge, styles[color], className)} {...props}>
+    <span
+      className={`${styles.base} ${styles[color]} ${className ?? ""}`}
+      {...props}
+    >
       {children}
     </span>
   );

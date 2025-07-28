@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { ButtonLink } from "@/components/ui";
-import Table from "@/components/ui/table/Table";
-import api from "@/config/api";
 import { useResetTest, useSessionData } from "@/store/selectors";
 
 import styles from "./TestResultPage.module.css";
+import { api } from "@/config";
+import { ButtonLink, Table } from "@/components/ui";
 
 export const TestResultPage = () => {
   const { user, nomination } = useSessionData();
@@ -60,12 +59,7 @@ export const TestResultPage = () => {
         </tbody>
       </Table>
       <div className={styles.buttonContainer}>
-        <ButtonLink
-          to="/"
-          size="l"
-          className={styles.button}
-          onClick={resetTest}
-        >
+        <ButtonLink to="/" className={styles.button} onClick={resetTest}>
           Завершить тестирование
         </ButtonLink>
       </div>

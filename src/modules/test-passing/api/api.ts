@@ -1,5 +1,6 @@
-import api from "@/config/api";
-import type { ResultResponse, UserAnswer } from "@/types/test";
+import { api } from "@/config";
+import type { ResultResponse } from "@/store/slices/resultSlice";
+import type { TestAnswer } from "@/types/test";
 
 export const fetchQuestionPhoto = async (filename: string) => {
   const response = await api.get(`/question/photo/${filename}`, {
@@ -9,10 +10,10 @@ export const fetchQuestionPhoto = async (filename: string) => {
   return URL.createObjectURL(response.data);
 };
 
-export const finishTest = async (userId: number, answers: UserAnswer[]) => {
+export const finishTest = async (userId: number, answers: TestAnswer[]) => {
   const response = await api.post<ResultResponse>(
     `/tests/${userId}/finish`,
-    answers,
+    answers
   );
 
   return response.data;

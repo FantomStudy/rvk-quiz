@@ -1,0 +1,15 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin-top: 20px;
+}
+
+.mainColumn {
+  width: 55%;
+}
+.wrapperBody {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}

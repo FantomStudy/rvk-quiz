@@ -1,6 +1,8 @@
-import { type ChangeEvent, useState } from "react";
+import type { ChangeEvent } from "react";
 
-import type { DashboardFilters } from "../dashboard";
+import { useState } from "react";
+
+import type { DashboardFilters } from "../types";
 
 export const useDashboardFilters = () => {
   const [filters, setFilters] = useState<DashboardFilters>({

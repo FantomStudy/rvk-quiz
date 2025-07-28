@@ -9,13 +9,13 @@ export const useSessionData = () =>
       nomination,
       questions,
       finishedAt,
-    })),
+    }))
   );
 
 export const useCurrentStep = () => useTestStore((s) => s.currentStep);
 export const useStepControls = () =>
   useTestStore(
-    useShallow(({ prevStep, nextStep }) => ({ prevStep, nextStep })),
+    useShallow(({ prevStep, nextStep }) => ({ prevStep, nextStep }))
   );
 
 export const useTestResult = () => useTestStore((s) => s.result);

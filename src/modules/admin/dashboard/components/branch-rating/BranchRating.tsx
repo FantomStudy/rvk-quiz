@@ -1,5 +1,5 @@
-import Skeleton from "@/components/ui/skeleton/Skeleton";
-import Table from "@/components/ui/table/Table";
+import { Skeleton } from "@/components/ui";
+import { Table } from "@/components/ui/table/Table";
 
 import { useBranchStats } from "../../api/queries";
 
@@ -7,7 +7,7 @@ interface BranchRatingProps {
   nominationId?: string;
 }
 
-const BranchRating = ({ nominationId }: BranchRatingProps) => {
+export const BranchRating = ({ nominationId }: BranchRatingProps) => {
   const { data, isLoading, error } = useBranchStats(nominationId);
 
   if (!data || error) {
@@ -19,7 +19,7 @@ const BranchRating = ({ nominationId }: BranchRatingProps) => {
   }
 
   return (
-    <Table>
+    <Table height={300}>
       <thead>
         <tr>
           <th className="cell_slim">Место</th>
@@ -29,17 +29,15 @@ const BranchRating = ({ nominationId }: BranchRatingProps) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((br, index) => (
-          <tr key={index}>
+        {data.map((str, index) => (
+          <tr key={str.branch}>
             <td>{index + 1}</td>
-            <td>{br.branch}</td>
-            <td>{br.nomination}</td>
-            <td>{br.totalScore}</td>
+            <td>{str.branch}</td>
+            <td>{str.nomination}</td>
+            <td>{str.totalScore}</td>
           </tr>
         ))}
       </tbody>
     </Table>
   );
 };
-
-export default BranchRating;

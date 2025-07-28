@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { checkAuthQuery } from "@/modules/admin";
 
@@ -18,9 +18,5 @@ export const Route = createFileRoute("/_headerLayout/_adminLayout")({
 });
 
 function LayoutComponent() {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }

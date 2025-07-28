@@ -1,4 +1,4 @@
-.timer {
+.base {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +7,6 @@
   color: var(--primary);
   font-weight: 500;
 }
-.timer img {
+.base img {
   width: 40px;
 }

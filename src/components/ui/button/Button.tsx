@@ -1,29 +1,20 @@
-import type { ButtonHTMLAttributes } from "react";
-
-import { createLink } from "@tanstack/react-router";
+import type { ButtonProps } from "./Button.types";
 
 import styles from "./Button.module.css";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: "s" | "m" | "l";
-  color?: "primary" | "secondary" | "danger" | "outline";
-}
-
 export const Button = ({
+  size = "m",
+  type = "button",
+  variant = "primary",
   children,
   className,
-  size = "s",
-  color = "primary",
   ...props
-}: ButtonProps) => {
-  return (
-    <button
-      className={`${styles.button} ${styles[size]} ${styles[color]} ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
-
-export const ButtonLink = createLink(Button);
+}: ButtonProps) => (
+  <button
+    type={type}
+    className={`${styles.base} ${styles[variant]} ${styles[size]} ${className ?? ""}`}
+    {...props}
+  >
+    {children}
+  </button>
+);

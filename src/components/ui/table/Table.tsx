@@ -1,16 +1,15 @@
-import type { FC, TableHTMLAttributes } from "react";
+import type { ComponentProps } from "react";
 
 import styles from "./Table.module.css";
 
-const Table: FC<TableHTMLAttributes<HTMLTableElement>> = ({
-  children,
-  className,
-}) => {
+interface TableProps extends ComponentProps<"div"> {
+  height?: number | string;
+}
+
+export const Table = ({ children, className, height }: TableProps) => {
   return (
-    <div className={`${styles.tableContainer} ${className}`}>
+    <div className={`${styles.tableContainer} ${className}`} style={{ height }}>
       <table className={styles.table}>{children}</table>
     </div>
   );
 };
-
-export default Table;

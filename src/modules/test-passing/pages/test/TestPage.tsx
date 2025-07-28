@@ -1,7 +1,3 @@
-import { Timer } from "@/components/timer/Timer";
-import { Badge, Button } from "@/components/ui";
-import Skeleton from "@/components/ui/skeleton/Skeleton";
-import { useTestStore } from "@/store/TestStore";
 import {
   useAnswerQuestion,
   useCurrentStep,
@@ -13,6 +9,9 @@ import {
 
 import { useFinishTest, useQuestionPhoto } from "../../api/queries";
 import styles from "./TestPage.module.css";
+import { useTestStore } from "@/store/TestStore";
+import { Badge, Button, Skeleton } from "@/components/ui";
+import { Timer } from "@/components";
 
 export const TestPage = () => {
   const { user, nomination, questions, finishedAt } = useSessionData();
@@ -29,7 +28,7 @@ export const TestPage = () => {
 
   const { mutate: finishTest } = useFinishTest();
   const { data: image, isLoading } = useQuestionPhoto(
-    currentQuestion.photoName,
+    currentQuestion.photoName
   );
 
   const handleComplete = () => {
@@ -101,7 +100,8 @@ export const TestPage = () => {
 
             <div className={styles.progressContainer}>
               <Button
-                color="outline"
+                size="s"
+                variant="outline"
                 onClick={() => {
                   ensureAnswer();
                   controls.prevStep();
@@ -121,7 +121,8 @@ export const TestPage = () => {
               </div>
 
               <Button
-                color="danger"
+              size="s"
+                variant="danger"
                 onClick={handleNextStep}
                 className={styles.button}
               >

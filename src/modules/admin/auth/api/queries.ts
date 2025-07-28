@@ -1,8 +1,9 @@
 import { queryOptions, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
+import type { AdminCredentials } from "../types";
+
 import { checkAuth, login } from "./api";
-import type { AdminCredentials } from "./types";
 
 export const checkAuthQuery = () =>
   queryOptions({
@@ -17,7 +18,6 @@ export const useLoginMutation = () => {
   return useMutation({
     mutationFn: (credentials: AdminCredentials) => login(credentials),
     onSuccess: () => {
-      console.log("dfhhkjdfh");
       navigate({ to: "/admin/dashboard" });
     },
   });
