@@ -1,6 +1,7 @@
-import { api } from "@/config";
 import type { ResultResponse } from "@/store/slices/resultSlice";
 import type { TestAnswer } from "@/types/test";
+
+import { api } from "@/config";
 
 export const fetchQuestionPhoto = async (filename: string) => {
   const response = await api.get(`/question/photo/${filename}`, {

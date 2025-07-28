@@ -43,15 +43,15 @@ export const TestCompletePage = () => {
           <ButtonLink to="/result">Просмотр результатов</ButtonLink>
         </div>
       </div>
-      <PieChart width={400} height={400}>
+      <PieChart height={400} width={400}>
         <Pie
-          data={DIAGRAM_DATA}
+          label
           cx="50%"
           cy="50%"
-          outerRadius={150}
-          fill="#8884d8"
+          data={DIAGRAM_DATA}
           dataKey="value"
-          label
+          fill="#8884d8"
+          outerRadius={150}
         >
           {DIAGRAM_DATA.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

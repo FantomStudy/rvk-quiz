@@ -1,14 +1,15 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { useSetTestResult } from "@/store/selectors";
 import type { TestAnswer } from "@/types/test";
+
+import { useSetTestResult } from "@/store/selectors";
 
 import { fetchQuestionPhoto, finishTest } from "./api";
 
 export interface FinishTestPayload {
-  userId: number;
   answers: TestAnswer[];
+  userId: number;
 }
 
 export const useFinishTest = () => {

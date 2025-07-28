@@ -8,8 +8,8 @@ export interface AnswersSlice {
   answers: TestAnswer[];
 
   answerQuestion: (answer: TestAnswer) => void;
-  getUserAnswer: (questionId: number) => TestAnswer | undefined;
   ensureAnswer: () => void;
+  getUserAnswer: (questionId: number) => TestAnswer | undefined;
 }
 
 export const createAnswersSlice: StateCreator<

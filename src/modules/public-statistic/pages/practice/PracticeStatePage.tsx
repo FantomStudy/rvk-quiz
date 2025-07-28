@@ -1,8 +1,9 @@
 import { Table } from "@/components/ui";
 
-import styles from "./PracticeStatePage.module.css";
 import { PRACTICE_STATISTIC_DATA } from "../../constants";
 import { getSum } from "../../utils";
+
+import styles from "./PracticeStatePage.module.css";
 
 export const PracticePage = () => {
   return (

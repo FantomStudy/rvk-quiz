@@ -1,7 +1,8 @@
 import { Table } from "@/components/ui";
 
-import styles from "./TestStatePage.module.css";
 import { TEST_STATISTIC_DATA } from "../../constants";
+
+import styles from "./TestStatePage.module.css";
 
 export const TestStatePage = () => {
   return (

@@ -1,4 +1,5 @@
 import { Table } from "@/components/ui";
+
 import { RATING } from "../../constants";
 
 export const CommonStatePage = () => {

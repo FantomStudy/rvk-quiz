@@ -5,7 +5,7 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun build
+RUN bun run build
 
 FROM nginx:stable-alpine AS production
 COPY --from=build /app/dist /usr/share/nginx/html

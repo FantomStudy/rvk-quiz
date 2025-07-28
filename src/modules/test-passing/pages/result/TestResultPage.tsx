@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ButtonLink, Table } from "@/components/ui";
+import { api } from "@/config";
 import { useResetTest, useSessionData } from "@/store/selectors";
 
 import styles from "./TestResultPage.module.css";
-import { api } from "@/config";
-import { ButtonLink, Table } from "@/components/ui";
 
 export const TestResultPage = () => {
   const { user, nomination } = useSessionData();
@@ -33,7 +33,7 @@ export const TestResultPage = () => {
       <Table className={styles.resultTable}>
         <thead>
           <tr>
-            <th>Номер</th>
+            <th className="cell_slim">Номер</th>
             <th>Вопрос</th>
             <th>Ваш ответ</th>
             <th>Верный ответ</th>
@@ -59,7 +59,7 @@ export const TestResultPage = () => {
         </tbody>
       </Table>
       <div className={styles.buttonContainer}>
-        <ButtonLink to="/" className={styles.button} onClick={resetTest}>
+        <ButtonLink className={styles.button} onClick={resetTest} to="/">
           Завершить тестирование
         </ButtonLink>
       </div>

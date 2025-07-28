@@ -1,10 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
+import { useInitializeTest } from "@/store/selectors";
+
 import type { StartTestResponse } from "../types";
 
 import { startTest } from "./api";
-import { useInitializeTest } from "@/store/selectors";
 
 // TODO: REVIEW STORE
 export const useStartTest = () => {

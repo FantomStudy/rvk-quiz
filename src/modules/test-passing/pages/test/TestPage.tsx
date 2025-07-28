@@ -1,3 +1,5 @@
+import { Timer } from "@/components";
+import { Badge, Button, Skeleton } from "@/components/ui";
 import {
   useAnswerQuestion,
   useCurrentStep,
@@ -6,12 +8,11 @@ import {
   useSessionData,
   useStepControls,
 } from "@/store/selectors";
+import { useTestStore } from "@/store/TestStore";
 
 import { useFinishTest, useQuestionPhoto } from "../../api/queries";
+
 import styles from "./TestPage.module.css";
-import { useTestStore } from "@/store/TestStore";
-import { Badge, Button, Skeleton } from "@/components/ui";
-import { Timer } from "@/components";
 
 export const TestPage = () => {
   const { user, nomination, questions, finishedAt } = useSessionData();
@@ -75,17 +76,17 @@ export const TestPage = () => {
               {!currentQuestion.photoName ? null : isLoading ? (
                 <Skeleton className={styles.testImage} />
               ) : (
-                <img src={image} alt="image" className={styles.testImage} />
+                <img alt="image-test" className={styles.testImage} src={image} />
               )}
 
               <div className={styles.stripe}></div>
               {currentQuestion.options.map((option) => (
-                <div className={styles.radio} key={option.id}>
+                <div key={option.id} className={styles.radio}>
                   <input
                     type="radio"
-                    name="options"
-                    id={option.id.toString()}
                     checked={selectedAnswer === option.id}
+                    id={option.id.toString()}
+                    name="options"
                     onChange={() =>
                       answerQuestion({
                         questionId: currentQuestion.id,
@@ -100,31 +101,31 @@ export const TestPage = () => {
 
             <div className={styles.progressContainer}>
               <Button
+                disabled={currentStep === 0}
                 size="s"
                 variant="outline"
                 onClick={() => {
                   ensureAnswer();
                   controls.prevStep();
                 }}
-                disabled={currentStep === 0}
               >
                 Назад
               </Button>
 
               <div className={styles.progressBar}>
                 <div
-                  className={styles.progressBarFill}
                   style={{
                     width: `${((currentStep + 1) / questions.length) * 100}%`,
                   }}
+                  className={styles.progressBarFill}
                 ></div>
               </div>
 
               <Button
-              size="s"
+              className={styles.button}
+                size="s"
                 variant="danger"
                 onClick={handleNextStep}
-                className={styles.button}
               >
                 {isLast ? "Завершить" : "Далее"}
               </Button>
@@ -132,7 +133,7 @@ export const TestPage = () => {
           </div>
         </div>
       </div>
-      <img src="/wave-mask.png" alt="wave" className={styles.waveMask} />
+      <img alt="wave" className={styles.waveMask} src="/wave-mask.png" />
     </>
   );
 };

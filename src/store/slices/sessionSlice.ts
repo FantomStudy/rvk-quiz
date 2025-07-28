@@ -8,20 +8,20 @@ import type { AnswersSlice } from "./answersSlice";
 import type { ResultSlice } from "./resultSlice";
 
 export interface SessionSlice {
-  user: User | null;
-  nomination: Nomination | null;
-  questions: TestQuestion[];
   currentStep: number;
   finishedAt: string | null;
+  nomination: Nomination | null;
+  questions: TestQuestion[];
+  user: User | null;
 
   initializeTest: (payload: InitTest) => void;
-  resetTest: () => void;
   nextStep: () => void;
   prevStep: () => void;
+  resetTest: () => void;
 }
 
 export const createSessionSlice: StateCreator<
-  SessionSlice & AnswersSlice & ResultSlice,
+  AnswersSlice & ResultSlice & SessionSlice,
   [],
   [],
   SessionSlice
