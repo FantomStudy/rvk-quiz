@@ -1,11 +1,10 @@
 import type { ChangeEvent } from "react";
 
+import { branchListQuery } from "@/api/branch/queries";
 import { nominationListQuery } from "@/api/nomination/queries";
 import { AsyncSelect } from "@/components/ui";
 
 import type { DashboardFilters } from "../../types";
-
-import { branchListQuery } from "../../api/branch/queries";
 
 import styles from "./FilterBar.module.css";
 

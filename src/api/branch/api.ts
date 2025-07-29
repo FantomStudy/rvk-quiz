@@ -1,6 +1,6 @@
-import { api } from "@/config";
+import type { Branch } from "@/types/branch";
 
-import type { Branch } from "./types";
+import { api } from "@/config";
 
 export const fetchBranchList = async () =>
   api.get<Branch[]>("/branch/all").then((r) => r.data);

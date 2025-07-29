@@ -1,3 +1,3 @@
-export { CommonStatePage } from "./pages/common/CommonStatePage";
-export { PracticePage } from "./pages/practice/PracticeStatePage";
-export { TestStatePage } from "./pages/test/TestStatePage";
+export { CommonStatePage } from "./common/pages/CommonStatePage";
+export { PracticeStatePage as PracticePage } from "./practice/pages/PracticeStatePage";
+export { TheoryStatePage as TestStatePage } from "./theory/pages/TheoryStatePage";

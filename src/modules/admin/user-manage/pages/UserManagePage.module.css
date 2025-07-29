@@ -1,0 +1,15 @@
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  img {
+    width: 30px;
+  }
+}
+
+.searchInput {
+  padding: 10px 15px;
+  height: auto;
+  max-width: 350px;
+}

@@ -1,9 +1,11 @@
+import type { Branch } from "./branch";
+
 interface UserBase {
   number: string;
 }
 
 export interface User extends UserBase {
   id: number;
-  branchId: number | null;
+  branch: Branch | null;
   fullName: string | null;
 }

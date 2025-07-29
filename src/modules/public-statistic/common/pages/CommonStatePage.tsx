@@ -1,8 +1,18 @@
 import { Table } from "@/components/ui";
 
-import { RATING } from "../../constants";
+import { useCommonList } from "../api/queries";
 
 export const CommonStatePage = () => {
+  const commonList = useCommonList();
+
+  if (commonList.isLoading) {
+    return <div className="container">Загрузка...</div>;
+  }
+
+  if (!commonList.data || commonList.data.length === 0) {
+    return <div className="container">Нет данных для отображения</div>;
+  }
+
   return (
     <div className="container">
       <Table>
@@ -16,12 +26,12 @@ export const CommonStatePage = () => {
           </tr>
         </thead>
         <tbody>
-          {RATING.map((data, index) => (
-            <tr key={data.branch}>
+          {commonList.data.map((data, index) => (
+            <tr key={data.branchName}>
               <td>{index + 1}</td>
-              <td>{data.branch}</td>
-              <td>{data.practice}</td>
-              <td>{data.test}</td>
+              <td>{data.branchName}</td>
+              <td>{data.practiceScores}</td>
+              <td>{data.theoryScore}</td>
               <td>{data.totalScore}</td>
             </tr>
           ))}

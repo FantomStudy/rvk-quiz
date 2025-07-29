@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
-import type { Branch } from "./types";
+import type { Branch } from "@/types/branch";
 
 import { fetchBranchList } from "./api";
 
