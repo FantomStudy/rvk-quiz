@@ -2,24 +2,37 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ButtonLink, Table } from "@/components/ui";
 import { api } from "@/config";
-import { useResetTest, useSessionData } from "@/store/selectors";
+import { useResetResults, useResetSession } from "@/store";
+
+import { useSessionMeta } from "../../hooks";
 
 import styles from "./TestResultPage.module.css";
 
 export const TestResultPage = () => {
-  const { user, nomination } = useSessionData();
+  const { user, nomination } = useSessionMeta();
+  const resetTest = useResetResults();
+  const resetSession = useResetSession();
 
-  const resetTest = useResetTest();
-
-  const { data } = useQuery({
-    queryKey: ["results-page", user?.id, nomination?.id],
+  const { data, isLoading } = useQuery({
+    queryKey: ["results-page", user.id, nomination.id],
     queryFn: async () =>
-      await api
+      api
         .get<
           Array<{ question: string; userAnswer: string; correctAnswer: string }>
-        >(`/tests/result-table/${user?.id}/${nomination?.id}`)
+        >(`/tests/result-table/${user.id}/${nomination.id}`)
         .then((r) => r.data),
+    staleTime: 0,
+    gcTime: 0,
   });
+
+  if (isLoading) {
+    return "Загрузка...";
+  }
+
+  const handleFinishTest = () => {
+    resetTest();
+    resetSession();
+  };
 
   return (
     <div className="container">
@@ -59,7 +72,7 @@ export const TestResultPage = () => {
         </tbody>
       </Table>
       <div className={styles.buttonContainer}>
-        <ButtonLink className={styles.button} onClick={resetTest} to="/">
+        <ButtonLink className={styles.button} onClick={handleFinishTest} to="/">
           Завершить тестирование
         </ButtonLink>
       </div>

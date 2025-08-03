@@ -1,8 +1,6 @@
-import type { InitTest } from "@/types/test";
-
 import { api } from "@/config";
 
-import type { StartTestResponse } from "../types";
+import type { StartTestRequest, StartTestResponse } from "../types";
 
-export const startTest = async (form: StartTestResponse) =>
-  api.post<InitTest>("/tests/start", form).then((r) => r.data);
+export const startTest = async (form: StartTestRequest) =>
+  api.post<StartTestResponse>("/tests/start", form).then((r) => r.data);

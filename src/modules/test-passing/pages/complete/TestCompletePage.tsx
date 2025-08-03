@@ -1,12 +1,14 @@
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 
 import { ButtonLink } from "@/components/ui";
-import { useTestResult } from "@/store/selectors";
+import { useResults } from "@/store";
 
 import styles from "./TestCompletePage.module.css";
 
+const COLORS = ["#45FF8C", "#FF4548"];
+
 export const TestCompletePage = () => {
-  const result = useTestResult();
+  const result = useResults();
   if (!result) {
     return "Не удалось получить результат";
   }
@@ -23,8 +25,6 @@ export const TestCompletePage = () => {
       value: 100 - result.percentage,
     },
   ];
-
-  const COLORS = ["#45FF8C", "#FF4548"];
 
   return (
     <div className={styles.completePage}>

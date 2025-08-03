@@ -1,15 +1,6 @@
 import type { Nomination } from "./nomination";
 import type { User } from "./user";
 
-export interface InitTest {
-  nomination: Nomination;
-  questions: TestQuestion[];
-  user: User;
-  time: {
-    finishedAt: string;
-  };
-}
-
 export interface TestQuestion {
   id: number;
   options: TestOption[];
@@ -25,4 +16,21 @@ interface TestOption {
 export interface TestAnswer {
   optionId: number | null;
   questionId: number;
+}
+
+export interface FinishTestResponse {
+  result: {
+    id: number;
+    user: User;
+    nomination: Nomination;
+    testAnswers: Array<{
+      id: number;
+      optionId: number | null;
+      questionId: number;
+    }>;
+    duration: string;
+    score: number;
+    total: number;
+    percentage: number;
+  };
 }

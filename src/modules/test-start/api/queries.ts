@@ -1,21 +1,21 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { useInitializeTest } from "@/store/selectors";
+import { useInitAnswers } from "@/store";
 
-import type { StartTestResponse } from "../types";
+import type { StartTestRequest } from "../types";
 
 import { startTest } from "./api";
 
 // TODO: REVIEW STORE
 export const useStartTest = () => {
   const navigate = useNavigate();
-  const initTest = useInitializeTest();
+  const initAnswers = useInitAnswers();
 
   return useMutation({
-    mutationFn: (form: StartTestResponse) => startTest(form),
+    mutationFn: (form: StartTestRequest) => startTest(form),
     onSuccess: (data) => {
-      initTest(data);
+      initAnswers(data.questions);
       navigate({ to: "/test" });
     },
   });
