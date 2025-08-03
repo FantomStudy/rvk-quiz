@@ -24,5 +24,6 @@ export const useFinishTest = () => {
 export const sessionDataQuery = queryOptions({
   queryKey: ["sessionData"],
   queryFn: fetchSessionData,
-  staleTime: 1000 * 60 * 30, //TODO: 30 minutes -> adjust as needed
+  staleTime: 0,
+  gcTime: 0,
 });

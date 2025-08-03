@@ -15,6 +15,7 @@ export const QuestionView = () => {
   const photoImage = useQuestionPhoto(question.photoName);
 
   const answerQuestion = useAnswerQuestion();
+
   const handleAnswerChange = (e: ChangeEvent<HTMLInputElement>) => {
     answerQuestion({
       questionId: question.id,
