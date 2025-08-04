@@ -24,4 +24,13 @@ select.base {
   background-repeat: no-repeat;
   background-position: right 20px center;
   background-size: 12px;
+
+  &.s {
+    max-width: 330px;
+    height: auto;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    padding-right: 40px;
+  }
 }

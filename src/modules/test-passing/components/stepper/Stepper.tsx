@@ -1,9 +1,9 @@
-import { Timer } from "@/components";
 import { Badge, Button } from "@/components/ui";
+import { Timer } from "@/components/widgets";
 import { useAnswersStore, useStepControls } from "@/store";
 
 import { useFinishTest } from "../../api";
-import { useProgress, useSessionMeta } from "../../hooks";
+import { useProgress, useSessionMeta } from "./hooks";
 
 import styles from "./Stepper.module.css";
 

@@ -11,14 +11,12 @@
   color: var(--primary);
 }
 
-.stateNavigation {
+.adminNav {
   display: flex;
-  justify-content: center;
-  gap: 3em;
-  margin-bottom: 25px;
+  gap: 15px;
+  margin-bottom: 15px;
 }
-.stateNavigation a {
-  font-size: 18px;
+.adminNav a {
   text-decoration: none;
   color: var(--primary);
   &.active {

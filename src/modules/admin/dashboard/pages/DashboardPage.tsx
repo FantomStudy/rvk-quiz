@@ -35,7 +35,7 @@ export const DashboardPage = () => {
                   <Skeleton
                     key={key}
                     height={161}
-                    style={{ minWidth: 330 }}
+                    width={330}
                     borderRadius={10}
                   />
                 ))
@@ -56,7 +56,6 @@ export const DashboardPage = () => {
 
         <section>
           <h2>Фильтры</h2>
-
           <FilterBar filters={filters} onChange={onChange} />
         </section>
 
@@ -69,19 +68,18 @@ export const DashboardPage = () => {
             <Table height={300}>
               <thead>
                 <tr>
-                  <th className="cell_slim">Место</th>
                   <th>Номер</th>
                   <th>ФИО</th>
                   <th>Номинация</th>
                   <th>Филиал</th>
                   <th>Время</th>
                   <th>Результат</th>
+                  <th>Место</th>
                 </tr>
               </thead>
               <tbody>
                 {dashboard.data?.testResults.map((result, index) => (
                   <tr key={`${result.userId}-${result.nominationId}`}>
-                    <td>{index + 1}</td>
                     <td>{result.number}</td>
                     <td>
                       <Link
@@ -98,6 +96,7 @@ export const DashboardPage = () => {
                     <td>{result.branch}</td>
                     <td>{result.date}</td>
                     <td>{result.result}</td>
+                    <td>{index + 1}</td>
                   </tr>
                 ))}
               </tbody>

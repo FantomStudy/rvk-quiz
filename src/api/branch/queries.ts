@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import { queryOptions } from "@tanstack/react-query";
 
 import type { Branch } from "@/types/branch";
 
@@ -8,5 +8,3 @@ export const branchListQuery = queryOptions<Branch[]>({
   queryKey: ["branch"],
   queryFn: fetchBranchList,
 });
-
-export const useBranchList = () => useQuery(branchListQuery);

@@ -17,10 +17,12 @@ export const TestCompletePage = () => {
 
   const DIAGRAM_DATA = [
     {
+      id: "correct",
       name: "Верно",
       value: result.percentage,
     },
     {
+      id: "wrong",
       name: "Неверно",
       value: 100 - result.percentage,
     },
@@ -53,8 +55,8 @@ export const TestCompletePage = () => {
           fill="#8884d8"
           outerRadius={150}
         >
-          {DIAGRAM_DATA.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          {DIAGRAM_DATA.map(({ id }, index) => (
+            <Cell key={id} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />

@@ -7,11 +7,14 @@ export const Route = createFileRoute("/_statisticLayout")({
 function LayoutComponent() {
   return (
     <>
-      <nav className="stateNavigation">
-        <Link to="/theoryState">Теоретическая</Link>
-        <Link to="/practiceState">Практическая</Link>
-        <Link to="/commonState">Общая</Link>
-      </nav>
+      <div className="container">
+        <nav className="adminNav">
+          <Link to="/admin/users">На главную</Link>
+          <Link to="/statistic/theory">Теоретическая</Link>
+          <Link to="/statistic/practice">Практическая</Link>
+          <Link to="/statistic/common">Общая</Link>
+        </nav>
+      </div>
       <Outlet />
     </>
   );

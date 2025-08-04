@@ -34,3 +34,11 @@ export interface FinishTestResponse {
     percentage: number;
   };
 }
+
+export type TestResult = Array<{
+  questionId: number;
+  question: string;
+  userAnswer: string;
+  correctAnswer: string;
+  isCorrect: boolean;
+}>;

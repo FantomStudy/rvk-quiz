@@ -7,7 +7,6 @@ import type { StartTestRequest } from "../types";
 
 import { startTest } from "./api";
 
-// TODO: REVIEW STORE
 export const useStartTest = () => {
   const navigate = useNavigate();
   const initAnswers = useInitAnswers();

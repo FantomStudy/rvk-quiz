@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.table {
+  font-size: 18px;
+}
+.rotate {
+  writing-mode: sideways-lr;
+}

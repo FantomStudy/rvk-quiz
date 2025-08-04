@@ -4,7 +4,7 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 
-import type { SaveUserMutation } from "../types";
+import type { UpdateUserMutation } from "../types";
 
 import { fetchUserList, updateUser } from "./api";
 
@@ -17,10 +17,7 @@ export const useUpdateUser = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ userId, userData }: SaveUserMutation) =>
-      updateUser(userId, userData),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-    },
+    mutationFn: (data: UpdateUserMutation) => updateUser(data),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["user"] }),
   });
 };

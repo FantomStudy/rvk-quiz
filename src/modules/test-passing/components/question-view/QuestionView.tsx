@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui";
 import { useAnswerQuestion, useUserAnswers } from "@/store";
 
 import { useQuestionPhoto } from "../../api";
-import { useCurrentQuestion } from "../../hooks";
+import { useCurrentQuestion } from "./hooks";
 
 import styles from "./QuestionView.module.css";
 

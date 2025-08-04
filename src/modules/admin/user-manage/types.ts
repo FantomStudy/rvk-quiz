@@ -1,9 +1,9 @@
-export interface SaveUserData {
-  branchId: number | null;
-  fullName: string | null;
+export interface UpdateUserMutation {
+  userData: UpdateUserData;
+  userId: number;
 }
 
-export interface SaveUserMutation {
-  userData: SaveUserData;
-  userId: number;
+interface UpdateUserData {
+  branchId: number | null;
+  fullName: string | null;
 }

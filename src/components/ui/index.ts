@@ -1,8 +1,9 @@
 export { Badge } from "./badge/Badge.tsx";
 export { Button } from "./button/Button";
 export { ButtonLink } from "./button/ButtonLink";
-export { AsyncSelect } from "./form-controls/AsyncSelect.tsx";
+export { AsyncSelect } from "./form-controls/select/AsyncSelect.tsx";
 export { Input } from "./form-controls/Input";
-export { Select } from "./form-controls/Select";
-export { Skeleton } from "./skeleton/Skeleton.tsx";
-export { Table } from "./table/Table.tsx";
+export { Select } from "./form-controls/select/Select.tsx";
+export { Header } from "./header/Header";
+export { Skeleton } from "./skeleton/Skeleton";
+export { Table } from "./table/Table";
