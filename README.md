@@ -2,7 +2,7 @@
 
 <div align='center'>
    
-   ![Логотип](public/logo/rvk-logo.svg)
+   ![Логотип](public/logo/rvk-logo.png)
 </div>
 
 ## Описание
