@@ -1,10 +1,10 @@
 import { api } from "@/config";
 
-import type { theoryListItem } from "../types";
+import type { TheoryListItem } from "../types";
 
 export const fetchTheoryList = async (nominationId: number) =>
   api
     .get<
-      theoryListItem[]
+      TheoryListItem[]
     >("statistic/theory-table", { params: { nominationId } })
     .then((r) => r.data);

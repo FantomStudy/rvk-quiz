@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-import { nominationListQuery } from "@/api/nomination/queries";
+import {
+  nominationListQuery,
+  useNominationList,
+} from "@/api/nomination/queries";
 import { AsyncSelect, Table } from "@/components/ui";
 
 import { useTheoryList } from "../api/queries";
@@ -11,6 +14,7 @@ export const TheoryStatePage = () => {
   const [nominationId, setNominationId] = useState("");
 
   const theory = useTheoryList(Number(nominationId));
+  const nomination = useNominationList();
 
   if (theory.isLoading) {
     return <div className="container">Загрузка...</div>;
@@ -22,6 +26,11 @@ export const TheoryStatePage = () => {
 
   return (
     <div className="container">
+      <h1 style={{ textAlign: "center", marginBottom: 15 }}>
+        Предварительные результаты по окончанию теоретической части:
+        <br />
+        {nomination.data?.find((n) => n.id === +nominationId)?.name}
+      </h1>
       <div className={styles.wrapper}>
         <AsyncSelect
           mapItems={(i) => ({ value: i.id, label: i.name })}
