@@ -17,9 +17,9 @@ export const FilterBar = ({ filters, onChange }: FilterBarProps) => {
   return (
     <div className={styles.wrapper}>
       <AsyncSelect
-        className={styles.select}
         mapItems={(i) => ({ value: i.id, label: i.address })}
         name="branchId"
+        selectSize="s"
         value={filters.branchId}
         onChange={onChange}
         queryOptions={branchListQuery}
@@ -29,6 +29,7 @@ export const FilterBar = ({ filters, onChange }: FilterBarProps) => {
         className={styles.select}
         mapItems={(i) => ({ value: i.id, label: i.name })}
         name="nominationId"
+        selectSize="s"
         value={filters.nominationId}
         onChange={onChange}
         queryOptions={nominationListQuery}

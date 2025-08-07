@@ -1,12 +1,14 @@
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 
 import { ButtonLink } from "@/components/ui";
-import { useTestResult } from "@/store/selectors";
+import { useResults } from "@/store";
 
 import styles from "./TestCompletePage.module.css";
 
+const COLORS = ["#45FF8C", "#FF4548"];
+
 export const TestCompletePage = () => {
-  const result = useTestResult();
+  const result = useResults();
   if (!result) {
     return "Не удалось получить результат";
   }
@@ -15,16 +17,16 @@ export const TestCompletePage = () => {
 
   const DIAGRAM_DATA = [
     {
+      id: "correct",
       name: "Верно",
       value: result.percentage,
     },
     {
+      id: "wrong",
       name: "Неверно",
       value: 100 - result.percentage,
     },
   ];
-
-  const COLORS = ["#45FF8C", "#FF4548"];
 
   return (
     <div className={styles.completePage}>
@@ -53,8 +55,8 @@ export const TestCompletePage = () => {
           fill="#8884d8"
           outerRadius={150}
         >
-          {DIAGRAM_DATA.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          {DIAGRAM_DATA.map(({ id }, index) => (
+            <Cell key={id} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />

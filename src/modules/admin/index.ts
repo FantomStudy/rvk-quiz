@@ -6,5 +6,4 @@ export { DashboardPage } from "./dashboard/pages/DashboardPage";
 export { userListQuery } from "./user-manage/api/queries";
 export { UserManagePage } from "./user-manage/pages/UserManagePage";
 
-export { testResultQuery } from "./user-session/api/queries";
 export { UserSessionPage } from "./user-session/pages/UserSessionPage";

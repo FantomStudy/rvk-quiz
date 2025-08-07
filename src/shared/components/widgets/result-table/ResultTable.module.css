@@ -1,0 +1,18 @@
+.resultTable {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.resultTable th {
+  font-weight: 500;
+}
+.resultTable td {
+  font-weight: 400;
+}
+
+.correct {
+  color: var(--success);
+}
+.wrong {
+  color: var(--danger);
+}

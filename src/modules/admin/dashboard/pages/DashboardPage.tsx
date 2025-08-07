@@ -3,8 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Skeleton, Table } from "@/components/ui";
 
 import { useDashboardData } from "../api/queries";
-import { BranchRating, FilterBar, MetricCard } from "../components";
-import { METRIC_LABELS } from "../constants";
+import { BranchRating, FilterBar } from "../components";
 import { useDashboardFilters } from "../hooks/useDashboardFilters";
 
 import styles from "./DashboardPage.module.css";
@@ -28,35 +27,7 @@ export const DashboardPage = () => {
 
       <div className={styles.wrapper}>
         <section>
-          <h2>Общая статистика</h2>
-          <div className={styles.metricWrapper}>
-            {dashboard.isLoading
-              ? Object.entries(METRIC_LABELS).map(([key]) => (
-                  <Skeleton
-                    key={key}
-                    height={161}
-                    style={{ minWidth: 330 }}
-                    borderRadius={10}
-                  />
-                ))
-              : dashboard.data?.blockStats &&
-                Object.entries(dashboard.data?.blockStats).map(
-                  ([key, value]) => (
-                    <MetricCard
-                      key={key}
-                      value={value}
-                      descriptor={
-                        METRIC_LABELS[key as keyof typeof METRIC_LABELS]
-                      }
-                    />
-                  )
-                )}
-          </div>
-        </section>
-
-        <section>
           <h2>Фильтры</h2>
-
           <FilterBar filters={filters} onChange={onChange} />
         </section>
 
@@ -69,19 +40,18 @@ export const DashboardPage = () => {
             <Table height={300}>
               <thead>
                 <tr>
-                  <th className="cell_slim">Место</th>
                   <th>Номер</th>
                   <th>ФИО</th>
                   <th>Номинация</th>
                   <th>Филиал</th>
                   <th>Время</th>
                   <th>Результат</th>
+                  <th>Место</th>
                 </tr>
               </thead>
               <tbody>
                 {dashboard.data?.testResults.map((result, index) => (
                   <tr key={`${result.userId}-${result.nominationId}`}>
-                    <td>{index + 1}</td>
                     <td>{result.number}</td>
                     <td>
                       <Link
@@ -98,6 +68,7 @@ export const DashboardPage = () => {
                     <td>{result.branch}</td>
                     <td>{result.date}</td>
                     <td>{result.result}</td>
+                    <td>{index + 1}</td>
                   </tr>
                 ))}
               </tbody>

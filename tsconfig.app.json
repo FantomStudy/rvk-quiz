@@ -12,6 +12,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "paths": {
+      "@/components/*": ["src/shared/components/*"],
       "@/*": ["src/*"]
     },
     "allowImportingTsExtensions": true,

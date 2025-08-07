@@ -22,19 +22,19 @@ export const BranchRating = ({ nominationId }: BranchRatingProps) => {
     <Table height={300}>
       <thead>
         <tr>
-          <th className="cell_slim">Место</th>
           <th>Филиал</th>
           <th>Номинация</th>
           <th>Общий результат</th>
+          <th>Место</th>
         </tr>
       </thead>
       <tbody>
         {data.map((str, index) => (
           <tr key={str.branch}>
-            <td>{index + 1}</td>
             <td>{str.branch}</td>
             <td>{str.nomination}</td>
             <td>{str.totalScore}</td>
+            <td>{index + 1}</td>
           </tr>
         ))}
       </tbody>

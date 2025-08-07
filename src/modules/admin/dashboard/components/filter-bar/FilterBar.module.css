@@ -2,12 +2,3 @@
   display: flex;
   grid-gap: 15px;
 }
-
-.select {
-  max-width: 330px;
-  height: auto;
-  font-size: 16px;
-  border-radius: 10px;
-  padding: 10px 20px;
-  padding-right: 40px;
-}

@@ -1,0 +1,31 @@
+.tableContainer {
+  border: 1px solid var(--border-gray);
+  border-radius: 15px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.table {
+  width: 100%;
+  /* table-layout: fixed important; */
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  min-height: 50px;
+  font-weight: normal;
+  padding: 15px 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: var(--table-secondary);
+}
+
+.table a {
+  text-decoration: none;
+  color: black;
+}

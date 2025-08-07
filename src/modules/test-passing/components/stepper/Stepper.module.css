@@ -1,0 +1,29 @@
+.infoWrapper {
+  position: absolute;
+  top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progressContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+}
+.progressBar {
+  width: 100%;
+  height: 7px;
+  border-radius: 10px;
+  background-color: var(--border-gray);
+  overflow: hidden;
+}
+.progressBarFill {
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--danger);
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}

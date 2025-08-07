@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-import type { Branch } from "@/types/branch";
-import type { User } from "@/types/user";
+import type { Branch, User } from "@/types";
 
-import { Input, Table } from "@/components/ui";
+import { EditableCell, Input, SelectableCell, Table } from "@/components/ui";
 
 import { useUpdateUser } from "../api/queries";
 
 import styles from "./UserManagePage.module.css";
-import { EditableCell, SelectableCell } from "@/components";
 
 interface UserManagePageProps {
   branchList: Branch[];
@@ -30,13 +28,13 @@ export const UserManagePage = ({
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.searchContainer}>
-          <img alt="search" src="/icons/search.svg" />
           <Input
             className={styles.searchInput}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Введите номер"
           />
+          <img alt="search" src="/icons/search.svg" />
         </div>
         <Table>
           <thead>
