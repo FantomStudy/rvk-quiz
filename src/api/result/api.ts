@@ -1,6 +1,6 @@
 import type { TestResult } from "@/types";
 
-import { api } from "@/config";
+import { api } from "@/shared/config";
 
 export const fetchResultTable = async (userId: number, nominationId: number) =>
   api

@@ -1,4 +1,4 @@
-import { api } from "@/config";
+import { api } from "@/shared/config";
 
 export const fetchQuestionPhoto = async (filename: string) => {
   const response = await api.get(`/question/photo/${filename}`, {

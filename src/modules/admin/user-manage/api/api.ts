@@ -1,6 +1,6 @@
 import type { User } from "@/types/user";
 
-import { api } from "@/config";
+import { api } from "@/shared/config";
 
 import type { UpdateUserMutation } from "../types";
 

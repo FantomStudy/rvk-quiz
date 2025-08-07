@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import type { Branch, User } from "@/types";
 
-import { Input, Table } from "@/components/ui";
-import { EditableCell, SelectableCell } from "@/components/widgets";
+import { EditableCell, Input, SelectableCell, Table } from "@/components/ui";
 
 import { useUpdateUser } from "../api/queries";
 

@@ -1,4 +1,4 @@
-import { api } from "@/config";
+import { api } from "@/shared/config";
 
 import type { CommonListItem } from "../types";
 

@@ -1,6 +1,6 @@
 import type { FinishTestResponse, TestAnswer } from "@/types/test";
 
-import { api } from "@/config";
+import { api } from "@/shared/config";
 
 import type { SessionData } from "../../types";
 

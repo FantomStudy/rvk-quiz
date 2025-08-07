@@ -36,11 +36,11 @@ export const SelectableCell = ({
           typeof selectElement.showPicker === "function"
         ) {
           selectElement.showPicker();
-          
         }
       };
 
-      setTimeout(openDropdown, 50);
+      const timeoutId = setTimeout(openDropdown, 50);
+      return () => clearTimeout(timeoutId);
     }
   }, [isEditing]);
 

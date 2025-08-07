@@ -1,5 +1,4 @@
-import AvrMechanicTable from "../components/avr-mechanic-table/AvrMechanicTable";
-import WelderTable from "../components/welder-table/WelderTable";
+import { AvrSewerPlumber } from "../components/tables/avr-sewer-plumber/AvrSewerPlumber";
 
 import styles from "./PracticeStatePage.module.css";
 
@@ -7,8 +6,11 @@ export const PracticeStatePage = () => {
   return (
     <div className="container">
       <div className={styles.wrapper}>
-        <WelderTable />
-        {/* <AvrMechanicTable /> */}
+        {/* <Welder /> */}
+        {/* <AvrMechanic /> */}
+        {/* <AvrPlumber /> */}
+        {/* <AvrSewer /> */}
+        <AvrSewerPlumber />
       </div>
     </div>
   );

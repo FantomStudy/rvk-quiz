@@ -1,7 +1,6 @@
 import antfu from "@antfu/eslint-config";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 import pluginRouter from "@tanstack/eslint-plugin-router";
-import pluginJsxA11y from "eslint-plugin-jsx-a11y";
 import pluginReact from "eslint-plugin-react";
 
 const config = antfu(
@@ -32,21 +31,21 @@ const config = antfu(
       },
     },
   },
-  {
-    name: "fantomstudy/jsx-a11y",
-    plugins: {
-      "fantomstudy-jsx-a11y": pluginJsxA11y,
-    },
-    rules: {
-      ...Object.entries(pluginJsxA11y.flatConfigs.recommended.rules).reduce(
-        (acc, [key, value]) => {
-          acc[key.replace("jsx-a11y", "fantomstudy-jsx-a11y")] = value;
-          return acc;
-        },
-        {}
-      ),
-    },
-  },
+  // {
+  //   name: "fantomstudy/jsx-a11y",
+  //   plugins: {
+  //     "fantomstudy-jsx-a11y": pluginJsxA11y,
+  //   },
+  //   rules: {
+  //     ...Object.entries(pluginJsxA11y.flatConfigs.recommended.rules).reduce(
+  //       (acc, [key, value]) => {
+  //         acc[key.replace("jsx-a11y", "fantomstudy-jsx-a11y")] = value;
+  //         return acc;
+  //       },
+  //       {}
+  //     ),
+  //   },
+  // },
   {
     name: "fantomstudy/rewrite",
     rules: {

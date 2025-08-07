@@ -2,7 +2,7 @@ import type { ChangeEvent, ComponentProps } from "react";
 
 import { useState } from "react";
 
-import { useDebounceCallback } from "./useDebounceCallback";
+import { useDebounceCallback } from "@/shared/hooks";
 
 import styles from "./EditableCell.module.css";
 
@@ -36,7 +36,6 @@ export const EditableCell = ({
           type="text"
           className={styles.input}
           value={value}
-          // eslint-disable-next-line fantomstudy-jsx-a11y/no-autofocus
           autoFocus
           onBlur={stopEditing}
           onChange={handleChange}
