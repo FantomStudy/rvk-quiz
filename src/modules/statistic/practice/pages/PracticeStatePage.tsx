@@ -1,4 +1,5 @@
-import { AvrSewerPlumber } from "../components/tables/avr-sewer-plumber/AvrSewerPlumber";
+import { Driver } from "../components";
+import { ChemLabTechnician } from "../components/tables/chem-lab-technician/ChemLabTechnician";
 
 import styles from "./PracticeStatePage.module.css";
 
@@ -10,7 +11,9 @@ export const PracticeStatePage = () => {
         {/* <AvrMechanic /> */}
         {/* <AvrPlumber /> */}
         {/* <AvrSewer /> */}
-        <AvrSewerPlumber />
+        {/* <AvrSewerPlumber /> */}
+        {/* <Driver /> */}
+        <ChemLabTechnician />
       </div>
     </div>
   );
