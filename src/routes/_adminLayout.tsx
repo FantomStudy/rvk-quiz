@@ -1,10 +1,6 @@
-import {
-  createFileRoute,
-  Link,
-  Outlet,
-  redirect,
-} from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
+import { AdminNavigation } from "@/components/ui";
 import { checkAuthQuery } from "@/modules/admin";
 
 const redirectToLogin = () => {
@@ -26,11 +22,7 @@ function LayoutComponent() {
   return (
     <>
       <div className="container">
-        <nav className="adminNav">
-          <Link to="/admin/users">Главная</Link>
-          <Link to="/admin/dashboard">Результаты</Link>
-          <Link to="/statistic/theory">Статистика</Link>
-        </nav>
+        <AdminNavigation />
       </div>
 
       <Outlet />

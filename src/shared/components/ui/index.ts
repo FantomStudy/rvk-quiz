@@ -1,3 +1,4 @@
+export { AdminNavigation } from "./admin-navigation/AdminNavigation.tsx";
 export { Badge } from "./badge/Badge.tsx";
 export { Button } from "./button/Button";
 export { ButtonLink } from "./button/ButtonLink";

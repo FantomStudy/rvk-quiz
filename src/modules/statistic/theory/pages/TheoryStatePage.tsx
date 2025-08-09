@@ -26,8 +26,8 @@ export const TheoryStatePage = () => {
 
   return (
     <div className="container">
-      <h1 style={{ textAlign: "center", marginBottom: 15 }}>
-        Предварительные результаты по окончанию теоретической части:
+      <h1 className={styles.title}>
+        Результаты проведения теоретической части:
         <br />
         {nomination.data?.find((n) => n.id === +nominationId)?.name}
       </h1>

@@ -11,16 +11,7 @@
   color: var(--primary);
 }
 
-.adminNav {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-.adminNav a {
-  text-decoration: none;
-  color: var(--primary);
-  &.active {
-    font-weight: 500;
-    color: var(--primary-hover);
-  }
+.active {
+  font-weight: 500;
+  color: var(--secondary-hover);
 }
