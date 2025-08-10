@@ -45,7 +45,7 @@ export const EditableCell = ({
   }
 
   return (
-    <td onClick={startEditing} {...props}>
+    <td className={styles.cell} onClick={startEditing} {...props}>
       {value}
     </td>
   );

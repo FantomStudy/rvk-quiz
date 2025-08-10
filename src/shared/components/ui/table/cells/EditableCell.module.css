@@ -1,9 +1,5 @@
 td.editable {
   padding: 0 !important;
-
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 .input[type="text"],
@@ -20,7 +16,23 @@ td.editable {
   cursor: pointer;
 }
 
-.input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+.input {
+  &[type="text"] {
+    cursor: text;
+  }
+
+  &[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+.cell {
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--table-secondary), black 5%);
+  }
 }

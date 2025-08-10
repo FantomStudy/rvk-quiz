@@ -54,7 +54,9 @@ export const AvrSewer = () => {
                 >
                   {stage.timeDisplay}
                 </EditableCell>
+
                 <td>{stage.timeScore}</td>
+
                 {stage.taskNumber === 2 && (
                   <CheckableCell
                     save={(value) =>
@@ -67,6 +69,7 @@ export const AvrSewer = () => {
                     initialValue={stage.hydraulicTest}
                   />
                 )}
+
                 <EditableCell
                   save={(value) =>
                     mutate({
@@ -79,6 +82,7 @@ export const AvrSewer = () => {
                 >
                   {stage.safetyPenalty}
                 </EditableCell>
+
                 <EditableCell
                   save={(value) =>
                     mutate({
@@ -91,6 +95,7 @@ export const AvrSewer = () => {
                 >
                   {stage.culturePenalty}
                 </EditableCell>
+
                 {stage.taskNumber !== 2 && (
                   <EditableCell
                     save={(value) =>
@@ -105,9 +110,11 @@ export const AvrSewer = () => {
                     {stage.qualityPenalty}
                   </EditableCell>
                 )}
+
                 <td>{stage.stageScore}</td>
               </Fragment>
             ))}
+
             <td>{row.total}</td>
             <td>{row.place}</td>
           </tr>

@@ -1,37 +1,37 @@
 export interface DriverData {
   id: number;
-  branchId: number;
-  finalPlace: number;
   nominationId: number;
-  practicePenalty: number;
-  practicePlace: number;
-  practicePoints: number;
-  practiceSum: number;
-  practiceTime: "00:00";
-  theoryCorrect: number;
-  theoryPlace: number;
-  theoryPoints: number;
-  theoryTime: string;
-  totalPoints: number;
-  totalPracticePoints: number;
-  totalTheoryPoints: number;
-  userId: number;
+  branch: {
+    id: number;
+    address: string;
+  };
+  practice: {
+    penalty: number;
+    time: string;
+    sum: number;
+    place: number;
+    points: number;
+  };
+  result: {
+    theoryPoints: number;
+    practicePoints: number;
+    points: number;
+    place: number;
+  };
+  theory: {
+    correct: number;
+    time: string;
+    place: number;
+    points: number;
+  };
   user: {
     id: number;
-    number: string;
     fullName: string;
-    branchId: number;
-    branch: {
-      id: number;
-      address: string;
-    };
   };
 }
 
 export interface DriverMutation {
   practicePenalty: number;
   practiceTime: string;
-  // theoryCorrect: number;
-  // theoryTime: string;
   userId: number;
 }

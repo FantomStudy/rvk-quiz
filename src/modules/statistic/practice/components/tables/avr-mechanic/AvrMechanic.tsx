@@ -42,6 +42,7 @@ export const AvrMechanic = () => {
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
             {row.stages.map((stage, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
                 <EditableCell
                   save={(value) =>

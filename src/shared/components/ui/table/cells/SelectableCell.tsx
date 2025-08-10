@@ -70,7 +70,7 @@ export const SelectableCell = ({
   }
 
   return (
-    <td onClick={startEditing} {...props}>
+    <td className={styles.cell} onClick={startEditing} {...props}>
       {options.find((option) => option.value.toString() === value)?.label}
     </td>
   );

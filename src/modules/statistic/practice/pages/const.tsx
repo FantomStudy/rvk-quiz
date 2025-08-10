@@ -18,17 +18,13 @@ export const PROTOCOLS: ProtocolMap = {
     name: "Лучшая бригада  АВР по водопроводным сетям - 2025",
     element: <AvrMechanic />,
   },
-  welder: {
-    name: "Лучший сварщик - 2025",
-    element: <Welder />,
+  avrSewer: {
+    name: "Лучшая бригада АВР по канализационным сетям - 2025",
+    element: <AvrSewer />,
   },
   avrPlumber: {
-    name: "Лучший слесарь АВР по водопроводным сетям",
+    name: "Лучший слесарь АВР по водопроводным сетям - 2025",
     element: <AvrPlumber />,
-  },
-  avrSewer: {
-    name: "Лучшая бригада  АВР по канализационным сетям - 2025",
-    element: <AvrSewer />,
   },
   avrSewerPlumber: {
     name: "Лучший слесарь АВР по канализационным сетям - 2025",
@@ -45,5 +41,9 @@ export const PROTOCOLS: ProtocolMap = {
   chemLabTecnician: {
     name: "Лучший лаборант химического анализа - 2025",
     element: <ChemLabTechnician />,
+  },
+  welder: {
+    name: "Лучший сварщик - 2025",
+    element: <Welder />,
   },
 };

@@ -41,7 +41,7 @@ export const CheckableCell = ({
   }
 
   return (
-    <td onClick={startEditing} {...props}>
+    <td className={styles.cell} onClick={startEditing} {...props}>
       <span>{checked ? "+" : "-"}</span>
     </td>
   );

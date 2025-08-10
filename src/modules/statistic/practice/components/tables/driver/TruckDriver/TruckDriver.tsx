@@ -15,48 +15,49 @@ export const TruckDriver = () => {
     <Table className={styles.table}>
       <DriverHead />
       <tbody>
-        {data.map((row) => (
-          <tr key={row.branchId}>
-            <td>{row.user.branch.address}</td>
-            <td>{row.user.fullName}</td>
+        {data.map(({ user, theory, practice, result, ...row }) => (
+          <tr key={row.id}>
+            <td>{row.branch.address}</td>
+            <td>{user.fullName}</td>
 
-            <td>{row.theoryCorrect}</td>
-            <td>{row.theoryTime}</td>
-            <td>{row.theoryPlace}</td>
-            <td>{row.theoryPoints}</td>
+            <td>{theory.correct}</td>
+            <td>{theory.time}</td>
+            <td>{theory.place}</td>
+            <td>{theory.points}</td>
 
             <EditableCell
               save={(value) =>
                 mutate({
-                  userId: row.userId,
-                  practiceTime: row.practiceTime,
+                  userId: user.id,
+                  practiceTime: practice.time,
                   practicePenalty: Number(value),
                 })
               }
-              initialValue={row.practicePenalty.toString()}
+              initialValue={practice.penalty.toString()}
             >
-              {row.practicePenalty}
+              {practice.penalty}
             </EditableCell>
+
             <EditableCell
               save={(value) =>
                 mutate({
-                  userId: row.userId,
+                  userId: user.id,
+                  practicePenalty: practice.penalty,
                   practiceTime: value,
-                  practicePenalty: row.practicePenalty,
                 })
               }
-              initialValue={row.practiceTime}
+              initialValue={practice.time}
             >
-              {row.practiceTime}
+              {practice.time}
             </EditableCell>
-            <td>{row.practiceSum}</td>
-            <td>{row.practicePlace}</td>
-            <td>{row.practicePoints}</td>
+            <td>{practice.sum}</td>
+            <td>{practice.place}</td>
+            <td>{practice.points}</td>
 
-            <td>{row.totalTheoryPoints}</td>
-            <td>{row.totalPracticePoints}</td>
-            <td>{row.totalPoints}</td>
-            <td>{row.finalPlace}</td>
+            <td>{result.theoryPoints}</td>
+            <td>{result.practicePoints}</td>
+            <td>{result.points}</td>
+            <td>{result.place}</td>
           </tr>
         ))}
       </tbody>

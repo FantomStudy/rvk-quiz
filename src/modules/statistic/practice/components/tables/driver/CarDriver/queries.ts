@@ -14,8 +14,7 @@ export const useCarDriver = () =>
 export const useCarDriverSave = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: DriverMutation) =>
-      api.patch("/car-driver/update", data),
+    mutationFn: (data: DriverMutation) => api.patch("/car-driver/update", data),
     onSuccess: () => {
       console.log("Сохранено");
       queryClient.invalidateQueries({ queryKey: ["car-driver"] });

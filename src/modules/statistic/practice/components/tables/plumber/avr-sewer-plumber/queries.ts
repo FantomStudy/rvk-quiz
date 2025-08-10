@@ -2,20 +2,20 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api } from "@/shared/config";
 
-import type { AvrSewerPlumberData, AvrSewerPlumberMutation } from "./types";
+import type { PlumberData, PlumberMutation } from "../types";
 
 export const useAvrSewerPlumber = () =>
   useQuery({
     queryKey: ["avr-sewer-plumber"],
     queryFn: () =>
-      api.get<AvrSewerPlumberData[]>("/avr-plumber/table").then((r) => r.data),
+      api.get<PlumberData[]>("/avr-plumber/table").then((r) => r.data),
   });
 
-export const useAvrPlumberSave = () => {
+export const useAvrSewerPlumberSave = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: AvrSewerPlumberMutation) =>
+    mutationFn: (data: PlumberMutation) =>
       api.patch("/avr-plumber/update", data),
     onSuccess: () => {
       console.log("Данные сохранены");
