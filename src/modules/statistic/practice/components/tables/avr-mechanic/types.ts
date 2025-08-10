@@ -19,12 +19,10 @@ export interface AvrMechanicData {
 
 export interface AvrMechanicMutation {
   branchId: number;
-  culturePenalty?: number;
-  hydraulicTest?: boolean;
-  nominationId?: number;
-  qualityPenalty?: number;
-  safetyPenalty?: number;
+  culturePenalty: number;
+  hydraulicTest: boolean;
+  qualityPenalty: number;
+  safetyPenalty: number;
   taskNumber: number;
-  time?: string;
-  timeScore?: string;
+  time: string;
 }

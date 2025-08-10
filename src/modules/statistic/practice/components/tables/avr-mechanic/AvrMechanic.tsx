@@ -41,73 +41,69 @@ export const AvrMechanic = () => {
         {data.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
-            {row.stages.map((metric, index) => (
+            {row.stages.map((stage, index) => (
               <Fragment key={index}>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
-                      time: val,
+                      ...stage,
+                      time: value,
                     })
                   }
-                  initialValue={metric.time}
+                  initialValue={stage.time}
                 >
-                  {metric.time}
+                  {stage.time}
                 </EditableCell>
-                <td>{metric.timeScore}</td>
+                <td>{stage.timeScore}</td>
                 <CheckableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
-                      time: metric.time,
-                      hydraulicTest: val,
+                      ...stage,
+                      hydraulicTest: value,
                     })
                   }
-                  initialValue={metric.hydraulicTest}
+                  initialValue={stage.hydraulicTest}
                 />
 
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
-                      time: metric.time,
-                      safetyPenalty: Number(val),
+                      ...stage,
+                      safetyPenalty: Number(value),
                     })
                   }
-                  initialValue={metric.safetyPenalty.toString()}
+                  initialValue={stage.safetyPenalty.toString()}
                 >
-                  {metric.safetyPenalty}
+                  {stage.safetyPenalty}
                 </EditableCell>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
-                      time: metric.time,
-                      culturePenalty: Number(val),
+                      ...stage,
+                      culturePenalty: Number(value),
                     })
                   }
-                  initialValue={metric.culturePenalty.toString()}
+                  initialValue={stage.culturePenalty.toString()}
                 >
-                  {metric.culturePenalty}
+                  {stage.culturePenalty}
                 </EditableCell>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
-                      time: metric.time,
-                      qualityPenalty: Number(val),
+                      ...stage,
+                      qualityPenalty: Number(value),
                     })
                   }
-                  initialValue={metric.qualityPenalty.toString()}
+                  initialValue={stage.qualityPenalty.toString()}
                 >
-                  {metric.qualityPenalty}
+                  {stage.qualityPenalty}
                 </EditableCell>
-                <td>{metric.stageScore}</td>
+                <td>{stage.stageScore}</td>
               </Fragment>
             ))}
             <td>{row.total}</td>

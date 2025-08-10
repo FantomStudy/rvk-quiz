@@ -48,51 +48,49 @@ export const Welder = () => {
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
             <td>{row.participantName}</td>
-            {row.stages.map((metric, index) => (
+            {row.stages.map((stage, index) => (
               <Fragment key={index}>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
                       participantName: row.participantName,
-                      time: val,
+                      ...stage,
+                      time: value,
                     })
                   }
-                  initialValue={metric.time}
+                  initialValue={stage.time}
                 >
-                  {metric.time}
+                  {stage.time}
                 </EditableCell>
-                <td>{metric.timeScore}</td>
+                <td>{stage.timeScore}</td>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
                       participantName: row.participantName,
-                      time: metric.time,
-                      culturePenalty: Number(val),
+                      ...stage,
+                      culturePenalty: Number(value),
                     })
                   }
-                  initialValue={metric.culturePenalty.toString()}
+                  initialValue={stage.culturePenalty.toString()}
                 >
-                  {metric.culturePenalty}
+                  {stage.culturePenalty}
                 </EditableCell>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: metric.taskNumber,
                       participantName: row.participantName,
-                      time: metric.time,
-                      safetyPenalty: Number(val),
+                      ...stage,
+                      safetyPenalty: Number(value),
                     })
                   }
-                  initialValue={metric.safetyPenalty.toString()}
+                  initialValue={stage.safetyPenalty.toString()}
                 >
-                  {metric.safetyPenalty}
+                  {stage.safetyPenalty}
                 </EditableCell>
-                <td>{metric.stageScore}</td>
+                <td>{stage.stageScore}</td>
               </Fragment>
             ))}
 

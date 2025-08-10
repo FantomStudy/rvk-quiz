@@ -20,12 +20,12 @@ export interface WelderData {
 }
 export interface WelderMutation {
   branchId: number;
-  culturePenalty?: number;
-  operationalControl?: number;
-  participantName?: string;
-  radiographicControl?: number;
-  safetyPenalty?: number;
+  culturePenalty: number;
+  operationalControl: number;
+  participantName: string;
+  radiographicControl: number;
+  safetyPenalty: number;
   taskNumber: number;
-  time?: string;
-  visualMeasurement?: number;
+  time: string;
+  visualMeasurement: number;
 }

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { EditableCell, Table } from "@/components/ui";
+import { CheckableCell, EditableCell, Table } from "@/components/ui";
 
 import { METRICS } from "./const";
 import { useAvrSewer, useAvrSewerSave } from "./queries";
@@ -43,15 +43,11 @@ export const AvrSewer = () => {
             {row.stages.map((stage) => (
               <Fragment key={stage.taskNumber}>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: stage.taskNumber,
-                      time: val,
-                      hydraulicTest: stage.hydraulicTest,
-                      safetyPenalty: stage.safetyPenalty,
-                      culturePenalty: stage.culturePenalty,
-                      qualityPenalty: stage.qualityPenalty,
+                      ...stage,
+                      time: value,
                     })
                   }
                   initialValue={stage.time}
@@ -59,30 +55,24 @@ export const AvrSewer = () => {
                   {stage.timeDisplay}
                 </EditableCell>
                 <td>{stage.timeScore}</td>
-                {/* <CheckableCell
-                  save={(val) =>
-                    mutate({
-                      branchId: row.branchId,
-                      taskNumber: stage.taskNumber,
-                      time: stage.time,
-                      hydraulicTest: val,
-                      safetyPenalty: stage.safetyPenalty,
-                      culturePenalty: stage.culturePenalty,
-                      qualityPenalty: stage.qualityPenalty,
-                    })
-                  }
-                  initialValue={stage.hydraulicTest}
-                /> */}
+                {stage.taskNumber === 2 && (
+                  <CheckableCell
+                    save={(value) =>
+                      mutate({
+                        branchId: row.branchId,
+                        ...stage,
+                        hydraulicTest: value,
+                      })
+                    }
+                    initialValue={stage.hydraulicTest}
+                  />
+                )}
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: stage.taskNumber,
-                      time: stage.time,
-                      hydraulicTest: stage.hydraulicTest,
-                      safetyPenalty: Number(val),
-                      culturePenalty: stage.culturePenalty,
-                      qualityPenalty: stage.qualityPenalty,
+                      ...stage,
+                      safetyPenalty: Number(value),
                     })
                   }
                   initialValue={String(stage.safetyPenalty)}
@@ -90,37 +80,31 @@ export const AvrSewer = () => {
                   {stage.safetyPenalty}
                 </EditableCell>
                 <EditableCell
-                  save={(val) =>
+                  save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      taskNumber: stage.taskNumber,
-                      time: stage.time,
-                      hydraulicTest: stage.hydraulicTest,
-                      safetyPenalty: stage.safetyPenalty,
-                      culturePenalty: Number(val),
-                      qualityPenalty: stage.qualityPenalty,
+                      ...stage,
+                      culturePenalty: Number(value),
                     })
                   }
                   initialValue={String(stage.culturePenalty)}
                 >
                   {stage.culturePenalty}
                 </EditableCell>
-                <EditableCell
-                  save={(val) =>
-                    mutate({
-                      branchId: row.branchId,
-                      taskNumber: stage.taskNumber,
-                      time: stage.time,
-                      hydraulicTest: stage.hydraulicTest,
-                      safetyPenalty: stage.safetyPenalty,
-                      culturePenalty: stage.culturePenalty,
-                      qualityPenalty: Number(val),
-                    })
-                  }
-                  initialValue={String(stage.qualityPenalty)}
-                >
-                  {stage.qualityPenalty}
-                </EditableCell>
+                {stage.taskNumber !== 2 && (
+                  <EditableCell
+                    save={(value) =>
+                      mutate({
+                        branchId: row.branchId,
+                        ...stage,
+                        qualityPenalty: Number(value),
+                      })
+                    }
+                    initialValue={String(stage.qualityPenalty)}
+                  >
+                    {stage.qualityPenalty}
+                  </EditableCell>
+                )}
                 <td>{stage.stageScore}</td>
               </Fragment>
             ))}
