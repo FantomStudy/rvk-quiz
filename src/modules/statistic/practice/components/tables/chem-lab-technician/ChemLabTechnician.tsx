@@ -51,7 +51,7 @@ export const ChemLabTechnician = () => {
                   save={(value) =>
                     mutate({
                       userId: row.userId,
-                      [`stage${stage.name}time`]: value,
+                      [`stage${stage.name}Time`]: value,
                     })
                   }
                   initialValue={stage.time}
@@ -65,7 +65,7 @@ export const ChemLabTechnician = () => {
                   save={(value) =>
                     mutate({
                       userId: row.userId,
-                      [`stage${stage.name}quality`]: Number(value),
+                      [`stage${stage.name}Quality`]: Number(value),
                     })
                   }
                   initialValue={stage.quality.toString()}
@@ -77,7 +77,7 @@ export const ChemLabTechnician = () => {
                   save={(value) =>
                     mutate({
                       userId: row.userId,
-                      [`stage${stage.name}culture`]: Number(value),
+                      [`stage${stage.name}Culture`]: Number(value),
                     })
                   }
                   initialValue={stage.culture.toString()}
@@ -89,7 +89,7 @@ export const ChemLabTechnician = () => {
                   save={(value) =>
                     mutate({
                       userId: row.userId,
-                      [`stage${stage.name}safety`]: Number(value),
+                      [`stage${stage.name}Safety`]: Number(value),
                     })
                   }
                   initialValue={stage.safety.toString()}
