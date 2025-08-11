@@ -8,7 +8,7 @@ export const useAvrSewerPlumber = () =>
   useQuery({
     queryKey: ["avr-sewer-plumber"],
     queryFn: () =>
-      api.get<PlumberData[]>("/avr-plumber/table").then((r) => r.data),
+      api.get<PlumberData[]>("/avr-sewer-plumber/table").then((r) => r.data),
   });
 
 export const useAvrSewerPlumberSave = () => {
@@ -16,7 +16,7 @@ export const useAvrSewerPlumberSave = () => {
 
   return useMutation({
     mutationFn: (data: PlumberMutation) =>
-      api.patch("/avr-plumber/update", data),
+      api.patch("/avr-sewer-plumber/update", data),
     onSuccess: () => {
       console.log("Данные сохранены");
       queryClient.refetchQueries({ queryKey: ["avr-sewer-plumber"] });
