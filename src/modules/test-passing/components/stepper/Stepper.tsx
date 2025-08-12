@@ -25,6 +25,10 @@ export const Stepper = () => {
       return;
     }
 
+    // eslint-disable-next-line no-alert
+    if (!confirm("Вы точно хотите завершить тестирование?")) {
+      return;
+    }
     handleComplete();
   };
 

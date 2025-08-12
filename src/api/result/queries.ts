@@ -7,4 +7,6 @@ export const useResultTable = (userId: number, nominationId: number) =>
     queryKey: ["result-table", userId, nominationId],
     queryFn: () => fetchResultTable(userId, nominationId),
     enabled: !!userId && !!nominationId,
+    staleTime: 0,
+    gcTime: 0,
   });
