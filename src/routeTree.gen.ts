@@ -9,27 +9,28 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as AdminRouteImport } from './routes/admin'
-import { Route as StatisticLayoutRouteImport } from './routes/_statisticLayout'
 import { Route as AdminLayoutRouteImport } from './routes/_adminLayout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as testTestRouteImport } from './routes/(test)/test'
 import { Route as testResultRouteImport } from './routes/(test)/result'
 import { Route as testCompleteRouteImport } from './routes/(test)/complete'
-import { Route as StatisticLayoutStatisticTheoryRouteImport } from './routes/_statisticLayout/statistic/theory'
-import { Route as StatisticLayoutStatisticPracticeRouteImport } from './routes/_statisticLayout/statistic/practice'
-import { Route as StatisticLayoutStatisticCommonRouteImport } from './routes/_statisticLayout/statistic/common'
+import { Route as AdminLayoutStatisticTheoryRouteImport } from './routes/_adminLayout/statistic/theory'
+import { Route as AdminLayoutStatisticPracticeRouteImport } from './routes/_adminLayout/statistic/practice'
+import { Route as AdminLayoutStatisticCommonRouteImport } from './routes/_adminLayout/statistic/common'
 import { Route as AdminLayoutAdminUsersRouteImport } from './routes/_adminLayout/admin/users'
 import { Route as AdminLayoutAdminDashboardRouteImport } from './routes/_adminLayout/admin/dashboard'
 import { Route as AdminLayoutAdminUserIdNominationIdRouteImport } from './routes/_adminLayout/admin/$userId.$nominationId'
 
+const PracticeRoute = PracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StatisticLayoutRoute = StatisticLayoutRouteImport.update({
-  id: '/_statisticLayout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminLayoutRoute = AdminLayoutRouteImport.update({
@@ -56,23 +57,23 @@ const testCompleteRoute = testCompleteRouteImport.update({
   path: '/complete',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StatisticLayoutStatisticTheoryRoute =
-  StatisticLayoutStatisticTheoryRouteImport.update({
+const AdminLayoutStatisticTheoryRoute =
+  AdminLayoutStatisticTheoryRouteImport.update({
     id: '/statistic/theory',
     path: '/statistic/theory',
-    getParentRoute: () => StatisticLayoutRoute,
+    getParentRoute: () => AdminLayoutRoute,
   } as any)
-const StatisticLayoutStatisticPracticeRoute =
-  StatisticLayoutStatisticPracticeRouteImport.update({
+const AdminLayoutStatisticPracticeRoute =
+  AdminLayoutStatisticPracticeRouteImport.update({
     id: '/statistic/practice',
     path: '/statistic/practice',
-    getParentRoute: () => StatisticLayoutRoute,
+    getParentRoute: () => AdminLayoutRoute,
   } as any)
-const StatisticLayoutStatisticCommonRoute =
-  StatisticLayoutStatisticCommonRouteImport.update({
+const AdminLayoutStatisticCommonRoute =
+  AdminLayoutStatisticCommonRouteImport.update({
     id: '/statistic/common',
     path: '/statistic/common',
-    getParentRoute: () => StatisticLayoutRoute,
+    getParentRoute: () => AdminLayoutRoute,
   } as any)
 const AdminLayoutAdminUsersRoute = AdminLayoutAdminUsersRouteImport.update({
   id: '/admin/users',
@@ -95,43 +96,45 @@ const AdminLayoutAdminUserIdNominationIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/practice': typeof PracticeRoute
   '/complete': typeof testCompleteRoute
   '/result': typeof testResultRoute
   '/test': typeof testTestRoute
   '/admin/dashboard': typeof AdminLayoutAdminDashboardRoute
   '/admin/users': typeof AdminLayoutAdminUsersRoute
-  '/statistic/common': typeof StatisticLayoutStatisticCommonRoute
-  '/statistic/practice': typeof StatisticLayoutStatisticPracticeRoute
-  '/statistic/theory': typeof StatisticLayoutStatisticTheoryRoute
+  '/statistic/common': typeof AdminLayoutStatisticCommonRoute
+  '/statistic/practice': typeof AdminLayoutStatisticPracticeRoute
+  '/statistic/theory': typeof AdminLayoutStatisticTheoryRoute
   '/admin/$userId/$nominationId': typeof AdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/practice': typeof PracticeRoute
   '/complete': typeof testCompleteRoute
   '/result': typeof testResultRoute
   '/test': typeof testTestRoute
   '/admin/dashboard': typeof AdminLayoutAdminDashboardRoute
   '/admin/users': typeof AdminLayoutAdminUsersRoute
-  '/statistic/common': typeof StatisticLayoutStatisticCommonRoute
-  '/statistic/practice': typeof StatisticLayoutStatisticPracticeRoute
-  '/statistic/theory': typeof StatisticLayoutStatisticTheoryRoute
+  '/statistic/common': typeof AdminLayoutStatisticCommonRoute
+  '/statistic/practice': typeof AdminLayoutStatisticPracticeRoute
+  '/statistic/theory': typeof AdminLayoutStatisticTheoryRoute
   '/admin/$userId/$nominationId': typeof AdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_adminLayout': typeof AdminLayoutRouteWithChildren
-  '/_statisticLayout': typeof StatisticLayoutRouteWithChildren
   '/admin': typeof AdminRoute
+  '/practice': typeof PracticeRoute
   '/(test)/complete': typeof testCompleteRoute
   '/(test)/result': typeof testResultRoute
   '/(test)/test': typeof testTestRoute
   '/_adminLayout/admin/dashboard': typeof AdminLayoutAdminDashboardRoute
   '/_adminLayout/admin/users': typeof AdminLayoutAdminUsersRoute
-  '/_statisticLayout/statistic/common': typeof StatisticLayoutStatisticCommonRoute
-  '/_statisticLayout/statistic/practice': typeof StatisticLayoutStatisticPracticeRoute
-  '/_statisticLayout/statistic/theory': typeof StatisticLayoutStatisticTheoryRoute
+  '/_adminLayout/statistic/common': typeof AdminLayoutStatisticCommonRoute
+  '/_adminLayout/statistic/practice': typeof AdminLayoutStatisticPracticeRoute
+  '/_adminLayout/statistic/theory': typeof AdminLayoutStatisticTheoryRoute
   '/_adminLayout/admin/$userId/$nominationId': typeof AdminLayoutAdminUserIdNominationIdRoute
 }
 export interface FileRouteTypes {
@@ -139,6 +142,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/practice'
     | '/complete'
     | '/result'
     | '/test'
@@ -152,6 +156,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/practice'
     | '/complete'
     | '/result'
     | '/test'
@@ -165,24 +170,24 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_adminLayout'
-    | '/_statisticLayout'
     | '/admin'
+    | '/practice'
     | '/(test)/complete'
     | '/(test)/result'
     | '/(test)/test'
     | '/_adminLayout/admin/dashboard'
     | '/_adminLayout/admin/users'
-    | '/_statisticLayout/statistic/common'
-    | '/_statisticLayout/statistic/practice'
-    | '/_statisticLayout/statistic/theory'
+    | '/_adminLayout/statistic/common'
+    | '/_adminLayout/statistic/practice'
+    | '/_adminLayout/statistic/theory'
     | '/_adminLayout/admin/$userId/$nominationId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminLayoutRoute: typeof AdminLayoutRouteWithChildren
-  StatisticLayoutRoute: typeof StatisticLayoutRouteWithChildren
   AdminRoute: typeof AdminRoute
+  PracticeRoute: typeof PracticeRoute
   testCompleteRoute: typeof testCompleteRoute
   testResultRoute: typeof testResultRoute
   testTestRoute: typeof testTestRoute
@@ -190,18 +195,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/practice': {
+      id: '/practice'
+      path: '/practice'
+      fullPath: '/practice'
+      preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_statisticLayout': {
-      id: '/_statisticLayout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof StatisticLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_adminLayout': {
@@ -239,26 +244,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof testCompleteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_statisticLayout/statistic/theory': {
-      id: '/_statisticLayout/statistic/theory'
+    '/_adminLayout/statistic/theory': {
+      id: '/_adminLayout/statistic/theory'
       path: '/statistic/theory'
       fullPath: '/statistic/theory'
-      preLoaderRoute: typeof StatisticLayoutStatisticTheoryRouteImport
-      parentRoute: typeof StatisticLayoutRoute
+      preLoaderRoute: typeof AdminLayoutStatisticTheoryRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
-    '/_statisticLayout/statistic/practice': {
-      id: '/_statisticLayout/statistic/practice'
+    '/_adminLayout/statistic/practice': {
+      id: '/_adminLayout/statistic/practice'
       path: '/statistic/practice'
       fullPath: '/statistic/practice'
-      preLoaderRoute: typeof StatisticLayoutStatisticPracticeRouteImport
-      parentRoute: typeof StatisticLayoutRoute
+      preLoaderRoute: typeof AdminLayoutStatisticPracticeRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
-    '/_statisticLayout/statistic/common': {
-      id: '/_statisticLayout/statistic/common'
+    '/_adminLayout/statistic/common': {
+      id: '/_adminLayout/statistic/common'
       path: '/statistic/common'
       fullPath: '/statistic/common'
-      preLoaderRoute: typeof StatisticLayoutStatisticCommonRouteImport
-      parentRoute: typeof StatisticLayoutRoute
+      preLoaderRoute: typeof AdminLayoutStatisticCommonRouteImport
+      parentRoute: typeof AdminLayoutRoute
     }
     '/_adminLayout/admin/users': {
       id: '/_adminLayout/admin/users'
@@ -287,12 +292,18 @@ declare module '@tanstack/react-router' {
 interface AdminLayoutRouteChildren {
   AdminLayoutAdminDashboardRoute: typeof AdminLayoutAdminDashboardRoute
   AdminLayoutAdminUsersRoute: typeof AdminLayoutAdminUsersRoute
+  AdminLayoutStatisticCommonRoute: typeof AdminLayoutStatisticCommonRoute
+  AdminLayoutStatisticPracticeRoute: typeof AdminLayoutStatisticPracticeRoute
+  AdminLayoutStatisticTheoryRoute: typeof AdminLayoutStatisticTheoryRoute
   AdminLayoutAdminUserIdNominationIdRoute: typeof AdminLayoutAdminUserIdNominationIdRoute
 }
 
 const AdminLayoutRouteChildren: AdminLayoutRouteChildren = {
   AdminLayoutAdminDashboardRoute: AdminLayoutAdminDashboardRoute,
   AdminLayoutAdminUsersRoute: AdminLayoutAdminUsersRoute,
+  AdminLayoutStatisticCommonRoute: AdminLayoutStatisticCommonRoute,
+  AdminLayoutStatisticPracticeRoute: AdminLayoutStatisticPracticeRoute,
+  AdminLayoutStatisticTheoryRoute: AdminLayoutStatisticTheoryRoute,
   AdminLayoutAdminUserIdNominationIdRoute:
     AdminLayoutAdminUserIdNominationIdRoute,
 }
@@ -301,27 +312,11 @@ const AdminLayoutRouteWithChildren = AdminLayoutRoute._addFileChildren(
   AdminLayoutRouteChildren,
 )
 
-interface StatisticLayoutRouteChildren {
-  StatisticLayoutStatisticCommonRoute: typeof StatisticLayoutStatisticCommonRoute
-  StatisticLayoutStatisticPracticeRoute: typeof StatisticLayoutStatisticPracticeRoute
-  StatisticLayoutStatisticTheoryRoute: typeof StatisticLayoutStatisticTheoryRoute
-}
-
-const StatisticLayoutRouteChildren: StatisticLayoutRouteChildren = {
-  StatisticLayoutStatisticCommonRoute: StatisticLayoutStatisticCommonRoute,
-  StatisticLayoutStatisticPracticeRoute: StatisticLayoutStatisticPracticeRoute,
-  StatisticLayoutStatisticTheoryRoute: StatisticLayoutStatisticTheoryRoute,
-}
-
-const StatisticLayoutRouteWithChildren = StatisticLayoutRoute._addFileChildren(
-  StatisticLayoutRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminLayoutRoute: AdminLayoutRouteWithChildren,
-  StatisticLayoutRoute: StatisticLayoutRouteWithChildren,
   AdminRoute: AdminRoute,
+  PracticeRoute: PracticeRoute,
   testCompleteRoute: testCompleteRoute,
   testResultRoute: testResultRoute,
   testTestRoute: testTestRoute,
