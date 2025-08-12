@@ -6,7 +6,7 @@ import type { ProtocolName } from "./types";
 
 import { PROTOCOLS, STORAGE_KEY } from "./const";
 
-import styles from "./PracticeStatePage.module.css";
+import styles from "../../statistic.module.css";
 
 export const PracticeStatePage = () => {
   const [selected, setSelected] = useState<ProtocolName>(() => {

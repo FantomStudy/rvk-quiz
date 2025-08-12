@@ -8,7 +8,7 @@ import { AsyncSelect, Table } from "@/components/ui";
 
 import { useTheoryList } from "../api/queries";
 
-import styles from "./TheoryStatePage.module.css";
+import styles from "../../statistic.module.css";
 
 export const TheoryStatePage = () => {
   const [nominationId, setNominationId] = useState("");

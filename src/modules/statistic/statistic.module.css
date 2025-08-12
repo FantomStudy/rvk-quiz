@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.branchWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.table {
+  font-size: 20px;
+  th,
+  td {
+    border: 1px solid var(--border-gray);
+  }
+}
+
+.rotate {
+  writing-mode: sideways-lr;
+  max-height: 250px;
+}

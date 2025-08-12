@@ -5,7 +5,7 @@ import { EditableCell, Table } from "@/components/ui";
 import { METRICS } from "./const";
 import { useWelder, useWelderSave } from "./queries";
 
-import styles from "../Table.module.css";
+import styles from "../../../../statistic.module.css";
 
 export const Welder = () => {
   const { data } = useWelder();

@@ -1,6 +1,6 @@
 import { METRICS } from "./const";
 
-import styles from "../Table.module.css";
+import styles from "../../../../statistic.module.css";
 
 export const PlumberHead = ({ title }: { title: string }) => (
   <thead>

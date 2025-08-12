@@ -5,7 +5,7 @@ import { CheckableCell, EditableCell, Table } from "@/components/ui";
 import { METRICS } from "./const";
 import { useAvrSewer, useAvrSewerSave } from "./queries";
 
-import styles from "../Table.module.css";
+import styles from "../../../../statistic.module.css";
 
 export const AvrSewer = () => {
   const { data } = useAvrSewer();

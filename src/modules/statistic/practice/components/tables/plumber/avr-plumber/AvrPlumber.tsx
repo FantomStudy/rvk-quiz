@@ -3,7 +3,7 @@ import { CheckableCell, EditableCell, Table } from "@/components/ui";
 import { PlumberHead } from "../PlumberHead";
 import { useAvrPlumber, useAvrPlumberSave } from "./queries";
 
-import styles from "../../Table.module.css";
+import styles from "../../../../../statistic.module.css";
 
 export const AvrPlumber = () => {
   const { data } = useAvrPlumber();

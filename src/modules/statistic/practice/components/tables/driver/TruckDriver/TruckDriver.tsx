@@ -3,7 +3,7 @@ import { EditableCell, Table } from "@/components/ui";
 import { DriverHead } from "../DriverHead";
 import { useTruckDriver, useTruckDriverSave } from "./queries";
 
-import styles from "../../Table.module.css";
+import styles from "../../../../../statistic.module.css";
 
 export const TruckDriver = () => {
   const { data } = useTruckDriver();

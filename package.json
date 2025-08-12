@@ -10,32 +10,32 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.83.0",
-    "@tanstack/react-query-devtools": "^5.83.0",
-    "@tanstack/react-router": "^1.129.8",
-    "@tanstack/react-router-devtools": "^1.129.8",
+    "@tanstack/react-query": "^5.84.2",
+    "@tanstack/react-query-devtools": "^5.84.2",
+    "@tanstack/react-router": "^1.131.5",
+    "@tanstack/react-router-devtools": "^1.131.5",
     "axios": "^1.11.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "recharts": "^2.15.4",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.0.0",
+    "@antfu/eslint-config": "^5.2.1",
     "@eslint-react/eslint-plugin": "^1.52.3",
-    "@tanstack/eslint-plugin-query": "^5.81.2",
-    "@tanstack/eslint-plugin-router": "^1.129.7",
-    "@tanstack/router-plugin": "^1.129.8",
-    "@types/node": "^24.1.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@tanstack/eslint-plugin-query": "^5.83.1",
+    "@tanstack/eslint-plugin-router": "^1.131.2",
+    "@tanstack/router-plugin": "^1.131.5",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
-    "typescript": "~5.8.3",
-    "vite": "^7.0.6"
+    "typescript": "~5.9.2",
+    "vite": "^7.1.2"
   }
 }

@@ -1,42 +1,88 @@
-import { Table } from "@/components/ui";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
-import { useCommonList } from "../api/queries";
+import { Select, Table } from "@/components/ui";
+import { api } from "@/shared/config";
+
+import type { BranchResult, ResultName, UserResult } from "./types";
+
+import { FINAL_RESULTS, STORAGE_KEY } from "./const";
+
+import styles from "../../statistic.module.css";
 
 export const CommonStatePage = () => {
-  const commonList = useCommonList();
+  const [selected, setSelected] = useState<ResultName>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? (saved as ResultName) : "avrMechanic";
+  });
 
-  if (commonList.isLoading) {
-    return <div className="container">Загрузка...</div>;
-  }
+  const current = FINAL_RESULTS[selected];
 
-  if (!commonList.data || commonList.data.length === 0) {
-    return <div className="container">Нет данных для отображения</div>;
-  }
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, selected);
+  }, [selected]);
+
+  const { data } = useQuery({
+    queryKey: [current.path],
+    queryFn: () =>
+      api
+        .get<(BranchResult & UserResult)[]>(`/${current.path}/result-table`)
+        .then((r) => r.data),
+  });
+
+  if (!data) return "Не удалось загрузить данные";
 
   return (
     <div className="container">
-      <Table>
-        <thead>
-          <tr>
-            <th className="cell_slim">Место</th>
-            <th>Филиал</th>
-            <th>Практические задания</th>
-            <th>Тестирование</th>
-            <th>Итоговый результат</th>
-          </tr>
-        </thead>
-        <tbody>
-          {commonList.data.map((data, index) => (
-            <tr key={data.branchName}>
-              <td>{index + 1}</td>
-              <td>{data.branchName}</td>
-              <td>{data.practiceScores}</td>
-              <td>{data.theoryScore}</td>
-              <td>{data.totalScore}</td>
-            </tr>
+      <p className={styles.title}>{FINAL_RESULTS[selected].name}</p>
+      <div className={styles.wrapper}>
+        <Select
+          selectSize="s"
+          value={selected}
+          onChange={(e) => setSelected(e.target.value as ResultName)}
+        >
+          {Object.entries(FINAL_RESULTS).map(([key, value]) => (
+            <option key={key} value={key}>
+              {value.name}
+            </option>
           ))}
-        </tbody>
-      </Table>
+        </Select>
+
+        <Table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Филиал</th>
+              {current.type ? <th>Состав бригады</th> : <th>ФИО</th>}
+              <th>Теоретические задания</th>
+              <th>Практические задания</th>
+              <th>Общий балл</th>
+              <th>Место</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((row) => (
+              <tr key={row.branchName}>
+                <td>{row.branchName}</td>
+                {current.type ? (
+                  <td>
+                    <div className={styles.branchWrapper}>
+                      {row.team.map((name) => (
+                        <p key={name}>{name}</p>
+                      ))}
+                    </div>
+                  </td>
+                ) : (
+                  <td>{row.fullName}</td>
+                )}
+                <td>{row.theoryScore}</td>
+                <td>{row.practiceScore}</td>
+                <td>{row.totalScore}</td>
+                <td>{row.place}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };
