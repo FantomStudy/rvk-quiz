@@ -9,7 +9,7 @@ export const TruckDriver = () => {
   const { data } = useTruckDriver();
   const { mutate } = useTruckDriverSave();
 
-  if (!data) return "Не удалось загрузить данные";
+  if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>

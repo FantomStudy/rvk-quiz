@@ -11,7 +11,7 @@ export const Welder = () => {
   const { data } = useWelder();
   const { mutate } = useWelderSave();
 
-  if (!data) return "Не удалось загрузить данные";
+  if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>
@@ -54,7 +54,7 @@ export const Welder = () => {
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      participantName: row.participantName,
+                      userId: row.userId,
                       ...stage,
                       time: value,
                     })
@@ -68,7 +68,7 @@ export const Welder = () => {
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      participantName: row.participantName,
+                      userId: row.userId,
                       ...stage,
                       culturePenalty: Number(value),
                     })
@@ -81,7 +81,7 @@ export const Welder = () => {
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,
-                      participantName: row.participantName,
+                      userId: row.userId,
                       ...stage,
                       safetyPenalty: Number(value),
                     })

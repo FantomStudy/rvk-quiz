@@ -4,6 +4,7 @@ export interface WelderData {
   participantName: string;
   place: number;
   total: number;
+  userId: string;
   stages: [
     {
       taskNumber: number;
@@ -22,10 +23,10 @@ export interface WelderMutation {
   branchId: number;
   culturePenalty: number;
   operationalControl: number;
-  participantName: string;
   radiographicControl: number;
   safetyPenalty: number;
   taskNumber: number;
   time: string;
+  userId: string;
   visualMeasurement: number;
 }

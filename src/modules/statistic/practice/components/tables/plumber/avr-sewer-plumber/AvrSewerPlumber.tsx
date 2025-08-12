@@ -9,7 +9,7 @@ export const AvrSewerPlumber = () => {
   const { data } = useAvrSewerPlumber();
   const { mutate } = useAvrSewerPlumberSave();
 
-  if (!data) return "Не удалось загрузить данные";
+  if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>

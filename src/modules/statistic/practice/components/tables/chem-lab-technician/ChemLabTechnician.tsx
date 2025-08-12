@@ -11,7 +11,7 @@ export const ChemLabTechnician = () => {
   const { data } = useChemLabTechnician();
   const { mutate } = useChemLabTechnicianSave();
 
-  if (!data) return "Не удалось загрузить данные";
+  if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>
