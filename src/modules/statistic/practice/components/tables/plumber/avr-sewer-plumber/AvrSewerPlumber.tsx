@@ -21,6 +21,7 @@ export const AvrSewerPlumber = () => {
             <td>{row.participantName}</td>
 
             <EditableCell
+              isTime
               initialValue={row.time}
               save={(value) => mutate({ ...row, time: value })}
             >

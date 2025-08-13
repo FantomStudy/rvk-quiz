@@ -39,6 +39,7 @@ export const CarDriver = () => {
             </EditableCell>
 
             <EditableCell
+              isTime
               save={(value) =>
                 mutate({
                   userId: user.id,

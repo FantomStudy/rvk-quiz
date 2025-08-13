@@ -34,7 +34,7 @@ export const ChemLabTechnician = () => {
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key}>{value}</th>
-            ))
+            )),
           )}
         </tr>
       </thead>
@@ -48,6 +48,7 @@ export const ChemLabTechnician = () => {
               // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
                 <EditableCell
+                  isTime
                   save={(value) =>
                     mutate({
                       userId: row.userId,

@@ -36,7 +36,7 @@ export const Welder = () => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            ))
+            )),
           )}
           <th>Операционный контроль</th>
           <th>Визуально-измерительный контроль</th>
@@ -49,8 +49,10 @@ export const Welder = () => {
             <td>{row.branchName}</td>
             <td>{row.participantName}</td>
             {row.stages.map((stage, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
                 <EditableCell
+                  isTime
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,
