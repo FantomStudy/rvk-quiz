@@ -32,7 +32,7 @@ export const AvrMechanic = () => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            ))
+            )),
           )}
         </tr>
       </thead>
@@ -45,6 +45,7 @@ export const AvrMechanic = () => {
               // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
                 <EditableCell
+                  isTime
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,

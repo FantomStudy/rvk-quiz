@@ -32,7 +32,7 @@ export const AvrSewer = () => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            ))
+            )),
           )}
         </tr>
       </thead>
@@ -43,6 +43,7 @@ export const AvrSewer = () => {
             {row.stages.map((stage) => (
               <Fragment key={stage.taskNumber}>
                 <EditableCell
+                  isTime
                   save={(value) =>
                     mutate({
                       branchId: row.branchId,
