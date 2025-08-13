@@ -88,7 +88,7 @@ export const PracticeStatePage = () => {
                   </option>
                 ))}
               </Select>
-              <Button variant="primary" onClick={handlePrint}>
+              <Button size="s" variant="primary" onClick={handlePrint}>
                 Распечатать
               </Button>
             </div>
