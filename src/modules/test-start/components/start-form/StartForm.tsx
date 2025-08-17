@@ -10,7 +10,7 @@ export const StartTestForm = () => {
   const nominationList = useNominationList();
 
   const selected = nominationList.data?.find(
-    (nomination) => nomination.id === Number(form.data.nominationId)
+    (nomination) => nomination.id === Number(form.data.nominationId),
   );
 
   return (

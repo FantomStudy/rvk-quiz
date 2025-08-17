@@ -8,7 +8,7 @@ type DebouncedCallback<Params extends unknown[]> = ((
 
 export const useDebounceCallback = <Params extends unknown[], Return>(
   callback: (...args: Params) => Return,
-  delay: number
+  delay: number,
 ): DebouncedCallback<Params> => {
   const internalCallbackRef = useRef(callback);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

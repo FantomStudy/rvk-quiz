@@ -21,6 +21,6 @@ export const useResultsStore = create<ResultsState>()(
     }),
     {
       name: "results-store",
-    }
-  )
+    },
+  ),
 );

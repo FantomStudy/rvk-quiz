@@ -20,5 +20,5 @@ export const useStepControls = () =>
     useShallow(({ nextStep, prevStep }) => ({
       nextStep,
       prevStep,
-    }))
+    })),
   );

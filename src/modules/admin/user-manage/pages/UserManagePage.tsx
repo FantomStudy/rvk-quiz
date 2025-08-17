@@ -21,7 +21,7 @@ export const UserManagePage = ({
   const updateUser = useUpdateUser();
 
   const filteredUserList = userList.filter((user) =>
-    user.number.startsWith(search)
+    user.number.startsWith(search),
   );
 
   return (

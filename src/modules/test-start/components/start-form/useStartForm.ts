@@ -13,7 +13,7 @@ export const useStartForm = () => {
   const { mutate, isPending, error } = useStartTest();
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setForm({

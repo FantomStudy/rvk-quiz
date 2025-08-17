@@ -20,7 +20,6 @@
   box-sizing: border-box;
 }
 
-
 .table tbody tr:nth-of-type(odd) {
   background-color: var(--table-secondary);
 }

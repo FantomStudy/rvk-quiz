@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { UserSessionPage } from "@/modules/admin";
 
 export const Route = createFileRoute(
-  "/_adminLayout/admin/$userId/$nominationId"
+  "/_adminLayout/admin/$userId/$nominationId",
 )({
   component: RouteComponent,
 });

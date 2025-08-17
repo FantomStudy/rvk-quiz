@@ -21,7 +21,7 @@ const config = antfu(
           acc[key.replace("react", "fantomstudy-react")] = value;
           return acc;
         },
-        {}
+        {},
       ),
       "fantomstudy-react/react-in-jsx-scope": "off",
     },
@@ -158,7 +158,7 @@ const config = antfu(
     },
   },
   ...pluginQuery.configs["flat/recommended"],
-  ...pluginRouter.configs["flat/recommended"]
+  ...pluginRouter.configs["flat/recommended"],
 );
 
 export default config;

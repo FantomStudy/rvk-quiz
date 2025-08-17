@@ -62,6 +62,6 @@ export const useAnswersStore = create<AnswersState>()(
           currentStep: state.currentStep - 1,
         })),
     }),
-    { name: "answers-store" }
-  )
+    { name: "answers-store" },
+  ),
 );
