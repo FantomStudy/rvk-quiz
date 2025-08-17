@@ -51,7 +51,8 @@ export const DashboardPage = () => {
               </thead>
               <tbody>
                 {dashboard.data?.testResults.map((result, index) => (
-                  <tr key={`${result.userId}-${result.nominationId}`}>
+                  // eslint-disable-next-line react/no-array-index-key
+                  <tr key={index}>
                     <td>{result.number}</td>
                     <td>
                       <Link

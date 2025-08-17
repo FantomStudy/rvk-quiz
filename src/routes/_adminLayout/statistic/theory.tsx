@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { TestStatePage } from "@/modules/statistic";
+import { TheoryPage } from "@/modules/admin/statistic";
 
 export const Route = createFileRoute("/_adminLayout/statistic/theory")({
-  component: TestStatePage,
+  component: TheoryPage,
 });

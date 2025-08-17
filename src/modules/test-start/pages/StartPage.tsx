@@ -9,7 +9,7 @@ import styles from "./StartPage.module.css";
 export const StartPage = () => {
   const resetTest = useResetResults();
   const resetSession = useResetSession();
-  
+
   useEffect(() => {
     resetTest();
     resetSession();

@@ -1,0 +1,91 @@
+import { CheckableCell, EditableCell, Table } from "@/components/ui";
+
+import { useUserLineSave } from "../../../api/queries";
+import { PlumberHead } from "../PlumberHead";
+import { useAvrSewerPlumber, useAvrSewerPlumberSave } from "./queries";
+
+import styles from "../../../../statistic.module.css";
+
+export const AvrSewerPlumber = () => {
+  const { data } = useAvrSewerPlumber();
+  const { mutate } = useAvrSewerPlumberSave();
+  const line = useUserLineSave();
+
+  if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  return (
+    <Table className={styles.table}>
+      <PlumberHead title="Сборка раструбного доуплотнителя" />
+      <tbody>
+        {data.map((row) => (
+          <tr key={row.number}>
+            <td>{row.branchName}</td>
+            <EditableCell
+              save={(value) =>
+                line.mutate({
+                  lineNumber: Number(value),
+                  userId: row.userId,
+                  practicNominationId: row.practicNominationId,
+                })
+              }
+              initialValue={row.lineNumber?.toString() || ""}
+            >
+              {row.lineNumber}
+            </EditableCell>
+            <td>{row.participantName}</td>
+
+            <EditableCell
+              isTime
+              initialValue={row.time}
+              save={(value) => mutate({ ...row, time: value })}
+            >
+              {row.time}
+            </EditableCell>
+
+            <td>{row.timeScore}</td>
+
+            <CheckableCell
+              save={(value) =>
+                mutate({
+                  ...row,
+                  hydraulicTest: value,
+                })
+              }
+              initialValue={row.hydraulicTest}
+            />
+
+            <EditableCell
+              initialValue={row.safetyPenalty.toString()}
+              save={(value) => mutate({ ...row, safetyPenalty: Number(value) })}
+            >
+              {row.safetyPenalty}
+            </EditableCell>
+
+            <EditableCell
+              save={(value) =>
+                mutate({ ...row, culturePenalty: Number(value) })
+              }
+              initialValue={row.culturePenalty.toString()}
+            >
+              {row.culturePenalty}
+            </EditableCell>
+
+            <EditableCell
+              save={(value) =>
+                mutate({ ...row, qualityPenalty: Number(value) })
+              }
+              initialValue={row.qualityPenalty.toString()}
+            >
+              {row.qualityPenalty}
+            </EditableCell>
+
+            <td>{row.practiceScore}</td>
+            <td>{row.theoryScore}</td>
+            <td>{row.total}</td>
+            <td>{row.place}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};

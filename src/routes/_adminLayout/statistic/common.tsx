@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { CommonStatePage } from "@/modules/statistic";
+import { CommonPage } from "@/modules/admin/statistic";
 
 export const Route = createFileRoute("/_adminLayout/statistic/common")({
-  component: CommonStatePage,
+  component: CommonPage,
 });
