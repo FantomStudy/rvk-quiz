@@ -1,6 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { EditableCell, Table } from "@/components/ui";
+import { EditableCell, SortableHeader, Table } from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useUserLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -13,6 +14,8 @@ export const ChemLabTechnician = () => {
   const { mutate } = useChemLabTechnicianSave();
   const line = useUserLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
@@ -20,7 +23,14 @@ export const ChemLabTechnician = () => {
       <thead>
         <tr>
           <th rowSpan={3}>Филиал</th>
-          <th rowSpan={3}>№ линии</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={3}
+            sortConfig={sortConfig}
+            sortKey="lineNumber"
+          >
+            № линии
+          </SortableHeader>
           <th rowSpan={3}>ФИО</th>
           <th colSpan={12}>
             1 Этап &quot;Определение остаточного хлора в пробе питьевой
@@ -33,7 +43,14 @@ export const ChemLabTechnician = () => {
           <th rowSpan={3}>Итого баллов за практические задания</th>
           <th rowSpan={3}>Итого баллов за теоретические задания</th>
           <th rowSpan={3}>Общий балл</th>
-          <th rowSpan={3}>Место</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={3}
+            sortConfig={sortConfig}
+            sortKey="place"
+          >
+            Место
+          </SortableHeader>
         </tr>
         <tr>
           <th colSpan={6}>1a Предварительный этап. Калибровка пипеток</th>
@@ -45,12 +62,12 @@ export const ChemLabTechnician = () => {
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key}>{value}</th>
-            )),
+            ))
           )}
         </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
+        {sortedData.map((row) => (
           <tr key={row.number}>
             <td>{row.branchName}</td>
             <EditableCell

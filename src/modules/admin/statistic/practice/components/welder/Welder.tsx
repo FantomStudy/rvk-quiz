@@ -1,6 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { EditableCell, Table } from "@/components/ui";
+import { EditableCell, SortableHeader, Table } from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useUserLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -13,6 +14,8 @@ export const Welder = () => {
   const { mutate } = useWelderSave();
   const line = useUserLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
@@ -20,7 +23,14 @@ export const Welder = () => {
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <th rowSpan={2}>№ линии</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="lineNumber"
+          >
+            № линии
+          </SortableHeader>
           <th rowSpan={2}>ФИО</th>
           {data[0].stages.map((step) => (
             <th key={step.taskNumber} colSpan={5}>
@@ -34,7 +44,14 @@ export const Welder = () => {
           <th rowSpan={2}>Итого баллов за практическое задание</th>
           <th rowSpan={2}>Итого баллов за теоритические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <th rowSpan={2}>Место</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="place"
+          >
+            Место
+          </SortableHeader>
         </tr>
         <tr>
           {data[0].stages.map(() =>
@@ -42,7 +59,7 @@ export const Welder = () => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            )),
+            ))
           )}
           <th>Операционный контроль</th>
           <th>Визуально-измерительный контроль</th>
@@ -50,7 +67,7 @@ export const Welder = () => {
         </tr>
       </thead>
       <tbody>
-        {data?.map((row) => (
+        {sortedData?.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
             <EditableCell

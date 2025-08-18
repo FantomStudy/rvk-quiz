@@ -1,8 +1,24 @@
-export const DriverHead = () => (
+import type { SortConfig } from "@/shared/hooks";
+
+import { SortableHeader } from "@/components/ui";
+
+interface DriverHeadProps {
+  sortConfig: SortConfig | null;
+  onSort: (key: string) => void;
+}
+
+export const DriverHead = ({ sortConfig, onSort }: DriverHeadProps) => (
   <thead>
     <tr>
       <th rowSpan={2}>Филиал</th>
-      <th rowSpan={2}>№ линии</th>
+      <SortableHeader
+        onSort={onSort}
+        rowSpan={2}
+        sortConfig={sortConfig}
+        sortKey="lineNumber"
+      >
+        № линии
+      </SortableHeader>
       <th rowSpan={2}>Фио</th>
       <th colSpan={4}>Теоретические задания (Знание ПДД)</th>
       <th colSpan={5}>Практические задания (Скоростное маневрирование)</th>
@@ -26,7 +42,9 @@ export const DriverHead = () => (
         маневрированию
       </th>
       <th>Общее количество очков</th>
-      <th>Итоговое место</th>
+      <SortableHeader onSort={onSort} sortConfig={sortConfig} sortKey="place">
+        Итоговое место
+      </SortableHeader>
     </tr>
   </thead>
 );

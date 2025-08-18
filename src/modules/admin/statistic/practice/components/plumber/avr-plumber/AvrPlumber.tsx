@@ -1,4 +1,5 @@
 import { CheckableCell, EditableCell, Table } from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useUserLineSave } from "../../../api/queries";
 import { PlumberHead } from "../PlumberHead";
@@ -11,13 +12,19 @@ export const AvrPlumber = () => {
   const { mutate } = useAvrPlumberSave();
   const line = useUserLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>
-      <PlumberHead title="Сборка узла прибора учёта ХВС" />
+      <PlumberHead
+        title="Сборка узла прибора учёта ХВС"
+        onSort={handleSort}
+        sortConfig={sortConfig}
+      />
       <tbody>
-        {data.map((row) => (
+        {sortedData.map((row) => (
           <tr key={row.number}>
             <td>{row.branchName}</td>
             <EditableCell

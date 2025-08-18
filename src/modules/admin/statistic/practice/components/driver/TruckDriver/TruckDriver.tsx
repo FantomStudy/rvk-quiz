@@ -1,4 +1,5 @@
 import { EditableCell, Table } from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useUserLineSave } from "../../../api/queries";
 import { DriverHead } from "../DriverHead";
@@ -11,13 +12,15 @@ export const TruckDriver = () => {
   const { mutate } = useTruckDriverSave();
   const line = useUserLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
     <Table className={styles.table}>
-      <DriverHead />
+      <DriverHead onSort={handleSort} sortConfig={sortConfig} />
       <tbody>
-        {data.map(({ user, theory, practice, result, ...row }) => (
+        {sortedData.map(({ user, theory, practice, result, ...row }) => (
           <tr key={row.id}>
             <td>{row.branch.address}</td>
             <EditableCell

@@ -1,6 +1,12 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { CheckableCell, EditableCell, Table } from "@/components/ui";
+import {
+  CheckableCell,
+  EditableCell,
+  SortableHeader,
+  Table,
+} from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useBranchLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -13,6 +19,8 @@ export const AvrMechanic = () => {
   const { mutate } = useAvrMechanicSave();
   const line = useBranchLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
@@ -20,7 +28,14 @@ export const AvrMechanic = () => {
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <th rowSpan={2}>№ линии</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="lineNumber"
+          >
+            № линии
+          </SortableHeader>
 
           <th colSpan={7}>1 Этап &quot;Сборка узла&quot; </th>
           <th colSpan={7}>
@@ -33,7 +48,14 @@ export const AvrMechanic = () => {
           <th rowSpan={2}>Итого баллов за практические задания</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <th rowSpan={2}>Место</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="place"
+          >
+            Место
+          </SortableHeader>
         </tr>
         <tr>
           {data[0].stages.map(() =>
@@ -41,13 +63,13 @@ export const AvrMechanic = () => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            )),
+            ))
           )}
         </tr>
       </thead>
 
       <tbody>
-        {data.map((row) => (
+        {sortedData.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
             <EditableCell

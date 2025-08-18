@@ -24,7 +24,7 @@ export const CommonPage = () => {
 
   const { data } = useQuery({
     queryKey: [current.path],
-    queryFn: () =>
+    queryFn: async () =>
       api
         .get<(BranchResult & UserResult)[]>(`/${current.path}/result-table`)
         .then((r) => r.data),
@@ -60,7 +60,7 @@ export const CommonPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((row) => (
+            {data.map((row) => (
               <tr key={row.branchName}>
                 <td>{row.branchName}</td>
                 {current.type ? (

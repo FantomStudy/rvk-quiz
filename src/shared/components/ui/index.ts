@@ -7,4 +7,10 @@ export { AsyncSelect } from "./form-controls/select/AsyncSelect.tsx";
 export { Select } from "./form-controls/select/Select.tsx";
 export { Header } from "./header/Header";
 export { Skeleton } from "./skeleton/Skeleton";
-export { CheckableCell, EditableCell, SelectableCell, Table } from "./table";
+export {
+  CheckableCell,
+  EditableCell,
+  SelectableCell,
+  SortableHeader,
+  Table,
+} from "./table";

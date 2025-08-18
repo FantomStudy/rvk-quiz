@@ -1,6 +1,12 @@
 import { Fragment } from "react";
 
-import { CheckableCell, EditableCell, Table } from "@/components/ui";
+import {
+  CheckableCell,
+  EditableCell,
+  SortableHeader,
+  Table,
+} from "@/components/ui";
+import { useTableSort } from "@/shared/hooks";
 
 import { useBranchLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -13,6 +19,8 @@ export const AvrSewer = () => {
   const { mutate } = useAvrSewerSave();
   const line = useBranchLineSave();
 
+  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
+
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
   return (
@@ -20,7 +28,14 @@ export const AvrSewer = () => {
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <th rowSpan={2}>№ линии</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="lineNumber"
+          >
+            № линии
+          </SortableHeader>
 
           <th colSpan={6}>1 Этап &quot;Набивка полок и лотка&quot;</th>
           <th colSpan={6}>
@@ -35,7 +50,14 @@ export const AvrSewer = () => {
           <th rowSpan={2}>Итого баллов за практические задания</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <th rowSpan={2}>Место</th>
+          <SortableHeader
+            onSort={handleSort}
+            rowSpan={2}
+            sortConfig={sortConfig}
+            sortKey="place"
+          >
+            Место
+          </SortableHeader>
         </tr>
         <tr>
           {data[0].stages.map((_, index) =>
@@ -46,12 +68,12 @@ export const AvrSewer = () => {
                   : value}
                 {}
               </th>
-            )),
+            ))
           )}
         </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
+        {sortedData.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
             <EditableCell
