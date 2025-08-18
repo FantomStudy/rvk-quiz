@@ -68,7 +68,7 @@ export const AvrSewer = () => {
                   : value}
                 {}
               </th>
-            ))
+            )),
           )}
         </tr>
       </thead>

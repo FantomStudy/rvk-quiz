@@ -21,9 +21,9 @@ export const SortableHeader = ({
   const isActive = sortConfig?.key === sortKey;
   const direction = isActive ? sortConfig.direction : null;
 
-  const getSortIcon = (sortDirection: SortDirection) => {
+  const getSortIcon = (sortDirection: SortDirection | null) => {
     if (!sortDirection) return "↕️";
-    return "↑"; // всегда показываем стрелку вверх для возрастающей сортировки
+    return sortDirection === "asc" ? "↑" : "↓";
   };
 
   return (
