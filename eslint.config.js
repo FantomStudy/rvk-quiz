@@ -51,6 +51,7 @@ const config = antfu(
     rules: {
       "antfu/top-level-function": "off",
       "no-console": "off",
+      "eslint-comments/no-unlimited-disable": "off",
     },
   },
   {

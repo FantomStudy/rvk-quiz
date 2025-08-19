@@ -1,11 +1,12 @@
-import type { User } from "@/types/user";
-
 import { api } from "@/shared/config";
 
-import type { UpdateUserMutation } from "../types";
+import type { FullNameList, UpdateUserMutation, UserList } from "../types";
 
 export const fetchUserList = async () =>
-  api.get<User[]>("/user/all").then((r) => r.data);
+  api.get<UserList>("/user/all").then((r) => r.data);
 
-export const updateUser = async ({ userId, userData }: UpdateUserMutation) =>
-  api.put<User>(`/user/update/${userId}`, userData).then((r) => r.data);
+export const fetchFullNameList = async () =>
+  api.get<FullNameList>("/full-name/find-all").then((r) => r.data);
+
+export const updateUser = async ({ userId, fullNameId }: UpdateUserMutation) =>
+  api.put(`/user/update/${userId}`, { fullNameId }).then((r) => r.data);

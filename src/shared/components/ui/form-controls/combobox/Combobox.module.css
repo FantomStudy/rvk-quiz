@@ -1,0 +1,40 @@
+.combobox {
+  position: relative;
+  anchor-name: --combobox;
+}
+
+.input {
+  width: 100%;
+  font-size: 16px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.menu {
+  margin-top: 8px;
+  border-radius: 0 0 15px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  position-anchor: --combobox;
+  position-area: bottom left;
+  list-style: none;
+  border-radius: 16px;
+  z-index: 999;
+  border: 1px solid var(--table-secondary);
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 12px;
+  transition: 0.2s background ease;
+
+  &:hover {
+    background-color: var(--table-secondary);
+  }
+}

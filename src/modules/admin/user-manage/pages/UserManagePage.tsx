@@ -1,26 +1,33 @@
 import { useState } from "react";
 
-import type { Branch, User } from "@/types";
+import { Input, Table } from "@/components/ui";
+import { ComboBoxCell } from "@/components/ui/table/cells/ComboboxCell";
 
-import { EditableCell, Input, SelectableCell, Table } from "@/components/ui";
-
-import { useUpdateUser } from "../api/queries";
+import { useFullnameList, useUpdateUser, useUserList } from "../api/queries";
 
 import styles from "./UserManagePage.module.css";
 
-interface UserManagePageProps {
-  branchList: Branch[];
-  userList: User[];
-}
-
-export const UserManagePage = ({
-  userList,
-  branchList,
-}: UserManagePageProps) => {
+export const UserManagePage = () => {
   const [search, setSearch] = useState("");
+  const userList = useUserList();
+  const fullNameList = useFullnameList();
+
   const updateUser = useUpdateUser();
 
-  const filteredUserList = userList.filter((user) =>
+  if (fullNameList.isLoading || userList.isLoading) {
+    return <div>Загрузка...</div>;
+  }
+
+  if (!userList.data || !fullNameList.data) {
+    return <div>Не удалось загрузить имена из базы</div>;
+  }
+
+  const options = fullNameList.data.map((opt) => ({
+    id: opt.id,
+    text: opt.fullName,
+  }));
+
+  const filteredUserList = userList.data.filter((user) =>
     user.number.startsWith(search),
   );
 
@@ -48,30 +55,14 @@ export const UserManagePage = ({
             {filteredUserList.map((user) => (
               <tr key={user.number}>
                 <td>{user.number}</td>
-                <EditableCell
-                  save={(fullName) => {
-                    updateUser.mutate({
-                      userId: user.id,
-                      userData: { fullName, branchId: null },
-                    });
-                  }}
-                  initialValue={user.fullName ?? ""}
+                <ComboBoxCell
+                  save={({ id }) =>
+                    updateUser.mutate({ userId: user.id, fullNameId: id })
+                  }
+                  initialValue={user.fullName?.fullName || ""}
+                  options={options}
                 />
-
-                <SelectableCell
-                  save={(branchId) => {
-                    updateUser.mutate({
-                      userId: user.id,
-                      userData: { branchId, fullName: null },
-                    });
-                  }}
-                  initialValue={user.branch ? user.branch.id.toString() : ""}
-                  label={user.branch ? user.branch.address : ""}
-                  options={branchList.map((branch) => ({
-                    value: branch.id,
-                    label: branch.address,
-                  }))}
-                />
+                <td>{user.fullName?.branch.address}</td>
               </tr>
             ))}
           </tbody>
