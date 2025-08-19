@@ -2,6 +2,7 @@ export interface DriverData {
   id: number;
   lineNumber: number | null;
   nominationId: number;
+  place: number;
   practicNominationId: number;
   branch: {
     id: number;
@@ -23,8 +24,8 @@ export interface DriverData {
   theory: {
     correct: number;
     time: string;
-    place: number;
     points: number;
+    place: number;
   };
   user: {
     id: number;

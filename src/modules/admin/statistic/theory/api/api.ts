@@ -6,5 +6,5 @@ export const fetchTheoryList = async (nominationId: number) =>
   api
     .get<
       TheoryListItem[]
-    >("statistic/theory-table", { params: { nominationId } })
+    >("/statistic/theory-table", { params: { nominationId } })
     .then((r) => r.data);

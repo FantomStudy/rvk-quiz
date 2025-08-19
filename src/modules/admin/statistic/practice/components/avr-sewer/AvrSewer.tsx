@@ -1,12 +1,9 @@
 import { Fragment } from "react";
 
-import {
-  CheckableCell,
-  EditableCell,
-  SortableHeader,
-  Table,
-} from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { CheckableCell, EditableCell, Table } from "@/components/ui";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../types";
 
 import { useBranchLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -14,28 +11,21 @@ import { useAvrSewer, useAvrSewerSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
 
-export const AvrSewer = () => {
+export const AvrSewer = ({ sortBy }: SortProps) => {
   const { data } = useAvrSewer();
   const { mutate } = useAvrSewerSave();
   const line = useBranchLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const sortedData = sortWithEmptyLast(data, sortBy);
 
   return (
     <Table className={styles.table}>
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="lineNumber"
-          >
-            № линии
-          </SortableHeader>
+          <th rowSpan={2}>№ линии</th>
 
           <th colSpan={6}>1 Этап &quot;Набивка полок и лотка&quot;</th>
           <th colSpan={6}>
@@ -50,14 +40,7 @@ export const AvrSewer = () => {
           <th rowSpan={2}>Итого баллов за практические задания</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="place"
-          >
-            Место
-          </SortableHeader>
+          <th rowSpan={2}>Место</th>
         </tr>
         <tr>
           {data[0].stages.map((_, index) =>

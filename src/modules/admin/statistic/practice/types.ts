@@ -10,5 +10,11 @@ export type ProtocolName =
 
 export type ProtocolMap = Record<
   ProtocolName,
-  { name: string; element: React.ReactNode }
+  { name: string; element: (props: SortProps) => React.ReactNode }
 >;
+
+export type SortBy = "lineNumber" | "place" | null;
+
+export interface SortProps {
+  sortBy: SortBy;
+}

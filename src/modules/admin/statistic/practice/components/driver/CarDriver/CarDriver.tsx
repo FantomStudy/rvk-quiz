@@ -1,5 +1,7 @@
 import { EditableCell, Table } from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../../types";
 
 import { useUserLineSave } from "../../../api/queries";
 import { DriverHead } from "../DriverHead";
@@ -7,18 +9,18 @@ import { useCarDriver, useCarDriverSave } from "./queries";
 
 import styles from "../../../../statistic.module.css";
 
-export const CarDriver = () => {
+export const CarDriver = ({ sortBy }: SortProps) => {
   const { data } = useCarDriver();
   const { mutate } = useCarDriverSave();
   const line = useUserLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const sortedData = sortWithEmptyLast(data, sortBy);
 
   return (
     <Table className={styles.table}>
-      <DriverHead onSort={handleSort} sortConfig={sortConfig} />
+      <DriverHead />
       <tbody>
         {sortedData.map(({ user, theory, practice, result, ...row }) => (
           <tr key={row.id}>
@@ -76,7 +78,7 @@ export const CarDriver = () => {
             <td>{result.theoryPoints}</td>
             <td>{result.practicePoints}</td>
             <td>{result.points}</td>
-            <td>{result.place}</td>
+            <td>{row.place}</td>
           </tr>
         ))}
       </tbody>

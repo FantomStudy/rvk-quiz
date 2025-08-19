@@ -16,7 +16,7 @@ export const TheoryPage = () => {
   const theory = useTheoryList(Number(nominationId));
   const nomination = useNominationList();
 
-  if (theory.isLoading) {
+  if (theory.isLoading || nomination.isLoading) {
     return <div className="container">Загрузка...</div>;
   }
 

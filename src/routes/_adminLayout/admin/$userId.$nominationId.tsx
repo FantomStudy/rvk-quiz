@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { UserSessionPage } from "@/modules/admin";
+import { ResultsTable } from "@/components/widgets";
 
 export const Route = createFileRoute(
   "/_adminLayout/admin/$userId/$nominationId",
@@ -12,9 +12,11 @@ function RouteComponent() {
   const { userId, nominationId } = Route.useParams();
 
   return (
-    <UserSessionPage
-      userId={Number(userId)}
-      nominationId={Number(nominationId)}
-    />
+    <div className="container">
+      <ResultsTable
+        userId={Number(userId)}
+        nominationId={Number(nominationId)}
+      />
+    </div>
   );
 }

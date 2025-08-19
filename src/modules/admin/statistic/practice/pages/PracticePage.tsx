@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Button, Select } from "@/components/ui";
 
-import type { ProtocolName } from "./types";
+import type { ProtocolName, SortBy } from "../types";
 
 import { PROTOCOLS, STORAGE_KEY } from "./const";
 
@@ -30,6 +30,8 @@ export const PracticePage = () => {
     return saved ? (saved as ProtocolName) : "avrMechanic";
   });
 
+  const [sortBy, setSortBy] = useState<SortBy>(null);
+
   const [isPrintMode, setIsPrintMode] = useState(false);
 
   useEffect(() => {
@@ -55,6 +57,10 @@ export const PracticePage = () => {
       window.removeEventListener("afterprint", handleAfterPrint);
     };
   }, []);
+
+  const toggleSort = (field: "lineNumber" | "place") => {
+    setSortBy((prev) => (prev === field ? null : field));
+  };
 
   return (
     <div className="container">
@@ -88,8 +94,14 @@ export const PracticePage = () => {
                   </option>
                 ))}
               </Select>
-              <Button size="s" variant="primary" onClick={handlePrint}>
+              <Button size="s" onClick={handlePrint}>
                 Распечатать
+              </Button>
+              <Button size="s" onClick={() => toggleSort("lineNumber")}>
+                Сортировка по линии {sortBy === "lineNumber" ? "✓" : ""}
+              </Button>
+              <Button size="s" onClick={() => toggleSort("place")}>
+                Сортировка по месту {sortBy === "place" ? "✓" : ""}
               </Button>
             </div>
           )}
@@ -97,7 +109,7 @@ export const PracticePage = () => {
           <div
             className={`${styles.tableContainer} ${isPrintMode ? styles.compactTable : ""}`}
           >
-            {table.element}
+            {table.element({ sortBy })}
           </div>
 
           {isPrintMode && (

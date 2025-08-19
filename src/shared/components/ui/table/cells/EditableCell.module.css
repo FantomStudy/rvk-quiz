@@ -1,5 +1,4 @@
 td.editable {
-  display: flex;
   padding: 0 !important;
 
   & > * {
@@ -22,7 +21,7 @@ td.editable {
 }
 
 .input {
-  height: 100%;
+  height: 50px;
   border-radius: 0 !important;
 
   &[type="text"] {

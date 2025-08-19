@@ -1,7 +1,9 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { EditableCell, SortableHeader, Table } from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { EditableCell, Table } from "@/components/ui";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../types";
 
 import { useUserLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -9,28 +11,24 @@ import { useChemLabTechnician, useChemLabTechnicianSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
 
-export const ChemLabTechnician = () => {
+export const ChemLabTechnician = ({ sortBy }: SortProps) => {
   const { data } = useChemLabTechnician();
   const { mutate } = useChemLabTechnicianSave();
   const line = useUserLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const normalizeData = data.map((el) => ({ ...el, place: el.finalPlace }));
+
+  const sortedData = sortWithEmptyLast(normalizeData, sortBy);
 
   return (
     <Table className={styles.table}>
       <thead>
         <tr>
           <th rowSpan={3}>Филиал</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={3}
-            sortConfig={sortConfig}
-            sortKey="lineNumber"
-          >
-            № линии
-          </SortableHeader>
+          <th rowSpan={3}>№ линии</th>
+
           <th rowSpan={3}>ФИО</th>
           <th colSpan={12}>
             1 Этап &quot;Определение остаточного хлора в пробе питьевой
@@ -43,14 +41,7 @@ export const ChemLabTechnician = () => {
           <th rowSpan={3}>Итого баллов за практические задания</th>
           <th rowSpan={3}>Итого баллов за теоретические задания</th>
           <th rowSpan={3}>Общий балл</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={3}
-            sortConfig={sortConfig}
-            sortKey="place"
-          >
-            Место
-          </SortableHeader>
+          <th rowSpan={3}>Место</th>
         </tr>
         <tr>
           <th colSpan={6}>1a Предварительный этап. Калибровка пипеток</th>
@@ -145,7 +136,7 @@ export const ChemLabTechnician = () => {
             <td>{row.practiceScore}</td>
             <td>{row.theoryScore}</td>
             <td>{row.total}</td>
-            <td>{row.finalPlace}</td>
+            <td>{row.place}</td>
           </tr>
         ))}
       </tbody>

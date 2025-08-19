@@ -1,4 +1,4 @@
-import type { ProtocolMap } from "./types";
+import type { ProtocolMap } from "../types";
 
 import {
   AvrMechanic,
@@ -16,34 +16,34 @@ export const STORAGE_KEY = "selected-protocol";
 export const PROTOCOLS: ProtocolMap = {
   avrMechanic: {
     name: "Лучшая бригада  АВР по водопроводным сетям - 2025",
-    element: <AvrMechanic />,
+    element: (props) => <AvrMechanic {...props} />,
   },
   avrSewer: {
     name: "Лучшая бригада АВР по канализационным сетям - 2025",
-    element: <AvrSewer />,
+    element: (props) => <AvrSewer {...props} />,
   },
   avrPlumber: {
     name: "Лучший слесарь АВР по водопроводным сетям - 2025",
-    element: <AvrPlumber />,
+    element: (props) => <AvrPlumber {...props} />,
   },
   avrSewerPlumber: {
     name: "Лучший слесарь АВР по канализационным сетям - 2025",
-    element: <AvrSewerPlumber />,
+    element: (props) => <AvrSewerPlumber {...props} />,
   },
   driverB: {
     name: "Лучший водитель автомобиля (легкового) - 2025",
-    element: <CarDriver />,
+    element: (props) => <CarDriver {...props} />,
   },
   driverC: {
     name: "Лучший водитель автомобиля (грузового) - 2025",
-    element: <TruckDriver />,
+    element: (props) => <TruckDriver {...props} />,
   },
   chemLabTecnician: {
     name: "Лучший лаборант химического анализа - 2025",
-    element: <ChemLabTechnician />,
+    element: (props) => <ChemLabTechnician {...props} />,
   },
   welder: {
     name: "Лучший сварщик - 2025",
-    element: <Welder />,
+    element: (props) => <Welder {...props} />,
   },
 };

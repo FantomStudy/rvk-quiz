@@ -13,6 +13,5 @@ export {
   ComboBoxCell,
   EditableCell,
   SelectableCell,
-  SortableHeader,
   Table,
 } from "./table";

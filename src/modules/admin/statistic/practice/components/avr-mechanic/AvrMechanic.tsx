@@ -1,12 +1,9 @@
 import { Fragment } from "react/jsx-runtime";
 
-import {
-  CheckableCell,
-  EditableCell,
-  SortableHeader,
-  Table,
-} from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { CheckableCell, EditableCell, Table } from "@/components/ui";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../types";
 
 import { useBranchLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -14,33 +11,28 @@ import { useAvrMechanic, useAvrMechanicSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
 
-export const AvrMechanic = () => {
+export const AvrMechanic = ({ sortBy }: SortProps) => {
   const { data } = useAvrMechanic();
   const { mutate } = useAvrMechanicSave();
   const line = useBranchLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const sortedData = sortWithEmptyLast(data, sortBy);
 
   return (
     <Table className={styles.table}>
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="lineNumber"
-          >
-            № линии
-          </SortableHeader>
+          <th rowSpan={2}>№ линии</th>
 
           <th colSpan={7}>1 Этап &quot;Сборка узла&quot; </th>
+
           <th colSpan={7}>
             2 Этап &quot;Сварка поворотного и неповоротного стыков&quot;{" "}
           </th>
+
           <th colSpan={7}>
             3 Этап &quot;Ликвидация повреждения в грунте&quot;
           </th>
@@ -48,15 +40,9 @@ export const AvrMechanic = () => {
           <th rowSpan={2}>Итого баллов за практические задания</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="place"
-          >
-            Место
-          </SortableHeader>
+          <th rowSpan={2}>Место</th>
         </tr>
+
         <tr>
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
@@ -72,6 +58,7 @@ export const AvrMechanic = () => {
         {sortedData.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
+
             <EditableCell
               save={(value) =>
                 line.mutate({
@@ -84,6 +71,7 @@ export const AvrMechanic = () => {
             >
               {row.lineNumber}
             </EditableCell>
+
             {row.stages.map((stage, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
@@ -100,7 +88,9 @@ export const AvrMechanic = () => {
                 >
                   {stage.time}
                 </EditableCell>
+
                 <td>{stage.timeScore}</td>
+
                 <CheckableCell
                   save={(value) =>
                     mutate({
@@ -124,6 +114,7 @@ export const AvrMechanic = () => {
                 >
                   {stage.safetyPenalty}
                 </EditableCell>
+
                 <EditableCell
                   save={(value) =>
                     mutate({
@@ -136,6 +127,7 @@ export const AvrMechanic = () => {
                 >
                   {stage.culturePenalty}
                 </EditableCell>
+
                 <EditableCell
                   save={(value) =>
                     mutate({
@@ -151,6 +143,7 @@ export const AvrMechanic = () => {
                 <td>{stage.stageScore}</td>
               </Fragment>
             ))}
+
             <td>{row.practiceScore}</td>
             <td>{row.theoryScore}</td>
             <td>{row.total}</td>

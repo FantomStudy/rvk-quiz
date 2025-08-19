@@ -1,7 +1,9 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { EditableCell, SortableHeader, Table } from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { EditableCell, Table } from "@/components/ui";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../types";
 
 import { useUserLineSave } from "../../api/queries";
 import { METRICS } from "./const";
@@ -9,28 +11,22 @@ import { useWelder, useWelderSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
 
-export const Welder = () => {
+export const Welder = ({ sortBy }: SortProps) => {
   const { data } = useWelder();
   const { mutate } = useWelderSave();
   const line = useUserLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const sortedData = sortWithEmptyLast(data, sortBy);
 
   return (
     <Table className={styles.table}>
       <thead>
         <tr>
           <th rowSpan={2}>Филиал</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="lineNumber"
-          >
-            № линии
-          </SortableHeader>
+          <th rowSpan={2}>№ линии</th>
+
           <th rowSpan={2}>ФИО</th>
           {data[0].stages.map((step) => (
             <th key={step.taskNumber} colSpan={5}>
@@ -42,16 +38,9 @@ export const Welder = () => {
           </th>
           <th colSpan={3}>Количество снятых баллов по контролю качества</th>
           <th rowSpan={2}>Итого баллов за практическое задание</th>
-          <th rowSpan={2}>Итого баллов за теоритические задания</th>
+          <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
-          <SortableHeader
-            onSort={handleSort}
-            rowSpan={2}
-            sortConfig={sortConfig}
-            sortKey="place"
-          >
-            Место
-          </SortableHeader>
+          <th rowSpan={2}>Место</th>
         </tr>
         <tr>
           {data[0].stages.map(() =>

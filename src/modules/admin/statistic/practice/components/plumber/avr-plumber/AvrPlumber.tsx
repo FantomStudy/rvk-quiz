@@ -1,5 +1,7 @@
 import { CheckableCell, EditableCell, Table } from "@/components/ui";
-import { useTableSort } from "@/shared/hooks";
+import { sortWithEmptyLast } from "@/shared/utils";
+
+import type { SortProps } from "../../../types";
 
 import { useUserLineSave } from "../../../api/queries";
 import { PlumberHead } from "../PlumberHead";
@@ -7,22 +9,18 @@ import { useAvrPlumber, useAvrPlumberSave } from "./queries";
 
 import styles from "../../../../statistic.module.css";
 
-export const AvrPlumber = () => {
+export const AvrPlumber = ({ sortBy }: SortProps) => {
   const { data } = useAvrPlumber();
   const { mutate } = useAvrPlumberSave();
   const line = useUserLineSave();
 
-  const { sortedData, sortConfig, handleSort } = useTableSort(data || []);
-
   if (!data || data.length === 0) return "Не удалось загрузить данные";
+
+  const sortedData = sortWithEmptyLast(data, sortBy);
 
   return (
     <Table className={styles.table}>
-      <PlumberHead
-        title="Сборка узла прибора учёта ХВС"
-        onSort={handleSort}
-        sortConfig={sortConfig}
-      />
+      <PlumberHead title="Сборка узла прибора учёта ХВС" />
       <tbody>
         {sortedData.map((row) => (
           <tr key={row.number}>
