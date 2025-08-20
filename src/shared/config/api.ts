@@ -1,7 +1,22 @@
 import axios from "axios";
 
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+
+  if (envUrl !== "auto") {
+    return envUrl;
+  }
+
+  const host = window.location.hostname;
+
+  if (/^192\.168\./.test(host)) {
+    return "http://192.168.147.72:3002";
+  }
+  return "https://back-vodokanal.oksei.ru";
+};
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: getBaseUrl(),
   headers: {
     "Content-Type": "application/json",
   },
