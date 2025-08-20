@@ -59,7 +59,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key}>{value}</th>
-            ))
+            )),
           )}
         </tr>
       </thead>

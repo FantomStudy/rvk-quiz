@@ -55,7 +55,7 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            ))
+            )),
           )}
         </tr>
       </thead>

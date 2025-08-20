@@ -58,7 +58,7 @@ export const Welder = ({ sortBy }: SortProps) => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            ))
+            )),
           )}
           <th>Операционный контроль</th>
           <th>Визуально-измерительный контроль</th>
