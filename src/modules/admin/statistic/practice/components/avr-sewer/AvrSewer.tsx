@@ -52,12 +52,12 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
           {data[0].stages.map((_, index) =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key} className={styles.rotate}>
-                {index === 1 && key === "timeScore"
+                {index === 1 && key === "safetyPenalty"
                   ? "Гидравлические испытания (+/-)"
                   : value}
                 {}
               </th>
-            )),
+            ))
           )}
         </tr>
       </thead>
