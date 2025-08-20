@@ -75,7 +75,7 @@ export const CommonPage = () => {
                       </div>
                     </td>
                   ) : (
-                    <td>{row.fullName.fullName}</td>
+                    <td>{row.fullName}</td>
                   )}
                   <td>{row.theoryScore}</td>
                   <td>{row.practiceScore}</td>

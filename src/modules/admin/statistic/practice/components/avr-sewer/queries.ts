@@ -7,7 +7,7 @@ import type { AvrSewerData, AvrSewerMutation } from "./types";
 export const useAvrSewer = () =>
   useQuery({
     queryKey: ["avr-sewer"],
-    queryFn: () =>
+    queryFn: async () =>
       api.get<AvrSewerData[]>("/avr-sewer/table").then((r) => r.data),
   });
 
@@ -15,7 +15,7 @@ export const useAvrSewerSave = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: AvrSewerMutation) =>
+    mutationFn: async (data: AvrSewerMutation) =>
       api.patch("/avr-sewer/update", data),
     onSuccess: () => {
       console.log("Данные сохранены");

@@ -7,7 +7,7 @@ import type { DriverData, DriverMutation } from "../types";
 export const useTruckDriver = () =>
   useQuery({
     queryKey: ["truck-driver"],
-    queryFn: () =>
+    queryFn: async () =>
       api.get<DriverData[]>("/truck-driver/table").then((r) => r.data),
   });
 
@@ -16,7 +16,7 @@ export const useTruckDriverSave = () => {
   return useMutation({
     mutationFn: (data: DriverMutation) =>
       api.patch("/truck-driver/update", data),
-    onSuccess: () => {
+    onSuccess: async () => {
       console.log("Сохранено");
       queryClient.invalidateQueries({ queryKey: ["truck-driver"] });
     },

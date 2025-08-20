@@ -7,7 +7,7 @@ import type { AvrMechanicData, AvrMechanicMutation } from "./types";
 export const useAvrMechanic = () =>
   useQuery({
     queryKey: ["avr-mechanic"],
-    queryFn: () =>
+    queryFn: async () =>
       api.get<AvrMechanicData[]>("/avr-mechanic/table").then((r) => r.data),
   });
 

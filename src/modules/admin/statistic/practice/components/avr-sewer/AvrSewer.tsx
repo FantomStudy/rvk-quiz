@@ -57,7 +57,7 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
                   : value}
                 {}
               </th>
-            ))
+            )),
           )}
         </tr>
       </thead>

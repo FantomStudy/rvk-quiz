@@ -9,13 +9,11 @@ export interface BranchResult {
 
 export interface UserResult {
   branchName: string;
+  fullName: string;
   place: number;
   practiceScore: number;
   theoryScore: number;
   totalScore: number;
-  fullName: {
-    fullName: string;
-  };
 }
 
 export type ResultName =

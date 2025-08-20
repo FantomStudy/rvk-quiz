@@ -12,7 +12,7 @@ const getBaseUrl = () => {
   if (/^192\.168\./.test(host)) {
     return "http://192.168.147.72:3002";
   }
-  return "https://back-vodokanal.oksei.ru";
+  return "https://back.vodokanal.okeit.edu";
 };
 
 export const api = axios.create({

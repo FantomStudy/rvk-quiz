@@ -14,7 +14,7 @@ export const useBranchLineSave = () =>
 
 export const useUserLineSave = () =>
   useMutation({
-    mutationFn: (data: UserLineMutation) => userLineSave(data),
+    mutationFn: async (data: UserLineMutation) => userLineSave(data),
     onSuccess: () => {
       console.log("Номер линии сохранен");
     },
