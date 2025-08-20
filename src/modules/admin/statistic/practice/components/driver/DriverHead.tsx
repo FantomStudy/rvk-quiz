@@ -1,12 +1,24 @@
+import styles from "../../../statistic.module.css";
+
 export const DriverHead = () => (
   <thead>
     <tr>
-      <th rowSpan={2}>Филиал</th>
+      <th className={styles.printNotRotate} rowSpan={2}>
+        Филиал
+      </th>
       <th rowSpan={2}>№ линии</th>
-      <th rowSpan={2}>Фио</th>
-      <th colSpan={4}>Теоретические задания (Знание ПДД)</th>
-      <th colSpan={5}>Практические задания (Скоростное маневрирование)</th>
-      <th colSpan={4}>Итоговый расчет</th>
+      <th className={styles.printNotRotate} rowSpan={2}>
+        Фио
+      </th>
+      <th className={styles.printNotRotate} colSpan={4}>
+        Теоретические задания (Знание ПДД)
+      </th>
+      <th className={styles.printNotRotate} colSpan={5}>
+        Практические задания (Скоростное маневрирование)
+      </th>
+      <th className={styles.printNotRotate} colSpan={4}>
+        Итоговый расчет
+      </th>
     </tr>
     <tr>
       <th>Количество правильных ответов</th>

@@ -4,25 +4,15 @@ import { Button, Select } from "@/components/ui";
 
 import type { ProtocolName, SortBy } from "../types";
 
-import { PROTOCOLS, STORAGE_KEY } from "./const";
+import {
+  chairman,
+  members,
+  PROTOCOLS,
+  STORAGE_KEY,
+  viceChairman,
+} from "./const";
 
 import styles from "../../statistic.module.css";
-
-const chairman = "Перфильев В.П.";
-const viceChairman = "Березнев К.А.";
-const members = [
-  "Крекер В.Н.",
-  "Ермолаева С.Э.",
-  "Родин Н.В.",
-  "Неумоин А.В.",
-  "Власов Д.С.",
-  "Ленченков Ю.А.",
-  "Бесполденов О.А.",
-  "Голиченко С.В.",
-  "Бычков Д.А.",
-  "Петров А.А.",
-  "Москалев П.А.",
-];
 
 export const PracticePage = () => {
   const [selected, setSelected] = useState<ProtocolName>(() => {
@@ -32,31 +22,11 @@ export const PracticePage = () => {
 
   const [sortBy, setSortBy] = useState<SortBy>(null);
 
-  const [isPrintMode, setIsPrintMode] = useState(false);
-
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, selected);
   }, [selected]);
 
   const table = PROTOCOLS[selected];
-
-  const handlePrint = () => {
-    setIsPrintMode(true);
-    setTimeout(() => {
-      window.print();
-    }, 200);
-  };
-
-  const handleAfterPrint = () => {
-    setIsPrintMode(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener("afterprint", handleAfterPrint);
-    return () => {
-      window.removeEventListener("afterprint", handleAfterPrint);
-    };
-  }, []);
 
   const toggleSort = (field: "lineNumber" | "place") => {
     setSortBy((prev) => (prev === field ? null : field));
@@ -64,55 +34,58 @@ export const PracticePage = () => {
 
   return (
     <div className="container">
-      <div
-        className={`${styles.printContainer} ${isPrintMode ? styles.printMode : ""}`}
-      >
-        {isPrintMode && (
-          <div className={styles.printControls}>
-            <Button variant="outline" onClick={() => setIsPrintMode(false)}>
-              Отменить
-            </Button>
-            <Button variant="primary" onClick={() => window.print()}>
-              Печать
-            </Button>
-          </div>
-        )}
+      <p className={styles.title}>{PROTOCOLS[selected].name}</p>
 
-        <p className={styles.title}>{PROTOCOLS[selected].name}</p>
-
-        <div className={styles.wrapper}>
-          {!isPrintMode && (
-            <div className={styles.controls}>
-              <Select
-                selectSize="s"
-                value={selected}
-                onChange={(e) => setSelected(e.target.value as ProtocolName)}
-              >
-                {Object.entries(PROTOCOLS).map(([key, value]) => (
-                  <option key={key} value={key}>
-                    {value.name}
-                  </option>
-                ))}
-              </Select>
-              <Button size="s" onClick={handlePrint}>
-                Распечатать
-              </Button>
-              <Button size="s" onClick={() => toggleSort("lineNumber")}>
-                Сортировка по линии {sortBy === "lineNumber" ? "✓" : ""}
-              </Button>
-              <Button size="s" onClick={() => toggleSort("place")}>
-                Сортировка по месту {sortBy === "place" ? "✓" : ""}
-              </Button>
-            </div>
-          )}
-
-          <div
-            className={`${styles.tableContainer} ${isPrintMode ? styles.compactTable : ""}`}
+      <div className={styles.wrapper}>
+        <div className={styles.controls}>
+          <Select
+            selectSize="s"
+            value={selected}
+            onChange={(e) => setSelected(e.target.value as ProtocolName)}
           >
-            {table.element({ sortBy })}
-          </div>
+            {Object.entries(PROTOCOLS).map(([key, value]) => (
+              <option key={key} value={key}>
+                {value.name}
+              </option>
+            ))}
+          </Select>
+          <Button size="s" onClick={window.print}>
+            Распечатать
+          </Button>
+          <Button size="s" onClick={() => toggleSort("lineNumber")}>
+            Сортировка по линии {sortBy === "lineNumber" ? "✓" : ""}
+          </Button>
+          <Button size="s" onClick={() => toggleSort("place")}>
+            Сортировка по месту {sortBy === "place" ? "✓" : ""}
+          </Button>
+        </div>
 
-          {isPrintMode && (
+        <div className={`${styles.tableContainer} `}>
+          {table.element({ sortBy })}
+        </div>
+
+        <div className={styles.signatures}>
+          <div className={styles.signatureItem}>
+            <p>Председатель конкурсной комиссии</p>
+            <p className={styles.signaturePlace}>{chairman}</p>
+          </div>
+          <div className={styles.signatureItem}>
+            <p>Заместитель председателя конкурсной комиссии</p>
+            <p className={styles.signaturePlace}>{viceChairman}</p>
+          </div>
+          <div className={styles.signatureItem}>
+            <p>Члены конкурсной комиссии</p>
+            <div className={styles.signatureGrid}>
+              {members.map((member) => (
+                <p key={member} className={styles.signaturePlace}>
+                  {member}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* {isPrintMode && (
             <div className={styles.signatures}>
               <div className={styles.signatureOfficials}>
                 <div className={styles.signatureOfficial}>
@@ -144,8 +117,8 @@ export const PracticePage = () => {
                 ))}
               </div>
             </div>
-          )}
-        </div>
+          )} 
+        </div>*/}
       </div>
     </div>
   );

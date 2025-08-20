@@ -9,10 +9,16 @@ interface PlumberHeadProps {
 export const PlumberHead = ({ title }: PlumberHeadProps) => (
   <thead>
     <tr>
-      <th rowSpan={2}>Филиал</th>
+      <th className={styles.printNotRotate} rowSpan={2}>
+        Филиал
+      </th>
       <th rowSpan={2}>№ линии</th>
-      <th rowSpan={2}>ФИО</th>
-      <th colSpan={6}>Практическое задание &quot;{title}&quot;</th>
+      <th className={styles.printNotRotate} rowSpan={2}>
+        ФИО
+      </th>
+      <th className={styles.printNotRotate} colSpan={6}>
+        Практическое задание &quot;{title}&quot;
+      </th>
       <th rowSpan={2}>Итого баллов за практические задания</th>
       <th rowSpan={2}>Итого баллов за теоретические задания</th>
       <th rowSpan={2}>Общий балл</th>

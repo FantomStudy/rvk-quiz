@@ -24,18 +24,24 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
     <Table className={styles.table}>
       <thead>
         <tr>
-          <th rowSpan={2}>Филиал</th>
+          <th className={styles.printNotRotate} rowSpan={2}>
+            Филиал
+          </th>
           <th rowSpan={2}>№ линии</th>
 
-          <th colSpan={6}>1 Этап &quot;Набивка полок и лотка&quot;</th>
-          <th colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={6}>
+            1 Этап &quot;Набивка полок и лотка&quot;
+          </th>
+          <th className={styles.printNotRotate} colSpan={6}>
             2 Этап &quot;Установка пневматического заглушаещего устройства
             ПЗУ-1&quot;
           </th>
-          <th colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={6}>
             3 Этап &quot;Регулировка высотного положения горловины колодца&quot;
           </th>
-          <th colSpan={6}>4 Этап &quot;Поиск люка под грунтом&quot;</th>
+          <th className={styles.printNotRotate} colSpan={6}>
+            4 Этап &quot;Поиск люка под грунтом&quot;
+          </th>
 
           <th rowSpan={2}>Итого баллов за практические задания</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
@@ -51,7 +57,7 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
                   : value}
                 {}
               </th>
-            )),
+            ))
           )}
         </tr>
       </thead>
@@ -63,8 +69,8 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
               save={(value) =>
                 line.mutate({
                   branchId: row.branchId,
-                  lineNumber: Number(value),
                   practicNominationId: row.practicNominationId,
+                  lineNumber: Number(value),
                 })
               }
               initialValue={row.lineNumber?.toString() || ""}

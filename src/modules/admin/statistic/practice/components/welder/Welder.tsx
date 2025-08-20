@@ -24,19 +24,29 @@ export const Welder = ({ sortBy }: SortProps) => {
     <Table className={styles.table}>
       <thead>
         <tr>
-          <th rowSpan={2}>Филиал</th>
+          <th className={styles.printNotRotate} rowSpan={2}>
+            Филиал
+          </th>
           <th rowSpan={2}>№ линии</th>
 
-          <th rowSpan={2}>ФИО</th>
+          <th className={styles.printNotRotate} rowSpan={2}>
+            ФИО
+          </th>
           {data[0].stages.map((step) => (
-            <th key={step.taskNumber} colSpan={5}>
+            <th
+              key={step.taskNumber}
+              className={styles.printNotRotate}
+              colSpan={5}
+            >
               {step.taskNumber} Этап
             </th>
           ))}
           <th className={styles.rotate} rowSpan={2}>
             Итого баллов за 2 этапа
           </th>
-          <th colSpan={3}>Количество снятых баллов по контролю качества</th>
+          <th className={styles.printNotRotate} colSpan={3}>
+            Количество снятых баллов по контролю качества
+          </th>
           <th rowSpan={2}>Итого баллов за практическое задание</th>
           <th rowSpan={2}>Итого баллов за теоретические задания</th>
           <th rowSpan={2}>Общий балл</th>
@@ -48,7 +58,7 @@ export const Welder = ({ sortBy }: SortProps) => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            )),
+            ))
           )}
           <th>Операционный контроль</th>
           <th>Визуально-измерительный контроль</th>

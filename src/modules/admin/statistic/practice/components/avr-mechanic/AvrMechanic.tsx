@@ -24,16 +24,22 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
     <Table className={styles.table}>
       <thead>
         <tr>
-          <th rowSpan={2}>Филиал</th>
-          <th rowSpan={2}>№ линии</th>
+          <th className={styles.printNotRotate} rowSpan={2}>
+            Филиал
+          </th>
+          <th className={styles.rotate} rowSpan={2}>
+            № линии
+          </th>
 
-          <th colSpan={7}>1 Этап &quot;Сборка узла&quot; </th>
+          <th className={styles.printNotRotate} colSpan={7}>
+            1 Этап &quot;Сборка узла&quot;
+          </th>
 
-          <th colSpan={7}>
+          <th className={styles.printNotRotate} colSpan={7}>
             2 Этап &quot;Сварка поворотного и неповоротного стыков&quot;{" "}
           </th>
 
-          <th colSpan={7}>
+          <th className={styles.printNotRotate} colSpan={7}>
             3 Этап &quot;Ликвидация повреждения в грунте&quot;
           </th>
 
@@ -49,7 +55,7 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
               <th key={key} className={styles.rotate}>
                 {value}
               </th>
-            )),
+            ))
           )}
         </tr>
       </thead>

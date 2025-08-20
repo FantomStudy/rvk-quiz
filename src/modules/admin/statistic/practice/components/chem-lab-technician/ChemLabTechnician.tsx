@@ -26,15 +26,19 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
     <Table className={styles.table}>
       <thead>
         <tr>
-          <th rowSpan={3}>Филиал</th>
+          <th className={styles.printNotRotate} rowSpan={3}>
+            Филиал
+          </th>
           <th rowSpan={3}>№ линии</th>
 
-          <th rowSpan={3}>ФИО</th>
-          <th colSpan={12}>
+          <th className={styles.printNotRotate} rowSpan={3}>
+            ФИО
+          </th>
+          <th className={styles.printNotRotate} colSpan={12}>
             1 Этап &quot;Определение остаточного хлора в пробе питьевой
             воды&quot;
           </th>
-          <th colSpan={6} rowSpan={2}>
+          <th className={styles.printNotRotate} colSpan={6} rowSpan={2}>
             2 Этап &quot;Отбор проб для микробиологического анализа в
             соответствии с требованиями&quot;
           </th>
@@ -44,8 +48,10 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           <th rowSpan={3}>Место</th>
         </tr>
         <tr>
-          <th colSpan={6}>1a Предварительный этап. Калибровка пипеток</th>
-          <th colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={6}>
+            1a Предварительный этап. Калибровка пипеток
+          </th>
+          <th className={styles.printNotRotate} colSpan={6}>
             1б Основной этап определения остаточного активного (общего) хлора
           </th>
         </tr>
@@ -53,7 +59,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key}>{value}</th>
-            )),
+            ))
           )}
         </tr>
       </thead>

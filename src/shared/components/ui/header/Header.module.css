@@ -5,3 +5,9 @@
   justify-content: space-between;
   margin-bottom: 5px;
 }
+
+@media print {
+  .headerWrapper {
+    display: none;
+  }
+}
