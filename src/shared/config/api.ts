@@ -10,9 +10,9 @@ const getBaseUrl = () => {
   const host = window.location.hostname;
 
   if (/^192\.168\./.test(host)) {
-    return "http://192.168.147.72:3002";
+    return "https://back.vodokanal.okeit.edu";
   }
-  return "https://back.vodokanal.okeit.edu";
+  return "https://back-vodokanal.oksei.ru";
 };
 
 export const api = axios.create({
