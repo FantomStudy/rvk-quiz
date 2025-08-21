@@ -15,10 +15,6 @@ export const sortWithEmptyLast = <T>(data: T[], key: SortKey<T>) => {
       return av - bv;
     }
 
-    if (typeof av === "string" && typeof bv === "string") {
-      return av.localeCompare(bv, "ru");
-    }
-
     return 0;
   });
 };

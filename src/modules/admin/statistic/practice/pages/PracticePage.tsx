@@ -65,60 +65,25 @@ export const PracticePage = () => {
         </div>
 
         <div className={styles.signatures}>
-          <div className={styles.signatureItem}>
-            <p>Председатель конкурсной комиссии</p>
+          <p>Председатель конкурсной комиссии</p>
+          <div className={styles.centerSign}>
             <p className={styles.signaturePlace}>{chairman}</p>
           </div>
-          <div className={styles.signatureItem}>
-            <p>Заместитель председателя конкурсной комиссии</p>
+
+          <p>Заместитель председателя конкурсной комиссии</p>
+          <div className={styles.centerSign}>
             <p className={styles.signaturePlace}>{viceChairman}</p>
           </div>
-          <div className={styles.signatureItem}>
-            <p>Члены конкурсной комиссии</p>
-            <div className={styles.signatureGrid}>
-              {members.map((member) => (
-                <p key={member} className={styles.signaturePlace}>
-                  {member}
-                </p>
-              ))}
-            </div>
+
+          <p>Члены конкурсной комиссии</p>
+          <div className={styles.signatureSubgrid}>
+            {members.map((member) => (
+              <p key={member} className={styles.signaturePlace}>
+                {member}
+              </p>
+            ))}
           </div>
         </div>
-
-        {/* {isPrintMode && (
-            <div className={styles.signatures}>
-              <div className={styles.signatureOfficials}>
-                <div className={styles.signatureOfficial}>
-                  <span className={styles.signatureSpace}>_______________</span>
-                  <span className={styles.signatureName}>{chairman}</span>
-                  <span className={styles.signatureTitle}>
-                    Председатель конкурсной комиссии
-                  </span>
-                </div>
-
-                <div className={styles.signatureOfficial}>
-                  <span className={styles.signatureSpace}>_______________</span>
-                  <span className={styles.signatureName}>{viceChairman}</span>
-                  <span className={styles.signatureTitle}>
-                    Заместитель председателя конкурсной комиссии
-                  </span>
-                </div>
-              </div>
-
-              <h4 className={styles.membersTitle}>Члены комиссии:</h4>
-              <div className={styles.signatureGrid}>
-                {members.map((member) => (
-                  <div key={member} className={styles.signatureLine}>
-                    <span className={styles.signatureSpace}>
-                      _______________
-                    </span>
-                    <span className={styles.signatureName}>{member}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )} 
-        </div>*/}
       </div>
     </div>
   );

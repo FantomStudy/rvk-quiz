@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 75px;
 }
 
 .title {
@@ -40,34 +41,6 @@
   display: none;
 }
 
-.signatureItem {
-  display: flex;
-  justify-content: space-between;
-}
-
-.signaturePlace {
-  position: relative;
-  display: flex;
-  align-items: end;
-  justify-content: end;
-  text-wrap: no-wrap;
-  text-align: end;
-
-  &::before {
-    margin-right: 10px;
-    content: "";
-    height: 1px;
-    width: 120px;
-    background-color: black;
-  }
-}
-
-.signatureGrid {
-  gap: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 250px);
-}
-
 @media print {
   @page {
     size: A4 landscape;
@@ -87,12 +60,6 @@
 
   .controls {
     display: none;
-  }
-
-  .signatures {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
   }
 
   .title {
@@ -118,6 +85,39 @@
     th:is(:not(.printNotRotate)) {
       writing-mode: sideways-lr;
       max-height: 250px;
+    }
+  }
+
+  .signatures {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+    font-size: 8px;
+    text-wrap: nowrap;
+  }
+
+  .signatureSubgrid,
+  .centerSign {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+  }
+
+  .centerSign .signaturePlace {
+    grid-column: 3;
+  }
+
+  .signaturePlace {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      height: 1px;
+      width: 80px;
+      background-color: black;
     }
   }
 }

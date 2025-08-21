@@ -6,7 +6,6 @@ import { sortWithEmptyLast } from "@/shared/utils";
 import type { SortProps } from "../../types";
 
 import { useBranchLineSave } from "../../api/queries";
-import { METRICS } from "./const";
 import { useAvrSewer, useAvrSewerSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
@@ -29,14 +28,14 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
           </th>
           <th rowSpan={2}>№ линии</th>
 
-          <th className={styles.printNotRotate} colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={7}>
             1 Этап &quot;Набивка полок и лотка&quot;
           </th>
           <th className={styles.printNotRotate} colSpan={6}>
             2 Этап &quot;Установка пневматического заглушаещего устройства
             ПЗУ-1&quot;
           </th>
-          <th className={styles.printNotRotate} colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={7}>
             3 Этап &quot;Регулировка высотного положения горловины колодца&quot;
           </th>
           <th className={styles.printNotRotate} colSpan={6}>
@@ -49,22 +48,37 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
           <th rowSpan={2}>Место</th>
         </tr>
         <tr>
-          {data[0].stages.map((_, index) =>
-            Object.entries(METRICS).map(([key, value]) => (
-              <th key={key} className={styles.rotate}>
-                {index === 1 && key === "safetyPenalty"
+          {data[0].stages.map((_, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <th className={styles.rotate}>Время</th>
+              <th className={styles.rotate}>Баллы за время</th>
+
+              <th className={styles.rotate}>
+                {index === 1
                   ? "Гидравлические испытания (+/-)"
-                  : value}
-                {}
+                  : " Количество снятых баллов за качество"}
               </th>
-            )),
-          )}
+
+              <th className={styles.rotate}>
+                Количество снятых баллов по охране труда
+              </th>
+              <th className={styles.rotate}>
+                Количество снятых баллов за культуру производства
+              </th>
+              {(index === 0 || index === 2) && (
+                <td className={styles.rotate}>Допуск (+/-)</td>
+              )}
+              <th className={styles.rotate}>Баллы за этап</th>
+            </Fragment>
+          ))}
         </tr>
       </thead>
       <tbody>
         {sortedData.map((row) => (
           <tr key={row.branchId}>
             <td>{row.branchName}</td>
+
             <EditableCell
               save={(value) =>
                 line.mutate({
@@ -77,6 +91,7 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
             >
               {row.lineNumber}
             </EditableCell>
+
             {row.stages.map((stage) => (
               <Fragment key={stage.taskNumber}>
                 <EditableCell
@@ -95,7 +110,7 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
 
                 <td>{stage.timeScore}</td>
 
-                {stage.taskNumber === 2 && (
+                {stage.taskNumber === 2 ? (
                   <CheckableCell
                     save={(value) =>
                       mutate({
@@ -106,6 +121,19 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
                     }
                     initialValue={stage.hydraulicTest}
                   />
+                ) : (
+                  <EditableCell
+                    save={(value) =>
+                      mutate({
+                        branchId: row.branchId,
+                        ...stage,
+                        qualityPenalty: Number(value),
+                      })
+                    }
+                    initialValue={String(stage.qualityPenalty)}
+                  >
+                    {stage.qualityPenalty}
+                  </EditableCell>
                 )}
 
                 <EditableCell
@@ -134,19 +162,17 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
                   {stage.culturePenalty}
                 </EditableCell>
 
-                {stage.taskNumber !== 2 && (
-                  <EditableCell
+                {(stage.taskNumber === 1 || stage.taskNumber === 3) && (
+                  <CheckableCell
                     save={(value) =>
                       mutate({
                         branchId: row.branchId,
                         ...stage,
-                        qualityPenalty: Number(value),
+                        hydraulicTest: value,
                       })
                     }
-                    initialValue={String(stage.qualityPenalty)}
-                  >
-                    {stage.qualityPenalty}
-                  </EditableCell>
+                    initialValue={stage.hydraulicTest}
+                  />
                 )}
 
                 <td>{stage.stageScore}</td>
