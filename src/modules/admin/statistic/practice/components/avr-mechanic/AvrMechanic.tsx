@@ -6,7 +6,6 @@ import { sortWithEmptyLast } from "@/shared/utils";
 import type { SortProps } from "../../types";
 
 import { useBranchLineSave } from "../../api/queries";
-import { METRICS } from "./const";
 import { useAvrMechanic, useAvrMechanicSave } from "./queries";
 
 import styles from "../../../statistic.module.css";
@@ -27,6 +26,7 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
           <th className={styles.printNotRotate} rowSpan={2}>
             Филиал
           </th>
+
           <th className={styles.rotate} rowSpan={2}>
             № линии
           </th>
@@ -39,7 +39,7 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
             2 Этап &quot;Сварка поворотного и неповоротного стыков&quot;{" "}
           </th>
 
-          <th className={styles.printNotRotate} colSpan={7}>
+          <th className={styles.printNotRotate} colSpan={6}>
             3 Этап &quot;Ликвидация повреждения в грунте&quot;
           </th>
 
@@ -50,16 +50,28 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
         </tr>
 
         <tr>
-          {data[0].stages.map(() =>
-            Object.entries(METRICS).map(([key, value]) => (
-              <th key={key} className={styles.rotate}>
-                {value}
+          {data[0].stages.map(({ taskNumber }, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <th className={styles.rotate}>Время</th>
+              <th className={styles.rotate}>Баллы за время</th>
+              <th className={styles.rotate}>Гидравлические испытания (+/-)</th>
+              <th className={styles.rotate}>
+                Количество снятых баллов по охране труда
               </th>
-            )),
-          )}
+              <th className={styles.rotate}>
+                Количество снятых баллов за культуру производства
+              </th>
+              {taskNumber !== 3 && (
+                <th className={styles.rotate}>
+                  Количество снятых баллов за качество
+                </th>
+              )}
+              <th className={styles.rotate}>Баллы за этап</th>
+            </Fragment>
+          ))}
         </tr>
       </thead>
-
       <tbody>
         {sortedData.map((row) => (
           <tr key={row.branchId}>
@@ -134,18 +146,21 @@ export const AvrMechanic = ({ sortBy }: SortProps) => {
                   {stage.culturePenalty}
                 </EditableCell>
 
-                <EditableCell
-                  save={(value) =>
-                    mutate({
-                      branchId: row.branchId,
-                      ...stage,
-                      qualityPenalty: Number(value),
-                    })
-                  }
-                  initialValue={stage.qualityPenalty.toString()}
-                >
-                  {stage.qualityPenalty}
-                </EditableCell>
+                {stage.taskNumber !== 3 && (
+                  <EditableCell
+                    save={(value) =>
+                      mutate({
+                        branchId: row.branchId,
+                        ...stage,
+                        qualityPenalty: Number(value),
+                      })
+                    }
+                    initialValue={stage.qualityPenalty.toString()}
+                  >
+                    {stage.qualityPenalty}
+                  </EditableCell>
+                )}
+
                 <td>{stage.stageScore}</td>
               </Fragment>
             ))}

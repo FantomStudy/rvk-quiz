@@ -8,6 +8,7 @@ export interface WelderData {
   practicNominationId: number;
   theoryScore: number;
   total: number;
+  totalStages: number;
   userId: number;
   stages: [
     {

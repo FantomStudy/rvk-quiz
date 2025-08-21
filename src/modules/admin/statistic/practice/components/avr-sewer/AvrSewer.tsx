@@ -66,8 +66,11 @@ export const AvrSewer = ({ sortBy }: SortProps) => {
               <th className={styles.rotate}>
                 Количество снятых баллов за культуру производства
               </th>
-              {(index === 0 || index === 2) && (
-                <td className={styles.rotate}>Допуск (+/-)</td>
+              {index === 0 && (
+                <td className={styles.rotate}>Устройство лотка (+/-)</td>
+              )}
+              {index === 2 && (
+                <td className={styles.rotate}>Примазка люка (+/-)</td>
               )}
               <th className={styles.rotate}>Баллы за этап</th>
             </Fragment>

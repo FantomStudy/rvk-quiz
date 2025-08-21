@@ -130,7 +130,7 @@ export const Welder = ({ sortBy }: SortProps) => {
               </Fragment>
             ))}
 
-            <td>{row.total}</td>
+            <td>{row.totalStages}</td>
 
             <EditableCell
               save={(value) =>
