@@ -1,22 +1,22 @@
 import axios from "axios";
 
-const getBaseUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL;
+// const getBaseUrl = () => {
+//   const envUrl = import.meta.env.VITE_API_URL;
 
-  if (envUrl !== "auto") {
-    return envUrl;
-  }
+//   if (envUrl !== "auto") {
+//     return envUrl;
+//   }
 
-  const host = window.location.hostname;
+//   const host = window.location.hostname;
 
-  if (/^192\.168\./.test(host)) {
-    return "https://back.vodokanal.okeit.edu";
-  }
-  return "https://back-vodokanal.oksei.ru";
-};
+//   if (/^192\.168\./.test(host)) {
+//     return "https://back.vodokanal.okeit.edu";
+//   }
+//   return "https://back-vodokanal.oksei.ru";
+// };
 
 export const api = axios.create({
-  baseURL: getBaseUrl(),
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
