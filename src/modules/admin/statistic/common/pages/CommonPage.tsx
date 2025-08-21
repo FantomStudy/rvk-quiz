@@ -23,7 +23,7 @@ export const CommonPage = () => {
   }, [selected]);
 
   const { data } = useQuery({
-    queryKey: [current.path],
+    queryKey: ["common", current.path],
     queryFn: async () =>
       api
         .get<(BranchResult & UserResult)[]>(`/${current.path}/result-table`)
@@ -60,30 +60,26 @@ export const CommonPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row) => {
-              console.log(row);
-
-              return (
-                <tr key={row.branchName}>
-                  <td>{row.branchName}</td>
-                  {current.type ? (
-                    <td>
-                      <div className={styles.branchWrapper}>
-                        {row.team.map((name) => (
-                          <p key={name}>{name}</p>
-                        ))}
-                      </div>
-                    </td>
-                  ) : (
-                    <td>{row.fullName}</td>
-                  )}
-                  <td>{row.theoryScore}</td>
-                  <td>{row.practiceScore}</td>
-                  <td>{row.totalScore}</td>
-                  <td>{row.place}</td>
-                </tr>
-              );
-            })}
+            {data.map((row) => (
+              <tr key={row.branchName}>
+                <td>{row.branchName}</td>
+                {current.type ? (
+                  <td>
+                    <div className={styles.branchWrapper}>
+                      {row.team.map((name) => (
+                        <p key={name}>{name}</p>
+                      ))}
+                    </div>
+                  </td>
+                ) : (
+                  <td>{row.fullName}</td>
+                )}
+                <td>{row.theoryScore}</td>
+                <td>{row.practiceScore}</td>
+                <td>{row.totalScore}</td>
+                <td>{row.place}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
