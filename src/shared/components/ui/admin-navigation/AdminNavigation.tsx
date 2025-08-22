@@ -7,9 +7,9 @@ export const AdminNavigation = () => {
     <nav className={styles.navigation}>
       <Link to="/admin/users">Главная</Link>
       <Link to="/admin/dashboard">Результаты</Link>
-      <Link to="/statistic/theory">Теоретическая</Link>
-      <Link to="/statistic/practice">Практическая</Link>
-      <Link to="/statistic/common">Общая</Link>
+      <Link to="/statistic/theory">Теоретические</Link>
+      <Link to="/statistic/practice">Практические</Link>
+      <Link to="/statistic/common">Общие результаты</Link>
     </nav>
   );
 };
