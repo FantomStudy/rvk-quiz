@@ -29,3 +29,8 @@ dist-ssr
 
 # Environment
 .env
+
+# Generated
+
+*.gen.ts
+*.gen.tsx
