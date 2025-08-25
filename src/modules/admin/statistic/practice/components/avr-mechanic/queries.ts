@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api } from "@/shared/config";
+import { saveToastError, saveToastSuccess } from "@/shared/lib/toast";
 
 import type { AvrMechanicData, AvrMechanicMutation } from "./types";
 
@@ -19,7 +20,11 @@ export const useAvrMechanicSave = () => {
       api.patch("/avr-mechanic/upsert", req),
     onSuccess: () => {
       console.log("Данные сохранены");
+      saveToastSuccess();
       queryClient.refetchQueries({ queryKey: ["avr-mechanic"] });
+    },
+    onError: () => {
+      saveToastError();
     },
   });
 };

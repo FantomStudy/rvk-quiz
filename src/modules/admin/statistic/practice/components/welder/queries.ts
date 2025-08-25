@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api } from "@/shared/config";
+import { saveToastError, saveToastSuccess } from "@/shared/lib/toast";
 
 import type { WelderData, WelderMutation } from "./types";
 
@@ -19,7 +20,11 @@ export const useWelderSave = () => {
       api.patch("/welder/update", data),
     onSuccess: () => {
       console.log("Данные сохранены");
+      saveToastSuccess();
       queryClient.refetchQueries({ queryKey: ["welder"] });
+    },
+    onError: () => {
+      saveToastError();
     },
   });
 };

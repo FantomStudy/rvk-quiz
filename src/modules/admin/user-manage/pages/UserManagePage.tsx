@@ -28,7 +28,7 @@ export const UserManagePage = () => {
   }));
 
   const filteredUserList = userList.data.filter((user) =>
-    user.number.startsWith(search),
+    user.number.startsWith(search)
   );
 
   return (
@@ -43,7 +43,7 @@ export const UserManagePage = () => {
           />
           <img alt="search" src="/icons/search.svg" />
         </div>
-        <Table>
+        <Table className={styles.table}>
           <thead>
             <tr>
               <th>Номер</th>

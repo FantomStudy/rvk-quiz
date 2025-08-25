@@ -3,6 +3,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { ToastContainer } from "react-toastify";
 
 import { Header } from "@/components/ui";
 
@@ -19,8 +20,9 @@ function RootComponent() {
     <>
       <Header />
       <Outlet />
-      <ReactQueryDevtools buttonPosition="top-left" />
-      <TanStackRouterDevtools position="top-right" />
+      <ReactQueryDevtools />
+      <TanStackRouterDevtools />
+      <ToastContainer limit={1} autoClose={2000} />
     </>
   );
 }

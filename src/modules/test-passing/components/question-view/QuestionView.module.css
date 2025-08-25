@@ -5,7 +5,7 @@
   justify-content: center;
   gap: 15px;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 25px 30px;
   background-color: #f3f7ffae;
   backdrop-filter: blur(15px);
   color: #000;
@@ -20,12 +20,12 @@
 .testImage {
   width: 100%;
   max-width: 725px;
-  max-height: 345px;
+  max-height: 300px;
+  min-height: 300px;
   object-fit: contain;
   object-position: center;
   align-self: center;
   border-radius: 10px;
-  min-height: 345px;
 }
 
 .stripe {
