@@ -28,7 +28,7 @@ export const UserManagePage = () => {
   }));
 
   const filteredUserList = userList.data.filter((user) =>
-    user.number.startsWith(search)
+    user.number.startsWith(search),
   );
 
   return (
