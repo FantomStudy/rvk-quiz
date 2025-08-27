@@ -18,7 +18,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
 
   if (!data || data.length === 0) return "Не удалось загрузить данные";
 
-  const normalizeData = data.map((el) => ({ ...el, place: el.finalPlace }));
+  const normalizeData = data.map((el) => ({ ...el }));
 
   const sortedData = sortWithEmptyLast(normalizeData, sortBy);
 
@@ -59,7 +59,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           {data[0].stages.map(() =>
             Object.entries(METRICS).map(([key, value]) => (
               <th key={key}>{value}</th>
-            )),
+            ))
           )}
         </tr>
       </thead>

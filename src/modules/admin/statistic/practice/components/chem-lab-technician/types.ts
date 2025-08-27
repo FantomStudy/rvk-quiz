@@ -1,10 +1,10 @@
 export interface ChemLabTechnicianData {
   branchId: number;
   branchName: string;
-  finalPlace: number | null;
   lineNumber: number | null;
   number: string;
   participantName: string;
+  place: number | null;
   practiceScore: number;
   practicNominationId: number;
   theoryScore: number;

@@ -70,6 +70,7 @@ export const TruckDriver = ({ sortBy }: SortProps) => {
             >
               {practice.time}
             </EditableCell>
+            
             <td>{practice.sum}</td>
             <td>{practice.place}</td>
             <td>{practice.points}</td>
