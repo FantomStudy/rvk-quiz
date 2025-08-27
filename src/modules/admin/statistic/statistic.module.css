@@ -68,7 +68,7 @@
     text-align: center;
   }
   .table {
-    font-size: 8px;
+    font-size: 7px;
     border: none;
     border-radius: 0;
 
@@ -89,9 +89,6 @@
   }
 
   .chemPrint {
-    table {
-      font-size: 7px;
-    }
     th {
       max-height: 100px;
     }
