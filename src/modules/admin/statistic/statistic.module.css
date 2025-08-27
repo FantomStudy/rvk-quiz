@@ -84,7 +84,19 @@
 
     th:is(:not(.printNotRotate)) {
       writing-mode: sideways-lr;
-      max-height: 250px;
+      max-height: 150px;
+    }
+  }
+
+  .chemPrint {
+    table {
+      font-size: 7px;
+    }
+    th {
+      max-height: 100px;
+    }
+    .signatures {
+      font-size: 7px;
     }
   }
 

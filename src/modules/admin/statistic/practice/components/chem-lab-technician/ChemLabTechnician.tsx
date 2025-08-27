@@ -23,7 +23,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
   const sortedData = sortWithEmptyLast(normalizeData, sortBy);
 
   return (
-    <Table className={styles.table}>
+    <Table className={`${styles.table} ${styles.chemPrint}`}>
       <thead>
         <tr>
           <th className={styles.printNotRotate} rowSpan={3}>
