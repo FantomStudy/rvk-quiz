@@ -19,11 +19,13 @@ export interface ChemLabTechnicianData {
       culture: number;
       safety: number;
       total: number;
+      isBest?: boolean;
     },
   ];
 }
 
 export interface ChemLabTechnicianMutation {
+  isBest?: boolean;
   stage1aCulture?: number;
   stage1aQuality?: number;
   stage1aSafety?: number;

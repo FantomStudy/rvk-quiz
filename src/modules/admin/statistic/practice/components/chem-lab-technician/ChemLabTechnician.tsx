@@ -1,6 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 
-import { EditableCell, Table } from "@/components/ui";
+import { CheckableCell, EditableCell, Table } from "@/components/ui";
 import { sortWithEmptyLast } from "@/shared/utils";
 
 import type { SortProps } from "../../types";
@@ -34,7 +34,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           <th className={styles.printNotRotate} rowSpan={3}>
             ФИО
           </th>
-          <th className={styles.printNotRotate} colSpan={12}>
+          <th className={styles.printNotRotate} colSpan={13}>
             1 Этап &quot;Определение остаточного хлора в пробе питьевой
             воды&quot;
           </th>
@@ -56,11 +56,17 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           </th>
         </tr>
         <tr>
-          {data[0].stages.map(() =>
-            Object.entries(METRICS).map(([key, value]) => (
-              <th key={key}>{value}</th>
-            ))
-          )}
+          {data[0].stages.map((_, index) => {
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <Fragment key={index}>
+                {Object.entries(METRICS).map(([key, value]) => (
+                  <th key={key}>{value}</th>
+                ))}
+                {index === 1 && <th>Бонусный балл</th>}
+              </Fragment>
+            );
+          })}
         </tr>
       </thead>
       <tbody>
@@ -136,6 +142,18 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
                 </EditableCell>
 
                 <td>{stage.total}</td>
+
+                {stage.name === "1b" && stage.isBest !== undefined && (
+                  <CheckableCell
+                    save={(value) =>
+                      mutate({
+                        userId: row.userId,
+                        isBest: value,
+                      })
+                    }
+                    initialValue={stage.isBest}
+                  />
+                )}
               </Fragment>
             ))}
 
