@@ -51,7 +51,7 @@ export const ChemLabTechnician = ({ sortBy }: SortProps) => {
           <th className={styles.printNotRotate} colSpan={6}>
             1a Предварительный этап. Калибровка пипеток
           </th>
-          <th className={styles.printNotRotate} colSpan={6}>
+          <th className={styles.printNotRotate} colSpan={7}>
             1б Основной этап определения остаточного активного (общего) хлора
           </th>
         </tr>
